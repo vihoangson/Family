@@ -11,27 +11,41 @@
 	foreach($kn as $key=>$value){
 		  ?> 
 				<div class="message-item" id="m16">
+					<div class="options_icon"><span></span>
+					<ul>
+					<li><a href="#">Edit</a></li>
+					<li><a href="<?= base_url(); ?>homepage/delete_kyniem/<?= $value->id; ?>">Delete</a></li>
+					</ul>
+					</div>
 					<div class="message-inner">
 						<div class="message-head clearfix">
-							<div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+							<div class="avatar pull-left"><a href="#"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
 							<div class="user-detail">
 								<h5 class="handle"><?= $value->kyniem_title; ?></h5>
 								<div class="post-meta">
 									<div class="asker-meta">
 										<span class="qa-message-what"></span>
 										<span class="qa-message-when">
-											<span class="qa-message-when-data">Jan 21</span>
+											<span class="qa-message-when-data"><?= date("d-m-Y h:i:s",strtotime($value->kyniem_create)); ?></span>
 										</span>
 										<span class="qa-message-who">
 											<span class="qa-message-who-pad">by </span>
-											<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
+											<span class="qa-message-who-data"><a href="#"><?= $value->kyniem_auth; ?></a></span>
 										</span>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="qa-message-content">
-							<?= $value->kyniem_content; ?>
+							<?php 
+							if($value->kyniem_images){								
+								$images = json_decode($value->kyniem_images,true);
+								foreach ((array)$images as $key2 => $value2) {
+									echo '<img src="'.base_url().'asset/images/'.$value2.'">';
+								}
+							}
+							 ?>
+							<div><?= $value->kyniem_content; ?></div>
 						</div>
 					</div>
 				</div>
@@ -56,15 +70,16 @@
 	$("#button_add").click(function(event) {
 			$("#modal-id").modal();
 	});
-	$("#add_new").submit(function(event) {
-		$.post('<?= base_url(); ?>homepage/ajax_add_new', $("#add_new").serialize() , function(data, textStatus, xhr) {
-			if(parseInt(data)==0){
-				$("#add_new").append("Error");
-			}else{
-				location.reload();
-			}
-		});
-		event.preventDefault();
-	});
+
+	// $("#add_new").submit(function(event) {
+	// 	$.post('<?= base_url(); ?>homepage/ajax_add_new', $("#add_new").serialize() , function(data, textStatus, xhr) {
+	// 		if(parseInt(data)==0){
+	// 			$("#add_new").append("Error");
+	// 		}else{
+	// 			location.reload();
+	// 		}
+	// 	});
+	// 	event.preventDefault();
+	// });
 </script>
 <?php $this->load->view('_includes/footer'); ?>

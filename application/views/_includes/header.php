@@ -46,6 +46,9 @@ if(!$navigation_bar){
 
 		<div class="container">
 		<?php 
+		if($this->session->flashdata('error_upload')){
+			print_r($this->session->flashdata('error_upload'));
+		}
 		if($this->router->fetch_method()!="login"){
 			$this->load->view('_includes/navbar');
 		}
