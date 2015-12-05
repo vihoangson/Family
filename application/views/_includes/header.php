@@ -45,4 +45,8 @@ if(!$navigation_bar){
 	<body>
 
 		<div class="container">
-		
+		<?php 
+		if($this->router->fetch_method()!="login"){
+			$this->load->view('_includes/navbar');
+		}
+		 ?>

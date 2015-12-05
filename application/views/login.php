@@ -4,15 +4,15 @@
         <div class='col-md-3'></div>
         <div class="col-md-6">
             <div class="login-box well">
-                    <form action="">
+                    <form action="" method="post">
                         <legend>Sign In</legend>
                         <div class="form-group">
                             <label for="username-email">E-mail or Username</label>
-                            <input value='' id="username-email" placeholder="E-mail or Username" type="text" class="form-control" />
+                            <input value='' name="username" id="username-email" placeholder="E-mail or Username" type="text" class="form-control" />
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input id="password" value='' placeholder="Password" type="text" class="form-control" />
+                            <input id="password"  name="password" value='' placeholder="Password" type="password" class="form-control" />
                         </div>
                         <div class="input-group">
                           <div class="checkbox">
