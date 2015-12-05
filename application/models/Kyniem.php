@@ -17,6 +17,12 @@ class Kyniem extends CI_Model {
 		$this->db->update('kyniem', $object);
 	}
 
+	public function getById($id){
+		$this->db->where('delete_flg', 0);
+		$this->db->where('id', $id);
+		return $this->db->get('kyniem',1)->row();
+	}
+
 }
 
 /* End of file Kyniem.php */

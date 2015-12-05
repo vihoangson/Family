@@ -13,13 +13,23 @@
 				<div class="message-item" id="m16">
 					<div class="options_icon"><span></span>
 					<ul>
-					<li><a href="#">Edit</a></li>
-					<li><a href="<?= base_url(); ?>homepage/delete_kyniem/<?= $value->id; ?>">Delete</a></li>
+					<li><a href="<?= base_url(); ?>homepage/edit_new/<?= md5($this->config->config["encryption_key"]."__".$value->id) ; ?>/<?= $value->id; ?>">Edit</a></li>
+					<li><a class="delete_b" href="<?= base_url(); ?>homepage/delete_kyniem/<?= md5($this->config->config["encryption_key"]."__".$value->id) ; ?>/<?= $value->id; ?>">Delete</a></li>
 					</ul>
 					</div>
 					<div class="message-inner">
 						<div class="message-head clearfix">
-							<div class="avatar pull-left"><a href="#"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+							<div class="avatar pull-left">
+							<?php switch($value->kyniem_auth){
+								case "Bố":
+								  ?> <a href="#"><img src="<?= base_url(); ?>asset/data/BoSon.jpg"></a> <?php 
+								break;
+								case "Mẹ":
+									?> <a href="#"><img src="<?= base_url(); ?>asset/data/MeSu.jpg"></a> <?php 
+								break;
+								} ?>
+							
+							</div>
 							<div class="user-detail">
 								<h5 class="handle"><?= $value->kyniem_title; ?></h5>
 								<div class="post-meta">
@@ -70,7 +80,9 @@
 	$("#button_add").click(function(event) {
 			$("#modal-id").modal();
 	});
-
+	$(".delete_b").click(function() {
+		return confirm("Bạn có muốn xóa ?");		
+	});
 	// $("#add_new").submit(function(event) {
 	// 	$.post('<?= base_url(); ?>homepage/ajax_add_new', $("#add_new").serialize() , function(data, textStatus, xhr) {
 	// 		if(parseInt(data)==0){

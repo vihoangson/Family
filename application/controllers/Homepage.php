@@ -110,9 +110,58 @@ class Homepage extends MY_Controller {
 		
 	}
 
-	public function delete_kyniem($id){
-		$this->kyniem->delete_kyniem($id);
-		redirect('/','refresh');
+	public function edit_new($token=null,$id=null){
+
+		if($this->input->post()){
+
+			$data = [
+				"kyniem_title" => $this->input->post("title"),
+				"kyniem_content" => $this->input->post("content"),
+				"kyniem_auth" => $this->input->post("kyniem_auth"),				
+				"kyniem_modifie" => date("Y-m-d h:i:s",time()),
+			];
+			
+			if($_FILES){				
+				$ul = $this->do_upload();
+				if($ul["error"]){
+					$this->session->set_flashdata('error_upload', $error);
+				}
+				foreach ($ul["success"] as $key => $value) {
+					$file[] = $value["file_name"];
+				}
+				if($file){
+					$imgs = $this->kyniem->getById($id)->kyniem_images;
+					$array_imgs = json_decode($imgs);
+					foreach ($file as $key => $value) {
+						$array_imgs[]=$value;
+					}
+					$data["kyniem_images"] = json_encode($array_imgs);
+				}
+			}
+			$this->db->where('id', $id);
+			if($this->db->update('kyniem', $data)){
+				redirect('/','refresh');
+			}else{
+				echo 0;
+			}
+		}else{
+			if(!md5($this->config->config["encryption_key"]."__".$id) == $token){
+				redirect('/404','refresh');	
+			}			
+			$rs = $this->kyniem->getById($id);		
+			$this->load->view('_includes/header');
+			$this->load->view('ajax_add_new',["data"=>$rs]);
+			$this->load->view('_includes/footer');
+		}
+	}
+
+	public function delete_kyniem($token,$id){
+		if(!md5($this->config->config["encryption_key"]."__".$id) == $token){
+			redirect('/404','refresh');	
+		}else{
+			$this->kyniem->delete_kyniem($id);
+			redirect('/','refresh');
+		}
 	}
 }
 
