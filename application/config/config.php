@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if($_SERVER["SERVER_ADDR"]=="128.199.141.191"){
 	$config['base_url'] = "http://".$_SERVER["HTTP_HOST"].'/';
 }else{
-	$config['base_url'] = "http://".$_SERVER["HTTP_HOST"].'/learning_english/';
+	$config['base_url'] = "http://".$_SERVER["HTTP_HOST"].'/Family/';
 }
 
 /*

@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'sqlite:'.APPPATH.'models/db/vocabulary',
+	'hostname' => 'sqlite:'.APPPATH.'models/db/family',
 	'username' => '',
 	'password' => '',
 	'database' => '',
