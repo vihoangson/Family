@@ -1,0 +1,57 @@
+.review_box {
+    padding: 120px;
+}
+.current {
+	font-weight: bold;
+	color: blue;
+}
+.typing {
+	border: 1px solid #ccc;
+	font-size: 19px;
+	padding: 10px;
+}
+.box_word span {
+	padding: 13px;
+	float: left;
+	font-size: 17px;
+	height: 64px;
+	width: 236px;
+	text-align: center;
+}
+.error {
+	color: red;
+}
+.success{
+	color: green;
+}
+.card {
+	display: block;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	background-color: white;
+	height: 100%;
+	text-align: center;
+}
+p.mean {
+	color: #FF0582;
+	font-weight: bold;
+}
+.img_box {
+	width: 760px;
+	margin: 0 auto;
+}
+.img_ele {
+	float: left;
+	width: 152px;
+	padding: 3px;
+	height: 152px;
+	overflow: hidden;
+}
+.img_ele img{
+	width:100%;
+}
+.box_word span{
+	cursor: pointer;
+}
