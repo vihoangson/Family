@@ -6,6 +6,7 @@ class Homepage extends MY_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('kyniem');
+		$this->load->library('image_lib');
 	}
 
 	public function index()
@@ -61,7 +62,9 @@ class Homepage extends MY_Controller {
 
 			$this->upload->initialize($this->set_upload_options());
 			if($this->upload->do_upload()){
+				$img_info = $this->upload->data();
 				$success[] = $this->upload->data();
+				$this->resize_img(FCPATH."asset/images/".$img_info['file_name'],100,100);
 			}else{
 				$error[] = $this->upload->display_errors();
 			}
@@ -162,6 +165,90 @@ class Homepage extends MY_Controller {
 			$this->kyniem->delete_kyniem($id);
 			redirect('/','refresh');
 		}
+	}
+
+	public function ajax_delete_img(){
+		try {
+			$this->db->where('id', $this->input->post("id"));
+			$rs = json_decode($this->db->get('kyniem', 1)->row()->kyniem_images,true);
+			unset($rs[array_search($this->input->post("img"), $rs)]) ;
+			$images = json_encode($rs);
+			if(!$this->_move_file_to_trash($this->input->post("img"))){
+				throw new Exception("Không move được file", 1);
+			}
+			$this->db->where('id', $this->input->post("id"));
+			if(!$this->db->update('kyniem', ["kyniem_images"=>$images])){
+				throw new Exception("Không update được db", 1);
+			}
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+	}
+
+	private function _move_file_to_trash($file_name){
+		$flag=true;
+		if(FCPATH."asset/images/".$file_name){
+			if(!rename(FCPATH."asset/images/".$file_name,FCPATH."asset/images/trash/".$file_name)){
+				$flag=false;
+				throw new Exception("Không move được file", 1);
+				
+			}
+		}
+		if(FCPATH."asset/images/thumb/".get_thumb_file_name($file_name)){
+			if(!rename(FCPATH."asset/images/thumb/".get_thumb_file_name($file_name),FCPATH."asset/images/trash/".get_thumb_file_name($file_name))){
+				throw new Exception("Không move được file", 1);
+				$flag=false;
+			}
+		}
+		return $flag;
+	}
+
+	public function count_down(){
+		$date1=date_create(date("Y-m-d h:n:s",time()));
+		$date2=date_create("2016-05-15");
+		$diff=date_diff($date1,$date2);
+
+		$days = $diff->days;
+		$percent = 100-round(($days/266)*100);
+		$m = $diff->m;
+		$d = $diff->d;
+		$h = $diff->h;
+		$m = $diff->m;
+		$s = $diff->s;
+		$html = "
+		<center>
+			<h1>".$days." Ngày</h1>
+			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$m." Phút ".$s." Giây </h3>
+
+			<center><h4>".$percent."%</h4></center>
+			<div class='progress'>
+				<div class='determinate' style='width: ".$percent."%'></div>
+			</div>		
+		</center>
+		";
+		$this->load->view('count_down', ["content" => $html]);
+		$files = scandir(FCPATH."asset/images/");
+		foreach ($files as $key => $value) {
+			if(preg_match("/^(?!.*(_thumb).*$)/", $value)&& $value !="." && $value!=".."){
+				$this->resize_img(FCPATH."asset/images/".$value,100,100);
+			}
+		}
+	}
+
+	private function resize_img($path,$width,$height){
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $path;
+		$config['new_image'] = FCPATH."asset/images/thumb/";
+		$config['create_thumb'] = TRUE;
+		$config['maintain_ratio'] = TRUE;
+		$config['width']         = $width;
+		$config['height']       = $height;
+		$this->image_lib->initialize($config);
+		$this->image_lib->resize();	
+	}
+
+	public function error404(){
+		$this->load->view('errors/404');
 	}
 }
 

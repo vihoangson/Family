@@ -53,6 +53,7 @@ $route['default_controller'] = 'homepage';
 $route['login'] = 'homepage/login';
 $route['logout'] = 'homepage/logout';
 $route['setting'] = 'homepage/setting';
+$route['count_down'] = 'homepage/count_down';
 
-$route['404_override'] = '';
+$route['404_override'] = 'homepage/error404';
 $route['translate_uri_dashes'] = FALSE;

@@ -50,9 +50,16 @@
 							<?php 
 							if($value->kyniem_images){								
 								$images = json_decode($value->kyniem_images,true);
+								echo "<div class='image-link'>";
 								foreach ((array)$images as $key2 => $value2) {
-									echo '<img src="'.base_url().'asset/images/'.$value2.'">';
+									if(file_exists(FCPATH."asset/images/thumb/".get_thumb_file_name($value2))){
+										$value2_c = "thumb/".get_thumb_file_name($value2);
+									}else{
+										$value2_c = $value2;
+									}
+									echo '<a href="'.base_url().'asset/images/'.$value2.'"  class=""><img src="'.base_url().'asset/images/'.$value2_c.'"></a>';
 								}
+								echo "</div>";
 							}
 							 ?>
 							<div><?= $value->kyniem_content; ?></div>
@@ -83,15 +90,5 @@
 	$(".delete_b").click(function() {
 		return confirm("Bạn có muốn xóa ?");		
 	});
-	// $("#add_new").submit(function(event) {
-	// 	$.post('<?= base_url(); ?>homepage/ajax_add_new', $("#add_new").serialize() , function(data, textStatus, xhr) {
-	// 		if(parseInt(data)==0){
-	// 			$("#add_new").append("Error");
-	// 		}else{
-	// 			location.reload();
-	// 		}
-	// 	});
-	// 	event.preventDefault();
-	// });
 </script>
 <?php $this->load->view('_includes/footer'); ?>
