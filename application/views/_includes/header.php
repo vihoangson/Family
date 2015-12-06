@@ -17,7 +17,7 @@ if(!$navigation_bar){
 		<!-- Bootstrap CSS -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/css/family.css" rel="stylesheet">
-		<link href="<?= base_url(); ?>/asset/bower_components/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
+		<link href="<?= base_url(); ?>asset/bower_components/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
 		<?php 
 		if(isset($css)){
 			foreach ((array)$css as $key => $value) {
@@ -42,7 +42,7 @@ if(!$navigation_bar){
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script src="<?= base_url(); ?>/asset/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup.js"></script>
+		<script src="<?= base_url(); ?>asset/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup.js"></script>
 		<script>
 			$(document).ready(function() {
 				$('.image-link').magnificPopup({
