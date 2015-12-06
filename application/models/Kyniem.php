@@ -6,7 +6,7 @@ class Kyniem extends CI_Model {
 	public function getAll(){
 		$this->db->where('delete_flg', 0);
 		$this->db->order_by('id', 'desc');
-		return $this->db->get('Kyniem')->result();
+		return $this->db->get('kyniem')->result();
 	}	
 
 	public function delete_kyniem($id){
