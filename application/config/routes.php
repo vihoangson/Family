@@ -56,5 +56,7 @@ $route['setting'] = 'homepage/setting';
 $route['count_down'] = 'homepage/count_down';
 $route['calendar'] = 'homepage/calendar';
 
+$route['admin'] = 'admin/users/index';
+
 $route['404_override'] = 'homepage/error404';
 $route['translate_uri_dashes'] = FALSE;

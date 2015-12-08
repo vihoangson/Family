@@ -20,7 +20,9 @@ class Homepage extends MY_Controller {
 		if($this->input->post('username') && $this->input->post('password')){
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
-			if($username=="admin" && $password =="admin"){
+			$this->db->where('username', $username);
+			$rs_user = $this->db->get('user',1)->row();
+			if($username == $rs_user->username && $rs_user->password == md5($password."__".$rs_user->username)){
 				$array = array(
 					'user' => $username
 				);
