@@ -239,6 +239,11 @@ class Homepage extends MY_Controller {
 		$this->load->view('calendar');
 	}
 
+	public function custom($url){
+		$this->load->view('custom/'.$url);
+
+	}
+
 	private function resize_img($path,$width,$height){
 		$config['image_library'] = 'gd2';
 		$config['source_image'] = $path;

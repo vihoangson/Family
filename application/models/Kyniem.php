@@ -7,11 +7,11 @@ class Kyniem extends CI_Model {
 		$this->db->where('delete_flg', 0);
 		$this->db->order_by('id', 'desc');
 		return $this->db->get('kyniem')->result();
-	}	
+	}
 
 	public function delete_kyniem($id){
 		$this->db->where('id', $id);
-		$object= [		
+		$object= [
 		"delete_flg" => 1,
 		];
 		$this->db->update('kyniem', $object);
