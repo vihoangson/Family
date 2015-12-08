@@ -205,7 +205,7 @@ class Homepage extends MY_Controller {
 
 	public function count_down(){
 		$date1=date_create(date("Y-m-d h:n:s",time()));
-		$date2=date_create("2016-05-15");
+		$date2=date_create("2016-05-20");
 		$diff=date_diff($date1,$date2);
 
 		$days = $diff->days;
@@ -216,6 +216,8 @@ class Homepage extends MY_Controller {
 		$m = $diff->m;
 		$s = $diff->s;
 		$html = "
+		<h2 class='text-center'>Ngày dự sinh: <br>".date("d-m-Y",$date2->getTimestamp())."</h2>
+
 		<center>
 			<h1>".$days." Ngày</h1>
 			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$m." Phút ".$s." Giây </h3>
