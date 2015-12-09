@@ -12,7 +12,7 @@
 	<div class="row">
 		<h2>Time Line</h2>
 	</div>
-	<select class="form-control change-year">
+	<select class="form-control change-year" style="width:100px;">
 		<option value="2015" <?= ($this->session->userdata("year")==2015?"selected":""); ?> > 2015 </option>
 		<option value="2016"  <?= $this->session->userdata("year")==2016?"selected":""; ?> > 2016 </option>
 	</select>
