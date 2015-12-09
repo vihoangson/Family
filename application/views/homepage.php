@@ -1,11 +1,25 @@
-<?php $this->load->view('_includes/header'); ?>
-
+<?php $this->load->view('_includes/header',["js"=>["/asset/js/jquery.lazyload.js"]]); ?>
+<script>
+	$(document).ready(function() {
+		$("img.lazy").lazyload({
+		    threshold : 200
+		});
+		$(".change-year").change(function(event) {
+			location.href = "/homepage/chang_year/"+$(this).val();
+		});
+	});
+</script>
 	<div class="row">
 		<h2>Time Line</h2>
 	</div>
+	<select class="form-control change-year">
+		<option value="2015" <?= ($this->session->userdata("year")==2015?"selected":""); ?> > 2015 </option>
+		<option value="2016"  <?= $this->session->userdata("year")==2016?"selected":""; ?> > 2016 </option>
+	</select>
 	<div class="text-right">
-		<button type="button" id="button_add" class="btn btn-primary">Thêm</button>
+		<button type="button" id="button_add" class="btn btn-primary">Thêm kỷ niệm</button>
 	</div>
+	<hr>
     <div class="qa-message-list" id="wallmessages">
 	<?php
 	foreach($kn as $key=>$value){
@@ -47,6 +61,7 @@
 							</div>
 						</div>
 						<div class="qa-message-content">
+							<div><?= h($value->kyniem_content); ?></div>
 							<?php 
 							if($value->kyniem_images){								
 								$images = json_decode($value->kyniem_images,true);
@@ -57,12 +72,11 @@
 									}else{
 										$value2_c = $value2;
 									}
-									echo '<a href="'.base_url().'asset/images/'.$value2.'"  class=""><img src="'.base_url().'asset/images/'.$value2_c.'"></a>';
+									echo '<a href="'.base_url().'asset/images/'.$value2.'"  class=""><img class="lazy"  data-original="'.base_url().'asset/images/'.$value2_c.'"  src=""></a>';
 								}
 								echo "</div>";
 							}
 							 ?>
-							<div><?= $value->kyniem_content; ?></div>
 						</div>
 					</div>
 				</div>

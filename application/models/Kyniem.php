@@ -3,7 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kyniem extends CI_Model {
 
-	public function getAll(){
+	public function getAll($condition=null){
+		if($condition["year"]){
+			$this->db->like('(kyniem_create)', $condition["year"]);
+		}
 		$this->db->where('delete_flg', 0);
 		$this->db->order_by('id', 'desc');
 		return $this->db->get('kyniem')->result();

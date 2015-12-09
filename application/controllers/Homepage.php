@@ -8,10 +8,23 @@ class Homepage extends MY_Controller {
 		$this->load->model('kyniem');
 		$this->load->library('image_lib');
 	}
+	public function chang_year($year){
+		$array = array(
+			'year' => $year
+		);
+		$this->session->set_userdata( $array );
+		redirect('/','refresh');
+	}
 
 	public function index()
 	{
-		$kn = $this->kyniem->getAll();
+		if($this->session->userdata('year')){
+			$cond_year = $this->session->userdata('year');
+		}else{
+			$cond_year = date("Y");
+		}
+		$condition["year"] = $cond_year;
+		$kn = $this->kyniem->getAll($condition);
 		$this->load->view('homepage',["kn" => $kn]);
 	}
 

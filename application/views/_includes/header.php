@@ -25,12 +25,7 @@ if(!$navigation_bar){
 				<?php
 			}
 		}
-		if(isset($js)){
-			foreach ((array)$js as $key => $value) {
-				?><script src="<?= $value; ?>"></script>
-				<?php
-			}
-		}
+
 		?>
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,6 +38,14 @@ if(!$navigation_bar){
 		<!-- Bootstrap JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/jquery.magnific-popup.js"></script>
+		<?php 
+		if(isset($js)){
+			foreach ((array)$js as $key => $value) {
+				?><script src="<?= $value; ?>"></script>
+				<?php
+			}
+		}
+		 ?>
 		<script>
 			$(document).ready(function() {
 				$('.image-link').magnificPopup({
