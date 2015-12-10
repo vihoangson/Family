@@ -39,7 +39,7 @@ class Homepage extends MY_Controller {
 		}
 	}
 
-	public function login($case){
+	public function login($case = null){
 
 		$flag = false;
 		if($this->input->post('username') && $this->input->post('password')){
