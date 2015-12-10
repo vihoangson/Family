@@ -28,6 +28,8 @@
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Người dùng <b class="caret"></b></a>
 				<ul class="dropdown-menu">
+				
+					<li><a href="<?= base_url(); ?>homepage/custom/sample_markdown">Mark down</a></li>
 					<li><a href="<?= base_url(); ?>setting">Setting</a></li>
 					<li><a href="<?= base_url(); ?>logout">Logout</a></li>
 				</ul>
