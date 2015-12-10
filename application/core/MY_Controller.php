@@ -17,5 +17,15 @@ class MY_Controller extends CI_Controller
 		}
 	}
 
+	public function my_sent_email($options){
+		$this->load->library('email');
+		$this->email->initialize(["protocol"=>"sendmail"]);
+		$this->email->from('info@vihoangson.com', 'Family');
+		$this->email->to('vihoangson@gmail.com');
+		$this->email->subject($options["subject"]);
+		$this->email->message($options["content"]);	
+		return $this->email->send();
+	}
+
 }
 ?>

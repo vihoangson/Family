@@ -69,7 +69,7 @@ class CI_Email {
 	 *
 	 * @var	string	'mail', 'sendmail' or 'smtp'
 	 */
-	public $protocol	= 'smtp';		// mail/sendmail/smtp
+	public $protocol	= 'sendmail';		// mail/sendmail/smtp
 
 	/**
 	 * STMP Server host
@@ -118,7 +118,7 @@ class CI_Email {
 	 *
 	 * @var	string	empty, 'tls' or 'ssl'
 	 */
-	public $smtp_crypto	= 'ssl';
+	public $smtp_crypto	= 'tls';
 
 	/**
 	 * Whether to apply word-wrapping to the message body.

@@ -9,15 +9,6 @@ class Homepage extends MY_Controller {
 		$this->load->library('image_lib');
 	}
 
-	public function send_email_x(){
-		$this->load->library('email');
-		$this->email->from('vihoangson@vihoangson.com', 'Your Name');
-		$this->email->to('vihoangson@gmail.com');
-		$this->email->subject('Email Test');
-		$this->email->message('Testing the email class.');	
-		$this->email->send();
-	}
-
 	public function chang_year($year){
 		$array = array(
 			'year' => $year
@@ -250,7 +241,6 @@ class Homepage extends MY_Controller {
 		$date1=date_create(date("Y-m-d h:n:s",time()));
 		$date2=date_create("2016-05-20");
 		$diff=date_diff($date1,$date2);
-
 		$days = $diff->days;
 		$percent = 100-round(($days/266)*100);
 		$m = $diff->m;
@@ -259,18 +249,18 @@ class Homepage extends MY_Controller {
 		$m = $diff->m;
 		$s = $diff->s;
 		$html = "
-		<h2 class='text-center'>Ngày dự sinh: <br>".date("d-m-Y",$date2->getTimestamp())."</h2>
-
 		<center>
+			<h2 class='text-center'>Ngày dự sinh: <br>".date("d-m-Y",$date2->getTimestamp())."</h2>
 			<h1>".$days." Ngày</h1>
 			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$m." Phút ".$s." Giây </h3>
 
 			<center><h4>".$percent."%</h4></center>
 			<div class='progress'>
 				<div class='determinate' style='width: ".$percent."%'></div>
-			</div>		
+			</div>
 		</center>
 		";
+
 		$this->load->view('count_down', ["content" => $html]);
 		$files = scandir(FCPATH."asset/images/");
 		foreach ($files as $key => $value) {
@@ -303,6 +293,12 @@ class Homepage extends MY_Controller {
 
 	public function error404(){
 		$this->load->view('errors/404');
+	}
+
+	public function cron(){
+		if(!$this->my_sent_email(["subject"=>"Count down","content"=>$html])){
+			echo "<h2>Can't send mail</h2>";
+		}
 	}
 }
 
