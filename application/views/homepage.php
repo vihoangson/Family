@@ -61,7 +61,7 @@
 							</div>
 						</div>
 						<div class="qa-message-content">
-							<div><?= Markdown::defaultTransform($value->kyniem_content); ?></div>
+							<div><?= h($value->kyniem_content); ?></div>
 							<?php 
 							if($value->kyniem_images){								
 								$images = json_decode($value->kyniem_images,true);

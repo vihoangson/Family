@@ -16,9 +16,9 @@
 			<li class="active"><a href="<?= base_url(); ?>">Trang chủ</a></li>
 			<li><a href="#">Timeline</a></li>
 		</ul>
-		<form class="navbar-form navbar-left" role="search">
+		<form action="/homepage/search_keyword" class="navbar-form navbar-left" role="search" method="post">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
+				<input type="text" name="keyword" class="form-control" placeholder="Search">
 			</div>
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>

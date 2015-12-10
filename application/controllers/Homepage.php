@@ -32,8 +32,13 @@ class Homepage extends MY_Controller {
 	{
 		if($this->input->post()){
 			if($this->input->post("keyword")){
-
+				$keyword = $this->input->post("keyword");
+				$this->db->or_like('kyniem_title', $keyword);
+				$this->db->or_like('kyniem_content', $keyword);
 			}
+			$rs = $this->db->get('kyniem')->result();
+			$this->load->view('search_keyword', ["rs"=>$rs]);
+			
 		}else{
 			redirect('/404','refresh');
 		}

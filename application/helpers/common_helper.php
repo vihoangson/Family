@@ -5,7 +5,7 @@ function get_thumb_file_name($file_name){
 }
 
 function h($string){
-	$string = nl2br($string);
+	$string = Markdown::defaultTransform($string);
 	return $string;
 }
 
