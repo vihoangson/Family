@@ -28,10 +28,12 @@ class Homepage extends MY_Controller {
 		$this->load->view('homepage',["kn" => $kn]);
 	}
 
-	public function search()
+	public function search_keyword()
 	{
 		if($this->input->post()){
+			if($this->input->post("keyword")){
 
+			}
 		}else{
 			redirect('/404','refresh');
 		}
