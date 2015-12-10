@@ -29,7 +29,7 @@ class Users extends CI_Controller {
 	}
 
 	public function change_password(){
-		if(!$this->session->userdata('info_user')){
+		if(!$this->session->userdata('user_id')){
 			redirect('/','refresh');
 		}
 		if($this->input->post()){
