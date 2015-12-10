@@ -1,6 +1,13 @@
-<?php $this->load->view('_includes/header',["css"=>[base_url()."asset/css/login.css"]]); ?>
-
+<?php $this->load->view('_includes/header',["css"=>[base_url()."asset/css/login.css"],"js"=>[base_url()."/asset/js/jquery.lazyload.js"]]); ?>
+<script>
+    $(document).ready(function() {
+        $("img.lazy").lazyload({
+            threshold : 200
+        });
+    });
+</script>
 <?php 
+
     if($rs){
         echo "
         <h2>Kết quả tìm kiếm</h2>
@@ -32,7 +39,6 @@
                                     ?> <a href="#"><img src="<?= base_url(); ?>asset/data/MeSu.jpg"></a> <?php 
                                 break;
                                 } ?>
-                            
                             </div>
                             <div class="user-detail">
                                 <h5 class="handle"><?= $value->kyniem_title; ?></h5>
@@ -53,7 +59,7 @@
                         <div class="qa-message-content">
                             <div><?= h($value->kyniem_content); ?></div>
                             <?php 
-                            if($value->kyniem_images){                              
+                            if($value->kyniem_images){
                                 $images = json_decode($value->kyniem_images,true);
                                 echo "<div class='image-link'>";
                                 foreach ((array)$images as $key2 => $value2) {

@@ -8,6 +8,16 @@ class Homepage extends MY_Controller {
 		$this->load->model('kyniem');
 		$this->load->library('image_lib');
 	}
+
+	public function send_email_x(){
+		$this->load->library('email');
+		$this->email->from('vihoangson@vihoangson.com', 'Your Name');
+		$this->email->to('vihoangson@gmail.com');
+		$this->email->subject('Email Test');
+		$this->email->message('Testing the email class.');	
+		$this->email->send();
+	}
+
 	public function chang_year($year){
 		$array = array(
 			'year' => $year
