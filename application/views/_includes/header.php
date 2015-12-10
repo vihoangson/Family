@@ -66,4 +66,16 @@ if(!$navigation_bar){
 		if($this->router->fetch_method()!="login"){
 			$this->load->view('_includes/navbar');
 		}
-		 ?>
+
+		if(!empty($this->session->flashdata('item'))){
+			$keys   = array_keys($this->session->flashdata('item'));
+			$values = array_values($this->session->flashdata('item'));
+			foreach ($keys as $key => $value) {
+				?>
+				<div class="alert alert-<?= $keys[$key]; ?>">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>Thông báo: </strong> <?php echo $values[$key]; ?>
+				</div>
+				<?php
+			}
+		}

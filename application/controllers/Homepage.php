@@ -28,7 +28,17 @@ class Homepage extends MY_Controller {
 		$this->load->view('homepage',["kn" => $kn]);
 	}
 
-	public function login(){
+	public function search()
+	{
+		if($this->input->post()){
+
+		}else{
+			redirect('/404','refresh');
+		}
+	}
+
+	public function login($case){
+
 		$flag = false;
 		if($this->input->post('username') && $this->input->post('password')){
 			$username = $this->input->post('username');
@@ -37,7 +47,8 @@ class Homepage extends MY_Controller {
 			$rs_user = $this->db->get('user',1)->row();
 			if($username == $rs_user->username && $rs_user->password == md5($password."__".$rs_user->username)){
 				$array = array(
-					'user' => $username
+					'user' => $username,
+					'user_id' => ($rs_user->id),
 				);
 				$flag = true;
 				$this->session->set_userdata( $array );

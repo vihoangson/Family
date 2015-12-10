@@ -28,6 +28,30 @@ class Users extends CI_Controller {
 		$this->load->view('admin/users', $data);
 	}
 
+	public function change_password(){
+		if(!$this->session->userdata('info_user')){
+			redirect('/','refresh');
+		}
+		if($this->input->post()){
+			$old_password   = $this->input->post("old_password") ;
+			$new_password   = $this->input->post("new_password") ;
+			$renew_password = $this->input->post("renew_password") ;
+			if($renew_password == $new_password){
+				$this->db->where('id', $this->session->userdata('user_id'));
+				$rs_u = $this->db->get('user', 1)->row();
+				if($rs_u->password == md5($old_password."__".$rs_u->username)){
+					$this->db->where('id', $rs_u->id);
+					if($this->db->update('user', ["password" => md5($new_password."__".$rs_u->username)])){
+						$this->session->set_flashdata('item',["success"=>"Đã đổi password thành công"]);
+					}else{
+						$this->session->set_flashdata('item',["error"=>"Không đổi được password"]);
+					}
+				}
+			}
+		}
+		$this->load->view('admin/change_password');
+	}
+
 }
 
 /* End of file Users.php */

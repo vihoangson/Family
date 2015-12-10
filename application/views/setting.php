@@ -1,14 +1,7 @@
 <?php $this->load->view('_includes/header'); ?>
-<form action="" method="POST" role="form">
-	<legend>Form title</legend>
-
-	<div class="form-group">
-		<label for="">label</label>
-		<input type="text" class="form-control" id="" placeholder="Input field">
+	<div class="list-group">
+		<a href="/admin/users/index" class="list-group-item">Manager user</a>
+		<a href="/admin/users/change_password" class="list-group-item">Change password</a>
+		<a href="/homepage/custom/sample_markdown" class="list-group-item">Mark down</a>
 	</div>
-
-	
-
-	<button type="submit" class="btn btn-primary">Submit</button>
-</form>
 <?php $this->load->view('_includes/footer'); ?>

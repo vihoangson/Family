@@ -56,6 +56,8 @@ $route['setting'] = 'homepage/setting';
 $route['count_down'] = 'homepage/count_down';
 $route['calendar'] = 'homepage/calendar';
 
+$route['custom/(:any)'] = 'homepage/custom/$1';
+
 $route['admin'] = 'admin/users/index';
 
 $route['404_override'] = 'homepage/error404';
