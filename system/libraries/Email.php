@@ -76,14 +76,14 @@ class CI_Email {
 	 *
 	 * @var	string
 	 */
-	public $smtp_host	= 'localhost';
+	public $smtp_host	= '128.199.141.191';
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var	string
 	 */
-	public $smtp_user	= 'leela';
+	public $smtp_user	= 'bobby';
 
 	/**
 	 * SMTP Password
@@ -97,7 +97,7 @@ class CI_Email {
 	 *
 	 * @var	int
 	 */
-	public $smtp_port	= 25;
+	public $smtp_port	= 465;
 
 	/**
 	 * SMTP connection timeout in seconds
