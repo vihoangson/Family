@@ -237,7 +237,7 @@ class Homepage extends MY_Controller {
 		return $flag;
 	}
 
-	public function count_down(){
+	private function _get_content_countdown(){
 		$date1=date_create(date("Y-m-d h:n:s",time()));
 		$date2=date_create("2016-05-20");
 		$diff=date_diff($date1,$date2);
@@ -260,7 +260,11 @@ class Homepage extends MY_Controller {
 			</div>
 		</center>
 		";
+		return $html;
+	}
 
+	public function count_down(){
+		$html = $this->_get_content_countdown();
 		$this->load->view('count_down', ["content" => $html]);
 		$files = scandir(FCPATH."asset/images/");
 		foreach ($files as $key => $value) {
@@ -296,6 +300,7 @@ class Homepage extends MY_Controller {
 	}
 
 	public function cron(){
+		$html = $this->_get_content_countdown();
 		if(!$this->my_sent_email(["subject"=>"Count down","content"=>$html])){
 			echo "<h2>Can't send mail</h2>";
 		}
