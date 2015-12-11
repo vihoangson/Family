@@ -246,7 +246,7 @@ class Homepage extends MY_Controller {
 		$m = $diff->m;
 		$d = $diff->d;
 		$h = $diff->h;
-		$m = $diff->m;
+		$m = $diff->i;
 		$s = $diff->s;
 		$html = "
 		<center>
