@@ -246,13 +246,13 @@ class Homepage extends MY_Controller {
 		$m = $diff->m;
 		$d = $diff->d;
 		$h = $diff->h;
-		$m = $diff->i;
+		$i = $diff->i;
 		$s = $diff->s;
 		$html = "
 		<center>
 			<h2 class='text-center'>Ngày dự sinh: <br>".date("d-m-Y",$date2->getTimestamp())."</h2>
 			<h1>".$days." Ngày</h1>
-			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$m." Phút ".$s." Giây </h3>
+			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$i." Phút ".$s." Giây </h3>
 
 			<center><h4>".$percent."%</h4></center>
 			<div class='progress'>
