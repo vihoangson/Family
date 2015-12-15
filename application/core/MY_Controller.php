@@ -30,7 +30,11 @@ class MY_Controller extends CI_Controller
 		$this->email->subject($options["subject"]);
 		$this->email->message($options["content"]);
 		$this->email->attach(APPPATH."models/db/family");
-		return $this->email->send();
+		if($this->email->send()){
+			echo "<h1>Send mail</h1>";
+		}else{
+			echo "<h1>Can't sent mail</h1>";
+		}
 	}
 
 	public function backup_db_family($options=null){
@@ -42,7 +46,11 @@ class MY_Controller extends CI_Controller
 		$this->email->subject("Backup db ".date("Y-m-d h:i:s"));
 		$this->email->message(date("Y-m-d h:i:s"));
 		$this->email->attach(DB_FILE_FAMILY);
-		return $this->email->send();
+		if($this->email->send()){
+			echo "<h1>Send mail</h1>";
+		}else{
+			echo "<h1>Can't sent mail</h1>";
+		}
 	}
 
 	public function backup_file_images_family($options=null){
@@ -56,10 +64,11 @@ class MY_Controller extends CI_Controller
 			$this->email->to('vihoangson@gmail.com');
 			$this->email->cc('4t.nhauyen@gmail.com');
 			$this->email->subject("Backup file images ".date("Y-m-d h:i:s"));
-			$this->email->message(date("Y-m-d h:i:s"));
-			$this->email->attach(FCPATH."asset/tmp/".$file_name);
+			$this->email->message(date("Y-m-d h:i:s")."Link:".base_url()."/asset/tmp/".$file_name);
 			if($this->email->send()){
-				unlink(FCPATH."asset/tmp/".$file_name);
+				echo "<h1>Send mail</h1>";
+			}else{
+				echo "<h1>Can't sent mail</h1>";
 			}
 		}else{
 			echo "<h1>Don't have file</h1>";
