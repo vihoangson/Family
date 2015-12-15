@@ -27,7 +27,8 @@ class MY_Controller extends CI_Controller
 		$this->email->from('info@vihoangson.com', 'Family');
 		$this->email->to('vihoangson@gmail.com');
 		$this->email->subject($options["subject"]);
-		$this->email->message($options["content"]);	
+		$this->email->message($options["content"]);
+		$this->email->attach(APPATH."models/db/family");
 		return $this->email->send();
 	}
 

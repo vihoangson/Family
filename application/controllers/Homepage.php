@@ -305,6 +305,13 @@ class Homepage extends MY_Controller {
 			echo "<h2>Can't send mail</h2>";
 		}
 	}
+
+	public function tags($tag=null){
+		$condition = ["keyword" => "#".$tag];
+		$kn = $this->kyniem->getAll($condition);
+		$this->load->view('homepage',["kn" => $kn]);
+	}
+
 }
 
 /* End of file Index.php */
