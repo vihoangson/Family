@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+define("ALLOW_SENT_MAIL",true);
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
