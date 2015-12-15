@@ -30,7 +30,6 @@ class MY_Controller extends CI_Controller
 			$this->email->cc('4t.nhauyen@gmail.com');
 			$this->email->subject($options["subject"]);
 			$this->email->message($options["content"]);
-			$this->email->attach(APPPATH."models/db/family");
 			if($this->email->send()){
 				echo "<h1>Send mail</h1>";
 			}else{
