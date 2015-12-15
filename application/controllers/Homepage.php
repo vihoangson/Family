@@ -309,9 +309,7 @@ class Homepage extends MY_Controller {
 			break;
 			default:
 				$html = $this->_get_content_countdown();
-				if(!$this->my_sent_email(["subject"=>"Count down","content"=>$html])){
-					echo "<h2>Can't send mail</h2>";
-				}
+				$this->my_sent_email(["subject"=>"Count down","content"=>$html]);
 			break;
 		}
 	}
