@@ -13,5 +13,9 @@
 	<a href="/homepage/cron/backup_db_family" class="btn btn-default" target="_blank">
 		Sent mail back up DB
 	</a>
+	<a href="/homepage/cron/backup_file_images_family" class="btn btn-default" target="_blank">
+		Sent mail back up file images
+	</a>
+	
 	
 <?php $this->load->view('_includes/footer'); ?>

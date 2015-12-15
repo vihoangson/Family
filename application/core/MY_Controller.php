@@ -46,21 +46,24 @@ class MY_Controller extends CI_Controller
 	}
 
 	public function backup_file_images_family($options=null){
-		$this->load->library('email');
-		$this->email->initialize(["protocol"=>"sendmail"]);
-		$this->email->from('info@vihoangson.com', 'Family');
-		$this->email->to('vihoangson@gmail.com');
-		//$this->email->cc('4t.nhauyen@gmail.com');
-		$this->email->subject("Backup db ".date("Y-m-d h:i:s"));
-		$this->email->message(date("Y-m-d h:i:s"));
-		$files = scandir(FCPATH."asset/images");
-		foreach ($files as $key => $value) {
-			$link_file = FCPATH."asset/images/".$value;
-			if(!is_dir($link_file)){
-				$this->email->attach($link_file);
+		$this->load->library('HZip');
+		$file_name = "BK_image_".date("Ymd_his").".zip";
+		HZip::zipDir(FCPATH."asset/images",FCPATH."asset/tmp/".$file_name);
+		if(file_exists(FCPATH."asset/tmp/".$file_name)){
+			$this->load->library('email');
+			$this->email->initialize(["protocol"=>"sendmail"]);
+			$this->email->from('info@vihoangson.com', 'Family');
+			$this->email->to('vihoangson@gmail.com');
+			$this->email->cc('4t.nhauyen@gmail.com');
+			$this->email->subject("Backup file images ".date("Y-m-d h:i:s"));
+			$this->email->message(date("Y-m-d h:i:s"));
+			$this->email->attach(FCPATH."asset/tmp/".$file_name);
+			if($this->email->send()){
+				unlink(FCPATH."asset/tmp/".$file_name);
 			}
+		}else{
+			echo "<h1>Don't have file</h1>";
 		}
-		return $this->email->send();
 	}
 }
 ?>
