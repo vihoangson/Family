@@ -307,7 +307,6 @@ class Homepage extends MY_Controller {
 			case "backup_file_images_family":
 				$this->backup_file_images_family();
 			break;
-			
 			default:
 				$html = $this->_get_content_countdown();
 				if(!$this->my_sent_email(["subject"=>"Count down","content"=>$html])){
