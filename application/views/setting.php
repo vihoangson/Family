@@ -8,15 +8,18 @@
 
 	<hr>
 
-	<a href="/homepage/cron" class="btn btn-default" target="_blank">
-		Test send mail
-	</a>
-	<a href="/homepage/cron/backup_db_family" class="btn btn-default" target="_blank">
-		Sent mail back up DB
-	</a>
-	<a href="/homepage/cron/backup_file_images_family" class="btn btn-default" target="_blank">
-		Sent mail back up file images
-	</a>
+	<div class="well">
+		<h2>Cron tab</h2>
+		<a href="/homepage/cron" class="btn btn-default" target="_blank">
+			Default - 6h
+		</a>
+		<a href="/homepage/cron/backup_db_family" class="btn btn-default" target="_blank">
+			Sent mail back up DB - 24h
+		</a>
+		<a href="/homepage/cron/backup_file_images_family" class="btn btn-default" target="_blank">
+			Sent mail back up file images - 7d
+		</a>
+	</div>
 	
 	
 <?php $this->load->view('_includes/footer'); ?>

@@ -5,16 +5,16 @@
 			<h2>Danh sách file trong folder tmp</h2>
 			<div class='well'>
 				<ul>";
-							foreach ($files as $key => $value) {
-								if(!in_array($value, [".",".."])){
-									echo "<li><a href='".base_url()."asset/tmp/".$value."'>".$value."</a></li>";
-								}
-							}
+					foreach ($files as $key => $value) {
+						if(!in_array($value, [".",".."])){
+							echo "<li><a href='".base_url()."asset/tmp/".$value."'>".$value."</a></li>";
+						}
+					}
 				echo "
 				</ul>
 			</div>
 			";
-			?><p><a href="/admin/status/delete_tmp/off" class="btn btn-danger">Xóa hết file tmp</a></p><?php
+			?><p><a href="/admin/status/<?= $case_delete; ?>/ok" class="btn btn-danger">Xóa hết file <?= $case_delete; ?></a></p><?php
 		}else{
 			echo "<h2>Không có file</h2>";
 		}
