@@ -44,5 +44,23 @@ class MY_Controller extends CI_Controller
 		$this->email->attach(DB_FILE_FAMILY);
 		return $this->email->send();
 	}
+
+	public function backup_file_images_family($options=null){
+		$this->load->library('email');
+		$this->email->initialize(["protocol"=>"sendmail"]);
+		$this->email->from('info@vihoangson.com', 'Family');
+		$this->email->to('vihoangson@gmail.com');
+		//$this->email->cc('4t.nhauyen@gmail.com');
+		$this->email->subject("Backup db ".date("Y-m-d h:i:s"));
+		$this->email->message(date("Y-m-d h:i:s"));
+		$files = scandir(FCPATH."asset/images");
+		foreach ($files as $key => $value) {
+			$link_file = FCPATH."asset/images/".$value;
+			if(!is_dir($link_file)){
+				$this->email->attach($link_file);
+			}
+		}
+		return $this->email->send();
+	}
 }
 ?>
