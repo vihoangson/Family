@@ -64,7 +64,7 @@ class MY_Controller extends CI_Controller
 			$this->email->to('vihoangson@gmail.com');
 			$this->email->cc('4t.nhauyen@gmail.com');
 			$this->email->subject("Backup file images ".date("Y-m-d h:i:s"));
-			$this->email->message(date("Y-m-d h:i:s")."Link:".base_url()."/asset/tmp/".$file_name);
+			$this->email->message("<h2>Backup file images ".date("Y-m-d h:i:s")."</h2> <p>Link:".base_url()."asset/tmp/".$file_name)."</p>";
 			if($this->email->send()){
 				echo "<h1>Send mail</h1>";
 			}else{
