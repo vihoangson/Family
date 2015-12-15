@@ -73,9 +73,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+define("DB_FILE_FAMILY",APPPATH.'models/db/family');
+
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'sqlite:'.APPPATH.'models/db/family',
+	'hostname' => 'sqlite:'.DB_FILE_FAMILY,
 	'username' => '',
 	'password' => '',
 	'database' => '',

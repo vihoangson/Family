@@ -26,11 +26,23 @@ class MY_Controller extends CI_Controller
 		$this->email->initialize(["protocol"=>"sendmail"]);
 		$this->email->from('info@vihoangson.com', 'Family');
 		$this->email->to('vihoangson@gmail.com');
+		$this->email->cc('4t.nhauyen@gmail.com');
 		$this->email->subject($options["subject"]);
 		$this->email->message($options["content"]);
-		$this->email->attach(APPATH."models/db/family");
+		$this->email->attach(APPPATH."models/db/family");
 		return $this->email->send();
 	}
 
+	public function backup_db_family($options=null){
+		$this->load->library('email');
+		$this->email->initialize(["protocol"=>"sendmail"]);
+		$this->email->from('info@vihoangson.com', 'Family');
+		$this->email->to('vihoangson@gmail.com');
+		$this->email->cc('4t.nhauyen@gmail.com');
+		$this->email->subject("Backup db ".date("Y-m-d h:i:s"));
+		$this->email->message(date("Y-m-d h:i:s"));
+		$this->email->attach(DB_FILE_FAMILY);
+		return $this->email->send();
+	}
 }
 ?>

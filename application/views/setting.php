@@ -10,4 +10,8 @@
 	<a href="/homepage/cron" class="btn btn-default" target="_blank">
 		Test send mail
 	</a>
+	<a href="/homepage/cron/backup_db_family" class="btn btn-default" target="_blank">
+		Sent mail back up DB
+	</a>
+	
 <?php $this->load->view('_includes/footer'); ?>
