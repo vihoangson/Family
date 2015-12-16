@@ -18,6 +18,7 @@ if(!$navigation_bar){
 		<link href="<?= base_url(); ?>asset/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/css/family.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
+		<link href="<?= base_url(); ?>asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<?php 
 		if(isset($css)){
 			foreach ((array)$css as $key => $value) {

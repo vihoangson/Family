@@ -20,6 +20,7 @@
 			Sent mail back up file images - 7d
 		</a>
 	</div>
-	
-	
+
+	<?php show_social(); ?>
+
 <?php $this->load->view('_includes/footer'); ?>
