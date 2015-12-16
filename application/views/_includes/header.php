@@ -1,4 +1,4 @@
-<?php 
+<?php
 if(!$navigation_bar){
 	$navigation_bar = [
 		base_url() => "Trang chủ",
@@ -80,3 +80,26 @@ if(!$navigation_bar){
 				<?php
 			}
 		}
+?>
+
+		<?php
+		if($breadcrumb){
+			?>
+	<ol class="breadcrumb">
+		<li>
+			<a href="/"><i class="fa fa-home"></i> Trang chủ</a>
+		</li>
+			<?php
+			foreach ($breadcrumb as $key => $value) {
+				echo '
+				<li>
+					'.($value!=""?"<a href='".$value."'>".$key."</a>":$key).'
+				</li>
+				';
+			}
+			?>
+	</ol>
+			<?php
+		}
+		?>
+

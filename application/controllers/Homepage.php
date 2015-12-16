@@ -87,7 +87,7 @@ class Homepage extends MY_Controller {
 		$error = [];
 		$success = [];
 		for($i=0; $i<$cpt; $i++)
-		{           
+		{
 			$_FILES['userfile']['name']= $files['userfile']['name'][$i];
 			$_FILES['userfile']['type']= $files['userfile']['type'][$i];
 			$_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
@@ -225,7 +225,6 @@ class Homepage extends MY_Controller {
 			if(!rename(FCPATH."asset/images/".$file_name,FCPATH."asset/images/trash/".$file_name)){
 				$flag=false;
 				throw new Exception("Không move được file", 1);
-				
 			}
 		}
 		if(FCPATH."asset/images/thumb/".get_thumb_file_name($file_name)){
