@@ -49,7 +49,7 @@ if(!$navigation_bar){
 		 ?>
 		<script>
 			$(document).ready(function() {
-				$(".datepicker").datepicker({dateFormat: "dd-mm-yy"});
+				
 				$('.image-link').magnificPopup({
 					gallery:{enabled:true},
 					type:'image',

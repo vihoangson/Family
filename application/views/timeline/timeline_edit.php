@@ -40,7 +40,7 @@ $data_header = [
 	</form>
 	<script>
 		$(document).ready(function() {
-			$(".datepicker").datepicker();
+			$(".datepicker").datepicker({dateFormat: "dd-mm-yy"});
 		});
 	</script>
 <?php $this->load->view('_includes/footer'); ?>

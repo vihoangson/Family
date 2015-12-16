@@ -265,12 +265,6 @@ class Homepage extends MY_Controller {
 	public function count_down(){
 		$html = $this->_get_content_countdown();
 		$this->load->view('count_down', ["content" => $html]);
-		$files = scandir(FCPATH."asset/images/");
-		foreach ($files as $key => $value) {
-			if(preg_match("/^(?!.*(_thumb).*$)/", $value)&& $value !="." && $value!=".."){
-				$this->resize_img(FCPATH."asset/images/".$value,100,100);
-			}
-		}
 	}
 
 	public function calendar(){
