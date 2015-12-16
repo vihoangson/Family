@@ -26,6 +26,9 @@ class Timeline_model extends CI_Model {
 	public function save($data){
 		$flag = false;
 		$data["timeline_create"] = date("Y-m-d H:i:s");
+		if($data["timeline_image"]==""){
+			unset($data["timeline_image"]);
+		}
 		if($data["id"]){
 			$this->db->where('id', $data['id']);
 			$data["timeline_modifie"] = date("Y-m-d H:i:s");
@@ -45,6 +48,15 @@ class Timeline_model extends CI_Model {
 			$this->session->set_flashdata('item', ['danger'=>"Lỗi hệ thống"]);
 		}
 		redirect('/timeline','refresh');
+	}
+
+	public function deleteById($id){
+		$rs = ($this->getById($id));
+		@rename(FCPATH."asset/images/timeline/".$rs->timeline_image,FCPATH."asset/images/trash/".$rs->timeline_image);
+		$this->db->where('id', $id);
+		if($this->db->update("timeline",["delete_flg"=>1])){
+			redirect('/timeline','refresh');
+		}
 	}
 
 	public function getById($id){

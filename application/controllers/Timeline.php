@@ -36,6 +36,10 @@ class Timeline extends MY_Controller {
 		$this->load->view('timeline/timeline_edit',["rs"=>$rs]);
 	}
 
+	public function delete($id = null){
+		$this->Timeline_model->deleteById($id);
+	}
+
 	private function do_upload()
 	{
 		$this->load->library('upload');

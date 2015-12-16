@@ -1,11 +1,11 @@
 <?php
 $data_header = [
 	"css"=>[base_url()."asset/bower_components/jquery-ui/themes/base/jquery-ui.min.css"],
-	"js"=>[base_url()."asset/bower_components/jquery-ui/jquery-ui.min.js"]
-	//	"breadcrumb"=>[
-	//		"List time line"=>"/timeline",
-	//		"Edit time line"=>""
-	//	]
+	"js"=>[base_url()."asset/bower_components/jquery-ui/jquery-ui.min.js"],
+	"breadcrumb"=>[
+		"List time line"=>"/timeline",
+		"Edit time line"=>""
+	]
 ];
  $this->load->view('_includes/header',$data_header); ?>
 

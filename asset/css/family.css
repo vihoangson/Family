@@ -248,3 +248,22 @@ a.socialIcon:hover, .socialHoverClass {
 .social-circle a {
  background-color: #D3D3D3;   
 }
+
+.text-center.ele_timeline {
+    float: left;
+    width: 180px;
+    padding: 10px;
+}
+
+.text-center.ele_timeline img {
+    width: 100%;
+}
+
+.toggle_selector {
+    display: none;
+}
+
+img.img_timeline {
+    height: auto !important;
+    max-height: none;
+}
