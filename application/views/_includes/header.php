@@ -15,7 +15,7 @@ if(!$navigation_bar){
 		<title>Sweet house</title>
 
 		<!-- Bootstrap CSS -->
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="<?= base_url(); ?>asset/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/css/family.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
 		<?php 
@@ -34,9 +34,9 @@ if(!$navigation_bar){
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="<?= base_url(); ?>asset/bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Bootstrap JavaScript -->
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="<?= base_url(); ?>asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/jquery.magnific-popup.js"></script>
 		<?php 
 		if(isset($js)){
