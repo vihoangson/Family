@@ -11,10 +11,12 @@ $this->load->view('_includes/header',$data_header); ?>
 	foreach ($tl as $key => $value) {
 		if($value->timeline_image){
 			?>
-			<div class="text-center ele_timeline image-link">
-				<a href="/asset/images/timeline/<?= $value->timeline_image; ?>">
-				<img src="/asset/images/timeline/<?= $value->timeline_image; ?>" class="img_timeline">
-				</a>
+			<div class="text-center ele_timeline">
+				<div class="image-link">
+					<a href="/asset/images/timeline/<?= $value->timeline_image; ?>">
+						<img src="/asset/images/timeline/<?= $value->timeline_image; ?>" class="img_timeline">
+					</a>
+				</div>
 				<p><h4><?= $value->timeline_title; ?></h4></p>
 				<p><h6><?= $value->timeline_date; ?></h6></p>
 				<p>
