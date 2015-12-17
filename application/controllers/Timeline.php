@@ -10,6 +10,16 @@ class Timeline extends MY_Controller {
 	public function index()
 	{
 		$condition = [];
+		if(!empty($this->input->get("year"))){
+			$condition["year"] = $this->input->get("year");
+		}
+		if(!empty($this->input->get("tag"))){
+			$condition["tag"] = $this->input->get("tag");
+		}
+		if(!empty($this->input->get("keyword"))){
+			$condition["keyword"] = $this->input->get("keyword");
+		}
+
 		$tl = $this->Timeline_model->getAll($condition);
 		$data = [
 			"tl" => $tl

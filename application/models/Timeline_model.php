@@ -10,6 +10,16 @@ class Timeline_model extends CI_Model {
 	}
 
 	public function getAll($condition=null){
+		if(!empty($condition["year"])){
+			$this->db->like("timeline_date",$condition["year"]);
+		}
+		if(!empty($condition["tag"])){
+			$this->db->like("timeline_tag",$condition["tag"]);
+		}
+		if(!empty($condition["keyword"])){
+			$this->db->or_like("timeline_title",$condition["keyword"]);
+			$this->db->or_like("timeline_note",$condition["keyword"]);
+		}
 		$this->db->where('delete_flg', 0);
 		$this->db->order_by('id', 'desc');
 		return $this->db->get($this->_table)->result();

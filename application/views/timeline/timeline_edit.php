@@ -24,17 +24,20 @@ $data_header = [
 			<label for="">Tiêu đề</label>
 			<input type="text" class="form-control" id="" placeholder="Input field"  name="timeline_title" value="<?= $rs->timeline_title; ?>">
 		</div>
-		<div class="form-group">
-			<label for="">Ngày tháng</label>
-			<input type="text" class="form-control datepicker" id="" placeholder="Input field"  name="timeline_date" value="<?= ($rs->timeline_date?$rs->timeline_date:date("d-m-Y")); ?>">
-		</div>
-		<div class="form-group">
-			<label for="">Tag</label>
-			<input type="text" class="form-control" id="" placeholder="Input field"  name="timeline_tag" value="<?= $rs->timeline_tag; ?>">
-		</div>
-		<div class="form-group">
-			<label for="">Ghi chú</label>
-			<textarea type="text" style="height:200px;" class="form-control" id="" placeholder="Input field"  name="timeline_note"><?= $rs->timeline_note; ?></textarea>
+		<div class="" onclick="$('.toggle_box').toggle();"><h5><i class="fa fa-angle-down"></i> Chi tiết</h5></div>
+		<div class="toggle_box" style="display:none;">
+			<div class="form-group">
+				<label for="">Ngày tháng</label>
+				<input type="text" class="form-control datepicker" id="" placeholder="Input field"  name="timeline_date" value="<?= ($rs->timeline_date?$rs->timeline_date:date("d-m-Y")); ?>">
+			</div>
+			<div class="form-group">
+				<label for="">Tag</label>
+				<input type="text" class="form-control" id="" placeholder="Input field"  name="timeline_tag" value="<?= $rs->timeline_tag; ?>">
+			</div>
+			<div class="form-group">
+				<label for="">Ghi chú</label>
+				<textarea type="text" style="height:200px;" class="form-control" id="" placeholder="Input field"  name="timeline_note"><?= $rs->timeline_note; ?></textarea>
+			</div>
 		</div>
 		<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Save</button>
 	</form>
