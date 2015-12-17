@@ -13,7 +13,11 @@ $data_header = [
 		<legend>Time line</legend>
 		<?php
 		if($rs->timeline_image){
-			?><p class="text-center"><img src="/asset/images/timeline/<?= $rs->timeline_image; ?>" style="height:100px;"></p><?php
+			?>
+			<p class="text-center"><img src="/asset/images/timeline/<?= $rs->timeline_image; ?>" style="height:100px;"></p>
+			<a class="btn btn-default" href="/timeline/rotate_img_timeline/timeline_<?= $rs->id; ?>/right"> <i class="fa fa-rotate-left"></i> </a>
+			<a class="btn btn-default" href="/timeline/rotate_img_timeline/timeline_<?= $rs->id; ?>/left"> <i class="fa fa-rotate-right"></i> </a>
+			<?php
 		}
 		?>
 		<div class="form-group">

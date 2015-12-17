@@ -35,18 +35,18 @@ class Timeline_model extends CI_Model {
 
 	public function save($data){
 		$flag = false;
-		$data["timeline_create"] = date("Y-m-d H:i:s");
 		if($data["timeline_image"]==""){
 			unset($data["timeline_image"]);
 		}
+		$data["timeline_modifie"] = date("Y-m-d H:i:s");
 		if($data["id"]){
 			$this->db->where('id', $data['id']);
-			$data["timeline_modifie"] = date("Y-m-d H:i:s");
 			if($this->db->update($this->_table, $data)){
 				$flag=true;
 			}else{
 			}
 		}else{
+			$data["timeline_create"] = date("Y-m-d H:i:s");
 			if($this->db->insert($this->_table, $data)){
 				$flag=true;
 			}
@@ -60,7 +60,12 @@ class Timeline_model extends CI_Model {
 		redirect('/timeline','refresh');
 	}
 
-	public function deleteById($id){
+	public function deleteById($id,$case=null){
+		if($case=="all"){
+			$this->db->where('1 =1');
+			$this->db->delete($this->_table);
+			return;
+		}
 		$rs = ($this->getById($id));
 		@rename(FCPATH."asset/images/timeline/".$rs->timeline_image,FCPATH."asset/images/trash/".$rs->timeline_image);
 		$this->db->where('id', $id);

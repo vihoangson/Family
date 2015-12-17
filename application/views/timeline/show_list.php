@@ -5,7 +5,7 @@ $data_header = [
 	]
 ];
 $this->load->view('_includes/header',$data_header); ?>
-
+<!-- <h3><a class='btn btn-danger' href="/timeline/delete_all"><i class="fa fa-trash"></i> Delete_all</a></h3> -->
 <a href="/timeline/edit" class="btn btn-primary"><i class="fa fa-plus"></i> Add new</a>
 <?php
 	if(!empty($this->input->get("year"))){
@@ -34,6 +34,7 @@ $this->load->view('_includes/header',$data_header); ?>
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>
+	<a href="#" onclick="$('.toggle_selector').toggle(); return false;" class="btn btn-danger btn-small"><i class="fa fa-plus"></i> Show button delete</a>
 </div>
 <div class="show_list row">
 	<?php
