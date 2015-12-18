@@ -6,9 +6,33 @@ class Timeline extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		if(empty($this->session->userdata('timeline'))){
+			if($this->router->fetch_method()!="logintimeline"){
+				redirect('/timeline/logintimeline','refresh');
+			}
+		}
 		$this->load->model('Timeline_model');
 		$this->automatic_create_time_line();
+	}
+	public function logouttimeline(){
+		$this->session->unset_userdata('timeline');
+		redirect('/timeline','refresh');
+	}
 
+	public function logintimeline(){
+		if($this->input->post("pass")){
+			if($this->input->post("pass")== $this->config->item("password_timeline") ){
+				$array = array(
+					'timeline' => 'on'
+				);
+				$this->session->set_userdata( $array );
+				redirect('/timeline','refresh');
+			}else{
+				$this->session->set_flashdata('item', ["danger"=>"Đăng nhập không đúng !"]);
+			}
+		}else{
+		}
+		$this->load->view('timeline/login_timeline');
 	}
 
 	private function automatic_create_time_line(){

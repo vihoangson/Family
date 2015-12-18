@@ -5,7 +5,8 @@ $data_header = [
 	"breadcrumb"=>[
 		"List time line"=>"/timeline",
 		"Edit time line"=>""
-	]
+	],
+	"custom_html"=> '<p><a href="/timeline/logouttimeline" class="btn btn-default"><i class="fa fa-power-off"></i> Logout timeline</a></p>',
 ];
  $this->load->view('_includes/header',$data_header); ?>
 

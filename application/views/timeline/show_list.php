@@ -2,9 +2,11 @@
 $data_header = [
 	"breadcrumb"=>[
 		"List time line"=>""
-	]
+	],
+	"custom_html"=> '<p><a href="/timeline/logouttimeline" class="btn btn-default"><i class="fa fa-power-off"></i> Logout timeline</a></p>',
 ];
 $this->load->view('_includes/header',$data_header); ?>
+
 <!-- <h3><a class='btn btn-danger' href="/timeline/delete_all"><i class="fa fa-trash"></i> Delete_all</a></h3> -->
 <a href="/timeline/edit" class="btn btn-primary"><i class="fa fa-plus"></i> Add new</a>
 <?php

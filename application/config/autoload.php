@@ -97,7 +97,7 @@ $autoload['helper'] = array("url","le","debug","common","form");
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+$autoload['config'] = array("family/config");
 
 /*
 | -------------------------------------------------------------------

@@ -101,5 +101,8 @@ if(!$navigation_bar){
 	</ol>
 			<?php
 		}
+		if($custom_html){
+			echo $custom_html;
+		}
 ?>
 
