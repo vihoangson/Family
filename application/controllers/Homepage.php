@@ -256,21 +256,14 @@ class Homepage extends MY_Controller {
 			<h2 class='text-center'>Ngày dự sinh: <br>".date("d-m-Y",$date2->getTimestamp())."</h2>
 			<h1>".$days." Ngày</h1>
 			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$i." Phút ".$s." Giây </h3> 
-
-			<center><h4>".$percent."%</h4></center>
-			<div class='progress'>
-				<div class='determinate' style='width: ".$percent."%'></div>
-			</div>
-			".
-'
+			".'
 			<div class="progress">
 				<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$percent.'%">
 					<span class="sr-only">'.$percent.'% Complete (success)</span>
 				</div>
 			</div>
 			<h2><i class="fa fa-refresh fa-spin"></i> Loading</h2>
-'
-			."
+			'."
 		</center>
 		";
 		return $html;
