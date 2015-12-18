@@ -24,7 +24,7 @@ class MY_Controller extends CI_Controller
 	public function my_sent_email($options){
 		if(ALLOW_SENT_MAIL){
 			$this->load->library('email');
-			$this->email->initialize();
+			$this->email->initialize(["protocol"=>"sendmail"]);
 			$this->email->from('vihoangson@gmail.com', 'Family');
 			$this->email->to('vihoangson@gmail.com');
 			$this->email->cc('4t.nhauyen@gmail.com');
