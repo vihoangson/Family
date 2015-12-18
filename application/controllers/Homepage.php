@@ -19,7 +19,6 @@ class Homepage extends MY_Controller {
 		$condition["year"] = $cond_year;
 		$kn = $this->kyniem->getAll($condition);
 		$this->load->view('homepage',["kn" => $kn]);
-		$this->load->view('template_view');
 	}
 
 	public function chang_year($year){
@@ -262,6 +261,16 @@ class Homepage extends MY_Controller {
 			<div class='progress'>
 				<div class='determinate' style='width: ".$percent."%'></div>
 			</div>
+			".
+'
+			<div class="progress">
+				<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$percent.'%">
+					<span class="sr-only">'.$percent.'% Complete (success)</span>
+				</div>
+			</div>
+			<h2><i class="fa fa-refresh fa-spin"></i> Loading</h2>
+'
+			."
 		</center>
 		";
 		return $html;
