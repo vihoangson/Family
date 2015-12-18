@@ -69,28 +69,28 @@ class CI_Email {
 	 *
 	 * @var	string	'mail', 'sendmail' or 'smtp'
 	 */
-	public $protocol	= 'sendmail';		// mail/sendmail/smtp
+	public $protocol	= 'smtp';		// mail/sendmail/smtp
 
 	/**
 	 * STMP Server host
 	 *
 	 * @var	string
 	 */
-	public $smtp_host	= '128.199.141.191';
+	public $smtp_host	= 'smtp.gmail.com';
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var	string
 	 */
-	public $smtp_user	= 'bobby';
+	public $smtp_user	= 'vihoangson@gmail.com';
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var	string
 	 */
-	public $smtp_pass	= '111111111';
+	public $smtp_pass	= 'sonuyen117s';
 
 	/**
 	 * SMTP Server port

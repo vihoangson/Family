@@ -2,3 +2,5 @@ application/models/db/
 bower_components
 asset/images
 asset/tmp
+vendor/
+composer.lock
