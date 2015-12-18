@@ -7,6 +7,7 @@ class Homepage extends MY_Controller {
 		parent::__construct();
 		$this->load->model('kyniem');
 		$this->load->library('image_lib');
+		$this->load->library('phpMail');
 	}
 
 	public function chang_year($year){
