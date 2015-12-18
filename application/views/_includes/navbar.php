@@ -14,22 +14,23 @@
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="<?= base_url(); ?>">Trang chủ</a></li>
-			<li><a href="#">Timeline</a></li>
+			<li><a href="<?= base_url(); ?>">Timeline</a></li>
 		</ul>
 		<form action="/homepage/search_keyword" class="navbar-form navbar-left" role="search" method="post">
 			<div class="form-group">
-				<input type="text" name="keyword" class="form-control" placeholder="Search">
+				<input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm">
 			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
+			<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
 		</form>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="<?= base_url(); ?>calendar">Lịch gia đình</a></li>
-			<li><a href="<?= base_url(); ?>count_down">Count down</a></li>
+			<li><a href="<?= base_url(); ?>count_down">Ngày dự sính</a></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Người dùng <b class="caret"></b></a>
 				<ul class="dropdown-menu">
-					<li><a href="<?= base_url(); ?>setting">Setting</a></li>
-					<li><a href="<?= base_url(); ?>logout">Logout</a></li>
+					<li><a href="<?= base_url(); ?>homepage/landpage"><i class="fa fa-image"></i> Landing page</a></li>
+					<li><a href="<?= base_url(); ?>setting"><i class="fa fa-gear"></i> Tùy chỉnh</a></li>
+					<li><a href="<?= base_url(); ?>logout"><i class="fa fa-power-off"></i> Logout</a></li>
 				</ul>
 			</li>
 		</ul>

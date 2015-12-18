@@ -5,8 +5,17 @@ class Status extends CI_Controller {
 
 	public function index()
 	{
-
-		echo $this->load->view('_includes/header',null,true);
+		$data_header=[
+			"breadcrumb"=>[
+				"Trạng thái" => ""
+			],
+			"custom_html"=>'
+			<div class="alert alert-info">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong>Info</strong> Phần này không quan trọng
+			</div>'
+		];
+		echo $this->load->view('_includes/header',$data_header,true);
 		?>
 			<div class="list-group">
 				<a href="/admin/status/list_tmp" class="list-group-item">Danh sách file tmp</a>

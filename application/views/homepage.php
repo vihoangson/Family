@@ -2,7 +2,7 @@
 <script>
 	$(document).ready(function() {
 		$("img.lazy").lazyload({
-		    threshold : 200
+			threshold : 200
 		});
 		$(".change-year").change(function(event) {
 			location.href = "/homepage/chang_year/"+$(this).val();
@@ -77,7 +77,7 @@
 								}
 								echo "</div>";
 							}
-							 ?>
+							?>
 						</div>
 					</div>
 				</div>

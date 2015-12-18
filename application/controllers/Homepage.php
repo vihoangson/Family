@@ -9,14 +9,6 @@ class Homepage extends MY_Controller {
 		$this->load->library('image_lib');
 	}
 
-	public function chang_year($year){
-		$array = array(
-			'year' => $year
-		);
-		$this->session->set_userdata( $array );
-		redirect('/','refresh');
-	}
-
 	public function index()
 	{
 		if($this->session->userdata('year')){
@@ -27,6 +19,19 @@ class Homepage extends MY_Controller {
 		$condition["year"] = $cond_year;
 		$kn = $this->kyniem->getAll($condition);
 		$this->load->view('homepage',["kn" => $kn]);
+		$this->load->view('template_view');
+	}
+
+	public function chang_year($year){
+		$array = array(
+			'year' => $year
+		);
+		$this->session->set_userdata( $array );
+		redirect('/','refresh');
+	}
+
+	public function landpage(){
+		$this->load->view('index_page');
 	}
 
 	public function search_keyword()
