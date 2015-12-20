@@ -6,6 +6,7 @@ class MY_Controller extends CI_Controller
 	
 	public function __construct(){
 		date_default_timezone_set('asia/ho_chi_minh');
+		define("FROM_EMAIL","info@vihoangson.com");
 		parent::__construct();
 		if($this->router->fetch_method() != "login") {
 			if($this->router->fetch_method()=="cron"){
@@ -25,7 +26,7 @@ class MY_Controller extends CI_Controller
 		if(ALLOW_SENT_MAIL){
 			$this->load->library('email');
 			$this->email->initialize(["protocol"=>"sendmail"]);
-			$this->email->from('vihoangson@gmail.com', 'Family');
+			$this->email->from(FROM_EMAIL, 'Family');
 			$this->email->to('vihoangson@gmail.com');
 			$this->email->cc('4t.nhauyen@gmail.com');
 			$this->email->subject($options["subject"]);
@@ -42,7 +43,7 @@ class MY_Controller extends CI_Controller
 		if(ALLOW_SENT_MAIL){
 			$this->load->library('email');
 			$this->email->initialize(["protocol"=>"sendmail"]);
-			$this->email->from('info@vihoangson.com', 'Family');
+			$this->email->from(FROM_EMAIL, 'Family');
 			$this->email->to('vihoangson@gmail.com');
 			$this->email->cc('4t.nhauyen@gmail.com');
 			$this->email->subject("Backup db ".date("Y-m-d h:i:s"));
@@ -82,7 +83,7 @@ class MY_Controller extends CI_Controller
 			if(file_exists(FCPATH."asset/tmp/".$file_name)){
 				$this->load->library('email');
 				$this->email->initialize(["protocol"=>"sendmail"]);
-				$this->email->from('info@vihoangson.com', 'Family');
+				$this->email->from(FROM_EMAIL, 'Family');
 				$this->email->to('vihoangson@gmail.com');
 				$this->email->cc('4t.nhauyen@gmail.com');
 				$this->email->subject("Backup file images ".date("Y-m-d h:i:s"));
