@@ -4,3 +4,4 @@ asset/images
 asset/tmp
 vendor/
 composer.lock
+composer.phar
