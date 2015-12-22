@@ -5,7 +5,6 @@ class MY_Controller extends CI_Controller
 {
 	
 	public function __construct(){
-		date_default_timezone_set('asia/ho_chi_minh');
 		define("FROM_EMAIL","info@vihoangson.com");
 		parent::__construct();
 		if($this->router->fetch_method() != "login") {
