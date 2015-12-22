@@ -51,7 +51,7 @@
 									<div class="asker-meta">
 										<span class="qa-message-what"></span>
 										<span class="qa-message-when">
-											<span class="qa-message-when-data"><?= date("d-m-Y h:i:s",strtotime($value->kyniem_create)); ?></span>
+											<span class="qa-message-when-data"><?= date("d-m-Y H:i:s",strtotime($value->kyniem_create)); ?></span>
 										</span>
 										<span class="qa-message-who">
 											<span class="qa-message-who-pad">by </span>
