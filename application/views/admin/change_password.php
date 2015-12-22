@@ -1,4 +1,14 @@
-<?php $this->load->view('_includes/header'); ?>
+<?php
+$data_header = [
+	"css"=>[],
+	"js"=>[],
+	"breadcrumb"=>[
+		"Setting"=>"/setting",
+		"Thay đổi password"=>""
+	],
+	"custom_html"=> '<h1> Thay đổi password </h1>',
+];
+$this->load->view('_includes/header',$data_header); ?>
 <form action="" method="POST" role="form">
 	<legend>Change password</legend>
 	<div class="form-group">

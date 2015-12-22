@@ -5,3 +5,4 @@ asset/tmp
 vendor/
 composer.lock
 composer.phar
+asset/file_upload/

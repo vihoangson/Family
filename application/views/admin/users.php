@@ -1,5 +1,14 @@
-<?php $this->load->view('_includes/header'); ?>
 <?php
+$data_header = [
+	"css"=>[],
+	"js"=>[],
+	"breadcrumb"=>[
+		"Setting"=>"/setting",
+		"Quản lý thành viên"=>""
+	],
+	"custom_html"=> '<h1> Quản lý thành viên </h1>',
+];
+$this->load->view('_includes/header',$data_header);
 
 ?>
 <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Thêm user mới</a>

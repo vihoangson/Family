@@ -1,5 +1,15 @@
-<?php $this->load->view('_includes/header'); ?>
 <?php
+$data_header = [
+	"css"=>[],
+	"js"=>[],
+	"breadcrumb"=>[
+		"Setting"=>"/setting",
+		"Status list"=>""
+	],
+	"custom_html"=> '<h1> Status list </h1>',
+];
+$this->load->view('_includes/header',$data_header);
+
 		if($files && count($files)>2){
 			echo "
 			<h2>Danh sách file trong folder tmp</h2>
