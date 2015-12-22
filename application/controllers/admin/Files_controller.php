@@ -24,6 +24,11 @@ class Files_controller extends MY_Controller {
 		$this->image_lib->resize();
 	}
 
+	public function show(){
+		$rs = $this->files_model->find()->result();
+		$this->load->view('admin/file_list',compact("rs"));
+	}
+
 	public function do_upload(){
 		if($_FILES["userfile"]){
 			if(!is_dir($this->path_file_upload.date("Y"))){
@@ -37,9 +42,7 @@ class Files_controller extends MY_Controller {
 			}
 			$path_file = $this->path_file_upload.date("Y")."/".date("m")."/".date("d");
 			@chmod($path_file, 0777);
-			if($this->files_model->find(["files_name"=>$_FILES["userfile"]])->num_rows()>0){
-				echo 123;
-			}
+
 			$config['upload_path'] = $path_file;
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']  = '10000';
@@ -72,19 +75,54 @@ class Files_controller extends MY_Controller {
 				}
 				$this->session->set_flashdata('item', ["success"=>"Upload thành công"]);
 			}
-			redirect('admin/files_controller/do_upload','refresh');
+			redirect('admin/files_controller/show','refresh');
 		}
 
 		$rs = $this->files_model->find()->result();
 		$this->load->view('admin/form_upload',compact("rs"));
 	}
 
+
+
 	public function delete($id){
 		if($this->files_model->detele($id)){
-			redirect('/admin/files_controller/do_upload','refresh');
+			redirect('/admin/files_controller/show','refresh');
 		}else{
 			redirect('404','refresh');
 		}
+	}
+
+	public function edit($id){
+		$rs = $this->files_model->find(["id"=>$id])->row();
+		$this->load->view('admin/files_edit', compact("rs"));
+	}
+
+	public function rotate_img_files($id,$case=null){
+		preg_match("/(\w+)_(\w+)/", $id,$match);
+		$rs = $this->files_model->find(["id"=>$match[2]])->row();
+		if(empty($rs->files_name)) return false;
+		if($match[1]=="files"){
+			$path = $rs->files_path.$rs->files_name;
+		}
+		$this->load->library('image_lib');
+		$config                  = [];
+		$config['image_library'] = 'gd2';
+		$config['source_image']  = $path;
+		switch($case){
+			case "right":
+				$config['rotation_angle'] = '90';
+			break;
+			default:
+				$config['rotation_angle'] = '270';
+			break;
+		}
+		$this->image_lib->initialize($config); // reinitialize it instead of reloading
+		if($this->image_lib->rotate()){
+			$this->session->set_flashdata('item', ['success'=>"Xoay hình thành công"]);
+		}else{
+			$this->session->set_flashdata('item', ['danger'=>"Không xoay được hình"]);
+		}
+		redirect('/admin/files_controller/edit/'.$rs->id,'refresh');
 	}
 
 	private function array_values_recursive($array)

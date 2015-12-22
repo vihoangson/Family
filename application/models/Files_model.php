@@ -37,6 +37,10 @@ class Files_model extends CI_Model {
 		if($condition["files_name"]){
 			$this->db->where('files_name', $condition["files_name"]);
 		}
+		if($condition["id"]){
+			$this->db->where('id', $condition["id"]);
+		}
+		
 		return $this->db->get($this->_table);
 	}
 
