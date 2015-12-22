@@ -14,6 +14,15 @@ class Files_controller extends MY_Controller {
 		dd($this->dirToArray($this->path_file_upload));
 	}
 
+	private function resize_img($path,$width,$height){
+		$this->load->library('image_lib');
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $path;
+		$config['width']         = $width;
+		$config['height']       = $height;
+		$this->image_lib->initialize($config);
+		$this->image_lib->resize();
+	}
 
 	public function do_upload(){
 		if($_FILES["userfile"]){
@@ -44,7 +53,11 @@ class Files_controller extends MY_Controller {
 				$this->session->set_flashdata('item', ["danger"=>"Upload có lỗi [".$this->upload->display_errors()."]"]);
 			}
 			else{
+				$this->max_size_upload_timeline = 800;
 				$data = array('upload_data' => $this->upload->data());
+				if($data["upload_data"]["image_height"] > $this->max_size_upload_timeline || $data["upload_data"]["image_width"] > $this->max_size_upload_timeline){
+					$this->resize_img($data["upload_data"]["full_path"],$this->max_size_upload_timeline,$this->max_size_upload_timeline);
+				}
 				$object = [
 					"files_title" => $this->input->post('file_title'),
 					"files_name" => $data["upload_data"]['file_name'],
