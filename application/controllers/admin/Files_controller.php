@@ -41,8 +41,7 @@ class Files_controller extends MY_Controller {
 
 			if ( ! $this->upload->do_upload()){
 				$error = array('error' => $this->upload->display_errors());
-				d($error);
-				$this->session->set_flashdata('item', ["danger"=>"Upload có lỗi"]);
+				$this->session->set_flashdata('item', ["danger"=>"Upload có lỗi [".$this->upload->display_errors()."]"]);
 			}
 			else{
 				$data = array('upload_data' => $this->upload->data());
