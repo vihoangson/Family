@@ -22,7 +22,7 @@ class MY_Controller extends CI_Controller
 			}
 		}
 		$this->config_email_custom = Array(
-			'protocol'  => 'smtp',
+			'protocol'  => 'sendmail',
 			'smtp_host' => 'smtp.googlemail.com',
 			'smtp_port' => 587,
 			'smtp_user' => FROM_EMAIL,
