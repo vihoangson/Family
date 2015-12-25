@@ -5,7 +5,9 @@ class MY_Controller extends CI_Controller
 {
 	
 	public function __construct(){
-		define("FROM_EMAIL","info@vihoangson.com");
+		define("FROM_EMAIL","vihoangson@gmail.com");
+		define("FROM_EMAIL_PASS","sonuyen117s");
+
 		parent::__construct();
 		if($this->router->fetch_method() != "login") {
 			if($this->router->fetch_method()=="cron"){
@@ -19,29 +21,37 @@ class MY_Controller extends CI_Controller
 				redirect('/','refresh');
 			}
 		}
+		$this->config = Array(
+			'protocol'  => 'smtp',
+			'smtp_host' => 'smtp.googlemail.com',
+			'smtp_port' => 465,
+			'smtp_user' => FROM_EMAIL,
+			'smtp_pass' => FROM_EMAIL_PASS,
+			'mailtype'  => 'html',
+			'charset'   => 'utf-8'
+			);
 	}
 
 	public function my_sent_email($options){
 		if(ALLOW_SENT_MAIL){
-			$this->load->library('email');
-			$this->email->initialize(["protocol"=>"sendmail"]);
+			$this->load->library('email', $this->config);
 			$this->email->from(FROM_EMAIL, 'Family');
 			$this->email->to('vihoangson@gmail.com');
 			$this->email->cc('4t.nhauyen@gmail.com');
+			$this->email->cc('ngotrichi@gmail.com');
 			$this->email->subject($options["subject"]);
 			$this->email->message($options["content"]);
 			if($this->email->send()){
-				echo "<h1>Send mail</h1>";
+				echo "<h1>Send mail [".__FUNCTION__."]</h1>";
 			}else{
-				echo "<h1>Can't sent mail</h1>";
+				echo "<h1>Can't sent mail [".__FUNCTION__."]</h1>";
 			}
 		}
 	}
 
 	public function backup_db_family($options=null){
 		if(ALLOW_SENT_MAIL){
-			$this->load->library('email');
-			$this->email->initialize(["protocol"=>"sendmail"]);
+			$this->load->library('email', $this->config);
 			$this->email->from(FROM_EMAIL, 'Family');
 			$this->email->to('vihoangson@gmail.com');
 			$this->email->cc('4t.nhauyen@gmail.com');
@@ -49,9 +59,9 @@ class MY_Controller extends CI_Controller
 			$this->email->message(date("Y-m-d h:i:s"));
 			$this->email->attach(DB_FILE_FAMILY);
 			if($this->email->send()){
-				echo "<h1>Send mail</h1>";
+				echo "<h1>Send mail [".__FUNCTION__."]</h1>";
 			}else{
-				echo "<h1>Can't sent mail</h1>";
+				echo "<h1>Can't sent mail [".__FUNCTION__."]</h1>";
 			}
 		}
 	}
@@ -80,20 +90,19 @@ class MY_Controller extends CI_Controller
 
 		if(ALLOW_SENT_MAIL){
 			if(file_exists(FCPATH."asset/tmp/".$file_name)){
-				$this->load->library('email');
-				$this->email->initialize(["protocol"=>"sendmail"]);
+				$this->load->library('email', $this->config);
 				$this->email->from(FROM_EMAIL, 'Family');
 				$this->email->to('vihoangson@gmail.com');
 				$this->email->cc('4t.nhauyen@gmail.com');
 				$this->email->subject("Backup file images ".date("Y-m-d h:i:s"));
 				$this->email->message("<h2>Backup file images ".date("Y-m-d h:i:s")."</h2> <p>Link:".base_url()."asset/tmp/".$file_name."</p>");
 				if($this->email->send()){
-					echo "<h1>Send mail</h1>";
+					echo "<h1>Send mail [".__FUNCTION__."]</h1>";
 				}else{
-					echo "<h1>Can't sent mail</h1>";
+					echo "<h1>Can't sent mail [".__FUNCTION__."]</h1>";
 				}
 			}else{
-				echo "<h1>Don't have file</h1>";
+				echo "<h1>Don't have file [".__FUNCTION__."]</h1>";
 			}
 		}
 	}
