@@ -44,7 +44,7 @@ class MY_Controller extends CI_Controller
 			if($this->email->send()){
 				echo "<h1>Send mail [".__FUNCTION__."]</h1>";
 			}else{
-				d($this->email->get_debugger_messages());
+				d($this->email->print_debugger());
 				echo "<h1>Can't sent mail [".__FUNCTION__."]</h1>";
 			}
 		}
