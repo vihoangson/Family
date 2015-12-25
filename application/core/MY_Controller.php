@@ -21,7 +21,7 @@ class MY_Controller extends CI_Controller
 				redirect('/','refresh');
 			}
 		}
-		$this->config = Array(
+		$this->config_email_custom = Array(
 			'protocol'  => 'smtp',
 			'smtp_host' => 'smtp.googlemail.com',
 			'smtp_port' => 465,
@@ -34,7 +34,7 @@ class MY_Controller extends CI_Controller
 
 	public function my_sent_email($options){
 		if(ALLOW_SENT_MAIL){
-			$this->load->library('email', $this->config);
+			$this->load->library('email', $this->config_email_custom);
 			$this->email->from(FROM_EMAIL, 'Family');
 			$this->email->to('vihoangson@gmail.com');
 			$this->email->cc('4t.nhauyen@gmail.com');
@@ -51,7 +51,7 @@ class MY_Controller extends CI_Controller
 
 	public function backup_db_family($options=null){
 		if(ALLOW_SENT_MAIL){
-			$this->load->library('email', $this->config);
+			$this->load->library('email', $this->config_email_custom);
 			$this->email->from(FROM_EMAIL, 'Family');
 			$this->email->to('vihoangson@gmail.com');
 			$this->email->cc('4t.nhauyen@gmail.com');
@@ -90,7 +90,7 @@ class MY_Controller extends CI_Controller
 
 		if(ALLOW_SENT_MAIL){
 			if(file_exists(FCPATH."asset/tmp/".$file_name)){
-				$this->load->library('email', $this->config);
+				$this->load->library('email', $this->config_email_custom);
 				$this->email->from(FROM_EMAIL, 'Family');
 				$this->email->to('vihoangson@gmail.com');
 				$this->email->cc('4t.nhauyen@gmail.com');
