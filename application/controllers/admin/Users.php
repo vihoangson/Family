@@ -28,25 +28,35 @@ class Users extends CI_Controller {
 		$this->load->view('admin/users', $data);
 	}
 
-	public function change_password(){
+	public function change_password($id = null){
 		if(!$this->session->userdata('user_id')){
 			redirect('/','refresh');
+		}
+		if(isset($id)){
+			$this->db->where('id', $id);
+		}else{
+			$id = $this->session->userdata('user_id');
 		}
 		if($this->input->post()){
 			$old_password   = $this->input->post("old_password") ;
 			$new_password   = $this->input->post("new_password") ;
 			$renew_password = $this->input->post("renew_password") ;
 			if($renew_password == $new_password){
-				$this->db->where('id', $this->session->userdata('user_id'));
+				$this->db->where('id', $id);
 				$rs_u = $this->db->get('user', 1)->row();
-				if($rs_u->password == md5($old_password."__".$rs_u->username)){
+				//Kiểm tra có đúng mật khẩu cũ không
+				if(NEED_OLD_PASS!=1){
+					if($rs_u->password != md5($old_password."__".$rs_u->username)){
+						redirect('404','refresh');
+					}
+				}
 					$this->db->where('id', $rs_u->id);
 					if($this->db->update('user', ["password" => md5($new_password."__".$rs_u->username)])){
 						$this->session->set_flashdata('item',["success"=>"Đã đổi password thành công"]);
 					}else{
 						$this->session->set_flashdata('item',["error"=>"Không đổi được password"]);
 					}
-				}
+
 			}
 		}
 		$this->load->view('admin/change_password');

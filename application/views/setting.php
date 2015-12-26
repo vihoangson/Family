@@ -1,13 +1,25 @@
 <?php $this->load->view('_includes/header'); ?>
 	<div class="list-group">
-		<a href="/admin/users/index" class="list-group-item">Manager user</a>
-		<a href="/admin/files_controller/do_upload" class="list-group-item">Upload img</a>
-		<a href="/admin/users/change_password" class="list-group-item">Change password</a>
 		<a href="/homepage/custom/sample_markdown" class="list-group-item">Mark down</a>
 		<a href="/asset/data/preview_markdown.png" class="list-group-item" target="_blank">IMG Mark down</a>
+	</div>
+
+
+
+<div class="panel panel-info">
+	  <div class="panel-heading">
+			<h3 class="panel-title">Panel title</h3>
+	  </div>
+	  <div class="panel-body">
+	<div class="list-group">
+		<a href="/admin/users/index" class="list-group-item">Manager user</a>
+		<a href="/admin/users/change_password" class="list-group-item">Change password</a>		
+		<a href="/admin/files_controller/do_upload" class="list-group-item">Upload img</a>
 		<a href="/admin/status" class="list-group-item">Trạng thái</a>
 		<a href="/timeline" class="list-group-item">Timeline</a>
 	</div>
+	  </div>
+</div>
 
 	<hr>
 
