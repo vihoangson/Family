@@ -16,7 +16,6 @@
 		<a href="/admin/users/change_password" class="list-group-item">Change password</a>		
 		<a href="/admin/files_controller/do_upload" class="list-group-item">Upload img</a>
 		<a href="/admin/status" class="list-group-item">Trạng thái</a>
-		<a href="/timeline" class="list-group-item">Timeline</a>
 	</div>
 	  </div>
 </div>
