@@ -4,6 +4,9 @@
 	}else{
 		$mode = "add";
 	}
+foreach ($this->config->item("emotion_yahoo") as $key => $value) {
+	$emotion .= "<span class='emotion_icon' alt='".$key."'>".$value."</span> ";
+}	
 ?>
 <form action="<?= base_url(); ?>homepage/<?= ($data->id?"edit_new/".md5($this->config->config["encryption_key"]."__".$data->id)."/".$data->id:"add_new"); ?>" id="add_new" method="POST" role="form" enctype="multipart/form-data">
 	<div class="form-group">
@@ -18,7 +21,9 @@
 	</div>
 	<div class="form-group">
 		<label for="">Nội dung</label>
-		<textarea name="content" class="form-control" style="height:250px;" required><?= ($data->kyniem_content?$data->kyniem_content:""); ?></textarea>
+		<div style="padding:4px 0;"><button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();"><img src="/asset/data/img_emotion/1.gif"></button></div>
+		<div class="icon_box" style="display:none; padding:10px;"><?= $emotion; ?></div>
+		<textarea name="content" id="content" class="form-control" style="height:250px;" required><?= ($data->kyniem_content?$data->kyniem_content:""); ?></textarea>
 	</div>
 	<div class="form-group">
 		<label for="">File</label>
@@ -46,6 +51,16 @@
 			console.log(textStatus);
 		});
 	});
+
+
+
+
+		
+
+
+			
+
+
 </script>
 	   <?php 
 } ?>
