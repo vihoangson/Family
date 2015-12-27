@@ -6,3 +6,4 @@ vendor/
 composer.lock
 composer.phar
 asset/file_upload
+asset/data_note
