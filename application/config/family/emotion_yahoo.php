@@ -4,6 +4,7 @@ $config["emotion_yahoo"] = [
 ':D'         =>  '<img src="/asset/data/img_emotion/4.gif" alt="big grin">',
 ':P'         =>  '<img src="/asset/data/img_emotion/10.gif" alt="tongue">',
 ':-*'        =>  '<img src="/asset/data/img_emotion/11.gif" alt="kiss">',
+':*'        =>  '<img src="/asset/data/img_emotion/11.gif" alt="kiss">',
 '=((' 		 =>  '<img src="/asset/data/img_emotion/12.gif" alt="broken heart">',
 'B-)'        =>  '<img src="/asset/data/img_emotion/16.gif" alt="cool">',
 ':-S'        =>  '<img src="/asset/data/img_emotion/17.gif" alt="worried">',
