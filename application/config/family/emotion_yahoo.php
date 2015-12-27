@@ -1,4 +1,7 @@
 <?php 
+// Sử dụng bộ thư viện emotion yahoo messager
+// https://github.com/vihoangson/Emotion_yahoo_mess
+// Còn rất nhiều icon trong này !!!
 $config["emotion_yahoo"] = [
 ';)'         =>  '<img src="/asset/data/img_emotion/3.gif" alt="winking">',
 ':D'         =>  '<img src="/asset/data/img_emotion/4.gif" alt="big grin">',

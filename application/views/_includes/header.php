@@ -47,7 +47,9 @@ if(!$navigation_bar){
 			}
 		}
 		?>
+			<?= (isset($custom_js)?$custom_js:""); ?>
 		<script>
+			
 			$(document).ready(function() {
 				$('.image-link').magnificPopup({
 					gallery:{enabled:true},
