@@ -4,7 +4,7 @@ $data_header = [
 	"js"=>[],
 	"breadcrumb"=>[
 		"Setting"=>"/setting",
-		"Daily"=>"/admin/daily_controller",
+		"Daily"=>"/admin/daily_controller/edit_markdown",
 		"Edit daily"=>""
 	],
 	"custom_js"=>'
