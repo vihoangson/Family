@@ -7,12 +7,6 @@ class Daily_controller extends CI_Controller {
 		parent::__construct();
 	}
 
-	private function init_html(){
-		$this->path_file = FCPATH."asset/data_note/";
-		$this->file_name = $this->path_file."file.html.php";
-		$this->prepear_file();
-	}
-
 	private function init_mardown(){
 		$this->path_file = FCPATH."asset/data_note/";
 		$this->file_name = $this->path_file."file.markdown.php";
@@ -40,24 +34,11 @@ class Daily_controller extends CI_Controller {
 
 	public function index()
 	{
-		$this->init_html();
-		$this->load->view('admin/daily', ["file"=>$this->file_name,"path_text"=>$this->path_file] );
+		redirect('/admin/daily_controller/show_markdown','refresh');
 	}
 
 	public function edit(){
-		$this->init_html();
-		$html = $this->input->post("html");
-		if(!empty($html)){
-			$postedHTML = ($html); // You want to make this more secure!
-			if(file_put_contents($this->file_name, $postedHTML)){
-				redirect('/admin/daily_controller/','refresh');
-			}
-		}
-
-		?> 
-
-		<?php 
-		$this->load->view('admin/daily_edit', ["file"=>$this->file_name,"path_text"=>$this->path_file] );
+		redirect('/admin/daily_controller/edit_markdown','refresh');
 	}
 
 	public function show_markdown()
@@ -75,13 +56,8 @@ class Daily_controller extends CI_Controller {
 				redirect('/admin/daily_controller/show_markdown','refresh');
 			}
 		}
-
-		?> 
-
-		<?php 
 		$this->load->view('admin/daily_edit', ["file"=>$this->file_name,"path_text"=>$this->path_file,"markdown"=>true] );
 	}
-
 }
 
 /* End of file Daily_controller.php */
