@@ -14,8 +14,13 @@
 	</div>
 	<!-- #List Year -->
 	<select class="form-control change-year" style="width:100px;">
-		<option value="2015" <?= ($this->session->userdata("year")==2015?"selected":""); ?> > 2015 </option>
-		<option value="2016"  <?= $this->session->userdata("year")==2016?"selected":""; ?> > 2016 </option>
+		<?php
+		for($i=2015 ; $i<=date("Y");$i++){
+			?>
+			<option value="<?= $i; ?>" <?= ((int)$this->session->userdata("year")== $i?"selected":""); ?> > <?= $i; ?> </option>
+			<?php
+		}
+			?>
 	</select>
 	<div class="text-right">
 		<button type="button" id="button_add" class="btn btn-primary">Thêm kỷ niệm</button>

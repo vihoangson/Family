@@ -1,7 +1,7 @@
 <?php
 $data_header = [];
  $this->load->view('_includes/header',$data_header); ?>
-		<div style="width:30%;margin:0 auto;">
+		<div style="float:none;margin:0 auto;" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
 			<div class="panel panel-info">
 				  <div class="panel-heading">
