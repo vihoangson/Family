@@ -7,6 +7,14 @@ class Homepage extends MY_Controller {
 		parent::__construct();
 		$this->load->model('kyniem');
 		$this->load->library('image_lib');
+		$this->init();
+	}
+
+	private function init(){
+		//Khởi tạo năm
+		if(!$this->session->userdata("year")){
+			$this->session->set_userdata( ['year' => date("Y")] );
+		}
 	}
 
 	public function index()

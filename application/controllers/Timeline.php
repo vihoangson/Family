@@ -45,9 +45,6 @@ class Timeline extends MY_Controller {
 			$datetime2 = new DateTime(date("Y-m-d h:i:s"));
 			$interval = $datetime1->diff($datetime2);
 			if($interval->d>0){
-				for($i=0;$i<=$interval->d;$i++){
-					$this->create_timeline_null($datetime1->getTimestamp() + (($i+1)*(3600*24)));
-				}
 			}
 		}
 	}
