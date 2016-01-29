@@ -1,3 +1,13 @@
+#Install
+
+### 1. composer Install
+### 2. db to new
+### 3. bower install 
+		- Bootstrap
+		- font-awesome
+
+
+
 ###################
 What is CodeIgniter
 ###################
