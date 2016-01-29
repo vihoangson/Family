@@ -10,6 +10,37 @@ class Homepage extends MY_Controller {
 		$this->init();
 	}
 
+	// ============ ============  ============ ============
+	// General test: Tập hợp các test case
+	//
+	public function general_test(){
+		$this->test_resize_this_img();
+	}
+	//
+	// ============ ============  ============ ============
+
+
+	//============ ============  ============ ============
+	// php index.php Homepage/test_resize_this_img
+	// Đây là function test đầu tiên của tôi
+	// Kiểm tra chức năng resize hình.
+	//
+		private function test_resize_this_img(){
+			$path = FCPATH."asset/images/dont_delete_test_img.jpg";
+			$path2 = FCPATH."asset/images/dont_delete_test_img_tmp.jpg";
+			copy($path,$path2);
+			$this->resize_this_img($path2,100,100);
+			$size_img = getimagesize($path2);
+			if($size_img[0]==100 || $size_img==100){
+				echo __FUNCTION__.": [true]".PHP_EOL;
+			}else{
+				echo __FUNCTION__.": [false]".PHP_EOL;
+			}
+			unlink($path2);
+		}
+	//
+	//============ ============  ============ ============
+
 	private function init(){
 		//Khởi tạo năm
 		if(!$this->session->userdata("year")){
@@ -289,6 +320,19 @@ class Homepage extends MY_Controller {
 	public function custom($url){
 		$this->load->view('custom/'.$url);
 
+	}
+
+	private function resize_this_img($path,$width,$height){
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $path;
+		//$config['new_image'] = FCPATH."asset/images/";
+		$config['new_image'] = $path;
+		$config['create_thumb'] = false;
+		$config['maintain_ratio'] = TRUE;
+		$config['width']         = $width;
+		$config['height']       = $height;
+		$this->image_lib->initialize($config);
+		$this->image_lib->resize();	
 	}
 
 	private function resize_img($path,$width,$height){
