@@ -1,3 +1,19 @@
+.countdown_box {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 433px;
+}
+
+@media screen and (max-width:768px){
+    .countdown_box{
+        display:none;
+    }
+}
 
 .message-item {
 margin-bottom: 25px;
