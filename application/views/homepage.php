@@ -69,7 +69,7 @@
 						<div class="qa-message-content">
 							<div><?= h($value->kyniem_content); ?></div>
 							<div class="box-comment">
-								<input class='input-comment' data-id="<?= $value->id; ?>" >
+								<input class='input-comment' data-id="<?= $value->id; ?>" placeholder="Write comment ...">
 								<ul>
 									<?php
 									foreach ($comment[$value->id] as $key_comment => $value_comment) {
@@ -114,6 +114,9 @@
 		</div>
 	</div>
 <script>
+$(document).ready(function() {
+	$('img').remove();
+});
 	$(".input-comment").keydown(function(event){
 		//return false;
 		if(event.which==13){
@@ -126,7 +129,7 @@
 				this_ul = this_c.parent().find("ul");
 				this_ul.text("");
 				$.each(rs,function(index,val){
-					this_ul.prepend("<li>"+""+val.comment_content+"</li>");
+					this_ul.prepend("<li>"+val.comment_content+"</li>");
 				});
 			});
 		}
