@@ -89,7 +89,7 @@
 								<ul>
 									<?php
 									foreach ($comment[$value->id] as $key_comment => $value_comment) {
-										echo "<li>".$value_comment->comment_content."</li>";
+										echo "<li>".($value_comment->comment_content)."</li>";
 									}
 									?>
 								</ul>
