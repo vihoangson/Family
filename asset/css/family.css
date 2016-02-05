@@ -339,10 +339,52 @@ img.img_timeline {
     list-style: none;
     margin: 0;
     padding: 6px;
+    position:relative;
     border-bottom: 1px solid #E6E6E6;
 }
 
 .box-comment ul {
     margin: 0;
     padding: 0;
+}
+
+.input-c,.button-c {
+    float: left;
+}
+
+.row-tail:after {
+    content: " ";
+    clear: both;
+}
+
+.row-tail:after {
+    content: " ";
+    clear: both;
+    width: 100%;
+    height: 1px;
+}
+
+.row-tail {
+    width: 100% !important;
+}
+
+.input-c {
+    width: 85%;
+}
+
+.button-c {
+    width: 13%;
+    text-align: center;
+}
+
+.button-c button {
+    height: 29px;
+    padding: 0;
+    margin-left: 10px;
+}
+span.del-c {
+    position: absolute;
+    right: 0;
+    top: 3PX;
+    cursor: pointer;
 }

@@ -85,7 +85,15 @@
 							}
 							?>
 							<div class="box-comment">
-								<input class='input-comment' data-id="<?= $value->id; ?>" placeholder="Write comment ...">
+								<div class="row-tail">
+									<div class="input-c">
+										<input class='input-comment' data-id="<?= $value->id; ?>" placeholder="Write comment ...">
+									</div>
+									<div class="button-c">
+										<button class="btn btn-primary btn-block send-button">Send</button>
+									</div>
+									<div class="clearfix"></div>
+								</div>
 								<ul>
 									<?php
 									foreach ($comment[$value->id] as $key_comment => $value_comment) {
@@ -115,24 +123,33 @@
 		</div>
 	</div>
 <script>
-
+	$(".box-comment li").append("<span class='del-c'>x</span>");
+	$(".del-c").on("click",function(){
+		$(this).parent().remove();
+	})
 	$(".input-comment").keydown(function(event){
 		//return false;
 		if(event.which==13){
-			id = $(this).data("id");
-			value = $(this).val();
-			this_c = $(this);
-			$.post('homepage/ajax_post_comment', {id:id,value:value}, function(data, textStatus, xhr) {
-				this_c.val("");
-				rs = JSON.parse(data);
-				this_ul = this_c.parent().find("ul");
-				this_ul.text("");
-				$.each(rs,function(index,val){
-					this_ul.prepend("<li>"+val.comment_content+"</li>");
-				});
-			});
+			send_comment($(this));
 		}
 	});
+$("send-button").click(function(event) {
+	/* Act on the event */
+});
+function send_comment(this_s){
+	id = this_s.data("id");
+	value = this_s.val();
+	this_c = this_s;
+	$.post('homepage/ajax_post_comment', {id:id,value:value}, function(data, textStatus, xhr) {
+		this_c.val("");
+		rs = JSON.parse(data);
+		this_ul = this_c.parents(".box-comment").find("ul");
+		this_ul.text("");
+		$.each(rs,function(index,val){
+			this_ul.prepend("<li>"+val.comment_content+"</li>");
+		});
+	});
+}
 	$("#button_add").click(function(event) {
 			$("#modal-id").modal();
 	});

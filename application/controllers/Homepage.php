@@ -378,9 +378,11 @@ class Homepage extends MY_Controller {
 
 	public function ajax_post_comment(){
 		$id    = $this->input->post('id');
-		$value = h($this->input->post('value'));
-		$object=["kyniem_id"=>$id,"comment_content"=>$value];
-		$this->db->insert('comment', $object);
+		if(!empty($this->input->post('value'))){
+			$value = h($this->input->post('value'));
+			$object=["kyniem_id"=>$id,"comment_content"=>$value];
+			$this->db->insert('comment', $object);
+		}
 		echo json_encode($this->db->where("kyniem_id",$id)->get('comment')->result());
 	}
 
