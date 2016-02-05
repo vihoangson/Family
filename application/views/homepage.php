@@ -68,16 +68,7 @@
 						</div>
 						<div class="qa-message-content">
 							<div><?= h($value->kyniem_content); ?></div>
-							<div class="box-comment">
-								<input class='input-comment' data-id="<?= $value->id; ?>" placeholder="Write comment ...">
-								<ul>
-									<?php
-									foreach ($comment[$value->id] as $key_comment => $value_comment) {
-										echo "<li>".$value_comment->comment_content."</li>";
-									}
-									?>
-								</ul>
-							</div>
+
 							<?php 
 							if($value->kyniem_images){
 								$images = json_decode($value->kyniem_images,true);
@@ -93,6 +84,16 @@
 								echo "</div>";
 							}
 							?>
+							<div class="box-comment">
+								<input class='input-comment' data-id="<?= $value->id; ?>" placeholder="Write comment ...">
+								<ul>
+									<?php
+									foreach ($comment[$value->id] as $key_comment => $value_comment) {
+										echo "<li>".$value_comment->comment_content."</li>";
+									}
+									?>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
