@@ -68,8 +68,18 @@
 						</div>
 						<div class="qa-message-content">
 							<div><?= h($value->kyniem_content); ?></div>
+							<div class="box-comment">
+								<input class='input-comment' data-id="<?= $value->id; ?>" >
+								<ul>
+									<?php
+									foreach ($comment[$value->id] as $key_comment => $value_comment) {
+										echo "<li>".$value_comment->comment_content."</li>";
+									}
+									?>
+								</ul>
+							</div>
 							<?php 
-							if($value->kyniem_images){								
+							if($value->kyniem_images){
 								$images = json_decode($value->kyniem_images,true);
 								echo "<div class='image-link'>";
 								foreach ((array)$images as $key2 => $value2) {
@@ -104,6 +114,23 @@
 		</div>
 	</div>
 <script>
+	$(".input-comment").keydown(function(event){
+		//return false;
+		if(event.which==13){
+			id = $(this).data("id");
+			value = $(this).val();
+			this_c = $(this);
+			$.post('homepage/ajax_post_comment', {id:id,value:value}, function(data, textStatus, xhr) {
+				this_c.val("");
+				rs = JSON.parse(data);
+				this_ul = this_c.parent().find("ul");
+				this_ul.text("");
+				$.each(rs,function(index,val){
+					this_ul.prepend("<li>"+""+val.comment_content+"</li>");
+				});
+			});
+		}
+	});
 	$("#button_add").click(function(event) {
 			$("#modal-id").modal();
 	});

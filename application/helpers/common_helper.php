@@ -46,6 +46,7 @@
 			<h1>".$days." Ngày</h1>
 			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$i." Phút ".$s." Giây </h3> 
 			".'
+			<div id="count_down"></div>
 			<div class="progress">
 				<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$percent.'%">
 					<span class="sr-only">'.$percent.'% Complete (success)</span>

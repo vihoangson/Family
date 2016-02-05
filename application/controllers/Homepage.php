@@ -57,7 +57,11 @@ class Homepage extends MY_Controller {
 		}
 		$condition["year"] = $cond_year;
 		$kn = $this->kyniem->getAll($condition);
-		$this->load->view('homepage',["kn" => $kn]);
+		foreach ($kn as $key => $value) {
+			$rs = $this->db->where("kyniem_id",$value->id)->order_by("id","desc")->get('comment')->result();
+			$comment[$value->id] = $rs;
+		}
+		$this->load->view('homepage',compact("kn","comment"));
 	}
 
 	public function chang_year($year){
@@ -370,6 +374,14 @@ class Homepage extends MY_Controller {
 		$condition = ["keyword" => "#".$tag];
 		$kn = $this->kyniem->getAll($condition);
 		$this->load->view('homepage',["kn" => $kn]);
+	}
+
+	public function ajax_post_comment(){
+		$id    = $this->input->post('id');
+		$value = $this->input->post('value');
+		$object=["kyniem_id"=>$id,"comment_content"=>$value];
+		$this->db->insert('comment', $object);
+		echo json_encode($this->db->where("kyniem_id",$id)->get('comment')->result());
 	}
 
 }

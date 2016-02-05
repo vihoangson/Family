@@ -19,7 +19,7 @@ if(!$navigation_bar){
 		<link href="<?= base_url(); ?>asset/css/family.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-		<?php 
+		<?php
 		if(isset($css)){
 			foreach ((array)$css as $key => $value) {
 				?><link href="<?= $value; ?>" rel="stylesheet">
@@ -36,10 +36,12 @@ if(!$navigation_bar){
 		<![endif]-->
 		<!-- jQuery -->
 		<script src="<?= base_url(); ?>asset/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="http://momentjs.com/downloads/moment.js"></script>
+
 		<!-- Bootstrap JavaScript -->
 		<script src="<?= base_url(); ?>asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/jquery.magnific-popup.js"></script>
-		<?php 
+		<?php
 		if(isset($js)){
 			foreach ((array)$js as $key => $value) {
 				?><script src="<?= $value; ?>"></script>
@@ -49,15 +51,23 @@ if(!$navigation_bar){
 		?>
 			<?= (isset($custom_js)?$custom_js:""); ?>
 		<script>
-			
+
 			$(document).ready(function() {
+				setInterval(function(){
+					var then  = "05/05/2016 14:20:30";
+					diff = moment.utc(moment(then,"DD/MM/YYYY HH:mm:ss").diff(moment()));
+					string = MM + diff.month() + " Tháng " + diff.day() + " Ngày " + diff.hour() + " Giờ " + diff.minute() + " Phút " + diff.second() + " Giây " +diff.millisecond() ;
+				    console.log(string);
+				    $("#count_down").text(string);
+				},100000);
+
 				$('.image-link').magnificPopup({
 					gallery:{enabled:true},
 					type:'image',
 					delegate: 'a'
 				});
 			});
-			
+
 
 		</script>
 <style>
@@ -97,7 +107,7 @@ if(!$navigation_bar){
 		<header></header>
 		<?php echo get_content_countdown(); ?></div>
 		<div class="container">
-		<?php 
+		<?php
 		if($this->session->flashdata('error_upload')){
 			print_r($this->session->flashdata('error_upload'));
 		}
