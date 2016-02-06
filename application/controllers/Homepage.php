@@ -380,7 +380,12 @@ class Homepage extends MY_Controller {
 		$id    = $this->input->post('id');
 		if(!empty($this->input->post('value'))){
 			$value = h($this->input->post('value'));
-			$object=["kyniem_id"=>$id,"comment_content"=>$value];
+			$object=[
+			"kyniem_id"=>$id,
+			"comment_content"=>$value,
+			"comment_create"=>date("Y-m-d h:i:s"),
+			"comment_modifie"=>date("Y-m-d h:i:s"),
+			];
 			$this->db->insert('comment', $object);
 		}
 		echo json_encode($this->db->where("kyniem_id",$id)->get('comment')->result());
@@ -401,6 +406,7 @@ class Homepage extends MY_Controller {
 		$object=[
 			"archive_key" => $key,
 			"archive_content" => $content,
+			"archive_create" => date("Y-m-d h:i:s"),
 		];
 		$this->db->insert('archive', $object);
 	}
