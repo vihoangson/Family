@@ -97,7 +97,7 @@
 								<ul>
 									<?php
 									foreach ($comment[$value->id] as $key_comment => $value_comment) {
-										echo "<li>".($value_comment->comment_content)."</li>";
+										echo "<li data-id='".($value_comment->id)."'>".($value_comment->comment_content)."</li>";
 									}
 									?>
 								</ul>
@@ -122,39 +122,61 @@
 			</div>
 		</div>
 	</div>
+
 <script>
+
 	$(".box-comment li").append("<span class='del-c'>x</span>");
-	$(".del-c").on("click",function(){
-		$(this).parent().remove();
-	})
+
+	$(document).on("click",".del-c",function(){
+		if(!confirm("Bạn có muốn xóa ?")){
+			return;
+		}
+		id = $(this).parent().data("id");
+		console.log(id);
+		this_c = $(this);
+		$.post('homepage/ajax_delete_comment', {id:id}, function(data, textStatus, xhr) {
+			//console.log(parseInt(data));
+			if(data == "1"){
+				this_c.parent().remove();
+			}
+		});
+	});
+
 	$(".input-comment").keydown(function(event){
 		//return false;
 		if(event.which==13){
 			send_comment($(this));
 		}
 	});
-$("send-button").click(function(event) {
-	/* Act on the event */
-});
-function send_comment(this_s){
-	id = this_s.data("id");
-	value = this_s.val();
-	this_c = this_s;
-	$.post('homepage/ajax_post_comment', {id:id,value:value}, function(data, textStatus, xhr) {
-		this_c.val("");
-		rs = JSON.parse(data);
-		this_ul = this_c.parents(".box-comment").find("ul");
-		this_ul.text("");
-		$.each(rs,function(index,val){
-			this_ul.prepend("<li>"+val.comment_content+"</li>");
-		});
+
+	$(".send-button").click(function(event) {
+		send_comment($(this).parents(".row-tail").find(".input-comment:first"));
 	});
-}
+
+	function send_comment(this_s){
+		id = this_s.data("id");
+		value = this_s.val();
+		this_c = this_s;
+		$.post('homepage/ajax_post_comment', {id:id,value:value}, function(data, textStatus, xhr) {
+			this_c.val("");
+			rs = JSON.parse(data);
+			this_ul = this_c.parents(".box-comment").find("ul");
+			this_ul.text("");
+			$.each(rs,function(index,val){
+				this_ul.prepend("<li data-id='"+val.id+"'>"+val.comment_content+"</li>");
+			});
+			$(".del-c").remove();
+			$(".box-comment li").append("<span class='del-c'>x</span>");
+		});
+	}
+
 	$("#button_add").click(function(event) {
 			$("#modal-id").modal();
 	});
+
 	$(".delete_b").click(function() {
 		return confirm("Bạn có muốn xóa ?");		
 	});
+
 </script>
 <?php $this->load->view('_includes/footer'); ?>

@@ -386,6 +386,26 @@ class Homepage extends MY_Controller {
 		echo json_encode($this->db->where("kyniem_id",$id)->get('comment')->result());
 	}
 
+	public function ajax_delete_comment(){
+		$id    = $this->input->post('id');
+		$string = json_encode($this->db->where("id",$id)->get("comment")->result());
+		$this->archive_log("delete_comment",$string);
+		if($this->db->where("id",$id)->delete('comment')){
+			echo 1;
+		}else{
+			echo 0;
+		}
+	}
+
+	public function archive_log($key,$content){
+		$object=[
+			"archive_key" => $key,
+			"archive_content" => $content,
+		];
+		$this->db->insert('archive', $object);
+	}
+
+
 }
 
 /* End of file Index.php */
