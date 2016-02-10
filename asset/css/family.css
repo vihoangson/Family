@@ -402,3 +402,13 @@ li.ele_comment:after {
 .ele_comment .avatar {
     padding-right: 10px;
 }
+
+.ele_comment small {
+    font-size: 9px;
+}
+
+.ele_comment p {
+    line-height: auto !important;
+    padding: 0;
+    margin: 0;
+}
