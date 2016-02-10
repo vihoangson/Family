@@ -42,6 +42,7 @@ class Homepage extends MY_Controller {
 	//============ ============  ============ ============
 
 	private function init(){
+		
 		//Khởi tạo năm
 		if(!$this->session->userdata("year")){
 			$this->session->set_userdata( ['year' => date("Y")] );
@@ -58,7 +59,7 @@ class Homepage extends MY_Controller {
 		$condition["year"] = $cond_year;
 		$kn = $this->kyniem->getAll($condition);
 		foreach ($kn as $key => $value) {
-			$rs = $this->db->where("kyniem_id",$value->id)->order_by("id","desc")->get('comment')->result();
+			$rs = $this->db->where("kyniem_id",$value->id)->select("comment.*,user.username,user.user_avatar")->join("user","user.id=comment_user")->order_by("id","desc")->get('comment')->result();
 			$comment[$value->id] = $rs;
 		}
 		$this->load->view('homepage',compact("kn","comment"));
@@ -383,12 +384,13 @@ class Homepage extends MY_Controller {
 			$object=[
 			"kyniem_id"=>$id,
 			"comment_content"=>$value,
+			"comment_user" => $this->session->userdata("user_id"),
 			"comment_create"=>date("Y-m-d h:i:s"),
 			"comment_modifie"=>date("Y-m-d h:i:s"),
 			];
 			$this->db->insert('comment', $object);
 		}
-		echo json_encode($this->db->where("kyniem_id",$id)->get('comment')->result());
+		echo json_encode($this->db->select("comment.*,user.username,user.user_avatar")->join("user","user.id=comment_user")->where("kyniem_id",$id)->get('comment')->result());
 	}
 
 	public function ajax_delete_comment(){

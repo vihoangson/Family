@@ -388,3 +388,17 @@ span.del-c {
     top: 3PX;
     cursor: pointer;
 }
+
+.ele_comment > div {
+    float: left;
+}
+
+li.ele_comment:after {
+    content: " ";
+    clear: both;
+    display: block;
+}
+
+.ele_comment .avatar {
+    padding-right: 10px;
+}

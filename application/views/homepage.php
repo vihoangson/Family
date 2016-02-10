@@ -97,7 +97,17 @@
 								<ul>
 									<?php
 									foreach ($comment[$value->id] as $key_comment => $value_comment) {
-										echo "<li data-id='".($value_comment->id)."'>".($value_comment->comment_content)."</li>";
+										  ?> 
+											<li data-id='<?= $value_comment->id; ?>' class='ele_comment' id="">
+												<div class='avatar'><img src='/asset/data/<?= $value_comment->user_avatar; ?>' class='avatar_comment'> </div>
+												<div class="content">
+													<div class="username"><b><?= $value_comment->username; ?></b></div>
+													<div class="comment_create"><small><?= $value_comment->comment_create; ?></small></div> 
+													<div class="comment_content"><?= $value_comment->comment_content; ?></div>
+												</div>
+											</li>
+										   <?php 
+										//echo "<li data-id='".($value_comment->id)."'>".($value_comment->comment_content)."</li>";
 									}
 									?>
 								</ul>
@@ -163,10 +173,17 @@
 			this_ul = this_c.parents(".box-comment").find("ul");
 			this_ul.text("");
 			$.each(rs,function(index,val){
-				this_ul.prepend("<li data-id='"+val.id+"'>"+val.comment_content+"</li>");
+				var tmp_ele = $(".ele_comment:first").clone();
+				tmp_ele.find("li").data("id",val.id);
+				tmp_ele.find("img").attr("src","/asset/data/"+val.user_avatar+"");
+				tmp_ele.find(".username b").text(val.username);
+				tmp_ele.find(".comment_create small").text(val.comment_create);
+				tmp_ele.find(".comment_content").html(val.comment_content);
+				this_ul.prepend(tmp_ele);
+				// this_ul.prepend("<li data-id='"+val.id+"' class='ele_comment'><img src='/asset/data/"+val.user_avatar+"' style='width:50px;' class='avatar_comment'> <p><b>"+val.username+"</b></p> <p><small>"+val.comment_create+"</small></p> "+val.comment_content+"</li>");
 			});
 			$(".del-c").remove();
-			$(".box-comment li").append("<span class='del-c'>x</span>");
+			$(".box-comment li").append("<span class='del-c'> </span>");
 		});
 	}
 
