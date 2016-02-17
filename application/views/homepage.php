@@ -1,5 +1,6 @@
 <?php $this->load->view('_includes/header',["js"=>["/asset/js/jquery.lazyload.js"]]); ?>
 <?php 
+	if(false){
 		if(!$this->session->userdata('popup')){
 			  ?>
 				<div class="popup_home_mark"></div>
@@ -22,6 +23,7 @@
 			 
 			 $this->session->set_userdata( $array );
 		}
+	}
  ?>
 <script>
 	$(document).ready(function() {
