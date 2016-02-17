@@ -44,7 +44,7 @@
 		$html = "
 		<center>
 			<h2 class='text-center'>Ngày dự sinh: <br>".date("d-m-Y",$date2->getTimestamp())."</h2>
-			<p>Tuần thứ: <p>".$weeks."</p></p>
+			<p><h3>Tuần thứ: <b>".$weeks."/40</b></p></p>
 			<h1>Còn lại: ".$days." Ngày</h1>
 			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$i." Phút ".$s." Giây </h3>
 			".'
