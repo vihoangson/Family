@@ -412,3 +412,20 @@ li.ele_comment:after {
     padding: 0;
     margin: 0;
 }
+
+.popup_home {
+    position: fixed;
+    z-index: 4;
+}
+
+
+.popup_home_mark {
+    display: block;
+    position: fixed;
+    background: rgba(43, 42, 42, 0.67);
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    left: 0;
+    top: 0;
+}

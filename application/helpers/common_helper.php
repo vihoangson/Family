@@ -28,6 +28,15 @@
 		<?php
 	}
 
+	function show_img_countdown(){
+		$date1=date_create(date("Y-m-d h:i:s",time()));
+		$date2=date_create("2016-05-20");
+		$diff=date_diff($date1,$date2);
+		$days = $diff->days;
+		$weeks = round((280 - $days)/7);		
+		$html = "<p><img style='max-height:100%;max-width:100%;' src='/asset/data/27-40_tuan/".$weeks."_tuan.png'></p>";
+		return $html;
+	}
 
 	function get_content_countdown(){
 		$date1=date_create(date("Y-m-d h:i:s",time()));
@@ -44,7 +53,7 @@
 		$html = "
 		<center>
 			<h2 class='text-center'>Ngày dự sinh: <br>".date("d-m-Y",$date2->getTimestamp())."</h2>
-			<p><h3>Tuần thứ: <b>".$weeks."/40</b></p></p>
+			<p><h3>Tuần thứ: <b>".$weeks."/40</b></p>
 			<h1>Còn lại: ".$days." Ngày</h1>
 			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$i." Phút ".$s." Giây </h3>
 			".'

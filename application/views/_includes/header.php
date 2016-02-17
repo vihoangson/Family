@@ -151,5 +151,27 @@ if(!$navigation_bar){
 		if($custom_html){
 			echo $custom_html;
 		}
-?>
 
+		if(!$this->session->userdata('popup')){
+			  ?>
+				<div class="popup_home_mark"></div>
+				<div class="popup_home" style="display:none;"><?= show_img_countdown(); ?></div>
+				<script>
+					$(document).ready(function() {
+						$(".popup_home").css("left",(($(window).height()/2)))
+						$(".popup_home").show();
+					});
+					$(".popup_home_mark").click(function() {
+						$(this).hide();
+						$(".popup_home").hide();
+					});
+
+				</script>
+			 <?php 
+			 $array = array(
+			 	'popup' => 'on'
+			 );
+			 
+			 $this->session->set_userdata( $array );
+		}
+?>
