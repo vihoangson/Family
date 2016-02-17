@@ -34,6 +34,7 @@
 		$date2=date_create("2016-05-20");
 		$diff=date_diff($date1,$date2);
 		$days = $diff->days;
+		$weeks = round((280 - $days)/7);
 		$percent = 100-round(($days/266)*100);
 		$m = $diff->m;
 		$d = $diff->d;
@@ -43,8 +44,9 @@
 		$html = "
 		<center>
 			<h2 class='text-center'>Ngày dự sinh: <br>".date("d-m-Y",$date2->getTimestamp())."</h2>
-			<h1>".$days." Ngày</h1>
-			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$i." Phút ".$s." Giây </h3> 
+			<p>Tuần thứ: <p>".$weeks."</p></p>
+			<h1>Còn lại: ".$days." Ngày</h1>
+			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$i." Phút ".$s." Giây </h3>
 			".'
 			<div id="count_down"></div>
 			<div class="progress">
