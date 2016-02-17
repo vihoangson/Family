@@ -285,6 +285,8 @@ class Homepage extends MY_Controller {
 	}
 
 	private function _get_content_countdown(){
+		return get_content_countdown();
+		
 		$date1=date_create(date("Y-m-d h:i:s",time()));
 		$date2=date_create("2016-05-20");
 		$diff=date_diff($date1,$date2);
