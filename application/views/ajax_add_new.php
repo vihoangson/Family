@@ -20,7 +20,7 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 		<input name="title" type="text" class="form-control" id="" placeholder="Input field" value="<?= ($data->kyniem_title?$data->kyniem_title:""); ?>">
 	</div>
 	<div class="form-group">
-		<label for="">Nội dung <span style="color:red;">(*)</span></label>
+		<label for="">Nội dung (<span style="color:red;">*</span>)</label>
 		<div style="padding:4px 0;"><button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();"><img src="/asset/data/img_emotion/1.gif"></button></div>
 		<div class="icon_box" style="display:none; padding:10px;"><?= $emotion; ?></div>
 		<textarea name="content" id="content" class="form-control" style="height:250px;" required><?= ($data->kyniem_content?$data->kyniem_content:""); ?></textarea>
@@ -31,7 +31,7 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 		<?php 
 		if($data->kyniem_images){
 			$imgs = json_decode($data->kyniem_images);
-			echo "<div class='image-link'>";								
+			echo "<div class='image-link'>";
 			foreach ($imgs as $key => $value) {
 				echo "<span class='img_ele' data-img='".$value."' data-id='".$data->id."' ><img src='".base_url()."asset/images/".$value."'></span>";
 			}

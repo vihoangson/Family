@@ -77,7 +77,7 @@
 							
 							</div>
 							<div class="user-detail">
-								<h5 class="handle"><?= $value->kyniem_title; ?></h5>
+								<h5 class="handle"><?= ($value->kyniem_title?$value->kyniem_title:"Happy Family"); ?></h5>
 								<div class="post-meta">
 									<div class="asker-meta">
 										<span class="qa-message-what"></span>
