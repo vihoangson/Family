@@ -20,7 +20,7 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 		<input name="title" type="text" class="form-control" id="" placeholder="Input field" value="<?= ($data->kyniem_title?$data->kyniem_title:""); ?>">
 	</div>
 	<div class="form-group">
-		<label for="">Nội dung</label>
+		<label for="">Nội dung <span style="color:red;">(*)</span></label>
 		<div style="padding:4px 0;"><button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();"><img src="/asset/data/img_emotion/1.gif"></button></div>
 		<div class="icon_box" style="display:none; padding:10px;"><?= $emotion; ?></div>
 		<textarea name="content" id="content" class="form-control" style="height:250px;" required><?= ($data->kyniem_content?$data->kyniem_content:""); ?></textarea>
