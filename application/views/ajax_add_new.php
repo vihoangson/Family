@@ -17,7 +17,7 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 
 	<div class="form-group">
 		<label for="">Tên của kỷ niệm</label>
-		<input name="title" type="text" class="form-control" id="" placeholder="Input field" required value="<?= ($data->kyniem_title?$data->kyniem_title:""); ?>">
+		<input name="title" type="text" class="form-control" id="" placeholder="Input field" value="<?= ($data->kyniem_title?$data->kyniem_title:""); ?>">
 	</div>
 	<div class="form-group">
 		<label for="">Nội dung</label>
