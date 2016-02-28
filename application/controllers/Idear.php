@@ -6,6 +6,14 @@ class Idear extends MY_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('image_lib');
+		if(!is_dir(FCPATH."asset/images/idear/")){
+			mkdir(FCPATH."asset/images/idear/");
+			chmod(FCPATH."asset/images/idear/", 777);
+		}
+		if(!is_dir(FCPATH."asset/images/idear/thumb")){
+			mkdir(FCPATH."asset/images/idear/thumb");
+			chmod(FCPATH."asset/images/idear/thumb", 777);
+		}
 		if(!$this->db->table_exists("idear")){
 			$this->db->query("CREATE TABLE 'idear' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'idear_title' TEXT, 'idear_content' TEXT, 'idear_img' TEXT, 'idear_create' TEXT);");
 		}
