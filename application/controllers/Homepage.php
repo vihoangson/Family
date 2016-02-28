@@ -398,7 +398,7 @@ class Homepage extends MY_Controller {
 	public function ajax_delete_comment(){
 		$id    = $this->input->post('id');
 		$string = json_encode($this->db->where("id",$id)->get("comment")->result());
-		$this->archive_log("delete_comment",$string);
+		$this->action->archive_log("delete_comment",$string);
 		if($this->db->where("id",$id)->delete('comment')){
 			echo 1;
 		}else{
@@ -406,14 +406,6 @@ class Homepage extends MY_Controller {
 		}
 	}
 
-	public function archive_log($key,$content){
-		$object=[
-			"archive_key" => $key,
-			"archive_content" => $content,
-			"archive_create" => date("Y-m-d h:i:s"),
-		];
-		$this->db->insert('archive', $object);
-	}
 
 
 }

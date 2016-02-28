@@ -24,27 +24,29 @@ if($this->session->flashdata('alert')){
 	
 }
  ?>
-<p><a class="btn btn-primary" href="idear/edit">Add new idear</a></p>
+<h1>Ý tưởng làm cuộc sống vui vẻ và thú vị hơn</h1>
+<p><a class="btn btn-primary" href="/idear/edit">Add new idear</a></p>
 <div class="row">
-	
 <?php foreach ($rs as $key => $value) {
 	echo "<div class='col-md-3'>";
 	if($value->idear_img){
-		$img = json_decode($value->idear_img);
-		echo "<a href='javasript:void()' class='thumbnail equalize'><img src='/asset/images/idear/".$img[0]."'></a>";
+		$img = json_decode($value->idear_img,true);
+		$img[0] = preg_replace("/(\.)/", "_thumb.", $img[0]);
+		echo "<a href='/idear/detail/".$value->id."' class='thumbnail equalize ele_idear'><img src='/asset/images/idear/thumb/".$img[0]."'>
+		</a><h3>".$value->idear_title."</h3>";
+			
 	}
-	echo $value_img->idear_content."<br>";
 	echo "</div>";
 } ?>
 </div>
 <script>
-  $(document).ready(function() {
-    var maxHeight = 0;          
-    $(".equalize").each(function(){
-      if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
-    });         
-    $(".equalize").height(maxHeight);
-  }); 
+	$(window).load(function(){
+	    var maxHeight = 0;
+	    $(".equalize").each(function(){
+	      if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+	    });
+	    $(".equalize").height(maxHeight);
+	});
 </script>
 <?php $this->load->view('_includes/footer');
 ?>

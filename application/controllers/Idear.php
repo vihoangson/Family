@@ -8,42 +8,87 @@ class Idear extends MY_Controller {
 		$this->load->library('image_lib');
 		if(!is_dir(FCPATH."asset/images/idear/")){
 			mkdir(FCPATH."asset/images/idear/");
-			chmod(FCPATH."asset/images/idear/", 0777);
+		}else{
+			if(is_writable(FCPATH."asset/images/idear/")){
+				chmod(FCPATH."asset/images/idear/", 0777);
+			}
 		}
-		if(!is_dir(FCPATH."asset/images/idear/thumb")){
-			mkdir(FCPATH."asset/images/idear/thumb");
-			chmod(FCPATH."asset/images/idear/thumb", 0777);
+		if(!is_dir(FCPATH."asset/images/idear/thumb/")){
+			mkdir(FCPATH."asset/images/idear/thumb/");
+		}else{
+			if(is_writable(FCPATH."asset/images/idear/thumb/")){
+				chmod(FCPATH."asset/images/idear/thumb/", 0777);
+			}
 		}
+
 		if(!$this->db->table_exists("idear")){
 			$this->db->query("CREATE TABLE 'idear' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'idear_title' TEXT, 'idear_content' TEXT, 'idear_img' TEXT, 'idear_create' TEXT);");
 		}
 	}
+
+	public function detail($id){
+		$rs = $this->db->where('id', $id)->get('idear')->row();
+		$this->load->view('idear/detail', compact("rs"));
+	}
+
 	public function index(){
 		$rs = $this->db->get('idear')->result();
 		$this->load->view('idear/index', compact("rs"));
 	}
 
-	public function edit(){
+	public function edit($id=null){
 		if($this->input->post()){
-			$ul = $this->do_upload();
-			foreach ($ul["success"] as $key => $value) {
-				$img[] = $value["file_name"];
+			if($_FILES["userfile"]["name"][0]!=""){
+				$ul = $this->do_upload();
+				$dt = $this->db->where('id', $id)->get("idear")->row();
+				$img = json_decode($dt->idear_img,true);
+				foreach ($ul["success"] as $key => $value) {
+					$img[] = $value["file_name"];
+				}
+				$json_img = json_encode($img);
 			}
-			$json_img = json_encode($img);
 			$object=[
 				"idear_title"   => $this->input->post("txt_title"),
 				"idear_content" => $this->input->post("txt_content"),
-				"idear_img"     => $json_img,
 				"idear_create"  => date("Y-m-d h:i:s",time()),
 			];
-			if($this->db->insert('idear', $object)){
-				$this->session->set_flashdata('alert', 'Đã lưu idear');
-				redirect('/idear','refresh');
+			if($json_img){
+				$object["idear_img"] = $json_img;
+			}
+			if(empty($id)){
+				if($this->db->insert('idear', $object)){
+					$this->session->set_flashdata('alert', 'Đã lưu idear');
+					redirect('/idear','refresh');
+				}
 			}else{
-
+				if($this->db->where("id",$id)->update('idear', $object)){
+					$this->session->set_flashdata('alert', 'Đã lưu idear');
+					redirect('/idear/detail/'.$id,'refresh');
+				}
 			}
 		}
-		$this->load->view('idear/edit');
+		if($id){
+			$rs = $this->db->where('id', $id)->get("idear")->row();
+		}
+		$this->load->view('idear/edit',compact("rs"));
+	}
+
+	public function ajax_delete_img(){
+		$img_delete = $this->input->post('img');
+		$rs = $this->db->like("idear_img","$img_delete")->get("idear")->row();
+		$imgs = json_decode($rs->idear_img,true);
+		$key = array_search($img_delete, $imgs);
+		if (false !== $key) {
+			unset($imgs[$key]);
+		}
+		$imgs=array_values($imgs);
+		$idear_img = json_encode($imgs);
+		if($this->db->where("id",$rs->id)->update('idear', compact("idear_img"))){
+			echo 1;
+		}else{
+			echo 0;
+		}
+		
 	}
 
 	private function set_upload_options()
@@ -96,6 +141,16 @@ class Idear extends MY_Controller {
 		$this->image_lib->initialize($config);
 		$this->image_lib->resize();	
 	}
+
+	public function delete($id){
+		$content = json_encode($this->db->where("id",$id)->get('idear')->row());
+		$this->action->archive_log("delete_idear",$content);
+		if($this->db->where("id",$id)->delete('idear')){
+			redirect('/idear/','refresh');
+		}
+	}
+
+
 }
 
 /* End of file Timeline.php */
