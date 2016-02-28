@@ -1,6 +1,6 @@
 <?php
 
-require_once (FCPATH."application/libraries/dBug.php");
+//require_once (FCPATH."application/libraries/dBug.php");
 
 if ( ! function_exists( 'd' ) ) {
   // dBug wrapper ( see:http://dbug.ospinto.com)
