@@ -35,6 +35,9 @@ $this->load->view('_includes/header',$data_header); ?>
 </form>
 <script>
 	$(".rm-img-idear").click(function(){
+		if(!confirm("Are you sure ?")){
+			return false;
+		}
 		var this_s = $(this);
 		$.post('/idear/ajax_delete_img', {img: $(this).data("img")}, function(data, textStatus, xhr) {
 			if(parseInt(data)==1){
