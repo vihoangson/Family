@@ -58,7 +58,7 @@ $route['calendar'] = 'homepage/calendar';
 
 $route['custom/(:any)'] = 'homepage/custom/$1';
 
-$route['admin'] = 'admin/users/index';
+$route['admin'] = 'admin/Admin_index/index';
 
 $route['404_override'] = 'homepage/error404';
 $route['translate_uri_dashes'] = FALSE;
