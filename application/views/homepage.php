@@ -153,7 +153,7 @@
 					<h4 class="modal-title">Hạnh phúc là một quá trình không phải là đích đến</h4>
 				</div>
 				<div class="modal-body">
-					<?php $this->load->view('ajax_add_new'); ?>
+					<?php $this->load->view('ajax_add_new',["list_tag"=>$tags]); ?>
 				</div>
 			</div>
 		</div>
