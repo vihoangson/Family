@@ -62,7 +62,8 @@ class Homepage extends MY_Controller {
 			$rs = $this->db->where("kyniem_id",$value->id)->select("comment.*,user.username,user.user_avatar")->join("user","user.id=comment_user")->order_by("id","desc")->get('comment')->result();
 			$comment[$value->id] = $rs;
 		}
-		$this->load->view('homepage',compact("kn","comment"));
+		$tags = $this->kyniem->list_tag();
+		$this->load->view('homepage',compact("kn","comment","tags"));
 	}
 
 	public function chang_year($year){
@@ -235,7 +236,8 @@ class Homepage extends MY_Controller {
 			}			
 			$rs = $this->kyniem->getById($id);		
 			$this->load->view('_includes/header');
-			$this->load->view('ajax_add_new',["data"=>$rs]);
+			$list_tag = $this->kyniem->list_tag();
+			$this->load->view('ajax_add_new',["data"=>$rs,"list_tag"=>$list_tag]);
 			$this->load->view('_includes/footer');
 		}
 	}
@@ -405,7 +407,6 @@ class Homepage extends MY_Controller {
 			echo 0;
 		}
 	}
-
 
 
 }

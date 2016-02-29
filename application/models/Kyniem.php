@@ -29,6 +29,17 @@ class Kyniem extends CI_Model {
 		return $this->db->get('kyniem',1)->row();
 	}
 
+	public function list_tag(){
+		$rs = $this->db->query('select kyniem_content from kyniem where kyniem_content like "%(#%)%"')->result();
+		foreach ($rs as $key => $value) {
+			preg_match_all("/\(#(\w+?)\)/", $value->kyniem_content,$match);
+			foreach ($match[1] as $key_2 => $value_2) {
+				$tags[]=$value_2;
+			}
+		}
+		$tags = array_unique(array_filter($tags));
+		return $tags;
+	}
 }
 
 /* End of file Kyniem.php */

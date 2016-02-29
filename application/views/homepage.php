@@ -158,8 +158,22 @@
 			</div>
 		</div>
 	</div>
-
+<?php 
+if($tags){
+	?>
+	<div id="tags_list">
+		<h3>Tags</h3>
+		<?php 
+		foreach ((array)$tags as $key => $value) {
+			echo "<span><a href='/homepage/tags/$value'> #".$value." </a></span>";
+		}
+		?>
+	</div>
+	<?php
+}
+?>
 <script>
+
 
 	$(".box-comment li").append("<span class='del-c'>x</span>");
 

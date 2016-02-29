@@ -37,13 +37,26 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 			}
 			echo "</div>";
 		}
-		 ?>
+		?>
 	</div>
+	<?php
+	if($list_tag){
+		?>
+		<div id="tags_list">
+			<?php
+			foreach ((array)$list_tag as $key => $value) {
+				echo "<span class='tag_ele' alt='(#$value)'><a href='javascript:void()'> (#".$value.") </a></span>";
+			}
+			?>
+		</div>
+		<?php
+	}
+	?>
 	<button type="submit" class="btn btn-primary">Lưu</button>
 	<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>	
 </form>
 <?php if($mode=="edit"){
-	  ?> 
+	?> 
 <script>
 	$(".img_ele").click(function(event) {
 		$.post('<?= base_url(); ?>homepage/ajax_delete_img', {img: $(this).data("img"),id: $(this).data("id")}, function(data, textStatus, xhr) {
@@ -51,16 +64,6 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 			console.log(textStatus);
 		});
 	});
-
-
-
-
-		
-
-
-			
-
-
 </script>
-	   <?php 
+	<?php 
 } ?>
