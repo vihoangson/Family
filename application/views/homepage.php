@@ -122,7 +122,7 @@
 								</div>
 								<ul>
 									<?php
-									foreach ($comment[$value->id] as $key_comment => $value_comment) {
+									foreach ((array)$comment[$value->id] as $key_comment => $value_comment) {
 										  ?> 
 											<li data-id='<?= $value_comment->id; ?>' class='ele_comment' id="">
 												<div class='avatar'><img src='/asset/data/<?= $value_comment->user_avatar; ?>' class='avatar_comment'> </div>
