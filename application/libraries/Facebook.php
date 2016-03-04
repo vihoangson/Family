@@ -6,8 +6,8 @@ class Facebook extends Facebook\Facebook
 	public function __construct()
 	{
 		$config = array(
-			'app_id' => '990882487654318', // Replace 990882487654318 with your app id
-			'app_secret' => '3bcd21ad4d38fd842fc205a875fd85c5',
+			'app_id'     => APP_ID,
+			'app_secret' => APP_SECRET,
 		);
 		parent::__construct($config);
 	}
@@ -19,6 +19,14 @@ class Facebook extends Facebook\Facebook
 		$url_fb = htmlspecialchars($loginUrl);
 		return $url_fb;
 	}
+
+	public function post_group(){
+		$publish = $facebook->api('/246332502186029/feed', 'post',
+			array('access_token' => $this->session->userdata('fb_access_token'),'message'=> ' Noi dung demo ',
+				'from' => "990882487654318"
+				));
+	}
+
 }
 
 /* End of file Action.php */

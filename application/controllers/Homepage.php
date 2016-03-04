@@ -18,6 +18,10 @@ class Homepage extends MY_Controller {
 		$this->init();
 	}
 
+	public function post_group(){
+		$this->facebook->post_group();
+	}
+
 	// ============ ============  ============ ============
 	// General test: Tập hợp các test case
 	//
@@ -477,7 +481,7 @@ class Homepage extends MY_Controller {
 			//var_dump($tokenMetadata);
 
 			// Validation (these will throw FacebookSDKException's when they fail)
-			$tokenMetadata->validateAppId("990882487654318"); // Replace 990882487654318 with your app id
+			$tokenMetadata->validateAppId(APP_ID); // Replace 990882487654318 with your app id
 			// If you know the user ID this access token belongs to, you can validate it here
 			//$tokenMetadata->validateUserId('123');
 			$tokenMetadata->validateExpiration();
