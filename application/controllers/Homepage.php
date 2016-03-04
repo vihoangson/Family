@@ -135,7 +135,7 @@ class Homepage extends MY_Controller {
 	}
 
 	public function logout(){
-		//$this->session->unset_userdata();
+		// $this->session->unset_userdata();
 		session_destroy();
 		redirect('/','refresh');
 	}
