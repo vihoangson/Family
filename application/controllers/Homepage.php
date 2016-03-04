@@ -119,6 +119,7 @@ class Homepage extends MY_Controller {
 					'user' => $username,
 					'user_id' => ($rs_user->id),
 				);
+				$this->action->archive_log("login_comment",json_encode($array));
 				$flag = true;
 				$this->session->set_userdata( $array );
 			}
@@ -127,7 +128,6 @@ class Homepage extends MY_Controller {
 			$url_fb = $this->facebook->getbuttonlogin();
 			$this->load->view('login',compact("url_fb"));
 		}else{
-			die;
 			redirect(base_url(),'refresh');
 		}
 	}
@@ -498,7 +498,6 @@ class Homepage extends MY_Controller {
 				$html.= '<h3>Long-lived</h3>';
 				//var_dump($accessToken->getValue());
 			}
-
 			$this->facebook->setDefaultAccessToken($accessToken);
 			$response = $this->facebook->get('/me?locale=en_US&fields=name,email');
 			$userNode = $response->getGraphUser();
@@ -527,8 +526,8 @@ class Homepage extends MY_Controller {
 					);
 				break;
 			}
-
-			$this->session->set_userdata( $array );
+			$this->action->archive_log("login_facebook",json_encode([$userNode["name"],$userNode["email"],$userNode["id"]]));
+			$this->session->set_userdata( $array);
 			header('Location: /');
 		}else{
 			header('Location: /');

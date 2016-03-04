@@ -21,10 +21,12 @@ class Facebook extends Facebook\Facebook
 	}
 
 	public function post_group(){
-		$publish = $facebook->api('/246332502186029/feed', 'post',
-			array('access_token' => $this->session->userdata('fb_access_token'),'message'=> ' Noi dung demo ',
-				'from' => "990882487654318"
-				));
+		$linkData = [
+			'link' => 'http://www.example.com',
+			'message' => 'User provided message',
+		];
+		$token_access = $_SESSION["fb_access_token"];
+		$response = $this->post('/me/feed', $linkData, $token_access);
 	}
 
 }
