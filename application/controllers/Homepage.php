@@ -422,7 +422,7 @@ class Homepage extends MY_Controller {
 	public function button_fb(){
 		$helper = $this->facebook->getRedirectLoginHelper();
 		$permissions = ['email']; // Optional permissions
-		$loginUrl = $helper->getLoginUrl('http://family.vn/homepage/fb_callback', $permissions);
+		$loginUrl = $helper->getLoginUrl('/homepage/fb_callback', $permissions);
 		echo $this->session->userdata('fb_access_token');
 		echo "<hr>";
 		var_dump($this->session->userdata('tokenMetadata'));
