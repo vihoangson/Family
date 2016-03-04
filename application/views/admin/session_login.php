@@ -14,7 +14,7 @@ $this->load->view('_includes/header_admin',$data_header);
 	foreach ($rs as $key => $value) {
 		echo "<h4>".$value->archive_key."</h4>";
 		print_r(array_values(json_decode($value->archive_content,true)));
+		echo "<p><small>".$value->archive_create."</small></p>";
 		echo "<hr>";
 	}
-
 $this->load->view('_includes/footer_admin');
