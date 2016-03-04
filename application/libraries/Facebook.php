@@ -15,7 +15,7 @@ class Facebook extends Facebook\Facebook
 	public function getbuttonlogin(){
 		$helper = $this->getRedirectLoginHelper();
 		$permissions = ['email']; // Optional permissions
-		$loginUrl = $helper->getLoginUrl('http://family.vn/homepage/fb_callback', $permissions);
+		$loginUrl = $helper->getLoginUrl('http://'.$_SESSION["HTTP_HOST"].'/homepage/fb_callback', $permissions);
 		$url_fb = htmlspecialchars($loginUrl);
 		return $url_fb;
 	}
