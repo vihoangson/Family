@@ -5,9 +5,20 @@ class Homepage extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		include(APPPATH."libraries/Facebook/autoload.php");
 		$this->load->model('kyniem');
 		$this->load->library('image_lib');
+		if($this->session->userdata('fb_access_token')){
+			$this->load->library('facebook');
+			//$this->facebook->api("me/");
+			echo $this->session->userdata('fb_access_token');
+			$this->facebook->setDefaultAccessToken($this->session->userdata('fb_access_token'));
+			$response = $this->facebook->get('/me?locale=en_US&fields=name,email');
+			$userNode = $response->getGraphUser();
+			var_dump($this->facebook);
+			die;
+		}else{
+			include(APPPATH."libraies/Facebook/autoload.php");
+		}
 		$this->init();
 	}
 
