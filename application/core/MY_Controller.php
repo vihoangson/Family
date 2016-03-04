@@ -7,13 +7,12 @@ class MY_Controller extends CI_Controller
 	public function __construct(){
 		define("FROM_EMAIL","vihoangson@gmail.com");
 		define("FROM_EMAIL_PASS","sonuyen117s");
-
 		parent::__construct();
 		if($this->router->fetch_method() != "login") {
-			if($this->router->fetch_method()=="cron"){
+			if($this->router->fetch_method()=="cron" || $this->router->fetch_method()=="fb_callback"){
 				return;
 			}
-			if(!$this->session->userdata('user')){
+			if(!$this->session->userdata('fb_access_token')){
 				redirect('homepage/login','refresh');
 			}
 		}else{

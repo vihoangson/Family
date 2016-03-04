@@ -30,7 +30,7 @@
                             <a href="/register/" class="btn btn-default btn-block m-t-md">Create an account</a>
                         </div>
                     </form>
-                
+                    <p><a href="<?= $url_fb; ?>"><i class="fa fa-facebook"></i></a></p>
             </div>
         </div>
         <div class='col-md-3'></div>

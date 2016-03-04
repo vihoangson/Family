@@ -113,14 +113,30 @@ class Homepage extends MY_Controller {
 			}
 		}
 		if(!$flag){
-			$this->load->view('login');	
+			$fb = new Facebook\Facebook([
+				'app_id' => '990882487654318', // Replace {app-id} with your app id
+				'app_secret' => '3bcd21ad4d38fd842fc205a875fd85c5',
+				'default_graph_version' => 'v2.2',
+				]);
+
+			$helper = $fb->getRedirectLoginHelper();
+
+			$permissions = ['email']; // Optional permissions
+			$loginUrl = $helper->getLoginUrl('http://family.vn/homepage/fb_callback', $permissions);
+			// echo $this->session->userdata('fb_access_token');
+			// echo "<hr>";
+			// var_dump($this->session->userdata('tokenMetadata'));
+			$url_fb = htmlspecialchars($loginUrl);
+			//echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+			$this->load->view('login',compact("url_fb"));	
 		}else{
 			redirect(base_url(),'refresh');
 		}
 	}
 
 	public function logout(){
-		$this->session->unset_userdata('user');
+		//$this->session->unset_userdata();
+		session_destroy();
 		redirect('/','refresh');
 	}
 
@@ -501,15 +517,17 @@ class Homepage extends MY_Controller {
 			
 			$array = array(
 				'fb_access_token' => (string) $accessToken,
-				'tokenMetadata' => $tokenMetadata
+				'tokenMetadata' => $tokenMetadata,
+				'user' => "vihoangson",
 			);
 			$this->session->set_userdata( $array );
 
 			// User is logged in with a long-lived access token.
 			// You can redirect them to a members-only page.
-			header('Location: /homepage/button_fb');
+			header('Location: /');
 		}else{
-			echo $_SESSION['fb_access_token'];
+			header('Location: /');
+			//echo $_SESSION['fb_access_token'];
 		}
 	}
 
