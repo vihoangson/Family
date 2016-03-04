@@ -2,23 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Homepage extends MY_Controller {
+//10153523162001902 Bố Sơn
 
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('kyniem');
 		$this->load->library('image_lib');
+		$this->load->library('facebook');
 		if($this->session->userdata('fb_access_token')){
-			$this->load->library('facebook');
-			//$this->facebook->api("me/");
-			echo $this->session->userdata('fb_access_token');
 			$this->facebook->setDefaultAccessToken($this->session->userdata('fb_access_token'));
 			$response = $this->facebook->get('/me?locale=en_US&fields=name,email');
 			$userNode = $response->getGraphUser();
-			var_dump($this->facebook);
-			die;
-		}else{
-			include(APPPATH."libraies/Facebook/autoload.php");
 		}
+		echo $this->session->userdata('userinfo');
 		$this->init();
 	}
 
@@ -124,23 +120,10 @@ class Homepage extends MY_Controller {
 			}
 		}
 		if(!$flag){
-			$fb = new Facebook\Facebook([
-				'app_id' => '990882487654318', // Replace {app-id} with your app id
-				'app_secret' => '3bcd21ad4d38fd842fc205a875fd85c5',
-				'default_graph_version' => 'v2.2',
-				]);
-
-			$helper = $fb->getRedirectLoginHelper();
-
-			$permissions = ['email']; // Optional permissions
-			$loginUrl = $helper->getLoginUrl('http://family.vn/homepage/fb_callback', $permissions);
-			// echo $this->session->userdata('fb_access_token');
-			// echo "<hr>";
-			// var_dump($this->session->userdata('tokenMetadata'));
-			$url_fb = htmlspecialchars($loginUrl);
-			//echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
-			$this->load->view('login',compact("url_fb"));	
+			$url_fb = $this->facebook->getbuttonlogin();
+			$this->load->view('login',compact("url_fb"));
 		}else{
+			die;
 			redirect(base_url(),'refresh');
 		}
 	}
@@ -437,23 +420,15 @@ class Homepage extends MY_Controller {
 	}
 
 	public function button_fb(){
-		$fb = new Facebook\Facebook([
-			'app_id' => '990882487654318', // Replace {app-id} with your app id
-			'app_secret' => '3bcd21ad4d38fd842fc205a875fd85c5',
-			'default_graph_version' => 'v2.2',
-			]);
-
-		$helper = $fb->getRedirectLoginHelper();
-
+		$helper = $this->facebook->getRedirectLoginHelper();
 		$permissions = ['email']; // Optional permissions
 		$loginUrl = $helper->getLoginUrl('http://family.vn/homepage/fb_callback', $permissions);
 		echo $this->session->userdata('fb_access_token');
 		echo "<hr>";
 		var_dump($this->session->userdata('tokenMetadata'));
-		
 		echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
 	}
-	
+
 	public function button_fb_logout(){
 		$this->session->sess_destroy();
 		header('Location: /homepage/button_fb');
@@ -461,38 +436,31 @@ class Homepage extends MY_Controller {
 
 	public function fb_callback(){
 		if(!$this->session->userdata('fb_access_token')){
-			$fb = new Facebook\Facebook([
-			  'app_id' => '990882487654318', // Replace 990882487654318 with your app id
-			  'app_secret' => '3bcd21ad4d38fd842fc205a875fd85c5',
-			  'default_graph_version' => 'v2.2',
-			  ]);
-
-			$helper = $fb->getRedirectLoginHelper();
-
+			$helper = $this->facebook->getRedirectLoginHelper();
 			try {
-			  $accessToken = $helper->getAccessToken();
+				$accessToken = $helper->getAccessToken();
 			} catch(Facebook\Exceptions\FacebookResponseException $e) {
-			  // When Graph returns an error
-			  echo 'Graph returned an error: ' . $e->getMessage();
-			  exit;
+			// When Graph returns an error
+				echo 'Graph returned an error: ' . $e->getMessage();
+				exit;
 			} catch(Facebook\Exceptions\FacebookSDKException $e) {
-			  // When validation fails or other local issues
-			  echo 'Facebook SDK returned an error: ' . $e->getMessage();
-			  exit;
+			// When validation fails or other local issues
+				echo 'Facebook SDK returned an error: ' . $e->getMessage();
+				exit;
 			}
 
 			if (! isset($accessToken)) {
-			  if ($helper->getError()) {
-			    header('HTTP/1.0 401 Unauthorized');
-			    echo "Error: " . $helper->getError() . "\n";
-			    echo "Error Code: " . $helper->getErrorCode() . "\n";
-			    echo "Error Reason: " . $helper->getErrorReason() . "\n";
-			    echo "Error Description: " . $helper->getErrorDescription() . "\n";
-			  } else {
-			    header('HTTP/1.0 400 Bad Request');
-			    echo 'Bad request';
-			  }
-			  exit;
+				if ($helper->getError()) {
+					header('HTTP/1.0 401 Unauthorized');
+					echo "Error: " . $helper->getError() . "\n";
+					echo "Error Code: " . $helper->getErrorCode() . "\n";
+					echo "Error Reason: " . $helper->getErrorReason() . "\n";
+					echo "Error Description: " . $helper->getErrorDescription() . "\n";
+				} else {
+					header('HTTP/1.0 400 Bad Request');
+					echo 'Bad request';
+				}
+				exit;
 			}
 
 			// Logged in
@@ -500,7 +468,7 @@ class Homepage extends MY_Controller {
 			var_dump($accessToken->getValue());
 
 			// The OAuth 2.0 client handler helps us manage access tokens
-			$oAuth2Client = $fb->getOAuth2Client();
+			$oAuth2Client = $this->facebook->getOAuth2Client();
 
 			// Get the access token metadata from /debug_token
 			$tokenMetadata = $oAuth2Client->debugToken($accessToken);
@@ -514,62 +482,50 @@ class Homepage extends MY_Controller {
 			$tokenMetadata->validateExpiration();
 
 			if (! $accessToken->isLongLived()) {
-			  // Exchanges a short-lived access token for a long-lived one
-			  try {
-			    $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
-			  } catch (Facebook\Exceptions\FacebookSDKException $e) {
-			    echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
-			    exit;
-			  }
-
-			  echo '<h3>Long-lived</h3>';
-			  var_dump($accessToken->getValue());
+			// Exchanges a short-lived access token for a long-lived one
+			try {
+				$accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
+			} catch (Facebook\Exceptions\FacebookSDKException $e) {
+				echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
+				exit;
 			}
-			
-			$array = array(
-				'fb_access_token' => (string) $accessToken,
-				'tokenMetadata' => $tokenMetadata,
-				'user' => "vihoangson",
-			);
-			$this->session->set_userdata( $array );
 
-			// User is logged in with a long-lived access token.
-			// You can redirect them to a members-only page.
+				echo '<h3>Long-lived</h3>';
+				var_dump($accessToken->getValue());
+			}
+
+			$this->facebook->setDefaultAccessToken($accessToken);
+			$response = $this->facebook->get('/me?locale=en_US&fields=name,email');
+			$userNode = $response->getGraphUser();
+			switch($userNode["email"]){
+				case "vihoangson@gmail.com":
+					$array = array(
+						'fb_access_token' => (string) $accessToken,
+						'user'            => "bo",
+						'user_id'         => 11,
+					);
+				break;
+				case "4t.nhauyen@gmail.com":
+					$array = array(
+						'fb_access_token' => (string) $accessToken,
+						'user'            => "me",
+						'user_id'         => 12,
+					);
+				break;
+				default:
+					$array = array(
+						'fb_access_token' => (string) $accessToken,
+						'user'            => "khach",
+						'user_id'         => 0,
+					);
+				break;
+			}
+
+			$this->session->set_userdata( $array );
 			header('Location: /');
 		}else{
 			header('Location: /');
-			//echo $_SESSION['fb_access_token'];
 		}
-	}
-
-	public function upload_pic_fb(){
-		$fb = new Facebook\Facebook([
-			'app_id' => '990882487654318', // Replace {app-id} with your app id
-			'app_secret' => '3bcd21ad4d38fd842fc205a875fd85c5',
-		  'default_graph_version' => 'v2.2',
-		  ]);
-
-		$data = [
-		  'message' => 'My awesome photo upload example.',
-		  'source' => $fb->fileToUpload(APPPATH.'1.jpg'),
-		];
-
-		try {
-		  // Returns a `Facebook\FacebookResponse` object
-		  $response = $fb->post('/me/photos', $data, $this->session->userdata('fb_access_token'));
-		} catch(Facebook\Exceptions\FacebookResponseException $e) {
-		  echo 'Graph returned an error: ' . $e->getMessage();
-		  exit;
-		} catch(Facebook\Exceptions\FacebookSDKException $e) {
-		  echo 'Facebook SDK returned an error: ' . $e->getMessage();
-		  exit;
-		}
-
-		$graphNode = $response->getGraphNode();
-
-		echo 'Photo ID: ' . $graphNode['id'];
-
-		//Graph returned an error: (#200) Requires extended permission: publish_actions
 	}
 
 }

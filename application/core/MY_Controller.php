@@ -12,7 +12,7 @@ class MY_Controller extends CI_Controller
 			if($this->router->fetch_method()=="cron" || $this->router->fetch_method()=="fb_callback"){
 				return;
 			}
-			if(!$this->session->userdata('fb_access_token')){
+			if(!$this->session->userdata('user')){
 				redirect('homepage/login','refresh');
 			}
 		}else{
