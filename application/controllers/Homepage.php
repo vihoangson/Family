@@ -513,6 +513,8 @@ class Homepage extends MY_Controller {
 					);
 				break;
 				default:
+
+					redirect('/','refresh');
 					$array = array(
 						'fb_access_token' => (string) $accessToken,
 						'user'            => "khach",
