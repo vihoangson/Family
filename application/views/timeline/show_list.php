@@ -64,15 +64,15 @@ $this->load->view('_includes/header',$data_header); ?>
 	?>
 </div>
 <script>
-	m=0;
-	$(".show_list > div.ele-timeline").each(function(){
-	if(m <$(this).height()){
-		m=$(this).height();
-	}
-	})
-	$(".show_list > div.ele-timeline").height(m);
-
-
+	$(window).load(function(){
+		m=0;
+		$(".show_list > div.ele-timeline").each(function(){
+		if(m <$(this).height()){
+			m=$(this).height();
+		}
+		})
+		$(".show_list > div.ele-timeline").height(m);
+	});
 	$(".change-year").change(function(event) {
 		if($(this).val()==""){
 			location.href = "/timeline";
