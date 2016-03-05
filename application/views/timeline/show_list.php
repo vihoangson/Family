@@ -43,7 +43,7 @@ $this->load->view('_includes/header',$data_header); ?>
 	foreach ($tl as $key => $value) {
 		if($value->timeline_image){
 			?>
-			<div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+			<div class="ele-timeline col-xs-6 col-sm-4 col-md-2 col-lg-2">
 				<div class="text-center ele_timeline">
 					<div class="image-link">
 						<a href="/asset/images/timeline/<?= $value->timeline_image; ?>">
@@ -64,6 +64,15 @@ $this->load->view('_includes/header',$data_header); ?>
 	?>
 </div>
 <script>
+	m=0;
+	$(".show_list > div.ele-timeline").each(function(){
+	if(m <$(this).height()){
+		m=$(this).height();
+	}
+	})
+	$(".show_list > div.ele-timeline").height(m);
+
+
 	$(".change-year").change(function(event) {
 		if($(this).val()==""){
 			location.href = "/timeline";
