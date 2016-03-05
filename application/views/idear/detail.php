@@ -11,7 +11,7 @@ $this->load->view('_includes/header',$data_header); ?>
 	<?= h($rs->idear_content); ?>
 	<?php $imgs = json_decode($rs->idear_img);
 	foreach ((array)$imgs as $key => $value) {
-		echo "<p class='text-center'><img src='/asset/images/idear/".$value."'></p>";
+		echo "<p class='text-center'><img style='max-width:100%' src='/asset/images/idear/".$value."'></p>";
 	}
 	?>
 	<a href="/idear/edit/<?= $rs->id; ?>"><i class="fa fa-pencil"></i></a> <a href="/idear/delete/<?= $rs->id; ?>"><i class="fa fa-trash"></i></a>
