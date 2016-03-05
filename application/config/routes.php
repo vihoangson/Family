@@ -55,6 +55,7 @@ $route['logout'] = 'homepage/logout';
 $route['setting'] = 'homepage/setting';
 $route['count_down'] = 'homepage/count_down';
 $route['calendar'] = 'homepage/calendar';
+$route['no-allow'] = 'error_page/no_allow';
 
 $route['custom/(:any)'] = 'homepage/custom/$1';
 

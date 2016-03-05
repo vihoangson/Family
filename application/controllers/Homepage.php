@@ -501,6 +501,17 @@ class Homepage extends MY_Controller {
 			$this->facebook->setDefaultAccessToken($accessToken);
 			$response = $this->facebook->get('/me?locale=en_US&fields=name,email');
 			$userNode = $response->getGraphUser();
+
+			// Điều khiển trong admin khi login = facebook
+			if(true){
+				$rs_fb = $this->db->where("archive_key","lg_fb")->get('archive')->row()->archive_content;
+				$lg_fb = json_decode($rs_fb,true);
+				$lg_fb = array_map("trim", $lg_fb);
+				if(!in_array($userNode["email"], $lg_fb)){
+					redirect('/no-allow','refresh');
+				}
+			}
+
 			switch($userNode["email"]){
 				case "vihoangson@gmail.com":
 					$array = array(
@@ -517,8 +528,7 @@ class Homepage extends MY_Controller {
 					);
 				break;
 				default:
-
-					redirect('/','refresh');
+					redirect('/no-allow','refresh');
 					$array = array(
 						'fb_access_token' => (string) $accessToken,
 						'user'            => "khach",

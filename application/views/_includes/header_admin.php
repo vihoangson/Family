@@ -155,7 +155,8 @@ if(!$navigation_bar){
 <div class="row">
 	<div class="col-md-3">
 		<div class="list-group">
-			<a href="/admin/admin_page/session_login" class="list-group-item active">Session login</a>
+			<a href="/admin/admin_page/session_login" class="list-group-item">Session login</a>
+			<a href="/admin/admin_page/controll_list_login_facebook" class="list-group-item">List login Facebook</a>
 		</div>
 	</div>
 	<div class="col-md-9">
