@@ -18,6 +18,7 @@
 		<a href="/admin/files_controller/do_upload" class="list-group-item"><i class="fa fa-upload"></i> Upload img</a>
 		<a href="<?= base_url(); ?>admin/daily_controller/show_markdown" class="list-group-item"><i class="fa fa-sticky-note"></i> Take note</a>
 		<a href="/admin/status" class="list-group-item"><i class="fa fa-flag"></i> Trạng thái</a>
+		<a href="/admin" class="list-group-item"><i class="fa fa-flag"></i> Admin page</a>
 	</div>
 	  </div>
 </div>
