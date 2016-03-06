@@ -78,7 +78,7 @@
 										</span>
 										<span class="qa-message-who">
 											<span class="qa-message-who-pad">by </span>
-											<span class="qa-message-who-data"><a href="#"><?= $value->kyniem_auth; ?></a></span>
+											<span class="qa-message-who-data"><a href="#"><?= $value->username; ?></a></span>
 										</span>
 									</div>
 								</div>
@@ -212,7 +212,6 @@ if($tags){
 				tmp_ele.find(".comment_create small").text(val.comment_create);
 				tmp_ele.find(".comment_content").html(val.comment_content);
 				this_ul.prepend(tmp_ele);
-				// this_ul.prepend("<li data-id='"+val.id+"' class='ele_comment'><img src='/asset/data/"+val.user_avatar+"' style='width:50px;' class='avatar_comment'> <p><b>"+val.username+"</b></p> <p><small>"+val.comment_create+"</small></p> "+val.comment_content+"</li>");
 			});
 			$(".del-c").remove();
 			$(".box-comment li").append("<span class='del-c'> </span>");

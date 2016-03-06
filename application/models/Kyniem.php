@@ -10,7 +10,7 @@ class Kyniem extends CI_Model {
 		if($condition["keyword"]){
 			$this->db->like('(kyniem_content)', $condition["keyword"]);
 		}
-		$this->db->select('kyniem.*, user.user_avatar');
+		$this->db->select('kyniem.*, user.user_avatar, user.username');
 		$this->db->join("user","user.id=kyniem_auth")->where('delete_flg', 0);
 		$this->db->order_by('id', 'desc');
 		return $this->db->get('kyniem')->result();
