@@ -67,14 +67,6 @@
 						<div class="message-head clearfix">
 							<div class="avatar pull-left">
 							<a href="#"><img src="<?= PATH_AVATAR.$value->user_avatar; ?>"></a>
-							<?php switch($value->kyniem_auth){
-								case "Bố":
-								  ?> <a href="#"><img src="<?= base_url(); ?>asset/data/BoSon.jpg"></a> <?php 
-								break;
-								case "Mẹ":
-									?> <a href="#"><img src="<?= base_url(); ?>asset/data/MeSu.jpg"></a> <?php 
-								break;
-								} ?>
 							</div>
 							<div class="user-detail">
 								<h5 class="handle"><?= ($value->kyniem_title?$value->kyniem_title:"Happy Family"); ?></h5>
