@@ -11,7 +11,7 @@ class Users extends MY_Controller {
 			$type     = $this->input->post("type");
 			$object = [
 				"username" => $username,
-				"password" => md5($password."__".$username),
+				"password" => md5($password),
 				"type" => $type,
 			];
 			$this->db->where('username', $username);
@@ -46,12 +46,12 @@ class Users extends MY_Controller {
 				$rs_u = $this->db->get('user', 1)->row();
 				//Kiểm tra có đúng mật khẩu cũ không
 				if(NEED_OLD_PASS!=1){
-					if($rs_u->password != md5($old_password."__".$rs_u->username)){
+					if($rs_u->password != md5($old_password)){
 						redirect('404','refresh');
 					}
 				}
 					$this->db->where('id', $rs_u->id);
-					if($this->db->update('user', ["password" => md5($new_password."__".$rs_u->username)])){
+					if($this->db->update('user', ["password" => md5($new_password)])){
 						$this->session->set_flashdata('item',["success"=>"Đã đổi password thành công"]);
 					}else{
 						$this->session->set_flashdata('item',["error"=>"Không đổi được password"]);
@@ -67,12 +67,16 @@ class Users extends MY_Controller {
 			redirect('404','refresh');
 		}
 		if($this->input->post()){
-			$data_file = $this->do_upload_single_core();
+			if($_FILES["userfile"]["name"]!=""){
+				$data_file = $this->do_upload_single_core();
+				$object["user_avatar"]=$data_file["success"]["file_name"];
+			}
 			$this->db->where('id', (int)$id);
-			if($this->db->update('user', ["user_avatar"=>$data_file["success"]["file_name"]])){
-				$this->session->set_flashdata('alert',"Đã lưu được hình");
+			$object["username"]=$this->input->post('username');
+			if($this->db->update('user', $object )){
+				$this->session->set_flashdata('alert',"Đã cập nhật");
 			}else{
-				$this->session->set_flashdata('alert',"Không lưu được hình");
+				$this->session->set_flashdata('alert',"Không lưu được");
 			}
 		}
 

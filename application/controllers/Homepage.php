@@ -111,10 +111,18 @@ class Homepage extends MY_Controller {
 		$flag = false;
 		if($this->input->post('username') && $this->input->post('password')){
 			$username = $this->input->post('username');
+			switch($username){
+				case "bo":
+					$username = $this->db->where('id', 11)->get("user")->row()->username;
+				break;
+				case "me":
+					$username = $this->db->where('id', 12)->get("user")->row()->username;
+				break;
+			}
 			$password = $this->input->post('password');
 			$this->db->where('username', $username);
 			$rs_user = $this->db->get('user',1)->row();
-			if($username == $rs_user->username && $rs_user->password == md5($password."__".$rs_user->username)){
+			if($username == $rs_user->username && $rs_user->password == md5($password)){
 				$array = array(
 					'user' => $username,
 					'user_id' => ($rs_user->id),
