@@ -111,6 +111,7 @@ if(!$navigation_bar){
 		if($this->session->flashdata('error_upload')){
 			print_r($this->session->flashdata('error_upload'));
 		}
+
 		if($this->router->fetch_method()!="login"){
 			$this->load->view('_includes/navbar');
 		}
@@ -150,5 +151,14 @@ if(!$navigation_bar){
 		}
 		if($custom_html){
 			echo $custom_html;
+		}
+
+		if($this->session->flashdata('alert')){
+			?>
+			<div class="alert alert-info">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong>Alert!</strong> <?= $this->session->flashdata('alert'); ?>
+			</div>
+			<?php
 		}
 ?>

@@ -66,6 +66,7 @@
 					<div class="message-inner">
 						<div class="message-head clearfix">
 							<div class="avatar pull-left">
+							<a href="#"><img src="<?= PATH_AVATAR.$value->user_avatar; ?>"></a>
 							<?php switch($value->kyniem_auth){
 								case "Bố":
 								  ?> <a href="#"><img src="<?= base_url(); ?>asset/data/BoSon.jpg"></a> <?php 
@@ -74,7 +75,6 @@
 									?> <a href="#"><img src="<?= base_url(); ?>asset/data/MeSu.jpg"></a> <?php 
 								break;
 								} ?>
-							
 							</div>
 							<div class="user-detail">
 								<h5 class="handle"><?= ($value->kyniem_title?$value->kyniem_title:"Happy Family"); ?></h5>
@@ -125,7 +125,7 @@
 									foreach ((array)$comment[$value->id] as $key_comment => $value_comment) {
 										  ?> 
 											<li data-id='<?= $value_comment->id; ?>' class='ele_comment' id="">
-												<div class='avatar'><img src='/asset/data/<?= $value_comment->user_avatar; ?>' class='avatar_comment'> </div>
+												<div class='avatar'><img src='<?= PATH_AVATAR.$value_comment->user_avatar; ?>' class='avatar_comment'> </div>
 												<div class="content">
 													<div class="username"><b><?= $value_comment->username; ?></b></div>
 													<div class="comment_create"><small><?= $value_comment->comment_create; ?></small></div> 

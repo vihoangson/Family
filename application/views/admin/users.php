@@ -63,7 +63,7 @@ $this->load->view('_includes/header',$data_header);
 			<td><?= $value->username; ?></td>
 			<td><?= $value->password; ?></td>
 			<td><a class="btn btn-info" href="/admin/users/change_password/<?= $value->id; ?>">Change password</a></td>
-			
+			<td><a class="btn btn-info" href="/admin/users/change_setting/<?= $value->id; ?>">Change setting</a></td>
 			<td><?= $value->type; ?></td>
 		</tr>
 			<?php

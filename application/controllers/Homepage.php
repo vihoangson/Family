@@ -168,7 +168,6 @@ class Homepage extends MY_Controller {
 			}
 		}
 		return ["error" => $error, "success" => $success];
-		
 	}
 
 	private function set_upload_options()
@@ -499,9 +498,11 @@ class Homepage extends MY_Controller {
 				//var_dump($accessToken->getValue());
 			}
 			$this->facebook->setDefaultAccessToken($accessToken);
-			$response = $this->facebook->get('/me?locale=en_US&fields=name,email');
+			$response = $this->facebook->get('/me?locale=en_US&fields=name,email,context');
+			//https://graph.facebook.com/search?q=vihoangson@gmail.com&type=user
 			$userNode = $response->getGraphUser();
-
+			//print_r($userNode["context"]["mutual_friends"]);
+			//die;
 			// Điều khiển trong admin khi login = facebook
 			if(true){
 				$rs_fb = $this->db->where("archive_key","lg_fb")->get('archive')->row()->archive_content;

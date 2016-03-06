@@ -1,4 +1,5 @@
 <?php 
+	define("PATH_AVATAR","/asset/images/");
 
 	// ALLOW_SENT_MAIL
 	// true: Được phép send mail

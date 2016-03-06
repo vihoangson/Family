@@ -106,5 +106,72 @@ class MY_Controller extends CI_Controller
 			}
 		}
 	}
+
+	public function do_upload_many_core()
+	{       
+		$this->load->library('upload');
+		$files = $_FILES;
+		$cpt = count($_FILES['userfile']['name']);
+		$error = [];
+		$success = [];
+		for($i=0; $i<$cpt; $i++)
+		{
+			$_FILES['userfile']['name']= $files['userfile']['name'][$i];
+			$_FILES['userfile']['type']= $files['userfile']['type'][$i];
+			$_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+			$_FILES['userfile']['error']= $files['userfile']['error'][$i];
+			$_FILES['userfile']['size']= $files['userfile']['size'][$i];    
+
+			$this->upload->initialize($this->set_upload_options_core());
+			if($this->upload->do_upload()){
+				$img_info = $this->upload->data();
+				$success[] = $img_info;
+				$this->resize_img(FCPATH."asset/images/".$img_info['file_name'],100,100);
+			}else{
+				$error[] = $this->upload->display_errors();
+			}
+		}
+		return ["error" => $error, "success" => $success];
+	}
+
+	public function do_upload_single_core()
+	{
+		$this->load->library('upload');
+		$this->upload->initialize($this->set_upload_options_core());
+		if($this->upload->do_upload()){
+			$img_info = $this->upload->data();
+			$success = $img_info;
+			$this->resize_img_core(FCPATH."asset/images/".$img_info['file_name'],100,100);
+		}else{
+			$error = $this->upload->display_errors();
+		}
+		return ["error" => $error, "success" => $success];
+	}
+
+	private function set_upload_options_core()
+	{
+		//upload an image options
+		$config = array();
+		$config['upload_path'] = 'asset/images/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']  = '1000000';
+		$config['max_width']  = '102400';
+		$config['max_height']  = '76800';
+		$config['overwrite']     = FALSE;
+		return $config;
+	}
+
+	private function resize_img_core($path,$width,$height){
+		$this->load->library('image_lib');
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $path;
+		$config['new_image'] = FCPATH."asset/images/thumb/";
+		$config['create_thumb'] = TRUE;
+		$config['maintain_ratio'] = TRUE;
+		$config['width']         = $width;
+		$config['height']       = $height;
+		$this->image_lib->initialize($config);
+		$this->image_lib->resize();	
+	}
 }
 ?>

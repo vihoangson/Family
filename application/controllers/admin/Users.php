@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Users extends CI_Controller {
+class Users extends MY_Controller {
 
 	public function index()
 	{
@@ -62,6 +62,23 @@ class Users extends CI_Controller {
 		$this->load->view('admin/change_password');
 	}
 
+	public function change_setting($id = null){
+		if(!isset($id)){
+			redirect('404','refresh');
+		}
+		if($this->input->post()){
+			$data_file = $this->do_upload_single_core();
+			$this->db->where('id', (int)$id);
+			if($this->db->update('user', ["user_avatar"=>$data_file["success"]["file_name"]])){
+				$this->session->set_flashdata('alert',"Đã lưu được hình");
+			}else{
+				$this->session->set_flashdata('alert',"Không lưu được hình");
+			}
+		}
+
+		$rs = $this->db->where("id",$id)->get('user')->row();
+		$this->load->view('admin/change_setting',compact("rs"));
+	}
 }
 
 /* End of file Users.php */
