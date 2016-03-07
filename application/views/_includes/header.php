@@ -41,6 +41,7 @@ if(!$navigation_bar){
 		<!-- Bootstrap JavaScript -->
 		<script src="<?= base_url(); ?>asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/jquery.magnific-popup.js"></script>
+		<script src="<?= base_url(); ?>asset/js/jquery.form.js"></script>
 		<?php
 		if(isset($js)){
 			foreach ((array)$js as $key => $value) {

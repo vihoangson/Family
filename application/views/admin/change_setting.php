@@ -38,4 +38,38 @@ $this->load->view('_includes/header',$data_header); ?>
 	<br>
 	<p><button type="submit" name="submit" value="1" class="btn btn-primary">Submit</button></p>
 </form>
+
+
+<form id="uploadpic" action="" enctype="multipart/form-data" method="post">
+	<input id="File1" type="file" name="file_x" style="display:none;">
+	<!-- <button type="button" id="button-img">Button img</button> -->
+	<div class="percent"></div>
+</form>
+<div id="image_view">1</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#image_view").click(function(){
+			$("#File1").trigger("click");
+		})
+		$('#File1').change(function() {
+			var percent = $('.percent');
+			$("#uploadpic").ajaxForm({
+				url : "",
+				target: "#image_view",
+				beforeSend: function() {
+					percent.show();
+				},
+				uploadProgress: function(event, position, total, percentComplete) {
+					var percentVal = percentComplete + '%';
+					percent.html(percentVal);
+				},
+				success:function(){
+					percent.hide();
+				}
+			}).submit();
+			return false;
+		});
+	});
+</script>
+
 <?php $this->load->view('_includes/footer'); ?>

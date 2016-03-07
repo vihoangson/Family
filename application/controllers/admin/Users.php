@@ -63,8 +63,17 @@ class Users extends MY_Controller {
 	}
 
 	public function change_setting($id = null){
+
 		if(!isset($id)){
 			redirect('404','refresh');
+		}
+		if($_FILES["file_x"]["name"]!=""){
+			if(move_uploaded_file($_FILES["file_x"]["tmp_name"], FCPATH."/asset/images/".$_FILES["file_x"]["name"])){
+				echo "<p><img src='/asset/images/".$_FILES["file_x"]["name"]."'></p>";
+			}else{
+				echo "error";
+			}
+			die;
 		}
 		if($this->input->post()){
 			if($_FILES["userfile"]["name"]!=""){
