@@ -207,6 +207,9 @@ class Homepage extends MY_Controller {
 			"kyniem_create" => date("Y-m-d h:i:s",time()),
 			"kyniem_modifie" => date("Y-m-d h:i:s",time()),
 		];
+
+		$this->action->archive_log("insert_kyniem",json_encode($data));
+
 		if($file){
 			$data["kyniem_images"] = json_encode($file);
 		}
