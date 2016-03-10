@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 	define("PATH_AVATAR","/asset/images/");
 
 	// ALLOW_SENT_MAIL
@@ -14,4 +15,10 @@
 	// $config["password_timeline"]
 	// password vào time line
 	$config["password_timeline"] = "susu";
+
+	// Ngày dự sinh để đếm trong countdown
+	// Format date YYYY-MM-DD
+	// define("NGAYDUSINH","2016-08-30");// Xuân
+	define("NGAYDUSINH","2016-05-20");
+
 ?>

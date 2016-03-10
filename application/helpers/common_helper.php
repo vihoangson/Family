@@ -38,9 +38,12 @@
 		return $html;
 	}
 
-	function get_content_countdown(){
+	function get_content_countdown($ngaydusinh="2016-05-20"){
+		if(NGAYDUSINH){
+			$ngaydusinh = NGAYDUSINH;
+		}
 		$date1=date_create(date("Y-m-d h:i:s",time()));
-		$date2=date_create("2016-05-20");
+		$date2=date_create($ngaydusinh);
 		$diff=date_diff($date1,$date2);
 		$days = $diff->days;
 		$weeks = round((280 - $days)/7);

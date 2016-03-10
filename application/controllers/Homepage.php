@@ -192,14 +192,6 @@ class Homepage extends MY_Controller {
 	}
 
 	public function add_new(){
-		$ul = $this->do_upload();
-		if($ul["error"]){
-			$this->session->set_flashdata('error_upload', $error);
-		}
-		foreach ($ul["success"] as $key => $value) {
-			$file[] = $value["file_name"];
-		}
-
 		$data = [
 			"kyniem_title" => $this->input->post("title"),
 			"kyniem_content" => $this->input->post("content"),
@@ -207,8 +199,15 @@ class Homepage extends MY_Controller {
 			"kyniem_create" => date("Y-m-d h:i:s",time()),
 			"kyniem_modifie" => date("Y-m-d h:i:s",time()),
 		];
-
 		$this->action->archive_log("insert_kyniem",json_encode($data));
+
+		$ul = $this->do_upload();
+		if($ul["error"]){
+			$this->session->set_flashdata('error_upload', $error);
+		}
+		foreach ($ul["success"] as $key => $value) {
+			$file[] = $value["file_name"];
+		}
 
 		if($file){
 			$data["kyniem_images"] = json_encode($file);
@@ -218,7 +217,6 @@ class Homepage extends MY_Controller {
 		}else{
 			echo 0;
 		}
-		
 	}
 
 	public function edit_new($token=null,$id=null){
@@ -228,11 +226,11 @@ class Homepage extends MY_Controller {
 			$data = [
 				"kyniem_title" => $this->input->post("title"),
 				"kyniem_content" => $this->input->post("content"),
-				"kyniem_auth" => $this->input->post("kyniem_auth"),				
+				"kyniem_auth" => $this->input->post("kyniem_auth"),
 				"kyniem_modifie" => date("Y-m-d h:i:s",time()),
 			];
-			
-			if($_FILES){				
+
+			if($_FILES){
 				$ul = $this->do_upload();
 				if($ul["error"]){
 					$this->session->set_flashdata('error_upload', $error);
@@ -312,34 +310,8 @@ class Homepage extends MY_Controller {
 	}
 
 	private function _get_content_countdown(){
+		// Funciton in file common_helper
 		return get_content_countdown();
-		
-		$date1=date_create(date("Y-m-d h:i:s",time()));
-		$date2=date_create("2016-05-20");
-		$diff=date_diff($date1,$date2);
-		$days = $diff->days;
-		$percent = 100-round(($days/266)*100);
-		$m = $diff->m;
-		$d = $diff->d;
-		$h = $diff->h;
-		$i = $diff->i;
-		$s = $diff->s;
-		$html = "
-		<center>
-			<h2 class='text-center'>Ngày dự sinh: <br>".date("d-m-Y",$date2->getTimestamp())."</h2>
-			<h1>".$days." Ngày</h1>
-			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$i." Phút ".$s." Giây </h3> 
-			".'
-			<div class="progress">
-				<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$percent.'%">
-					<span class="sr-only">'.$percent.'% Complete (success)</span>
-				</div>
-			</div>
-			<h2><i class="fa fa-refresh fa-spin"></i> Loading</h2>
-			'."
-		</center>
-		";
-		return $html;
 	}
 
 	public function count_down(){

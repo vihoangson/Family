@@ -429,3 +429,33 @@ li.ele_comment:after {
     left: 0;
     top: 0;
 }
+
+.countdown_box {
+    position: fixed;
+    bottom: -273px;
+    right: 0;
+    z-index: 4;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 433px;
+    height:328px;
+}
+.countdown_box:hover{
+    bottom: 0px;
+}
+@media screen and (max-width:1000px){
+    .countdown_box{
+        /*display:none;*/
+        bottom: -300px;
+        width:100%;
+    }
+}
+.countdown_box > header {
+    background: url(/asset/data/count_down.jpg) no-repeat center center;
+    height: 44px;
+}
+.countdown_box:hover > header {
+    background: white;
+    height: 0px;
+}

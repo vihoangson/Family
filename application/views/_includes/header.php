@@ -71,42 +71,13 @@ if(!$navigation_bar){
 
 
 		</script>
-<style>
-.countdown_box {
-    position: fixed;
-    bottom: -300px;
-    right: 0;
-    z-index: 4;
-    background: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 433px;
-    height:328px;
-}
-.countdown_box:hover{
-	bottom: 0px;
-}
-@media screen and (max-width:1000px){
-    .countdown_box{
-        /*display:none;*/
-        bottom: -300px;
-        width:100%;
-    }
-}
-.countdown_box > header {
-    background: red;
-    height: 17px;
-}
-.countdown_box:hover > header {
-    background: white;
-    height: 0px;
-}
-</style>
+
 	</head>
 	<body>
 		<div class="countdown_box">
-		<header></header>
-		<?php echo get_content_countdown(); ?></div>
+			<header></header>
+			<?php echo get_content_countdown(); ?>
+		</div>
 		<div class="container">
 		<?php
 		if($this->session->flashdata('error_upload')){
