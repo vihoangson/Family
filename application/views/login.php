@@ -32,7 +32,7 @@
                     </form>
                     <?php
                     // Nếu không có app id thì ko được đăng nhập qua facebook
-                    if(APP_ID){ 
+                    if(APP_ID!=""){ 
                         ?><p class="text-center"><a href="<?= $url_fb; ?>"><img style="max-width:100%" src="/asset/data/login_w_facebook.png"></a></p><?php
                     } ?>
             </div>
