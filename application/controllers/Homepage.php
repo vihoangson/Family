@@ -195,10 +195,11 @@ class Homepage extends MY_Controller {
 		$data = [
 			"kyniem_title" => $this->input->post("title"),
 			"kyniem_content" => $this->input->post("content"),
-			"kyniem_auth" => $this->input->post("kyniem_auth"),
+			"kyniem_auth" => $this->session->userdata('user_id'),
 			"kyniem_create" => date("Y-m-d h:i:s",time()),
 			"kyniem_modifie" => date("Y-m-d h:i:s",time()),
 		];
+
 		$this->action->archive_log("insert_kyniem",json_encode($data));
 
 		$ul = $this->do_upload();

@@ -10,12 +10,6 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 ?>
 <form action="<?= base_url(); ?>homepage/<?= ($data->id?"edit_new/".md5($this->config->config["encryption_key"]."__".$data->id)."/".$data->id:"add_new"); ?>" id="add_new" method="POST" role="form" enctype="multipart/form-data">
 	<div class="form-group">
-		<label for="">Người viết</label>
-		<input type="radio" id='bo_checkbox' <?= ($data->kyniem_auth=="11"?"checked":""); ?> name="kyniem_auth" value="11" required> <label for="bo_checkbox">Bố </label> 
-		<input type="radio" id='me_checkbox' <?= ($data->kyniem_auth=="12"?"checked":""); ?> name="kyniem_auth" value="12" required> <label for="me_checkbox">Mẹ </label>
-	</div>
-
-	<div class="form-group">
 		<label for="">Tên của kỷ niệm</label>
 		<input name="title" type="text" class="form-control" id="" placeholder="Input field" value="<?= ($data->kyniem_title?$data->kyniem_title:""); ?>">
 	</div>
