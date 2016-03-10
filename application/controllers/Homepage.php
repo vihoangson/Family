@@ -227,7 +227,7 @@ class Homepage extends MY_Controller {
 			$data = [
 				"kyniem_title" => $this->input->post("title"),
 				"kyniem_content" => $this->input->post("content"),
-				"kyniem_auth" => $this->input->post("kyniem_auth"),
+				"kyniem_auth" => $this->session->userdata('user_id'),
 				"kyniem_modifie" => date("Y-m-d h:i:s",time()),
 			];
 
