@@ -1,4 +1,5 @@
 <?php $this->load->view('_includes/header',["css"=>[base_url()."asset/css/login.css"]]); ?>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <div class="container">
     <div class="row">
         <div class='col-md-3'></div>
@@ -33,7 +34,10 @@
                     <?php
                     // Nếu không có app id thì ko được đăng nhập qua facebook
                     if(defined("APP_ID")){
-                        ?><p class="text-center"><a href="<?= $url_fb; ?>"><img style="max-width:100%" src="/asset/data/login_w_facebook.png"></a></p><?php
+                        ?>
+                        <p class="text-center"><a href="<?= $url_fb; ?>"><img style="max-width:100%" src="/asset/data/login_w_facebook.png"></a></p>
+                        <div class="g-recaptcha" data-sitekey="6LfycxoTAAAAALXMmet9_axitVj5lObK5BXC9x9r"></div>
+                        <?php
                     } ?>
             </div>
         </div>
