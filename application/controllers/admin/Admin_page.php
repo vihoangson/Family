@@ -1,4 +1,4 @@
-4/7/2016 2:41:34 PM ICT<?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_page extends MY_Controller {
