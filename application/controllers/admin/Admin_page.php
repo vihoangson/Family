@@ -1,4 +1,4 @@
-<?php
+4/7/2016 2:41:34 PM ICT<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_page extends MY_Controller {
@@ -9,7 +9,7 @@ class Admin_page extends MY_Controller {
 	}
 
 	public function session_login(){
-		$rs = $this->db->where("archive_key like 'login_%' ")->get('archive')->result();
+		$rs = $this->db->where("archive_key like 'login_%' ")->get('archive')->order_by("id","desc")->result();
 		$this->load->view('admin/session_login' , compact("rs"));
 	}
 
