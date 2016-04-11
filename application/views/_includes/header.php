@@ -13,7 +13,7 @@ if(!$navigation_bar){
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Sweet house</title>
-
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 		<!-- Bootstrap CSS -->
 		<link href="<?= base_url(); ?>asset/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/css/family.css" rel="stylesheet">
