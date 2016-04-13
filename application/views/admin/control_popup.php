@@ -21,6 +21,13 @@ $this->load->view('_includes/header_admin',$data_header);
 				</div>
 			</div>
 			<div class="form-group detail_popup" <?= ($flag->option_content==1?"":'style="display:none;"'); ?> >
+
+				<label for="">Bật/Tắt mở 1 lần đầu</label>
+				<div class="material-switch">
+					<input id="someSwitchOptionPrimary_session" name="popup_session" value="1" type="checkbox" <?= ($popup_session->option_content==1?"checked":""); ?>/>
+					<label for="someSwitchOptionPrimary_session" class="label-info"></label>
+				</div>
+
 				<label for="">Nội dung popup</label>
 				<div class="thumbnail"><?= check_popup($rs->option_content); ?></div>
 				<div class="input-group">

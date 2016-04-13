@@ -75,28 +75,29 @@
 	</script>
 
 	<?php
-		// option popup
-		if($this->Options_model->get_option("popup")->option_content && $this->session->userdata('popup')!=1){
-			$array = array(
-				'popup' => 1
-			);
-			$this->session->set_userdata( $array );
-			?>
-			<div class="modal fade popup" id="modal-id-popup">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<!-- <h4 class="modal-title">Modal title</h4> -->
+		if($this->Options_model->get_option("popup_flag")->option_content==1){
+			// option popup
+			if($this->Options_model->get_option("popup")->option_content && $this->session->userdata('popup')!=1){		
+				if($this->Options_model->get_option("popup_session")->option_content == 1){
+					$this->session->set_userdata( ['popup' => 1] );
+				}
+				?>
+				<div class="modal fade popup" id="modal-id-popup">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<!-- <h4 class="modal-title">Modal title</h4> -->
+							</div>
+							<div class="modal-body"><?= check_popup($this->Options_model->get_option("popup")->option_content); ?></div>
 						</div>
-						<div class="modal-body"><?= check_popup($this->Options_model->get_option("popup")->option_content); ?></div>
 					</div>
 				</div>
-			</div>
-			<script>
-				$("#modal-id-popup").modal("show");
-			</script>
-			<?php
+				<script>
+					$("#modal-id-popup").modal("show");
+				</script>
+				<?php
+			}
 		}
 	?>
 </body>
