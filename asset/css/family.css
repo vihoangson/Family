@@ -463,3 +463,11 @@ li.ele_comment:after {
 #modal-id-popup .modal-body img {
     width:100%;
 }
+
+#modal-id-browser .modal-body .thumbnail img{
+    cursor: pointer;
+}
+.style_content_popup{
+    text-align: center;
+    font-weight: 15px;
+}

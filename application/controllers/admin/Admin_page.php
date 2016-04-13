@@ -29,12 +29,17 @@ class Admin_page extends MY_Controller {
 	}
 
 	public function control_popup(){
-
 		if($this->input->post('content')){
+			if($this->input->post('flag_toggle') == 1){
+				$this->Options_model->save_option("popup_flag",1);
+			}else{
+				$this->Options_model->save_option("popup_flag",0);
+			}
 			$this->Options_model->save_option("popup",$this->input->post('content'));
 		}
-		$rs = $this->Options_model->get_option("popup");
-		$this->load->view('admin/control_popup' , compact("rs"));
+		$rs   = $this->Options_model->get_option("popup");
+		$flag = $this->Options_model->get_option("popup_flag");
+		$this->load->view('admin/control_popup' , compact("rs","flag"));
 	}
 
 }

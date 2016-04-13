@@ -4,7 +4,7 @@
 		if(preg_match("/\.(jpg|gif|png)$/", $str_popup)){
 			return "<img onError=\"this.src='https://placeholdit.imgix.net/~text?txtsize=9&txt=No%20image&w=300&h=300'\" src='".$str_popup."'> ";
 		}else{
-			return $str_popup;
+			return "<div class='style_content_popup'>".$str_popup."</div>";
 		}
 	}
 

@@ -17,6 +17,7 @@ if(!$navigation_bar){
 		<!-- Bootstrap CSS -->
 		<link href="<?= base_url(); ?>asset/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/css/family.css" rel="stylesheet">
+		<link href="<?= base_url(); ?>asset/css/button_switch.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<?php

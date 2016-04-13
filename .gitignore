@@ -8,3 +8,4 @@ composer.phar
 asset/file_upload
 asset/data_note
 application/config/family/config.php
+asset/uploads/
