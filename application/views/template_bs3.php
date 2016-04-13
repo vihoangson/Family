@@ -70,9 +70,6 @@
 		</div>
 	</div>
 
-	<div class="well"></div>
-
-	<div class="well"></div>
 
 
 	<div class="container">
@@ -81,7 +78,6 @@
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">Material Design Switch Demos</div>
-            
                 <!-- List group -->
                 <ul class="list-group">
                     <li class="list-group-item">

@@ -11,7 +11,7 @@ $data_header = [
 ];
 $this->load->view('_includes/header_admin',$data_header);
 	?>
-		<form action="" method="POST" role="form">
+		<form action="" method="POST" role="form" id='form_popup'>
 			<legend>Controll popup</legend>
 			<div class="form-group">
 				<label for="">Bật/Tắt Popup</label>
@@ -56,18 +56,21 @@ $this->load->view('_includes/header_admin',$data_header);
 
 		<script>
 			$.checkFlag = function(){
-				console.log($("[name='flag_toggle']").val());
 				if($("[name='flag_toggle']:checked").val()==1){
 					$(".detail_popup").fadeIn(500);
 				}else{
 					$(".detail_popup").fadeOut(500);
 				}
 			}
-
 			$.checkFlag();
 
-			$("[name='flag_toggle']").change(function(){
+			$("#someSwitchOptionPrimary").change(function(){
 				$.checkFlag();
+				$(this).parents("form").submit();
+			});
+
+			$("#someSwitchOptionPrimary_session").change(function(){
+				$(this).parents("form").submit();
 			});
 
 			$.load_brower = function(){
