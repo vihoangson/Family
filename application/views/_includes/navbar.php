@@ -14,7 +14,7 @@
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="<?= base_url(); ?>">Trang chủ</a></li>
-			<li><a href="<?= base_url(); ?>">Timeline</a></li>
+			<?= ($this->Options_model->get_option("popup_flag")->option_content==1?'<li><a href="#" id="button_popup">Popup</a></li>':'') ?>
 		</ul>
 		<form action="/homepage/search_keyword" class="navbar-form navbar-left" role="search" method="post">
 			<div class="form-group">
@@ -35,7 +35,6 @@
 					<li><a href="<?= base_url(); ?>homepage/custom/tool"><i class="fa fa-facebook"></i> Các công cụ liên quan</a></li>
 					<li><a href="<?= base_url(); ?>setting"><i class="fa fa-gear"></i> Tùy chỉnh</a></li>
 					<li><a href="/Template_view_controller">Template</a></li>
-					
 					<li><a href="<?= base_url(); ?>logout"><i class="fa fa-power-off"></i> Logout</a></li>
 				</ul>
 			</li>

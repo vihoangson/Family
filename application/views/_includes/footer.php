@@ -77,11 +77,12 @@
 	<?php
 		if($this->Options_model->get_option("popup_flag")->option_content==1){
 			// option popup
-			if($this->Options_model->get_option("popup")->option_content && $this->session->userdata('popup')!=1){		
+			if($this->Options_model->get_option("popup")->option_content ){
 				if($this->Options_model->get_option("popup_session")->option_content == 1){
 					$this->session->set_userdata( ['popup' => 1] );
 				}
 				?>
+
 				<div class="modal fade popup" id="modal-id-popup">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -93,8 +94,20 @@
 						</div>
 					</div>
 				</div>
+
 				<script>
-					$("#modal-id-popup").modal("show");
+					<?php
+					if($this->Options_model->get_option("popup_session")->option_content == 1 && $this->session->userdata('popup')!=1){
+						?>$("#modal-id-popup").modal("show");<?php
+					}else{
+						?>
+						$("#button_popup").click(function() {
+							$("#modal-id-popup").modal("show");
+							return false;
+						});
+						<?php
+					}
+					?>
 				</script>
 				<?php
 			}
