@@ -8,7 +8,7 @@ $data_header = [
 	],
 	"custom_html"=> '<h1> Nơi up hình ảnh cần thiết </h1>',
 ];
-$this->load->view('_includes/header',$data_header); ?>
+$this->load->view('_includes/header_admin',$data_header); ?>
 
 <p><a href="/admin/files_controller/do_upload" class="btn btn-primary"><i class="fa fa-plus"></i> Thêm media</a> <button type='button' onclick='$(".hide_box").toggle()'><i class='fa fa-eye'></i></button></p>
 <div class="row">
@@ -35,4 +35,4 @@ $this->load->view('_includes/header',$data_header); ?>
 		}
 	} ?>
 </div>
-<?php $this->load->view('_includes/footer'); ?>
+<?php $this->load->view('_includes/footer_admin'); ?>

@@ -31,31 +31,20 @@ class Files_controller extends MY_Controller {
 
 	public function do_upload(){
 		if($_FILES["userfile"]){
-			if(!is_dir($this->path_file_upload.date("Y"))){
-				mkdir($this->path_file_upload.date("Y"));
-			}
-			if(!is_dir($this->path_file_upload.date("Y")."/".date("m"))){
-				mkdir($this->path_file_upload.date("Y")."/".date("m"));
-			}
-			if(!is_dir($this->path_file_upload.date("Y")."/".date("m")."/".date("d"))){
-				mkdir($this->path_file_upload.date("Y")."/".date("m")."/".date("d"));
-			}
-			$path_file = $this->path_file_upload.date("Y")."/".date("m")."/".date("d");
-			@chmod($path_file, 0777);
-
-			$config['upload_path'] = $path_file;
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']  = '10000';
-			$config['max_width']  = '20000';
-			$config['max_height']  = '20000';
+			$config = [
+				'upload_path'    => FCPATH."asset/uploads/",
+				'allowed_types'  => 'gif|jpg|png',
+				'max_size'       => '10000',
+				'max_width'      => '20000',
+				'max_height'     => '20000'
+			];
 
 			$this->load->library('upload', $config);
 
 			if ( ! $this->upload->do_upload()){
 				$error = array('error' => $this->upload->display_errors());
 				$this->session->set_flashdata('item', ["danger"=>"Upload có lỗi [".$this->upload->display_errors()."]"]);
-			}
-			else{
+			}else{
 				$this->max_size_upload_timeline = 800;
 				$data = array('upload_data' => $this->upload->data());
 				if($data["upload_data"]["image_height"] > $this->max_size_upload_timeline || $data["upload_data"]["image_width"] > $this->max_size_upload_timeline){

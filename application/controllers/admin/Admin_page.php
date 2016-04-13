@@ -3,9 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_page extends MY_Controller {
 
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('files_model');
+		$this->path_file_upload = FCPATH."asset/file_upload/";
+	}
+
 	public function index()
 	{
 		$this->load->view('admin/admin_page');
+	}
+
+	public function upload_file(){
+		$rs = $this->files_model->find()->result();
+		$this->load->view('admin/file_list',compact("rs"));
 	}
 
 	public function session_login(){

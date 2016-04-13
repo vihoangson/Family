@@ -9,7 +9,7 @@ $data_header = [
 	],
 	"custom_html"=> '<h1> Chỉnh sửa hình ảnh </h1>',
 ];
-$this->load->view('_includes/header',$data_header);
+$this->load->view('_includes/header_admin',$data_header);
 
 $url_img = str_replace(FCPATH, "/", $rs->files_path);
 ?>
@@ -20,4 +20,4 @@ $url_img = str_replace(FCPATH, "/", $rs->files_path);
 		<a href="/admin/files_controller/rotate_img_files/files_<?= $rs->id; ?>/right" class="btn btn-default"><i class="fa fa-rotate-left"></i></a>
 	</div>
 
-<?php $this->load->view('_includes/footer'); ?>
+<?php $this->load->view('_includes/footer_admin'); ?>
