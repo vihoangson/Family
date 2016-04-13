@@ -5,7 +5,7 @@ if(!$navigation_bar){
 		base_url()."admin" => "Admin",
 	];
 }
- ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -50,28 +50,7 @@ if(!$navigation_bar){
 			}
 		}
 		?>
-			<?= (isset($custom_js)?$custom_js:""); ?>
-		<script>
-
-			$(document).ready(function() {
-				setInterval(function(){
-					var then  = "05/05/2016 14:20:30";
-					diff = moment.utc(moment(then,"DD/MM/YYYY HH:mm:ss").diff(moment()));
-					string = MM + diff.month() + " Tháng " + diff.day() + " Ngày " + diff.hour() + " Giờ " + diff.minute() + " Phút " + diff.second() + " Giây " +diff.millisecond() ;
-				    console.log(string);
-				    $("#count_down").text(string);
-				},100000);
-
-				$('.image-link').magnificPopup({
-					gallery:{enabled:true},
-					type:'image',
-					delegate: 'a'
-				});
-			});
-
-
-		</script>
-
+		<?= (isset($custom_js)?$custom_js:""); ?>
 	</head>
 	<body>
 		<div class="countdown_box">

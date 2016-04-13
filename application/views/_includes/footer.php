@@ -9,44 +9,95 @@
 		</div>
 	</div>
 	<script>
-		jQuery.fn.extend({
-			insertAtCaret: function(myValue) {
-				return this.each(function(i) {
-					if (document.selection) {
-						//For browsers like Internet Explorer
-						this.focus();
-						sel = document.selection.createRange();
-						sel.text = myValue;
-						this.focus();
-					}
-					else if (this.selectionStart || this.selectionStart == '0') {
-						//For browsers like Firefox and Webkit based
-						var startPos = this.selectionStart;
-						var endPos = this.selectionEnd;
-						var scrollTop = this.scrollTop;
-						this.value = this.value.substring(0, startPos)+myValue+this.value.substring(endPos,this.value.length);
-						this.focus();
-						this.selectionStart = startPos + myValue.length;
-						this.selectionEnd = startPos + myValue.length;
-						this.scrollTop = scrollTop;
-					} else {
-						this.value += myValue;
-						this.focus();
-					}
-				})
-			}
-		});
+		//============ ============  ============ ============
+		//  Gắn hình mặt cười trong phần nhập liệu
+		//============ ============  ============ ============
+			jQuery.fn.extend({
+				insertAtCaret: function(myValue) {
+					return this.each(function(i) {
+						if (document.selection) {
+							//For browsers like Internet Explorer
+							this.focus();
+							sel = document.selection.createRange();
+							sel.text = myValue;
+							this.focus();
+						}
+						else if (this.selectionStart || this.selectionStart == '0') {
+							//For browsers like Firefox and Webkit based
+							var startPos = this.selectionStart;
+							var endPos = this.selectionEnd;
+							var scrollTop = this.scrollTop;
+							this.value = this.value.substring(0, startPos)+myValue+this.value.substring(endPos,this.value.length);
+							this.focus();
+							this.selectionStart = startPos + myValue.length;
+							this.selectionEnd = startPos + myValue.length;
+							this.scrollTop = scrollTop;
+						} else {
+							this.value += myValue;
+							this.focus();
+						}
+					})
+				}
+			});
 
-		$(".emotion_icon").click(function(){
-			rg = $("#content").val().match(/(\([a-z]*\)|\:\))/g);
-			$("#content").insertAtCaret(" "+$(this).attr("alt")+" ");
-			$(".icon_box").hide();
-		});
+			$(".emotion_icon").click(function(){
+				rg = $("#content").val().match(/(\([a-z]*\)|\:\))/g);
+				$("#content").insertAtCaret(" "+$(this).attr("alt")+" ");
+				$(".icon_box").hide();
+			});
+		//============ ============  ============ ============
+		// END Gắn hình mặt cười trong phần nhập liệu
+		//============ ============  ============ ============
 
-		$(".tag_ele").click(function(){
-			rg = $("#content").val().match(/(\([a-z]*\)|\:\))/g);
-			$("#content").insertAtCaret(" "+$(this).attr("alt")+" ");		
-		});
+		//============ ============  ============ ============
+		// Tagit trong phần nhập liệu
+		//============ ============  ============ ============
+			$(".tag_ele").click(function(){
+				rg = $("#content").val().match(/(\([a-z]*\)|\:\))/g);
+				$("#content").insertAtCaret(" "+$(this).attr("alt")+" ");		
+			});
+		//============ ============  ============ ============
+		// END Tagit trong phần nhập liệu
+		//============ ============  ============ ============
+
+		//============ ============  ============ ============
+		// img click
+		//============ ============  ============ ============
+			$('.image-link').magnificPopup({
+				gallery:{enabled:true},
+				type:'image',
+				delegate: 'a'
+			});
+		//============ ============  ============ ============
+		// END img click
+		//============ ============  ============ ============
+
 	</script>
+
+	<?php
+		// option popup
+		if($this->Options_model->get_option("popup")->option_content && $this->session->userdata('popup')!=1){
+			$array = array(
+				'popup' => 1
+			);
+			$this->session->set_userdata( $array );
+			?>
+			<div class="modal fade popup" id="modal-id-popup">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<!-- <h4 class="modal-title">Modal title</h4> -->
+						</div>
+						<div class="modal-body"><?= check_popup($this->Options_model->get_option("popup")->option_content); ?></div>
+					</div>
+				</div>
+			</div>
+			<script>
+				$("#modal-id-popup").modal("show");
+			</script>
+			<?php
+		}
+	?>
 </body>
 </html>

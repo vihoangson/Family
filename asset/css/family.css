@@ -459,3 +459,7 @@ li.ele_comment:after {
     background: white;
     height: 0px;
 }
+
+#modal-id-popup .modal-body img {
+    width:100%;
+}

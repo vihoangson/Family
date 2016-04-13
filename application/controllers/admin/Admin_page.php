@@ -28,6 +28,15 @@ class Admin_page extends MY_Controller {
 		$this->load->view('admin/controll_list_login_facebook' , compact("rs"));
 	}
 
+	public function control_popup(){
+
+		if($this->input->post('content')){
+			$this->Options_model->save_option("popup",$this->input->post('content'));
+		}
+		$rs = $this->Options_model->get_option("popup");
+		$this->load->view('admin/control_popup' , compact("rs"));
+	}
+
 }
 
 /* End of file admin_page.php */

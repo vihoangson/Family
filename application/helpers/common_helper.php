@@ -1,4 +1,13 @@
-<?php 
+<?php
+
+	function check_popup($str_popup){
+		if(preg_match("/\.(jpg|gif|png)$/", $str_popup)){
+			return "<img onError=\"this.src='https://placeholdit.imgix.net/~text?txtsize=9&txt=No%20image&w=300&h=300'\" src='".$str_popup."'> ";
+		}else{
+			return $str_popup;
+		}
+	}
+
 	function get_thumb_file_name($file_name){
 		$file_name_new = preg_replace("/(\.)(\w{3,4})/", "_thumb.$2", $file_name);
 		return $file_name_new;
