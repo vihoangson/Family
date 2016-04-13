@@ -4,5 +4,5 @@
 		<a href="/admin/blank_page" class="list-group-item">Blank</a>
 		<a href="/admin/files_controller/show" class="list-group-item">Manager Images</a>
 		<a href="/admin/control_popup" class="list-group-item">Control popup</a>
-		<a href="/phpliteadmin.php" class="list-group-item">Sqlite</a>
+		<a href="/phpliteadmin.php" target="_blank" class="list-group-item">Sqlite</a>
 	</div>

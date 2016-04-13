@@ -157,6 +157,6 @@ if(!$navigation_bar){
 ?>
 <div class="row">
 	<div class="col-md-3">
-		<?php $this->load->view('_includes/navbar_admin'); ?>
+		<?php $this->load->view('_includes/navbar_left_admin'); ?>
 	</div>
 	<div class="col-md-9">

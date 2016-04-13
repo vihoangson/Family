@@ -14,6 +14,11 @@ class Admin_page extends MY_Controller {
 		$this->load->view('admin/admin_page');
 	}
 
+	public function blank_page(){
+		echo $this->load->view('_includes/header_admin',null,true);
+		echo $this->load->view('_includes/footer_admin',null,true);
+	}
+
 	public function upload_file(){
 		$rs = $this->files_model->find()->result();
 		$this->load->view('admin/file_list',compact("rs"));
