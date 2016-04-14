@@ -62,6 +62,10 @@ class Admin_page extends MY_Controller {
 		$rs            = $this->Options_model->get_option("popup");
 		$flag          = $this->Options_model->get_option("popup_flag");
 		$popup_session = $this->Options_model->get_option("popup_session");
+		//$rs            = 1;
+		//$flag          = 1;
+		//$popup_session = 1;
+
 		$this->load->view('admin/control_popup' , compact("rs","flag","popup_session"));
 	}
 

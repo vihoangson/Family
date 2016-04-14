@@ -1,11 +1,11 @@
 <?php
-if(!$navigation_bar){
-	$navigation_bar = [
-		base_url() => "Trang chủ",
-		base_url()."admin" => "Admin",
-	];
-}
- ?>
+	if(!$navigation_bar){
+		$navigation_bar = [
+			base_url() => "Trang chủ",
+			base_url()."admin" => "Admin",
+		];
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
