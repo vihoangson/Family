@@ -19,12 +19,12 @@ class Friends extends CI_Controller {
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
-			"Cô Tú" =>[
+			"Dì Tú" =>[
 				"img" => "/asset/data/img_quote/cotu.jpg",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
-			"Cô Trinh" =>[
+			"Dì Trinh" =>[
 				"img" => "/asset/data/img_quote/cotrinh.jpg",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
@@ -39,7 +39,7 @@ class Friends extends CI_Controller {
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
-			"Cô Xuân" =>[
+			"Dì Xuân" =>[
 				"img" => "/asset/data/img_quote/coxuan.jpg",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
@@ -76,12 +76,12 @@ class Friends extends CI_Controller {
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
-			"Cô Tú" =>[
+			"Dì Tú" =>[
 				"img" => "/asset/data/img_quote/cotu.jpg",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
-			"Cô Trinh" =>[
+			"Dì Trinh" =>[
 				"img" => "/asset/data/img_quote/cotrinh.jpg",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
@@ -96,7 +96,7 @@ class Friends extends CI_Controller {
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
-			"Cô Xuân" =>[
+			"Dì Xuân" =>[
 				"img" => "/asset/data/img_quote/coxuan.jpg",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
