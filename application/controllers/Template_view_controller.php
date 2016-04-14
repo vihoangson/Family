@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Template_view_controller extends CI_Controller {
+class Template_view_controller extends MY_Controller {
 
 	public function index()
 	{
