@@ -27,6 +27,7 @@
 								<div class="row text-center">
 									<img onError="this.src='http://placehold.it/200x200'" class="img-circle" src="<?= $value["img"]; ?>" style="width: 300px;height:300px;">
 									<h3><?= $key; ?></h3>
+									<?= ($value["desc"]?"<h5>".$value["desc"]."</h5>":""); ?>
 								</div>
 							</blockquote>
 						</div>

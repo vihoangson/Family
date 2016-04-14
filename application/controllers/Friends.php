@@ -10,41 +10,49 @@ class Friends extends CI_Controller {
 		$this->data_friends = [
 			"Bố Sơn" =>[
 				"img" => "/asset/data/img_quote/vihoangson.jpg",
+				"desc" => "Bố của em Kem",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
 			"Mẹ Su" =>[
 				"img" => "/asset/data/img_quote/doanthuynhauyen.jpg",
+				"desc" => "",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
 			"Dì Tú" =>[
 				"img" => "/asset/data/img_quote/cotu.jpg",
+				"desc" => "",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
 			"Dì Trinh" =>[
 				"img" => "/asset/data/img_quote/cotrinh.jpg",
+				"desc" => "",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
 			"Chú Sang" =>[
 				"img" => "/asset/data/img_quote/chusang.jpg",
+				"desc" => "",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
 			"Bác Tuấn" =>[
 				"img" => "/asset/data/img_quote/bactuan.jpg",
+				"desc" => "",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
 			"Dì Xuân" =>[
 				"img" => "/asset/data/img_quote/coxuan.jpg",
+				"desc" => "",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 
 			"Dì Tứ" =>[
 				"img" => "/asset/data/img_quote/dixuan.jpg",
+				"desc" => "",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
 		];
