@@ -5,7 +5,7 @@ class Friends extends CI_Controller {
 
 	private $data_friends;
 
-	public __construct(){
+	public function __construct(){
 		parent::__construct();
 		$this->data_friends = [
 			"Bố Sơn" =>[
