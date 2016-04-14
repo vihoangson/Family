@@ -65,7 +65,7 @@ class Friends extends CI_Controller {
 		if($alert_img_quote){
 			$this->session->set_flashdata('item', ["danger"=>"<h3>Không có các hình: </h3>".json_encode($alert_img_quote)]);
 		}
-
+		$data=$this->data_friends;
 		$this->load->view('friends_list',compact("data"));
 	}
 
@@ -80,7 +80,7 @@ class Friends extends CI_Controller {
 		if($alert_img_quote){
 			$this->session->set_flashdata('item', ["danger"=>"<h3>Không có các hình: </h3>".json_encode($alert_img_quote)]);
 		}
-
+		$data=$this->data_friends;
 		$this->load->view('friends',compact("data"));
 	}
 }
