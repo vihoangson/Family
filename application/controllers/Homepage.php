@@ -110,7 +110,7 @@ class Homepage extends MY_Controller {
 
 		$flag = false;
 		if($this->input->post('username') && $this->input->post('password')){
-			$username = $this->input->post('username');
+			$username =  strtolower( $this->input->post('username'));
 			switch($username){
 				case "bo":
 					$username = $this->db->where('id', 11)->get("user")->row()->username;
