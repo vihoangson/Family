@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Do_ajax extends CI_Controller {
 	public function save_img_box(){
-		$config['upload_path'] = FCPATH.'asset/file_upload/';
+		$config['upload_path'] = FCPATH.'asset/file_upload/media/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']  = '1000000';
 		$config['max_width']  = '10240';
