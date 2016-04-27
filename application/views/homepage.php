@@ -228,6 +228,61 @@ if($tags){
 	$(".delete_b").click(function() {
 		return confirm("Bạn có muốn xóa ?");		
 	});
-
 </script>
+
+
+	<div class="modal fade" id="modal-upload-media">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Modal title</h4>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="/asset/js/jquery.form.js"></script>
+<script>
+	$.boximg= function(){
+		$("#modal-upload-media .modal-body").load("/ajax/do_ajax/load_media");
+		$("#modal-upload-media").modal("show");
+	}
+	$(document).on("click",".upload-btn",function(){
+		$("#upload_form input[type='file']").trigger("click");
+		$("#upload_form input[type='file']").unbind('change')
+		$("#upload_form input[type='file']").change(function(event) {
+			$("#upload_form").ajaxForm({
+				url:"/ajax/do_ajax/save_img_box",
+				beforeSend: function(xhr) {
+				},
+				complete: function (hr){
+					dataxx = JSON.parse(hr.responseText);
+					$(".list-media").html('');
+					$.each(dataxx, function(index, val) {
+						console.log(val.files_path+val.files_name);
+						return;
+						$(".list-media").append(val.files_path+files_filename);
+						
+					});
+				}
+			}).submit();
+		});
+	});
+
+	$(document).on("click","#modal-upload-media .modal-body img",function(){
+		src = $(this).attr("src");
+		$("#modal-upload-media").modal("hide");
+		$("#content").val(src);
+	})
+	$(".insert-img").click(function(event) {
+		$.boximg();
+	});
+</script>
+
 <?php $this->load->view('_includes/footer'); ?>

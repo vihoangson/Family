@@ -15,7 +15,10 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 	</div>
 	<div class="form-group">
 		<label for="">Nội dung (<span style="color:red;">*</span>)</label>
-		<div style="padding:4px 0;"><button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();"><img src="/asset/data/img_emotion/1.gif"></button></div>
+		<div style="padding:4px 0;">
+		<button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();"><img src="/asset/data/img_emotion/1.gif"></button>
+		<button type="button" class="btn btn-default insert-img" onclick="">Insert img</button>
+		</div>
 		<div class="icon_box" style="display:none; padding:10px;"><?= $emotion; ?></div>
 		<textarea name="content" id="content" class="form-control" style="height:250px;" required><?= ($data->kyniem_content?$data->kyniem_content:""); ?></textarea>
 	</div>
@@ -49,8 +52,9 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 	<button type="submit" class="btn btn-primary">Lưu</button>
 	<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>	
 </form>
+
 <?php if($mode=="edit"){
-	?> 
+	?>
 <script>
 	$(".img_ele").click(function(event) {
 		$.post('<?= base_url(); ?>homepage/ajax_delete_img', {img: $(this).data("img"),id: $(this).data("id")}, function(data, textStatus, xhr) {

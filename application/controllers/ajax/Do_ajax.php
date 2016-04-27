@@ -2,6 +2,45 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Do_ajax extends CI_Controller {
+	public function save_img_box(){
+		$config['upload_path'] = FCPATH.'asset/file_upload/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']  = '1000000';
+		$config['max_width']  = '10240';
+		$config['max_height']  = '76800';
+		
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload("file_x")){
+			$error = array('error' => $this->upload->display_errors());
+			echo $config['upload_path'];
+			print_r($error);
+		}
+		else{
+			$data = array('upload_data' => $this->upload->data());
+			$rs = $this->db->get('files')->result();
+			echo json_encode($rs);
+		}
+	}
+
+	public function load_media(){
+		$rs = $this->db->get('files')->result();
+		echo '<button class="btn btn-default upload-btn"><i class="fa fa-plus"></i> Upload</button>';
+		?>
+	<form id='upload_form' method="post" enctype="multipart/form-data">
+		<input type="file" style="display:none;" name='file_x'>
+	</form>
+		<?php
+		echo "<div class='row list-media'>";
+		foreach ($rs as $key => $value) {
+			preg_match("/^.+(\/asset\/.+)$/", $value->files_path,$match);
+			if($match[1]){
+				echo "<div class='col-sm-4 text-center thumbnail '><img src='".$match[1].$value->files_name."' onError='this.src=\"http://placehold.it/100x100\"'></div>";
+			}
+		}
+		echo "</div>";
+		die;
+	}
 
 	public function index()
 	{
