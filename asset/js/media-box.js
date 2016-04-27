@@ -46,7 +46,8 @@
 	}
 
 	$(document).on("click","#modal-upload-media .modal-body img",function(){
-		src = $(this).attr("src");
+		src = "![]("+$(this).attr("src")+")";
 		$("#modal-upload-media").modal("hide");
-		$("#content").val(src);
+		val_text = $("#content").val();
+		$("#content").val(val_text+src);
 	})
