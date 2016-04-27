@@ -73,7 +73,7 @@
 		//============ ============  ============ ============
 
 	</script>
-
+	<script src="<?= base_url(); ?>asset/js/script.js"></script>
 	<?php
 		if($this->Options_model->get_option("popup_flag")->option_content==1){
 			// option popup
@@ -82,6 +82,17 @@
 					$this->session->set_userdata( ['popup' => 1] );
 				}
 				?>
+				<div class="modal fade popup" id="modal-general">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<!-- <h4 class="modal-title">Modal title</h4> -->
+							</div>
+							<div class="modal-body"></div>
+						</div>
+					</div>
+				</div>
 
 				<div class="modal fade popup" id="modal-id-popup">
 					<div class="modal-dialog">

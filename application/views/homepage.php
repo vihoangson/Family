@@ -106,6 +106,7 @@
 								<div class="row-tail">
 									<div class="input-c">
 										<input class='input-comment' data-id="<?= $value->id; ?>" placeholder="Write comment ...">
+										<a href="javascript:void(0)" class="smile-button"><i class="fa fa-smile-o"></i></a>
 									</div>
 									<div class="button-c">
 										<button class="btn btn-primary btn-block send-button">Send</button>
