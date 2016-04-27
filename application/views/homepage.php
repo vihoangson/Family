@@ -88,8 +88,7 @@
 						</div>
 						<div class="qa-message-content">
 							<div><?= h($value->kyniem_content); ?></div>
-
-							<?php 
+							<?php
 							if($value->kyniem_images){
 								$images = json_decode($value->kyniem_images,true);
 								echo "<div class='image-link'>";
@@ -139,7 +138,7 @@
 		   <?php 
 		} ?>
 	</div>
-
+<!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
 	<div class="modal fade" id="modal-id">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -153,7 +152,8 @@
 			</div>
 		</div>
 	</div>
-<?php 
+<!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
+<?php
 if($tags){
 	?>
 	<div id="tags_list">
@@ -167,122 +167,28 @@ if($tags){
 	<?php
 }
 ?>
-<script>
-
-
-	$(".box-comment li").append("<span class='del-c'>x</span>");
-
-	$(document).on("click",".del-c",function(){
-		if(!confirm("Bạn có muốn xóa ?")){
-			return;
-		}
-		id = $(this).parent().data("id");
-		console.log(id);
-		this_c = $(this);
-		$.post('homepage/ajax_delete_comment', {id:id}, function(data, textStatus, xhr) {
-			//console.log(parseInt(data));
-			if(data == "1"){
-				this_c.parent().remove();
-			}
-		});
-	});
-
-	$(".input-comment").keydown(function(event){
-		//return false;
-		if(event.which==13){
-			send_comment($(this));
-		}
-	});
-
-	$(".send-button").click(function(event) {
-		send_comment($(this).parents(".row-tail").find(".input-comment:first"));
-	});
-
-	function send_comment(this_s){
-		id = this_s.data("id");
-		value = this_s.val();
-		this_c = this_s;
-		$.post('homepage/ajax_post_comment', {id:id,value:value}, function(data, textStatus, xhr) {
-			this_c.val("");
-			rs = JSON.parse(data);
-			this_ul = this_c.parents(".box-comment").find("ul");
-			this_ul.text("");
-			$.each(rs,function(index,val){
-				var tmp_ele = $(".ele_comment:first").clone();
-				tmp_ele.find("li").data("id",val.id);
-				tmp_ele.find("img").attr("src","<?= PATH_AVATAR; ?>"+val.user_avatar+"");
-				tmp_ele.find(".username b").text(val.username);
-				tmp_ele.find(".comment_create small").text(val.comment_create);
-				tmp_ele.find(".comment_content").html(val.comment_content);
-				this_ul.prepend(tmp_ele);
-			});
-			$(".del-c").remove();
-			$(".box-comment li").append("<span class='del-c'> </span>");
-		});
-	}
-
-	$("#button_add").click(function(event) {
-			$("#modal-id").modal();
-	});
-
-	$(".delete_b").click(function() {
-		return confirm("Bạn có muốn xóa ?");		
-	});
-</script>
-
-
-	<div class="modal fade" id="modal-upload-media">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Modal title</h4>
-				</div>
-				<div class="modal-body">
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
+<!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
+<script src="/asset/js/comment.js"></script>
+<!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
+<div class="modal fade" id="modal-upload-media">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Modal title</h4>
+			</div>
+			<div class="modal-body">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
 			</div>
 		</div>
 	</div>
+</div>
 <script src="/asset/js/jquery.form.js"></script>
-<script>
-	$.boximg= function(){
-		$("#modal-upload-media .modal-body").load("/ajax/do_ajax/load_media");
-		$("#modal-upload-media").modal("show");
-	}
-	$(document).on("click",".upload-btn",function(){
-		$("#upload_form input[type='file']").trigger("click");
-		$("#upload_form input[type='file']").unbind('change')
-		$("#upload_form input[type='file']").change(function(event) {
-			$("#upload_form").ajaxForm({
-				url:"/ajax/do_ajax/save_img_box",
-				beforeSend: function(xhr) {
-				},
-				complete: function (hr){
-					dataxx = JSON.parse(hr.responseText);
-					$(".list-media").html('');
-					$.each(dataxx, function(index, val) {
-						console.log(val.files_path+val.files_name);
-						return;
-						$(".list-media").append(val.files_path+files_filename);
-						
-					});
-				}
-			}).submit();
-		});
-	});
+<script src="/asset/js/media-box.js"></script>
+<!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
 
-	$(document).on("click","#modal-upload-media .modal-body img",function(){
-		src = $(this).attr("src");
-		$("#modal-upload-media").modal("hide");
-		$("#content").val(src);
-	})
-	$(".insert-img").click(function(event) {
-		$.boximg();
-	});
-</script>
 
 <?php $this->load->view('_includes/footer'); ?>

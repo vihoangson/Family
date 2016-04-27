@@ -17,28 +17,39 @@ class Do_ajax extends CI_Controller {
 			print_r($error);
 		}
 		else{
-			$data = array('upload_data' => $this->upload->data());
-			$rs = $this->db->get('files')->result();
-			echo json_encode($rs);
+			$data = $this->upload->data();
+			$object = [
+				"files_name"=>$data["file_name"],
+				"files_path"=>$data["file_path"],
+				"files_size"=>$data["file_size"],
+				"files_type"=>$data["file_type"],
+			];
+
+			if(!$this->db->insert('media', $object)){
+				echo json_encode(["status"=>"error"]);
+				return false;
+			}
 		}
 	}
 
+	public function load_img_media(){
+		$rs = $this->db->order_by("id","desc")->get('media')->result();
+		foreach ($rs as $key => &$value) {
+			preg_match("/^.+(\/asset\/.+)$/", $value->files_path,$match);
+			$value->files_path = $match[1];
+		}
+		echo json_encode($rs);
+	}
+
 	public function load_media(){
-		$rs = $this->db->get('files')->result();
 		echo '<button class="btn btn-default upload-btn"><i class="fa fa-plus"></i> Upload</button>';
 		?>
-	<form id='upload_form' method="post" enctype="multipart/form-data">
-		<input type="file" style="display:none;" name='file_x'>
-	</form>
+		<progress value="0" max="100" class="hidden"></progress>
+		<form id='upload_form' method="post" enctype="multipart/form-data">
+			<input type="file" style="display:none;" name='file_x'>
+		</form>
 		<?php
-		echo "<div class='row list-media'>";
-		foreach ($rs as $key => $value) {
-			preg_match("/^.+(\/asset\/.+)$/", $value->files_path,$match);
-			if($match[1]){
-				echo "<div class='col-sm-4 text-center thumbnail '><img src='".$match[1].$value->files_name."' onError='this.src=\"http://placehold.it/100x100\"'></div>";
-			}
-		}
-		echo "</div>";
+		echo "<div class='row list-media'></div>";
 		die;
 	}
 
