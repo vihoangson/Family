@@ -113,5 +113,9 @@
 			}
 		}
 	?>
+	<script src="/asset/js/jquery.lazyload.js"></script>
+	<script>
+		$("img").lazyload();
+	</script>
 </body>
 </html>

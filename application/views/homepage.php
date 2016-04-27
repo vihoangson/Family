@@ -30,6 +30,8 @@
 		$("img.lazy").lazyload({
 			threshold : 200
 		});
+		//data-original=""
+		//$("img[src*='gif']").lazyload();
 		$(".change-year").change(function(event) {
 			location.href = "/homepage/chang_year/"+$(this).val();
 		});
