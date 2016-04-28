@@ -10,6 +10,22 @@ class Console extends CI_Controller {
 		
 	}
 
+	// /ajax/console/test_resize
+	public function test_resize(){
+		$direct_resize_all      = FCPATH."asset/file_upload/1.gif";
+		$config['source_image'] = $direct_resize_all;
+		$config['width']        = 50;
+		$config['height']       = 50;
+		$this->load->library('image_lib', $config);
+		if($this->image_lib->resize()){
+			echo 1;
+		}else{
+			echo 2;
+		}
+
+		die;
+	}
+
 	//============ ============ ============  ============  ============  ============ 
 	// Function resize_imf()
 	// Function này dùng để resize tất cả hình ảnh trong folder cả subfolder
