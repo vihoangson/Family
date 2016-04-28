@@ -2,33 +2,60 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Do_ajax extends CI_Controller {
+
+	//============ ============  ============  ============ 
+	// Page: /ajax/do_ajax/save_img_box
+	// 
+	//============ ============  ============  ============ 
 	public function save_img_box(){
-		$config['upload_path'] = FCPATH.'asset/file_upload/media/';
+
+		// ============ ============  ============  ============ 
+		// Upload img
+		// 
+		$config['upload_path']   = FCPATH.'asset/file_upload/media/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']  = '1000000';
-		$config['max_width']  = '10240';
-		$config['max_height']  = '76800';
-		
+		$config['max_size']      = '1000000';
+		$config['max_width']     = '10240';
+		$config['max_height']    = '76800';		
 		$this->load->library('upload', $config);
 		
 		if ( ! $this->upload->do_upload("file_x")){
 			$error = array('error' => $this->upload->display_errors());
-			echo $config['upload_path'];
-			print_r($error);
+			echo json_encode(["status"=> "Error","content"=>$error]);
 		}
 		else{
-			$data = $this->upload->data();
+			//============ ============ ============  ============  ============  ============ 
+			// Resize image after upload
+			//
+				$data = $this->upload->data();
+				$thumbWidth             = 800;
+				$thumbHeight            = 800;
+				$config['source_image'] = $data["file_path"].$data["file_name"];
+				$config['width']        = $thumbWidth;
+				$config['height']       = $thumbHeight;
+				$this->load->library('image_lib', $config);
+				$this->image_lib->resize();
+				if(@$this->image_lib->display_errors()){
+					echo json_encode(["status"=> "Error","content"=>$this->image_lib->display_errors()]);
+				}
+			//
+			//============ ============ ============  ============  ============  ============ 
+
+			//============ ============ ============  ============  ============  ============ 
+			// Insert to db
+			//
 			$object = [
 				"files_name"=>$data["file_name"],
 				"files_path"=>$data["file_path"],
 				"files_size"=>$data["file_size"],
 				"files_type"=>$data["file_type"],
 			];
-
 			if(!$this->db->insert('media', $object)){
 				echo json_encode(["status"=>"error"]);
 				return false;
 			}
+			//
+			//============ ============ ============  ============  ============  ============ 
 		}
 	}
 
