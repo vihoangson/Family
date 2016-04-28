@@ -1,8 +1,9 @@
 	$.boximg= function(){
 		$("#modal-upload-media .modal-body").load("/ajax/do_ajax/load_media");
-		$.reload_media();
 		$("#modal-upload-media").modal("show");
+		$.reload_media();
 	}
+
 	$(".insert-img").click(function(event) {
 		$.boximg();
 	});

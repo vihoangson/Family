@@ -14,8 +14,10 @@ class Console extends CI_Controller {
 	public function test_resize(){
 		$direct_resize_all      = FCPATH."asset/file_upload/1.gif";
 		$config['source_image'] = $direct_resize_all;
-		$config['width']        = 50;
-		$config['height']       = 50;
+		$config['create_thumb']   = TRUE;
+		$config['thumb_marker']   = "thumb_";
+		$config['width']        = 150;
+		$config['height']       = 150;
 		$this->load->library('image_lib', $config);
 		if($this->image_lib->resize()){
 			echo 1;
@@ -38,13 +40,11 @@ class Console extends CI_Controller {
 		$direct_resize_all        = FCPATH."asset/file_upload";
 		// Chiều rộng và chiều cao cần resize
 		// Lưu ý hình nhỏ hơn số này không được resize
-		$thumbWidth               =50;
-		$thumbHeight              =50;
-		//============ ============  ============  ============ 
-		$config['image_library']  = 'gd2';
 		$config['create_thumb']   = TRUE;
 		$config['thumb_marker']   = "thumb_";
-		$config['maintain_ratio'] = TRUE;
+		$thumbWidth               =150;
+		$thumbHeight              =150;
+		//============ ============  ============  ============ 
 		$config['width']          = $thumbWidth;
 		$config['height']         = $thumbHeight;
 		$this->load->library('image_lib', $config);
@@ -58,6 +58,9 @@ class Console extends CI_Controller {
 			$dir = scandir($path_resize);
 			foreach ($dir as $key => $value) {
 				if(preg_match("/\.(gif)$/", $value)){
+					if(file_exists($path_resize."thumb_".$value) || preg_match("/thumb_/", $value)){
+						continue;
+					}
 					$path_file_name = $path_resize.$value;
 					list($width, $height) = getimagesize($path_file_name);
 					if($thumbWidth < $width || $thumbHeight < $height)
@@ -78,6 +81,8 @@ class Console extends CI_Controller {
 				}
 			}
 		}
+
+
 		// Xuất json kết quả
 		echo json_encode($result);
 	}
