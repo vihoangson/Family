@@ -20,7 +20,7 @@ $this->load->view('_includes/header_admin',$data_header); ?>
 				<?php echo "
 				<div>
 					<div class='image-link' >
-						<a class='thumbnail ' target='_blank' href='".$value->files_path_url.$value->files_name."'><img src='".$value->files_path_url."thumb_".$value->files_name."'></a>
+						<a class='thumbnail ' target='_blank' href='".$value->files_path_url.$value->files_name."'><img src='".$value->files_path_url."thumb_".$value->files_name."' onError='".$value->files_path_url.$value->files_name."'></a>
 					</div>
 					<p><input type='text' class='form-control' value='".$value->files_title."'></p>
 					<p><input type='text' class='form-control' value='".preg_replace("/\/$/", "", base_url()).$value->files_path_url.$value->files_name."'></p>
