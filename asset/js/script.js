@@ -1,10 +1,21 @@
 $(".smile-button").click(function(){
 	id = $(this).parents(".row-tail").find("input").data("id");
 	$("#modal-general .modal-body").data("id",id);
-	$("#modal-general .modal-body").load('/ajax/do_ajax/index');
+	$("#modal-general .modal-body").load('/ajax/do_ajax/index',function(){
+		$("#home img").each(function(index, el) {
+			var src = $(this).data("original");
+			$(this).attr("src",src);
+		});	
+	});
 	$("#modal-general").modal("show");
 });
-
+$(document).on("click",".nav-tabs li",function(){
+	var name_tab = $(this).find("a").attr("href");
+	$(name_tab+" img").each(function(index, el) {
+		var src = $(this).data("original");
+		$(this).attr("src",src);
+	});
+})
 $(document).on("click",".avatar_element",function(){
 	id = ($("#modal-general .modal-body").data("id"));
 	$(".row-tail input[data-id='"+id+"']").val("![]("+$(this).attr("src")+")");
