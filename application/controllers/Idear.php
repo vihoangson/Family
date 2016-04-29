@@ -6,6 +6,15 @@ class Idear extends MY_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('image_lib');
+
+		if(!is_dir(FCPATH."asset/images/")){
+			mkdir(FCPATH."asset/images/");
+		}else{
+			if(is_writable(FCPATH."asset/images/")){
+				chmod(FCPATH."asset/images/", 0777);
+			}
+		}
+
 		if(!is_dir(FCPATH."asset/images/idear/")){
 			mkdir(FCPATH."asset/images/idear/");
 		}else{
@@ -13,6 +22,7 @@ class Idear extends MY_Controller {
 				chmod(FCPATH."asset/images/idear/", 0777);
 			}
 		}
+
 		if(!is_dir(FCPATH."asset/images/idear/thumb/")){
 			mkdir(FCPATH."asset/images/idear/thumb/");
 		}else{
@@ -133,13 +143,13 @@ class Idear extends MY_Controller {
 	private function resize_img($path,$width,$height){
 		$config['image_library'] = 'gd2';
 		$config['source_image'] = $path;
-		$config['new_image'] = FCPATH."asset/images/idear/thumb/";
-		$config['create_thumb'] = TRUE;
+		$namefile = basename($path);
+		$config['new_image'] = FCPATH."asset/images/idear/thumb/".$namefile;
 		$config['maintain_ratio'] = TRUE;
 		$config['width']         = $width;
 		$config['height']       = $height;
 		$this->image_lib->initialize($config);
-		$this->image_lib->resize();	
+		return $this->image_lib->resize();
 	}
 
 	public function delete($id){

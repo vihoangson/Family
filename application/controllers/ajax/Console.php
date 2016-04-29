@@ -10,24 +10,6 @@ class Console extends CI_Controller {
 		
 	}
 
-	// /ajax/console/test_resize
-	public function test_resize(){
-		$direct_resize_all      = FCPATH."asset/file_upload/1.gif";
-		$config['source_image'] = $direct_resize_all;
-		$config['create_thumb']   = TRUE;
-		$config['thumb_marker']   = "thumb_";
-		$config['width']        = 150;
-		$config['height']       = 150;
-		$this->load->library('image_lib', $config);
-		if($this->image_lib->resize()){
-			echo 1;
-		}else{
-			echo 2;
-		}
-
-		die;
-	}
-
 	//============ ============ ============  ============  ============  ============ 
 	// Function resize_imf()
 	// Function này dùng để resize tất cả hình ảnh trong folder cả subfolder
@@ -103,8 +85,6 @@ class Console extends CI_Controller {
 		$thumbHeight              =800;
 		//============ ============  ============  ============ 
 		$config['image_library']  = 'gd2';
-		$config['create_thumb']   = false;
-		$config['thumb_marker']   = "thumb_";
 		$config['maintain_ratio'] = TRUE;
 		$config['width']          = $thumbWidth;
 		$config['height']         = $thumbHeight;

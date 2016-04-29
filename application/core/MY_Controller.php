@@ -1,4 +1,4 @@
-<?php /**
+\<?php /**
 * 
 */
 class MY_Controller extends CI_Controller
@@ -29,6 +29,22 @@ class MY_Controller extends CI_Controller
 			'mailtype'  => 'html',
 			'charset'   => 'utf-8'
 			);
+		//============  ============ 
+		// Set navbar custom
+		// 
+		$navbars =[
+			"navbar_custom"=> [ 
+				["link"=>"/admin/admin_page/session_login" , "text"=> "Session login"],
+				["link"=>"/admin/admin_page/controll_list_login_facebook" , "text"=> "List login Facebook"],
+				["link"=>"/admin/blank_page" , "text"=> "Blank"],
+				["link"=>"/admin/files_controller/show" , "text"=> "Manager Images"],
+				["link"=>"/admin/control_popup" , "text"=> "Control popup"],
+				["link"=>"/phpliteadmin.php" , "text"=> "PHP Sqlite"],
+			]
+		];
+		$this->load->vars($navbars);
+		//
+		//============  ============
 	}
 
 	public function my_sent_email($options){

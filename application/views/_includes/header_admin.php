@@ -160,3 +160,4 @@
 		<?php $this->load->view('_includes/navbar_left_admin'); ?>
 	</div>
 	<div class="col-md-9">
+

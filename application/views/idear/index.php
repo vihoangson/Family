@@ -31,10 +31,13 @@ if($this->session->flashdata('alert')){
 	echo "<div class='col-md-3'>";
 	if($value->idear_img){
 		$img = json_decode($value->idear_img,true);
-		$img[0] = preg_replace("/(\.)/", "_thumb.", $img[0]);
-		echo "<a href='/idear/detail/".$value->id."' class='thumbnail equalize ele_idear'><img src='/asset/images/idear/thumb/".$img[0]."'>
-		</a><h3>".$value->idear_title."</h3>";
-			
+		$file_name = basename($img[0]);
+		echo "
+		<a href='/idear/detail/".$value->id."' class='thumbnail equalize ele_idear'>
+			<img src='/asset/images/idear/thumb/".$file_name."' onError='this.src=\"http://placehold.it/100x100\"'>
+		</a>
+		<h3>".$value->idear_title."</h3>
+		";
 	}
 	echo "</div>";
 } ?>
