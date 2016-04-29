@@ -24,7 +24,11 @@
 			},
 			complete: function (hr){
 				$("progress").addClass('hidden');
-				$.reload_media();
+				if($("#upload_form").data("reload")==true){
+					location.reload();
+				}else{
+					$.reload_media();
+				}
 			}
 		}).submit();
 	});

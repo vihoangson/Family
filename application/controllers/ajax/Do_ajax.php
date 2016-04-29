@@ -38,14 +38,14 @@ class Do_ajax extends CI_Controller {
 					echo json_encode(["status"=> "Error","content"=>$this->image_lib->display_errors()]);
 					return false;
 				}
-
 			//
 			//============ ============ ============  ============  ============  ============ 
 
 			//============ ============ ============  ============  ============  ============ 
 			// Insert to db
 			//
-			$file_path = preg_replace("/^(.+)\/asset/", "/asset/", $data["file_path"]);
+
+			$file_path = preg_replace("/^(.+)\/asset\//", "/asset/", $data["file_path"]);
 			if(!$file_path){
 				$file_path = $data["file_path"];
 			}
@@ -56,6 +56,7 @@ class Do_ajax extends CI_Controller {
 				"files_size"  =>$data["file_size"],
 				"files_type"  =>$data["file_type"],
 			];
+
 			if(!$this->db->insert('media', $object)){
 				echo json_encode(["status"=>"error"]);
 				return false;
@@ -100,6 +101,12 @@ class Do_ajax extends CI_Controller {
 						</li>
 						<li role="presentation">
 							<a href="#tab" aria-controls="tab" role="tab" data-toggle="tab"><i class="fa fa-smile-o"></i> Happy</a>
+						</li>
+						<li role="presentation">
+							<a href="#eating" aria-controls="eating" role="tab" data-toggle="tab"><i class="fa fa-check"></i> Eating</a>
+						</li>
+						<li role="presentation">
+							<a href="#mostropi" aria-controls="eating" role="tab" data-toggle="tab"><i class="fa fa-child"></i> Mostropi</a>
 						</li>
 					</ul>
 					<!-- Tab panes -->
@@ -183,7 +190,85 @@ class Do_ajax extends CI_Controller {
 							<img class='avatar_element' src='/asset/data/icon/happy/10935984_1402232953407115_2108492437_n.png'>
 							<img class='avatar_element' src='/asset/data/icon/happy/11404805_1457726067855439_1352584195_n.png'>
 						</div>
-
+						<div role="tabpanel" class="tab-pane" id="eating">
+							<img class='avatar_element' src="/asset/data/icon/eating/11409284_973617299356993_186395117_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851574_555286174559237_1177223253_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10734346_334188700117484_1620996202_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851577_396469000497206_783815413_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851554_490565907723521_1819310451_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851567_592620470773084_238722246_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851579_555288787892309_385744812_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851571_555288481225673_1602454163_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851548_555286074559247_1970164712_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851581_555286011225920_1318345945_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851581_631487413546000_603210766_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10333105_657500230999901_2141619805_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851548_167788186751801_12340870_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851586_392309674199678_598882596_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851554_377001645779229_636975066_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10574690_364383977058241_2082796003_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851577_275796282558360_1015771912_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851575_168400763316302_1230648819_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10173503_272698822904383_393143349_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851586_165989766929982_1496365443_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851540_272702829570649_1475292467_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851536_272701746237424_61026026_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10173506_272701639570768_251509877_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10173494_272701532904112_1174622966_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10173504_272700662904199_1095176301_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10333112_472161936249065_1952874405_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851557_460938457361336_73538884_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10541018_313423568818463_302512478_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851586_499671026782067_165253303_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851578_631487400212668_2087073502_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851560_555289514558903_909068024_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10935997_1530127113935904_1659370569_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10734322_1529175800666004_970311349_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851571_1403156213296296_440149734_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/11057177_773581456091408_2057297768_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851583_654446917903722_178118452_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851565_641023175913294_875343096_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/10734334_830546316966590_1503555409_n.png">
+							<img class='avatar_element' src="/asset/data/icon/eating/851560_617743648281246_2135880587_n.png">
+						</div>
+						<div role="tabpanel" class="tab-pane" id="mostropi">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851565_665073390170848_1030664237_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851581_665073396837514_240998303_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851580_665073403504180_375972893_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851558_665073410170846_821736238_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851576_665073416837512_1510811863_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851580_665073423504178_587399825_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851556_665073430170844_697563443_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851584_665073436837510_198179310_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851560_665073443504176_1093293082_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851579_665073450170842_1219442423_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851565_665073456837508_488195964_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851581_665073463504174_1022637082_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851558_665073470170840_788381655_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851583_665073476837506_1617942204_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851585_665073483504172_1568347975_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851578_665073490170838_1672362802_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851581_665073496837504_1438113354_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851581_665073506837503_1662818488_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851584_665073513504169_904626920_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851565_665073520170835_41349003_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851558_665073526837501_1268020686_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851556_665073533504167_1115964067_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851585_665073540170833_1760552001_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851584_665073546837499_6749879_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851581_665073553504165_831865561_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851580_665073560170831_1648685153_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851558_665073566837497_901476379_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851578_665073573504163_718696646_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851581_665073580170829_1960096432_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851577_665073590170828_541361236_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851585_665073596837494_435536134_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851558_665073603504160_522082510_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851586_665073613504159_1633271446_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851558_665073620170825_1329317059_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851584_665073633504157_1803908748_n.png">
+							<img class='avatar_element' src="/asset/data/icon/mostropi/851562_665073640170823_1795886325_n.png">						
+						</div>
 					</div>
 				</div>
 

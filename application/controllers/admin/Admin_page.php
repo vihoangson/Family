@@ -5,6 +5,19 @@ class Admin_page extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->vars(
+			[
+				"navbar_custom"=>[
+					["link"=>"/admin/admin_page/session_login","text"=>"Session login"],
+					["link"=>"/admin/admin_page/controll_list_login_facebook","text"=>"List login Facebook"],
+					["link"=>"/admin/blank_page","text"=>"Blank"],
+					["link"=>"/admin/files_controller/show","text"=>"Manager Images"],
+					["link"=>"/admin/control_popup","text"=>"Control popup"],
+					["link"=>"/admin/admin_page/manager_media","text"=>"Quản lý media"],
+					["link"=>"/phpliteadmin.php","text"=>"PHP Sqlite"],
+				]
+			]
+		);
 		$this->load->model('files_model');
 		$this->path_file_upload = FCPATH."asset/file_upload/";
 	}
@@ -69,6 +82,24 @@ class Admin_page extends MY_Controller {
 		$this->load->view('admin/control_popup' , compact("rs","flag","popup_session"));
 	}
 
+	public function manager_media(){
+		if($this->input->post()){
+			if($this->input->post("submit")=="delete"){
+				foreach ($this->input->post("media_id") as $key => $value) {
+					$rs = $this->db->where("id",$value)->get('media')->row();
+					$full_path_img = FCPATH.ltrim($rs->files_path.$rs->files_name,"/");
+					if($this->db->where("id",$value)->delete('media')){
+						@unlink($full_path_img);
+						$this->load->vars('success', 'Đã lưu thành công');
+					}else{
+						$this->load->vars('error', 'Không lưu đượcs');
+					}
+				}
+			}
+		}
+		$rs = $this->db->order_by("id","desc")->get("media")->result();
+		$this->load->view('admin/manager_media' , compact("rs"));
+	}
 }
 
 /* End of file admin_page.php */
