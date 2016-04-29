@@ -1,6 +1,0 @@
-CREATE TABLE 'kyniem' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'kyniem_title' TEXT NOT NULL, 'kyniem_content' TEXT, 'kyniem_images' TEXT, 'kyniem_create' DATETIME NOT NULL, 'kyniem_modifie' DATETIME NOT NULL, 'kyniem_auth' TEXT NOT NULL DEFAULT 'Bố', 'delete_flg' INTEGER NOT NULL DEFAULT 0);
-CREATE TABLE 'user' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'username' TEXT NOT NULL, 'password' TEXT NOT NULL, 'type' INTEGER NOT NULL DEFAULT 0 );
-CREATE TABLE 'timeline' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'timeline_title' TEXT, 'timeline_date' DATETIME, 'timeline_tag' TEXT, 'timeline_note' TEXT, 'timeline_image' REAL, 'timeline_create' DATETIME, 'timeline_modifie' TEXT, 'delete_flg' INTEGER NOT NULL DEFAULT 0);
-CREATE TABLE 'files' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'files_name' TEXT NOT NULL, 'files_path' TEXT, 'files_size' REAL, 'files_type' TEXT, 'delete_flg' INTEGER NOT NULL DEFAULT 0 , 'files_title' TEXT);
-CREATE TABLE 'archive' ('id' INTEGER PRIMARY KEY NOT NULL, 'archive_key' TEXT NOT NULL, 'archive_content' TEXT, 'archive_create' DATETIME);
-CREATE TABLE 'comment' ('id' INTEGER PRIMARY KEY NOT NULL, 'kyniem_id' INTEGER, 'comment_content' TEXT, 'comment_user' TEXT,'comment_create' DATETIME,'comment_modifie' DATETIME);
