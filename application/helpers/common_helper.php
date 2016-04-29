@@ -1,4 +1,66 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+	//============ ============  ============  ============ 
+	// Function check_folder()
+	// Check folder có tồn tại hay không, nếu không thì sẽ tạo mới
+	//
+
+	function FileSizeConvert($bytes)
+	{
+	    $bytes = floatval($bytes);
+	        $arBytes = array(
+	            0 => array(
+	                "UNIT" => "TB",
+	                "VALUE" => pow(1024, 4)
+	            ),
+	            1 => array(
+	                "UNIT" => "GB",
+	                "VALUE" => pow(1024, 3)
+	            ),
+	            2 => array(
+	                "UNIT" => "MB",
+	                "VALUE" => pow(1024, 2)
+	            ),
+	            3 => array(
+	                "UNIT" => "KB",
+	                "VALUE" => 1024
+	            ),
+	            4 => array(
+	                "UNIT" => "B",
+	                "VALUE" => 1
+	            ),
+	        );
+
+	    foreach($arBytes as $arItem)
+	    {
+	        if($bytes >= $arItem["VALUE"])
+	        {
+	            $result = $bytes / $arItem["VALUE"];
+	            $result = str_replace(".", "," , strval(round($result, 2)))." ".$arItem["UNIT"];
+	            break;
+	        }
+	    }
+	    return $result;
+	}
+
+	function check_folder($path){
+		$path = str_replace(FCPATH,"",$path);
+		$list_foler = explode("/",$path);
+		$current_path = "";
+		foreach ($list_foler as $key => $value) {
+			$current_path .= "/".$value;
+
+			if(!is_dir(FCPATH.$current_path)){
+				mkdir(FCPATH.$current_path);
+				echo "mkdir";
+			}
+			if(!is_writable(FCPATH.$current_path)){
+				chmod(FCPATH.$current_path, 0777);
+				echo "chmod";
+			}
+		}
+		return FCPATH.$current_path;
+	}
 
 	function check_popup($str_popup){
 		if(preg_match("/\.(jpg|gif|png)$/", $str_popup)){

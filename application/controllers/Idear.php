@@ -4,36 +4,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Idear extends MY_Controller {
 	private $max_size_upload_timeline = 800;
 	public function __construct(){
+
 		parent::__construct();
+
 		$this->load->library('image_lib');
-
-		if(!is_dir(FCPATH."asset/images/")){
-			mkdir(FCPATH."asset/images/");
-		}else{
-			if(is_writable(FCPATH."asset/images/")){
-				chmod(FCPATH."asset/images/", 0777);
+		// ============ ============  ============  ============ 
+		// Kiểm tra folder
+		// 
+			$folders = [
+				FCPATH."asset/images/",
+				FCPATH."asset/images/idear/",
+				FCPATH."asset/images/idear/thumb/",
+			];
+			foreach ($variable as $key => $value) {
+				// Fucntion in common_helper
+				check_folder($value);
 			}
-		}
+		// 
+		// ============ ============  ============  ============ 
 
-		if(!is_dir(FCPATH."asset/images/idear/")){
-			mkdir(FCPATH."asset/images/idear/");
-		}else{
-			if(is_writable(FCPATH."asset/images/idear/")){
-				chmod(FCPATH."asset/images/idear/", 0777);
-			}
-		}
-
-		if(!is_dir(FCPATH."asset/images/idear/thumb/")){
-			mkdir(FCPATH."asset/images/idear/thumb/");
-		}else{
-			if(is_writable(FCPATH."asset/images/idear/thumb/")){
-				chmod(FCPATH."asset/images/idear/thumb/", 0777);
-			}
-		}
-
+		// ============ ============  ============  ============ 
+		// Khởi tạo DB
+		// 
 		if(!$this->db->table_exists("idear")){
 			$this->db->query("CREATE TABLE 'idear' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'idear_title' TEXT, 'idear_content' TEXT, 'idear_img' TEXT, 'idear_create' TEXT);");
 		}
+		//
+		//  ============ ============  ============  ============ 
 	}
 
 	public function detail($id){
@@ -140,12 +137,11 @@ class Idear extends MY_Controller {
 		return ["error" => $error, "success" => $success];
 	}
 
+
 	private function resize_img($path,$width,$height){
-		$config['image_library'] = 'gd2';
 		$config['source_image'] = $path;
 		$namefile = basename($path);
 		$config['new_image'] = FCPATH."asset/images/idear/thumb/".$namefile;
-		$config['maintain_ratio'] = TRUE;
 		$config['width']         = $width;
 		$config['height']       = $height;
 		$this->image_lib->initialize($config);

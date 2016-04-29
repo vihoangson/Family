@@ -8,28 +8,25 @@
 		$.boximg();
 	});
 
-
 	$(document).on("click",".upload-btn",function(){
 		$("#upload_form input[type='file']").trigger("click");
-		$("#upload_form input[type='file']").unbind('change');
-		$("#upload_form input[type='file']").change(function(event) {
-			$("#upload_form").ajaxForm({
-				url:"/ajax/do_ajax/save_img_box",
-				beforeSend: function(xhr) {
-					$("progress").attr( "value",0);
-					$("progress").removeClass('hidden');
-				},
+	});
 
-				uploadProgress: function(event, position, total, percentComplete) {
-					$("progress").attr( "value",percentComplete);
-
-				},
-				complete: function (hr){
-					$("progress").addClass('hidden');
-					$.reload_media();
-				}
-			}).submit();
-		});
+	$(document).on("change","#upload_form input[type='file']",function(){
+		$("#upload_form").ajaxForm({
+			url:"/ajax/do_ajax/save_img_box",
+			beforeSend: function(xhr) {
+				$("progress").attr( "value",0);
+				$("progress").removeClass('hidden');
+			},
+			uploadProgress: function(event, position, total, percentComplete) {
+				$("progress").attr( "value",percentComplete);
+			},
+			complete: function (hr){
+				$("progress").addClass('hidden');
+				$.reload_media();
+			}
+		}).submit();
 	});
 
 	$.reload_media = function (){
@@ -41,7 +38,12 @@
 			}
 			$(".list-media").html('');
 			$.each(dataxx, function(index, val) {
-				$("<div class='col-sm-3 thumbnail text-center'><img src='"+val.files_path+val.files_name+"'></div>").appendTo(".list-media")
+				var ele_img = $("\
+					<div class='col-sm-3 thumbnail text-center'>\
+						<img src='"+val.files_path+val.files_name+"'>\
+					</div>\
+				")
+				ele_img.appendTo(".list-media");
 			});
 		});
 	}

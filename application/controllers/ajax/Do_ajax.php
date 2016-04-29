@@ -5,18 +5,17 @@ class Do_ajax extends CI_Controller {
 
 	//============ ============  ============  ============ 
 	// Page: /ajax/do_ajax/save_img_box
-	// 
+	// $.post("/ajax/do_ajax/save_img_box",function(data){console.log(data);});
 	//============ ============  ============  ============ 
 	public function save_img_box(){
-
 		// ============ ============  ============  ============ 
 		// Upload img
 		// 
-		$config['upload_path']   = FCPATH.'asset/file_upload/media/';
+		$config['upload_path'] = check_folder(FCPATH.'asset/file_upload/media/'.date("Y")."/".date("m")."/".date("d"));
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']      = '1000000';
 		$config['max_width']     = '10240';
-		$config['max_height']    = '76800';		
+		$config['max_height']    = '76800';
 		$this->load->library('upload', $config);
 		
 		if ( ! $this->upload->do_upload("file_x")){
@@ -37,18 +36,25 @@ class Do_ajax extends CI_Controller {
 				$this->image_lib->resize();
 				if(@$this->image_lib->display_errors()){
 					echo json_encode(["status"=> "Error","content"=>$this->image_lib->display_errors()]);
+					return false;
 				}
+
 			//
 			//============ ============ ============  ============  ============  ============ 
 
 			//============ ============ ============  ============  ============  ============ 
 			// Insert to db
 			//
+			$file_path = preg_replace("/^(.+)\/asset/", "/asset/", $data["file_path"]);
+			if(!$file_path){
+				$file_path = $data["file_path"];
+			}
+
 			$object = [
-				"files_name"=>$data["file_name"],
-				"files_path"=>$data["file_path"],
-				"files_size"=>$data["file_size"],
-				"files_type"=>$data["file_type"],
+				"files_name"  =>$data["file_name"],
+				"files_path"  =>$file_path,
+				"files_size"  =>$data["file_size"],
+				"files_type"  =>$data["file_type"],
 			];
 			if(!$this->db->insert('media', $object)){
 				echo json_encode(["status"=>"error"]);
@@ -63,7 +69,9 @@ class Do_ajax extends CI_Controller {
 		$rs = $this->db->order_by("id","desc")->get('media')->result();
 		foreach ($rs as $key => &$value) {
 			preg_match("/^.+(\/asset\/.+)$/", $value->files_path,$match);
-			$value->files_path = $match[1];
+			if($match[1]){
+				$value->files_path = $match[1];
+			}
 		}
 		echo json_encode($rs);
 	}
