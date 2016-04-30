@@ -35,7 +35,7 @@
 			$.each(rs,function(index,val){
 				var tmp_ele = $(".ele_comment:first").clone();
 				tmp_ele.find("li").data("id",val.id);
-				tmp_ele.find("img").attr("src","<?= PATH_AVATAR; ?>"+val.user_avatar+"");
+				tmp_ele.find("img").attr("src","/asset/images/"+val.user_avatar+"");
 				tmp_ele.find(".username b").text(val.username);
 				tmp_ele.find(".comment_create small").text(val.comment_create);
 				tmp_ele.find(".comment_content").html(val.comment_content);
