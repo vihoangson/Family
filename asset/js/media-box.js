@@ -41,6 +41,7 @@
 				return;
 			}
 			$(".list-media").html('');
+			console.log(dataxx);
 			$.each(dataxx, function(index, val) {
 				var ele_img = $("\
 					<div class='col-sm-3 thumbnail text-center'>\

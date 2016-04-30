@@ -84,7 +84,7 @@ class Admin_page extends MY_Controller {
 
 	public function manager_media(){
 		if($this->input->post()){
-			if($this->input->post("submit")=="delete"){
+			if($this->input->post("submit")=="delete" && $this->input->post("media_id") ){
 				foreach ($this->input->post("media_id") as $key => $value) {
 					$rs = $this->db->where("id",$value)->get('media')->row();
 					$full_path_img = FCPATH.ltrim($rs->files_path.$rs->files_name,"/");

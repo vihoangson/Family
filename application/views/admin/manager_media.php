@@ -49,9 +49,11 @@ $this->load->view('_includes/header_admin',$data_header);
 			<?php foreach ($rs as $key => $value) {
 				?>
 				<tr>
-					<td><input type="checkbox" name="media_id[]" value="<?= $value->id; ?>"></td>
+					<td style="width:20px; text-align:center;"><input type="checkbox" name="media_id[]" value="<?= $value->id; ?>"></td>
+					<td>
+						<img style="width:100px;" src="<?= $value->files_path."/".$value->files_name; ?>">
+					</td>
 					<td><?= $value->id; ?></td>
-					<td><img style="width:100px;" src="<?= $value->files_path."/".$value->files_name; ?>"></td>
 				</tr>
 				<?php
 			} ?>

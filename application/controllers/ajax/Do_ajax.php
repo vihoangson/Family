@@ -16,6 +16,9 @@ class Do_ajax extends CI_Controller {
 		$config['max_size']      = '1000000';
 		$config['max_width']     = '10240';
 		$config['max_height']    = '76800';
+		$config['xss_clean']    = true;
+
+
 		$this->load->library('upload', $config);
 		
 		if ( ! $this->upload->do_upload("file_x")){
@@ -27,16 +30,21 @@ class Do_ajax extends CI_Controller {
 			// Resize image after upload
 			//
 				$data = $this->upload->data();
+				$path_file_name = $data["file_path"].$data["file_name"];
 				$thumbWidth             = 800;
 				$thumbHeight            = 800;
-				$config['source_image'] = $data["file_path"].$data["file_name"];
-				$config['width']        = $thumbWidth;
-				$config['height']       = $thumbHeight;
-				$this->load->library('image_lib', $config);
-				$this->image_lib->resize();
-				if(@$this->image_lib->display_errors()){
-					echo json_encode(["status"=> "Error","content"=>$this->image_lib->display_errors()]);
-					return false;
+				list($width, $height) = getimagesize($path_file_name);
+				if($thumbWidth < $width || $thumbHeight < $height)
+				{
+					$config['source_image'] = $path_file_name;
+					$config['width']        = $thumbWidth;
+					$config['height']       = $thumbHeight;
+					$this->load->library('image_lib', $config);
+					$this->image_lib->resize();
+					if(@$this->image_lib->display_errors()){
+						echo json_encode(["status"=> "Error","content"=>$this->image_lib->display_errors()]);
+						return false;
+					}
 				}
 			//
 			//============ ============ ============  ============  ============  ============ 
@@ -78,7 +86,7 @@ class Do_ajax extends CI_Controller {
 	}
 
 	public function load_media(){
-		echo '<button class="btn btn-default upload-btn"><i class="fa fa-plus"></i> Upload</button>';
+		echo '<button style="margin-bottom:5px" class="btn btn-default upload-btn"><i class="fa fa-plus"></i> Upload</button>';
 		?>
 		<progress value="0" max="100" class="hidden"></progress>
 		<form id='upload_form' method="post" enctype="multipart/form-data">
