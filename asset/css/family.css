@@ -471,6 +471,6 @@ li.ele_comment:after {
     text-align: center;
     font-weight: 15px;
 }
-.qa-message-content img[src*='file_upload/media']{
+.qa-message-content img[src*='file_upload/media'],.qa-message-content img[src*='asset/uploads/']{
     max-width:100%;
 }
