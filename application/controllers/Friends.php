@@ -49,6 +49,12 @@ class Friends extends CI_Controller {
 				"desc" => "",
 				"quote" => "Không có gì quý hơn độc lập tự do",
 			],
+
+			"Dì Bảo Trinh" =>[
+				"img" => "/asset/data/img_quote/dibaotrinh.jpg",
+				"desc" => "",
+				"quote" => "Không có gì quý hơn độc lập tự do",
+			],			
 		];
 	}
 

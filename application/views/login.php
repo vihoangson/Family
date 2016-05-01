@@ -44,7 +44,10 @@
                         <p class="text-center"><a href="<?= $url_fb; ?>"><img style="max-width:100%" src="/asset/data/login_w_facebook.png"></a></p>
                         <?php
                     } ?>
-                    <p class="text-center"><a href='/friends' class="btn btn-primary btn-lgn"><i class="fa fa-smile-o"></i> My Friends</a></p>
+                    <p class="text-center">
+                        <a href='/friends' class="btn btn-primary btn-lgn"><i class="fa fa-smile-o"></i> My Friends</a>
+                        <a href='/friends/faces' class="btn btn-primary btn-lgn"><i class="fa fa-smile-o"></i> Face</a>
+                    </p>
                     <?php
                     //recapcha
                     if(RECAPTCHA){
