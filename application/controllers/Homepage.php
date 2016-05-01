@@ -170,7 +170,9 @@ class Homepage extends MY_Controller {
 			if($this->upload->do_upload()){
 				$img_info = $this->upload->data();
 				$success[] = $this->upload->data();
-				$this->resize_img(FCPATH."asset/images/".$img_info['file_name'],100,100);
+				if(!$this->resize_img(FCPATH."asset/images/".$img_info['file_name'],100,100)){
+					$error[] = "Can't resize img";
+				}
 			}else{
 				$error[] = $this->upload->display_errors();
 			}
@@ -335,7 +337,6 @@ class Homepage extends MY_Controller {
 		//$config['new_image'] = FCPATH."asset/images/";
 		$config['new_image'] = $path;
 		$config['create_thumb'] = false;
-		$config['maintain_ratio'] = TRUE;
 		$config['width']         = $width;
 		$config['height']       = $height;
 		$this->image_lib->initialize($config);
@@ -343,15 +344,30 @@ class Homepage extends MY_Controller {
 	}
 
 	private function resize_img($path,$width,$height){
-		$config['image_library'] = 'gd2';
 		$config['source_image'] = $path;
 		$config['new_image'] = FCPATH."asset/images/thumb/";
 		$config['create_thumb'] = TRUE;
-		$config['maintain_ratio'] = TRUE;
 		$config['width']         = $width;
 		$config['height']       = $height;
 		$this->image_lib->initialize($config);
-		$this->image_lib->resize();	
+		if($this->image_lib->resize()){
+			list($c_width,$c_height) = getimagesize($path);
+			if($c_width > 800 || $c_height > 800){
+				$this->image_lib->clear();
+				$config['source_image'] = $path;
+				$config['new_image'] = $path;
+				$config['create_thumb'] = FALSE;
+				$config['width']         = 800;
+				$config['height']       = 800;
+				$this->image_lib->initialize($config);
+				if(!$this->image_lib->resize()){
+					return false;
+				}
+			}
+		}else{
+			return false;
+		}
+		return true;
 	}
 
 	public function error404(){

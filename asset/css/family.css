@@ -168,8 +168,8 @@ line-height: 22px;
 }
 
 .image-link img {
-    min-width: 50px;
-    /* max-height: 50px; */
+    min-width: 108px;
+    max-height: 108px; 
     padding: 1px;
     border: 1px solid #ccc;
     margin: 2px;
