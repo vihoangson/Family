@@ -57,6 +57,16 @@ class Friends extends CI_Controller {
 		$this->list_f();
 	}
 
+	public function faces(){
+			$files = scandir(FCPATH."asset/data/face");
+			foreach ($files as $key => $value) {
+				if(preg_match("/\.(jpg|gif|png)$/",$value)){
+					$json_face[] = "/asset/data/face/".$value;
+				}
+			}
+			$this->load->view('faces',compact("json_face"));
+	}
+
 	public function list_f(){
 		foreach ($this->data_friends as $key => $value) {
 			$value["img"]=substr($value["img"],0-(strlen($value["img"])-1));

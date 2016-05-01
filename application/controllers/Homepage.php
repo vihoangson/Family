@@ -18,6 +18,8 @@ class Homepage extends MY_Controller {
 		$this->init();
 	}
 
+
+
 	public function post_group(){
 		$this->facebook->post_group();
 	}
@@ -170,6 +172,10 @@ class Homepage extends MY_Controller {
 			if($this->upload->do_upload()){
 				$img_info = $this->upload->data();
 				$success[] = $this->upload->data();
+				
+				if(!$this->resize_this_img(FCPATH."asset/images/".$img_info['file_name'],MAX_SIZE_IMG,MAX_SIZE_IMG)){
+					$error[] = "Can't resize img";
+				}
 				if(!$this->resize_img(FCPATH."asset/images/".$img_info['file_name'],100,100)){
 					$error[] = "Can't resize img";
 				}
@@ -189,6 +195,8 @@ class Homepage extends MY_Controller {
 		$config['max_size']  = '1000000';
 		$config['max_width']  = '102400';
 		$config['max_height']  = '76800';
+		$config['image_width']  = '800';
+		$config['image_height']  = '800';
 		$config['overwrite']     = FALSE;
 		return $config;
 	}
@@ -332,15 +340,20 @@ class Homepage extends MY_Controller {
 	}
 
 	private function resize_this_img($path,$width,$height){
-		$config['image_library'] = 'gd2';
-		$config['source_image'] = $path;
-		//$config['new_image'] = FCPATH."asset/images/";
-		$config['new_image'] = $path;
-		$config['create_thumb'] = false;
-		$config['width']         = $width;
-		$config['height']       = $height;
-		$this->image_lib->initialize($config);
-		$this->image_lib->resize();	
+		list($c_width,$c_height) = getimagesize($path);
+		if($c_width > $width || $c_height > $height){
+			$this->image_lib->clear();
+			$config['source_image'] = $path;
+			$config['new_image'] = $path;
+			$config['create_thumb'] = FALSE;
+			$config['width']         = $width;
+			$config['height']       = $height;
+			$this->image_lib->initialize($config);
+			if(!$this->image_lib->resize()){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private function resize_img($path,$width,$height){
@@ -351,19 +364,7 @@ class Homepage extends MY_Controller {
 		$config['height']       = $height;
 		$this->image_lib->initialize($config);
 		if($this->image_lib->resize()){
-			list($c_width,$c_height) = getimagesize($path);
-			if($c_width > 800 || $c_height > 800){
-				$this->image_lib->clear();
-				$config['source_image'] = $path;
-				$config['new_image'] = $path;
-				$config['create_thumb'] = FALSE;
-				$config['width']         = 800;
-				$config['height']       = 800;
-				$this->image_lib->initialize($config);
-				if(!$this->image_lib->resize()){
-					return false;
-				}
-			}
+
 		}else{
 			return false;
 		}

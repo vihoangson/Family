@@ -31,8 +31,8 @@ class Do_ajax extends CI_Controller {
 			//
 				$data = $this->upload->data();
 				$path_file_name = $data["file_path"].$data["file_name"];
-				$thumbWidth             = 800;
-				$thumbHeight            = 800;
+				$thumbWidth             = MAX_SIZE_IMG;
+				$thumbHeight            = MAX_SIZE_IMG;
 				list($width, $height) = getimagesize($path_file_name);
 				if($thumbWidth < $width || $thumbHeight < $height)
 				{
@@ -95,6 +95,20 @@ class Do_ajax extends CI_Controller {
 		<?php
 		echo "<div class='row list-media'></div>";
 		die;
+	}
+
+	//============ ============  ============  ============ 
+	// Function lấy tất cả hình trong folder /asset/data/face
+	// @create in: 2016-05-01
+	//============ ============  ============  ============ 
+	public function list_face(){
+		$files = scandir(FCPATH."asset/data/face");
+		foreach ($files as $key => $value) {
+			if(preg_match("/\.(jpg|gif|png)$/",$value)){
+				$json_files[] = "/asset/data/face/".$value;
+			}
+		}
+		echo json_encode($json_files);
 	}
 
 	public function index()

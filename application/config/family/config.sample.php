@@ -21,4 +21,5 @@
 	// define("NGAYDUSINH","2016-08-30");// Xuân
 	define("NGAYDUSINH","2016-05-20");
 
+	define("MAX_SIZE_IMG",800);
 ?>
