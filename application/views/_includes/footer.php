@@ -75,12 +75,12 @@
 	</script>
 	<script src="<?= base_url(); ?>asset/js/script.js"></script>
 	<?php
+		//============ ============  ============  ============ 
+		//  Phần popup đầu tiên
 		if($this->Options_model->get_option("popup_flag")->option_content==1){
 			// option popup
 			if($this->Options_model->get_option("popup")->option_content ){
-				if($this->Options_model->get_option("popup_session")->option_content == 1){
-					$this->session->set_userdata( ['popup' => 1] );
-				}
+
 				?>
 				<div class="modal fade popup" id="modal-general">
 					<div class="modal-dialog">
@@ -105,11 +105,12 @@
 						</div>
 					</div>
 				</div>
-
 				<script>
 					<?php
 					if($this->Options_model->get_option("popup_session")->option_content == 1 && $this->session->userdata('popup')!=1){
-						?>$("#modal-id-popup").modal("show");<?php
+						?>$("#modal-id-popup").modal("show");
+						<?php
+						$this->session->set_userdata( ['popup' => 1] );
 					}else{
 						?>
 						$("#button_popup").click(function() {
@@ -123,6 +124,8 @@
 				<?php
 			}
 		}
+		// End popup
+		//============ ============  ============  ============ 
 	?>
 	<script src="/asset/js/jquery.lazyload.js"></script>
 	<script>
