@@ -26,9 +26,9 @@ if($this->session->flashdata('alert')){
  ?>
 <h1>Ý tưởng làm cuộc sống vui vẻ và thú vị hơn</h1>
 <p><a class="btn btn-primary" href="/idear/edit">Add new idear</a></p>
-<div class="row">
+<div class="row autoheight">
 <?php foreach ($rs as $key => $value) {
-	echo "<div class='col-md-3'>";
+	echo "<div class='col-sm-6 col-md-3'>";
 	if($value->idear_img){
 		$img = json_decode($value->idear_img,true);
 		$file_name = basename($img[0]);
@@ -36,7 +36,7 @@ if($this->session->flashdata('alert')){
 		<a href='/idear/detail/".$value->id."' class='thumbnail equalize ele_idear'>
 			<img src='/asset/images/idear/thumb/".$file_name."' onError='this.src=\"http://placehold.it/100x100\"'>
 		</a>
-		<h3>".$value->idear_title."</h3>
+		<h5 class='text-center'>".$value->idear_title."</h5>
 		";
 	}
 	echo "</div>";

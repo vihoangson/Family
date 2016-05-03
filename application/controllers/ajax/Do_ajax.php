@@ -359,7 +359,6 @@ class Do_ajax extends CI_Controller {
 			</div>
 		<?php
 	}
-
 }
 
 /* End of file ajax.php */

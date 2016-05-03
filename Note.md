@@ -12,4 +12,6 @@ $this->session->set_flashdata('item', ["success"=>"Đã save thành công"]);
 // $this->image_lib->crop()
 //============ ============  ============  ============ 
 
+>> Cách đăng Video vào bài viết
+[video](https://www.youtube.com/embed/05NOYXoe3QM)
 

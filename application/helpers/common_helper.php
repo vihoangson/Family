@@ -80,8 +80,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$key = array_keys($CI->config->item("emotion_yahoo"));
 		$value = array_values($CI->config->item("emotion_yahoo"));
 		$string = str_replace($key, $value, $string);
+		$replace = '<p class="text-center"><iframe width="420" height="315" src="https://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></p>';
+		$string = preg_replace("/\[video\]\(.+=(.+?)\)/", $replace, $string);
 		$string = Markdown::defaultTransform($string);
-		$string = preg_replace("/\(\#(\w+)\)/", "<a href='/homepage/tags/$1'>#$1</a>", $string);
+		$string = preg_replace("/\(\#(\w+)\)/i", "<a href='/homepage/tags/$1'>#$1</a>", $string);
 		return $string;
 	}
 
