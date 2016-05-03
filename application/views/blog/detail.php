@@ -4,6 +4,7 @@ $data_header = [
 		"Blog"=>"/blog",
 		$rs->blog_title=>"",
 	],
+	"title"=> $rs->blog_title,
 	"custom_html"=> '',
 ];
 $this->load->view('_includes/header',$data_header); ?>
