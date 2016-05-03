@@ -22,3 +22,8 @@ $(document).on("click",".avatar_element",function(){
 	$("#modal-general").modal("hide");
 	$(".row-tail input[data-id='"+id+"']").parents(".row-tail").find('button').trigger("click");
 });
+
+$.fn.autoheight = function (){
+	this.find("img").css({maxHeight: 100 })
+}
+$('.row.autoheight > div').autoheight();

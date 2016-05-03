@@ -100,6 +100,12 @@ class Admin_page extends MY_Controller {
 		$rs = $this->db->order_by("id","desc")->get("media")->result();
 		$this->load->view('admin/manager_media' , compact("rs"));
 	}
+
+	public function instant_imgs(){
+		$this->load->model('options_model');
+		$data = json_decode($this->options_model->get_option("instant_img")->option_content);
+		$this->load->view('admin/instant_imgs',compact("data"));
+	}
 }
 
 /* End of file admin_page.php */

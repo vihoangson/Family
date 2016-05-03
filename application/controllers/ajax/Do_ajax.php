@@ -3,6 +3,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Do_ajax extends CI_Controller {
 
+
+
+	public function save_img_instant(){
+		$id = $this->input->post('id');
+		$src = $this->input->post('src');
+		$this->load->model('options_model');
+
+		if(!($data = $this->options_model->get_option("instant_img"))){
+			$this->options_model->save_option("instant_img",json_encode([]));
+			$data = $this->options_model->get_option("instant_img");
+		}
+		$data = json_decode($data->option_content,true);
+		$data[$id] = $src;
+		$this->options_model->save_option("instant_img",json_encode($data));
+	}
+
 	//============ ============  ============  ============ 
 	// Page: /ajax/do_ajax/save_img_box
 	// $.post("/ajax/do_ajax/save_img_box",function(data){console.log(data);});

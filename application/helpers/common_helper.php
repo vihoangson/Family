@@ -158,9 +158,61 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			"
 			;
 		}
-
-
-
-
 		return $html;
 	}
+
+
+//============ ============  ============  ============ 
+// $method
+// add_img_homepage
+//============ ============  ============  ============ 
+function show_modal_media($method=null){
+	?>
+	<!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
+	<div class="modal fade" id="modal-upload-media">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Modal title</h4>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/asset/js/jquery.form.js"></script>
+	<script src="/asset/js/media-box.js"></script>
+	<?php
+	switch($method){
+		case "add_img_homepage":
+			?>
+			<script>
+				$(".insert-img").open_media({
+					callbackevent_before:function(){
+						$(document).on("click","#modal-upload-media .modal-body img",function(){
+							src = "![]("+$(this).attr("src")+")";
+							$("#modal-upload-media").modal("hide");
+							val_text = $("#content").val();
+							$("#content").val(val_text+src);
+						});
+					}
+				});
+			</script>
+			<?php
+		break;
+		case "instant_img":
+			?>
+
+			<?php
+		break;
+		default:
+		break;
+	}
+	?>
+	<!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
+	<?php
+}

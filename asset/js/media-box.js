@@ -1,12 +1,17 @@
+	$.fn.open_media = function(opt){
+		opt.callbackevent_before(this);
+		this.click(function(event) {
+			$.boximg();
+			opt.callbackfn($(this));
+		});
+	}
+
 	$.boximg= function(){
 		$("#modal-upload-media .modal-body").load("/ajax/do_ajax/load_media");
 		$("#modal-upload-media").modal("show");
 		$.reload_media();
 	}
 
-	$(".insert-img").click(function(event) {
-		$.boximg();
-	});
 
 	$(document).on("click",".upload-btn",function(){
 		$("#upload_form input[type='file']").trigger("click");
@@ -41,7 +46,7 @@
 				return;
 			}
 			$(".list-media").html('');
-			console.log(dataxx);
+			$(".list-media").addClass('autoheight');
 			$.each(dataxx, function(index, val) {
 				var ele_img = $("\
 					<div class='col-sm-3 thumbnail text-center'>\
@@ -50,12 +55,8 @@
 				")
 				ele_img.appendTo(".list-media");
 			});
+			$('.list-media > div').autoheight();
 		});
+
 	}
 
-	$(document).on("click","#modal-upload-media .modal-body img",function(){
-		src = "![]("+$(this).attr("src")+")";
-		$("#modal-upload-media").modal("hide");
-		val_text = $("#content").val();
-		$("#content").val(val_text+src);
-	})

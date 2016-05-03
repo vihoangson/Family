@@ -53,7 +53,7 @@ class Files_controller extends MY_Controller {
 				$object = [
 					"files_title" => $this->input->post('file_title'),
 					"files_name" => $data["upload_data"]['file_name'],
-					"files_path" => $data["upload_data"]['file_path'],
+					"files_path" => "/asset/uploads/",
 					"files_size" => @$data["upload_data"]['image_size_str'],
 					"files_type" => $data["upload_data"]['file_type'],
 				];
