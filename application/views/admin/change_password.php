@@ -8,7 +8,7 @@ $data_header = [
 	],
 	"custom_html"=> '<h1> Thay đổi password </h1>',
 ];
-$this->load->view('_includes/header',$data_header); ?>
+$this->load->view('_includes/header_admin',$data_header); ?>
 <form action="" method="POST" role="form">
 	<legend>Change password</legend>
 	<?php 
@@ -32,4 +32,4 @@ $this->load->view('_includes/header',$data_header); ?>
 	</div>
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<?php $this->load->view('_includes/footer'); ?>
+<?php $this->load->view('_includes/footer_admin'); ?>

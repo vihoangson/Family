@@ -8,7 +8,7 @@ $data_header = [
 	],
 	"custom_html"=> '<h1> Quản lý thành viên </h1>',
 ];
-$this->load->view('_includes/header',$data_header);
+$this->load->view('_includes/header_admin',$data_header);
 
 ?>
 <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Thêm user mới</a>
@@ -71,4 +71,4 @@ $this->load->view('_includes/header',$data_header);
 
 	</tbody>
 </table>
-<?php $this->load->view('_includes/footer'); ?>
+<?php $this->load->view('_includes/footer_admin'); ?>

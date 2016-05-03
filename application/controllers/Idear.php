@@ -16,7 +16,7 @@ class Idear extends MY_Controller {
 				FCPATH."asset/images/idear/",
 				FCPATH."asset/images/idear/thumb/",
 			];
-			foreach ($variable as $key => $value) {
+			foreach ($folders as $key => $value) {
 				// Fucntion in common_helper
 				check_folder($value);
 			}

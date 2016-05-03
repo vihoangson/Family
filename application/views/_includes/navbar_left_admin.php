@@ -20,7 +20,21 @@
 			<a href="/admin/control_popup" class="list-group-item">Control popup</a>
 			<a href="/phpliteadmin.php" target="_blank" class="list-group-item">PHP Sqlite</a>
 		</div>
+
 		<?php
 	}
+
+
 ?>
 
+		<h3>Other tool</h3>
+		<div class="list-group">
+			<a class="list-group-item" href="/setting"><i class="fa fa-gear"></i> Tùy chỉnh</a>
+			<a class="list-group-item" href="/homepage/landpage"><i class="fa fa-pagelines"></i> Landing page</a>
+			<a class="list-group-item" href="/Template_view_controller">Template bootstrap</a>
+			<a href="/admin/users/index" class="list-group-item"><i class="fa fa-user"></i> Manager user</a>
+			<a href="/admin/users/change_password" class="list-group-item"><i class="fa fa-paw"></i> Change password</a>
+			<a href="/admin/files_controller/show" class="list-group-item"><i class="fa fa-list"></i> List img gif</a>
+			<a href="/admin/files_controller/do_upload" class="list-group-item"><i class="fa fa-upload"></i> Upload img gif</a>
+			<a href="<?= base_url(); ?>admin/daily_controller/show_markdown" class="list-group-item"><i class="fa fa-sticky-note"></i> Take note</a>
+		</div>

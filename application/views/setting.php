@@ -1,4 +1,4 @@
-<?php $this->load->view('_includes/header'); ?>
+<?php $this->load->view('_includes/header_admin'); ?>
 	<div class="list-group">
 		<a href="/homepage/custom/sample_markdown" class="list-group-item">Mark down</a>
 		<a href="/asset/data/preview_markdown.png" class="list-group-item" target="_blank">IMG Mark down</a>
@@ -40,4 +40,4 @@
 
 	<?php show_social(); ?>
 
-<?php $this->load->view('_includes/footer'); ?>
+<?php $this->load->view('_includes/footer_admin'); ?>

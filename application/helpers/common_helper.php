@@ -115,31 +115,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 		$date1=date_create(date("Y-m-d h:i:s",time()));
 		$date2=date_create($ngaydusinh);
-		$diff=date_diff($date1,$date2);
-		$days = $diff->days;
-		$weeks = round((280 - $days)/7);
-		$percent = 100-round(($days/266)*100);
-		$m = $diff->m;
-		$d = $diff->d;
-		$h = $diff->h;
-		$i = $diff->i;
-		$s = $diff->s;
-		$html = "
-		<center>
-			<h2 class='text-center'>Ngày dự sinh: <br>".date("d-m-Y",$date2->getTimestamp())."</h2>
-			<p><h3>Tuần thứ: <b>".$weeks."/40</b></p>
-			<h1>Còn lại: ".$days." Ngày</h1>
-			<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$i." Phút ".$s." Giây </h3>
-			".'
-			<div id="count_down"></div>
-			<div class="progress">
-				<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$percent.'%">
-					<span class="sr-only">'.$percent.'% Complete (success)</span>
+		$diff_obj = $date1->diff($date2);
+
+		//============ ============  ============  ============ 
+		// Object date
+		if($diff_obj->invert == 0){
+			$diff=date_diff($date1,$date2);
+			$days = $diff->days;
+			$weeks = round((280 - $days)/7);
+			$percent = 100-round(($days/266)*100);
+			$m = $diff->m;
+			$d = $diff->d;
+			$h = $diff->h;
+			$i = $diff->i;
+			$s = $diff->s;
+			$html = "
+			<center>
+				<h2 class='text-center'>Ngày dự sinh: <br>".date("d-m-Y",$date2->getTimestamp())."</h2>
+				<p><h3>Tuần thứ: <b>".$weeks."/40</b></p>
+				<h1>Còn lại: ".$days." Ngày</h1>
+				<h3>".$m." Tháng ".$d." Ngày - ".$h." Giờ ".$i." Phút ".$s." Giây </h3>
+				".'
+				<div id="count_down"></div>
+				<div class="progress">
+					<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$percent.'%">
+						<span class="sr-only">'.$percent.'% Complete (success)</span>
+					</div>
 				</div>
+				<h2><i class="fa fa-refresh fa-spin"></i> Loading</h2>
+				'."
+			</center>
+			";
+		}else{
+			$html = "
+			<div class='text-center'>
+				<h1>Kem được</h1>".
+				'<span>'.$diff_obj->y." Năm</span> ".
+				'<span>'.$diff_obj->m." Tháng</span> ".
+				'<span>'.$diff_obj->d." Ngày</span> ".
+				'<div class="hidden"><br>$diff_obj->days'.$diff_obj->days."</div>
 			</div>
-			<h2><i class="fa fa-refresh fa-spin"></i> Loading</h2>
-			'."
-		</center>
-		";
+			"
+			;
+		}
+
+
+
+
 		return $html;
 	}
