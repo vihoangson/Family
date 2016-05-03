@@ -113,4 +113,12 @@ if(!$navigation_bar){
 			</div>
 			<?php
 		}
+		if(isset($alert)){
+			?>
+			<div class="alert alert-info">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong>Alert!</strong> <?= $alert; ?>
+			</div>
+			<?php
+		}
 ?>

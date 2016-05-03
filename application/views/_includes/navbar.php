@@ -28,7 +28,6 @@
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Người dùng <b class="caret"></b></a>
 				<ul class="dropdown-menu">
-					<li><a href="/friends">Friends</a></li>
 					<li><a href="<?= base_url(); ?>admin"><i class="fa fa-user"></i> Admin page</a></li>
 					<li><a href="<?= base_url(); ?>timeline"><i class="fa fa-image"></i> Time line</a></li>
 					<li><a href="<?= base_url(); ?>idear"><i class="fa fa-eye"></i> Idear</a></li>

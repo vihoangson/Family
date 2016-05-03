@@ -29,6 +29,8 @@
 
 		<h3>Other tool</h3>
 		<div class="list-group">
+			<a class="list-group-item" href="/blog"><i class="fa fa-gear"></i> Blog</a>
+			<a class="list-group-item" href="/blog/create"><i class="fa fa-gear"></i> Viết blog</a>
 			<a class="list-group-item" href="/setting"><i class="fa fa-gear"></i> Tùy chỉnh</a>
 			<a class="list-group-item" href="/homepage/landpage"><i class="fa fa-pagelines"></i> Landing page</a>
 			<a class="list-group-item" href="/Template_view_controller">Template bootstrap</a>
