@@ -22,4 +22,8 @@
 	define("NGAYDUSINH","2016-05-20");
 
 	define("MAX_SIZE_IMG",800);
+
+	define("FROM_EMAIL","");
+
+	define("FROM_EMAIL_PASS","");
 ?>

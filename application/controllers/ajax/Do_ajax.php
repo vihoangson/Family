@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Do_ajax extends CI_Controller {
 
-
+	public function do_test(){
+	}
 
 	public function save_img_instant(){
 		$id = $this->input->post('id');

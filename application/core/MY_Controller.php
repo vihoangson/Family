@@ -5,9 +5,11 @@ class MY_Controller extends CI_Controller
 {
 	
 	public function __construct(){
-		define("FROM_EMAIL","vihoangson@gmail.com");
-		define("FROM_EMAIL_PASS","sonuyen117s");
+
 		parent::__construct();
+
+		$this->check_define_config();
+
 		if($this->router->fetch_method() != "login") {
 			if($this->router->fetch_method()=="cron" || $this->router->fetch_method()=="fb_callback"){
 				return;
@@ -57,10 +59,10 @@ class MY_Controller extends CI_Controller
 			$this->email->subject($options["subject"]);
 			$this->email->message($options["content"]);
 			if($this->email->send()){
-				echo "<h1>Send mail [".__FUNCTION__."]</h1>";
+				//echo "<h1>Send mail [".__FUNCTION__."]</h1>";
 			}else{
-				d($this->email->print_debugger());
-				echo "<h1>Can't sent mail [".__FUNCTION__."]</h1>";
+				//d($this->email->print_debugger());
+				//echo "<h1>Can't sent mail [".__FUNCTION__."]</h1>";
 			}
 		}
 	}
@@ -188,6 +190,37 @@ class MY_Controller extends CI_Controller
 		$config['height']       = $height;
 		$this->image_lib->initialize($config);
 		$this->image_lib->resize();	
+	}
+
+	private function check_define_config(){
+		$path_file_config = file_get_contents(FCPATH."application/config/family/config.php");
+		$a1= $this->getDefineInFile($path_file_config);
+
+		$path_file_config = file_get_contents(FCPATH."application/config/family/config.sample.php");
+		$a2= $this->getDefineInFile($path_file_config);
+
+		if(!($a1 === array_intersect($a1, $a2) && $a2 === array_intersect($a2, $a1))) {
+			$html  = '';
+			$html .= '<p>application/config/family/config.php</p>';
+			$html .= '<p>application/config/family/config.sample.php</p>';
+			$html .= '<p>Không đồng nhất với nhau, mời kiểm tra lại</p>';
+			$this->log->write_log("ERROR",$html);
+		}
+	}
+	//============ ============  ============  ============ 
+	// getDefineInFile()
+	// Lấy tất cả tên các define đổ vào mảng
+	//============ ============  ============  ============ 
+	private function getDefineInFile($path_file_config){
+		$array_str = array_unique(explode("\n", $path_file_config));
+		$return = [];
+		foreach ($array_str as $key => $value) {
+			preg_match("/define\(\"(.+?)\"/", $value,$match);
+			if($match[1]){
+				$return[] = ($match[1])."\n";
+			}
+		}
+		return $return;
 	}
 }
 ?>

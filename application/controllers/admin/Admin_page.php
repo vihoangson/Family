@@ -106,6 +106,33 @@ class Admin_page extends MY_Controller {
 		$data = json_decode($this->options_model->get_option("instant_img")->option_content);
 		$this->load->view('admin/instant_imgs',compact("data"));
 	}
+
+	public function view_logs($case = null){
+		if($case == "delete"){
+			$files = scandir(APPPATH."logs");
+			foreach ($files as $key => $value) {
+				if(preg_match("/\.php/", $value)){
+					unlink(APPPATH."logs/".$value);
+				}
+			}
+			$this->session->set_flashdata('alert', 'Đã xóa logs');
+			redirect('/admin/admin_page/view_logs/','refresh');
+		}
+		$files = scandir(APPPATH."logs");
+		echo $this->load->view('_includes/header_admin', null, true);
+		echo "<h1>Log file</h1>";
+		echo '<a href="/admin/admin_page/view_logs/delete" class="btn btn-warning"><i class="fa fa-trash"></i> Delete logs</a><hr>';
+		if($files){
+			echo "<pre>";
+			foreach ($files as $key => $value) {
+				if(preg_match("/\.php/", $value)){
+					include(APPPATH."logs/".$value);
+				}
+			}
+			echo "</pre>";
+		}
+		echo $this->load->view('_includes/footer_admin', null, true);
+	}
 }
 
 /* End of file admin_page.php */

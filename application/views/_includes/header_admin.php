@@ -130,6 +130,14 @@
 				<?php
 			}
 		}
+		if($this->session->flashdata('alert')){
+			?>
+			<div class="alert alert-info">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong>Alert!</strong> <?= $this->session->flashdata('alert'); ?>
+			</div>
+			<?php
+		}
 ?>
 
 		<?php

@@ -14,7 +14,7 @@ $this->load->view('_includes/header',$data_header); ?>
 	<button type="button" class="btn btn-primary submit-blog">Submit</button>
 	<textarea name="content" style="display:none;"></textarea></form>
 <script>
-	$("#summernote").summernote({height:300});
+	$("#summernote").summernote({height:300,lang:"VN"});
 	$(".submit-blog").click(function(event) {
 		$("[name='content']").html($("#summernote").summernote("code"))
 		$("form").submit();
