@@ -1,6 +1,11 @@
 ## Cách set flashdata
 $this->session->set_flashdata('item', ["success"=>"Đã save thành công"]);
 
+## Cách sử dụng MY_Model
+// https://gist.github.com/vihoangson/0b28c2c286a3a19170e050ea4ccb355b
+// Github usage:  https://github.com/avenirer/CodeIgniter-MY_Model
+
+
 ## Cách sử dụng image_lib
 //============ ============  ============  ============ 
 // ============ Cách sử dụng image_lib ============ 

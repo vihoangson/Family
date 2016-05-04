@@ -66,6 +66,55 @@
  *
  **/
 //Github usage:  https://github.com/avenirer/CodeIgniter-MY_Model
+// ### public function get($where = NULL)
+// ### public function get_all($where = NULL)
+// 
+// ### public function insert($data = NULL)
+// ### public function update($data = NULL, $column_name_where = NULL, $escape = TRUE)
+// 
+// ### public function where($field_or_array = NULL, $operator_or_value = NULL, $value = NULL, $with_or = FALSE, $with_not = FALSE, $custom_string = FALSE)
+// ### public function limit($limit, $offset = 0)
+// ### public function group_by($grouping_by)
+// ### public function delete($where = NULL)
+// 
+// ### public function order_by($criteria, $order = 'ASC')
+// ### public function as_array()
+// ### public function as_object()
+// 
+// ### public function as_dropdown($field = NULL)
+// 
+// public function paginate($rows_per_page, $total_rows = NULL, $page_number = 1)
+// public function set_pagination_delimiters($delimiters)
+// public function set_pagination_arrows($arrows)
+// 
+// public function count($where = NULL)
+// 
+// public function reset()
+// 
+// public function set_cache($string, $seconds = 86400)
+// 
+// public function delete_cache($string = NULL)
+// 
+// 
+// 
+// public function _get_table_fields()
+// public function fillable_fields()
+// public function _prep_before_write($data)
+// public function _prep_before_read()
+// public function _prep_after_read($data, $multi = TRUE)
+// public function from_form($rules = NULL,$additional_values = NULL, $row_fields_to_update = array())
+// public function force_delete($where = NULL)
+// public function restore($where = NULL)
+// public function trashed($where = NULL)
+// public function with($request,$arguments = array())
+// public function on($connection_group = NULL)
+// public function trigger($event, $data = array(), $last = TRUE)
+// public function with_trashed()
+// public function only_trashed()
+// public function fields($fields = NULL)
+// public function __call($method, $arguments)
+// public function add_creator($data)
+// public function add_updater($data)
 
 class MY_Model extends CI_Model
 {
