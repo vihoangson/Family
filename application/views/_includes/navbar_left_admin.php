@@ -41,4 +41,6 @@
 			<a href="/admin/daily_controller/show_markdown" class="list-group-item"><i class="fa fa-sticky-note"></i> Take note</a>
 			<a href="/admin/admin_page/instant_imgs" class="list-group-item"><i class="fa fa-image"></i> Instant img</a>
 			<a href="/admin/admin_page/view_logs" class="list-group-item"><i class="fa fa-image"></i> View log</a>
+			<a href="/admin/admin_page/cache_input_kyniem" class="list-group-item"><i class="fa fa-image"></i> cache_input_kyniem</a>
+			
 		</div>

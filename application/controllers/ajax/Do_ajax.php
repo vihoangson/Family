@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Do_ajax extends CI_Controller {
 
 	public function do_test($page=null){
-		
+
 	}
 
 	public function save_img_instant(){
@@ -103,6 +103,10 @@ class Do_ajax extends CI_Controller {
 		echo json_encode($rs);
 	}
 
+	//============ ============  ============  ============ 
+	// Function load_media: load bảng upload file hình ảnh
+	// @create in: 2016-05-23
+	//============ ============  ============  ============ 
 	public function load_media(){
 		echo '<button style="margin-bottom:5px" class="btn btn-default upload-btn"><i class="fa fa-plus"></i> Upload</button>';
 		?>
@@ -113,6 +117,21 @@ class Do_ajax extends CI_Controller {
 		<?php
 		echo "<div class='row list-media'></div>";
 		die;
+	}
+
+	//============ ============  ============  ============ 
+	// Function mỗi khi close window, lấy tất cả các localStorage lưu vào db với prefix: "cache_tmp_input_".time()
+	// @create in: 2016-05-23
+	// /ajax/do_ajax/ajax_save_cache/delete
+	//============ ============  ============  ============ 
+	public function ajax_save_cache($option=null){
+		if($option=="delete"){
+			$this->db->like('option_key', "cache_tmp_input_");
+			$this->db->delete('options');
+			redirect('/admin/admin_page/cache_input_kyniem','refresh');
+			return;
+		}
+		$this->Options_model->save_option("cache_tmp_input_".time(),json_encode($this->input->post()));
 	}
 
 	//============ ============  ============  ============ 

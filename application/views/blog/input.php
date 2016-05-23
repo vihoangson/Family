@@ -1,7 +1,8 @@
 <?php
 $data_header = [
 	"breadcrumb"=>[
-		"Blog"=>"",
+		"Blog"=>"/blog",
+		"Create"=>"",
 	],
 	"js"=>["/asset/js/summer_note/summernote.min.js"],
 	"css"=>["/asset/js/summer_note/summernote.css"],

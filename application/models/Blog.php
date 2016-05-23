@@ -10,6 +10,7 @@ class Blog extends MY_Model {
 		$this->timestamps = ["created_at","updated_at","deleted_at"];
 		$this->timestamps_format = 'Y-m-d H:i:s';
 		$this->return_as         = 'object';
+		$this->has_many['blogcomment'] = ['foreign_model'=>'BlogComment','foreign_table'=>'blogcomment','foreign_key'=>'blog_id','local_key'=>'id'];
 		parent::__construct();
 	}
 

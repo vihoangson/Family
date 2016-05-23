@@ -20,7 +20,7 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 		<button type="button" class="btn btn-default insert-img" onclick="">Insert img</button>
 		</div>
 		<div class="icon_box" style="display:none; padding:10px;"><?= $emotion; ?></div>
-		<textarea name="content" id="content" class="form-control" style="height:250px;" required><?= ($data->kyniem_content?$data->kyniem_content:""); ?></textarea>
+		<textarea data-time="<?= time(); ?>" name="content" id="content" class="form-control" style="height:250px;" required><?= ($data->kyniem_content?$data->kyniem_content:""); ?></textarea>
 	</div>
 	<div class="form-group">
 		<label for="">File</label>
@@ -52,16 +52,33 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 	<button type="submit" class="btn btn-primary">Lưu</button>
 	<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>	
 </form>
+<script>
 
+    $('textarea,input').keyup(function () {
+        localStorage.setItem(this.name+"_"+$(this).data("id")+"_"+$("textarea").first().data("time"), this.value);
+    });
+	
+
+window.onbeforeunload = function () {
+	if(localStorage.length>0){
+		$.post('/ajax/do_ajax/ajax_save_cache', {localStorage: localStorage}, function(data, textStatus, xhr) {
+			localStorage.clear();
+		});
+	}
+};
+
+</script>
 <?php if($mode=="edit"){
 	?>
 <script>
 	$(".img_ele").click(function(event) {
-		$.post('<?= base_url(); ?>homepage/ajax_delete_img', {img: $(this).data("img"),id: $(this).data("id")}, function(data, textStatus, xhr) {
+		$.post('/homepage/ajax_delete_img', {img: $(this).data("img"),id: $(this).data("id")}, function(data, textStatus, xhr) {
 			console.log(data);
 			console.log(textStatus);
 		});
 	});
+
+
 </script>
 	<?php 
 }

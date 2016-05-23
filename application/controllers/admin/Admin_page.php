@@ -133,6 +133,20 @@ class Admin_page extends MY_Controller {
 		}
 		echo $this->load->view('_includes/footer_admin', null, true);
 	}
+
+	public function cache_input_kyniem(){
+		echo $this->load->view('_includes/header_admin', null, true);
+			echo "<p><a class='btn btn-danger' href='/ajax/do_ajax/ajax_save_cache/delete'><i class='fa fa-trash'></i> Delete cache</a></p>";
+			$this->db->like('option_key', "cache_tmp_input_");
+			$rs = $this->db->get('options')->result();
+			echo "<pre>";
+			foreach ($rs as $key => $value) {
+				print_r(json_decode($value->option_content));
+				echo "<hr>";
+			}
+			echo "</pre>";
+		echo $this->load->view('_includes/footer_admin', null, true);
+	}
 }
 
 /* End of file admin_page.php */

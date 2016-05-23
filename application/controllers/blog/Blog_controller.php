@@ -6,16 +6,18 @@ class Blog_controller extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Blog');
+		$this->load->model('BlogComment');
+		
 	}
 
 	public function index(){
-		$rs = $this->Blog->get_all();
+		$rs = $this->Blog->with_blogcomment()->get_all();
 		$this->load->view('blog/index',compact("rs"));
 	}
 
 	public function detail($id=null){
 		$id = (int)$id;
-		$rs = $this->Blog->get($id);
+		$rs = $this->Blog->with_blogcomment("order_by:id,desc")->get($id);
 		$this->load->view('blog/detail',compact("rs"));
 	}
 

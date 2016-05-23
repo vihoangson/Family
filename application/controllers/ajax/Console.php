@@ -7,7 +7,6 @@ class Console extends CI_Controller {
 	}
 	public function index()
 	{
-		
 	}
 
 	//============ ============ ============  ============  ============  ============ 

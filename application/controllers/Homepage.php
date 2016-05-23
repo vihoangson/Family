@@ -547,7 +547,6 @@ class Homepage extends MY_Controller {
 	}
 
 
-
 }
 
 /* End of file Index.php */
