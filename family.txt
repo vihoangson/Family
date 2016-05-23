@@ -1,0 +1,23 @@
+[global]
+local master = no
+domain master = no
+preferred master = no
+password server = None
+guest ok = yes
+guest account = root
+security = SHARE
+dns proxy = no
+create mask = 0777
+force create mode = 0777
+security mask = 0777
+force security mode = 0777
+guest ok = yes
+writeable = yes
+change notify = yes
+template shell = /bin/false
+winbind use default domain = no
+printing = bsd
+smb ports = 139
+
+[cba-local]
+path = /var/www/html

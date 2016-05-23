@@ -16,9 +16,9 @@ class BlogComment extends MY_Model {
 		if($this->db->query("SELECT name FROM sqlite_master WHERE name='blogcomment'")->num_rows()==0){
 			$sql = "CREATE TABLE 'blogcomment' ('id' INTEGER PRIMARY KEY NOT NULL, 'blog_id' INTEGER, 'comment_content' TEXT, 'comment_user' TEXT,'created_at' DATETIME,'updated_at' DATETIME);";
 			if($this->db->query($sql)){
-				$this->Log->write_log("INFO","Create table blogcomment");
+				//$this->Log->write_log("INFO","Create table blogcomment");
 			}else{
-				$this->Log->write_log("ERROR","ERROR create table blogcomment");
+				//$this->Log->write_log("ERROR","ERROR create table blogcomment");
 			}
 		}
 	}
