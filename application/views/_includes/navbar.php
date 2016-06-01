@@ -24,7 +24,7 @@
 		</form>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="<?= base_url(); ?>calendar">Lịch gia đình</a></li>
-			<li><a href="<?= base_url(); ?>count_down">Ngày dự sính</a></li>
+			<li><a href="#">Bé Kem ( <?= get_var_countdown(); ?> )</a></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Người dùng <b class="caret"></b></a>
 				<ul class="dropdown-menu">

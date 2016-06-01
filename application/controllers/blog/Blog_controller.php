@@ -38,6 +38,14 @@ class Blog_controller extends CI_Controller {
 		}
 		$this->load->view('blog/input');
 	}
+
+
+	public function remove($id){
+		$this->db->where('id', $id);
+		if($this->db->delete('blog')){
+			redirect('/blog','refresh');
+		}
+	}
 }
 
 /* End of file Blog_controller.php */

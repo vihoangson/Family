@@ -54,10 +54,6 @@ if(!$navigation_bar){
 		<?= (isset($custom_js)?$custom_js:""); ?>
 	</head>
 	<body>
-		<div class="countdown_box">
-			<header></header>
-			<?php echo get_content_countdown(); ?>
-		</div>
 		<div class="container">
 		<?php
 		if($this->session->flashdata('error_upload')){

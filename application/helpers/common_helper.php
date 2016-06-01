@@ -110,6 +110,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$html = "<p><img style='max-height:100%;max-width:100%;' src='/asset/data/27-40_tuan/".$weeks."_tuan.png'></p>";
 		return $html;
 	}
+	function get_var_countdown($ngaydusinh="2016-05-09"){
+		$date1=date_create(date("Y-m-d h:i:s",time()));
+		$date2=date_create($ngaydusinh);
+		$diff_obj = $date1->diff($date2);
+
+		//============ ============  ============  ============ 
+		// Object date
+		if($diff_obj->invert == 1){
+			$diff=date_diff($date1,$date2);
+			$days = $diff->days;
+			$weeks = round((280 - $days)/7);
+			$percent = 100-round(($days/266)*100);
+			$y = $diff->y;
+			$m = $diff->m;
+			$d = $diff->d;
+			$h = $diff->h;
+			$i = $diff->i;
+			$s = $diff->s;
+		}
+
+		$day = $d." Ngày ";
+
+		if($m > 0){
+			$month .= $m. " Tháng ";
+		}
+
+		if($y > 0){
+			$year = $y. " Năm ";
+		}
+		$return = $year . $month . $day  ;
+		return $return;
+
+	}
 
 	function get_content_countdown($ngaydusinh="2016-05-20"){
 		if(NGAYDUSINH){
@@ -280,3 +313,7 @@ function createSlug($str)
   $return = preg_replace('/[^a-zA-Z0-9\s-]/', '', $return);
   return $return;
  }
+
+function filter_string($string){
+	return strip_tags($string);
+}

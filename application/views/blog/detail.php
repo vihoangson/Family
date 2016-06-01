@@ -19,6 +19,10 @@ $this->load->view('_includes/header',$data_header); ?>
 			echo $value->comment_content;
 			echo "<hr>";
 		} ?>
-	<?php } ?>
+	<?php } 
+	if($this->session->userdata("user")){
+		echo '<p><a href="/blog/remove/'. $rs->id.'"><i class="fa fa-trash"></i></a></p>';
+	}
+	?>
 <?php $this->load->view('_includes/footer');
 ?>
