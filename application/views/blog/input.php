@@ -11,6 +11,7 @@ $data_header = [
 $this->load->view('_includes/header',$data_header); ?>
 <form method="post" action="">
 	<p><input type="text" class="form-control" name="title"></p>
+	<p><a class="btn btn-info" href="https://vihoangson.wordpress.com/wp-admin/media-new.php" target="_blank">Upload to Wordpress.com</a></p>
 	<div id = "summernote"></div>
 	<button type="button" class="btn btn-primary submit-blog">Submit</button>
 	<textarea name="content" style="display:none;"></textarea></form>
