@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__.'/../CITestCase.php');
-class FamilyTest extends CITestCase
+class FamilyTestGeneralCommon_Helper extends CITestCase
 {
 	/**
 	 * This test will create a controller stub file, and check if requireController loads correctly.
