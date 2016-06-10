@@ -21,3 +21,13 @@ ERROR - 2016-06-10 13:59:32 --> Severity: Warning --> rmdir(D:\xampp\htdocs\vhos
 ERROR - 2016-06-10 13:59:49 --> Severity: Warning --> rmdir(D:\xampp\htdocs\vhosts\family/santo): Directory not empty D:\xampp\htdocs\vhosts\family\application\tests\test_lib\FamilyTest.php 48
 ERROR - 2016-06-10 14:00:16 --> Severity: Warning --> rmdir(D:\xampp\htdocs\vhosts\family/santo): Directory not empty D:\xampp\htdocs\vhosts\family\application\tests\test_lib\FamilyTest.php 46
 ERROR - 2016-06-10 14:12:24 --> Severity: Parsing Error --> syntax error, unexpected end of file D:\xampp\htdocs\vhosts\family\application\helpers\common_helper.php 347
+ERROR - 2016-06-10 15:14:19 --> Severity: Error --> Call to a member function get_all() on null D:\xampp\htdocs\vhosts\family\application\tests\test_models\test_model_blogTest.php 6
+ERROR - 2016-06-10 15:23:06 --> Severity: Parsing Error --> syntax error, unexpected '$this' (T_VARIABLE) D:\xampp\htdocs\vhosts\family\application\tests\test_models\My_Model_Test.php 16
+ERROR - 2016-06-10 15:23:34 --> Severity: Compile Error --> Cannot redeclare class test_model_blogTest D:\xampp\htdocs\vhosts\family\application\tests\test_models\test_model_blogTest.php 17
+ERROR - 2016-06-10 15:23:52 --> Severity: Compile Error --> Cannot redeclare class test_model_blogTest D:\xampp\htdocs\vhosts\family\application\tests\test_models\test_model_blogTest.php 17
+ERROR - 2016-06-10 15:24:01 --> Severity: Compile Error --> Cannot redeclare class test_model_blogTest D:\xampp\htdocs\vhosts\family\application\tests\test_models\test_model_blogTest.php 17
+ERROR - 2016-06-10 15:24:29 --> Severity: Compile Error --> Cannot redeclare class test_model_blogTest D:\xampp\htdocs\vhosts\family\application\tests\test_models\test_model_blogTest.php 17
+ERROR - 2016-06-10 15:24:41 --> Severity: Compile Error --> Cannot redeclare class test_model_blogTest D:\xampp\htdocs\vhosts\family\application\tests\test_models\test_model_blogTest.php 16
+ERROR - 2016-06-10 15:25:09 --> Severity: Compile Error --> Cannot redeclare class test_model_blogTest D:\xampp\htdocs\vhosts\family\application\tests\test_models\test_model_blogTest.php 16
+ERROR - 2016-06-10 15:25:16 --> Severity: Compile Error --> Cannot redeclare class test_model_blogTest D:\xampp\htdocs\vhosts\family\application\tests\test_models\test_model_blogTest.php 16
+ERROR - 2016-06-10 15:25:26 --> Severity: Compile Error --> Cannot redeclare class test_model_blogTest D:\xampp\htdocs\vhosts\family\application\tests\test_models\test_model_blogTest.php 16
