@@ -52,11 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			if(!is_dir(FCPATH.$current_path)){
 				mkdir(FCPATH.$current_path);
-				echo "mkdir";
 			}
 			if(!is_writable(FCPATH.$current_path)){
 				chmod(FCPATH.$current_path, 0777);
-				echo "chmod";
 			}
 		}
 		return FCPATH.$current_path;
@@ -110,6 +108,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$html = "<p><img style='max-height:100%;max-width:100%;' src='/asset/data/27-40_tuan/".$weeks."_tuan.png'></p>";
 		return $html;
 	}
+
 	function get_var_countdown($ngaydusinh="2016-05-09"){
 		$date1=date_create(date("Y-m-d h:i:s",time()));
 		$date2=date_create($ngaydusinh);
@@ -254,19 +253,47 @@ function show_modal_media($method=null){
 
 }
 
-function createSlug1 ($string) {
-    $table = array(
-        'Š'=>'S', 'š'=>'s', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'ž'=>'z', 'Č'=>'C', 'č'=>'c', 'Ć'=>'C', 'ć'=>'c',
-        'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
-        'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O',
-        'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss',
-        'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e',
-        'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o',
-        'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b',
-        'ÿ'=>'y', 'Ŕ'=>'R', 'ŕ'=>'r',
-    );
+function createSlug1 ($str) {
+	$coDau=array("à","á","ạ","ả","ã","â","ầ","ấ","ậ","ẩ","ẫ","ă",
+		"ằ","ắ","ặ","ẳ","ẵ",
+		"è","é","ẹ","ẻ","ẽ","ê","ề"     ,"ế","ệ","ể","ễ",
+		"ì","í","ị","ỉ","ĩ",
+		"ò","ó","ọ","ỏ","õ","ô","ồ","ố","ộ","ổ","ỗ","ơ"
+		,"ờ","ớ","ợ","ở","ỡ",
+		"ù","ú","ụ","ủ","ũ","ư","ừ","ứ","ự","ử","ữ",
+		"ỳ","ý","ỵ","ỷ","ỹ",
+		"đ",
+		"À","Á","Ạ","Ả","Ã","Â","Ầ","Ấ","Ậ","Ẩ","Ẫ","Ă"
+		,"Ằ","Ắ","Ặ","Ẳ","Ẵ",
+		"È","É","Ẹ","Ẻ","Ẽ","Ê","Ề","Ế","Ệ","Ể","Ễ",
+		"Ì","Í","Ị","Ỉ","Ĩ",
+		"Ò","Ó","Ọ","Ỏ","Õ","Ô","Ồ","Ố","Ộ","Ổ","Ỗ","Ơ"
+		,"Ờ","Ớ","Ợ","Ở","Ỡ",
+		"Ù","Ú","Ụ","Ủ","Ũ","Ư","Ừ","Ứ","Ự","Ử","Ữ",
+		"Ỳ","Ý","Ỵ","Ỷ","Ỹ",
+		"Đ","ê","ù","à");
 
-    return strtr($string, $table);
+	$khongDau=array("a","a","a","a","a","a","a","a","a","a","a"
+		,"a","a","a","a","a","a",
+		"e","e","e","e","e","e","e","e","e","e","e",
+		"i","i","i","i","i",
+		"o","o","o","o","o","o","o","o","o","o","o","o"
+		,"o","o","o","o","o",
+		"u","u","u","u","u","u","u","u","u","u","u",
+		"y","y","y","y","y",
+		"d",
+		"A","A","A","A","A","A","A","A","A","A","A","A"
+		,"A","A","A","A","A",
+		"E","E","E","E","E","E","E","E","E","E","E",
+		"I","I","I","I","I",
+		"O","O","O","O","O","O","O","O","O","O","O","O"
+		,"O","O","O","O","O",
+		"U","U","U","U","U","U","U","U","U","U","U",
+		"Y","Y","Y","Y","Y",
+		"D","e","u","a");
+	$return = str_replace($coDau,$khongDau,$str);
+	$return = preg_replace('/[^a-zA-Z0-9\s-]/', '', $return);
+	return $return;
 }
 
 function createSlug($str)

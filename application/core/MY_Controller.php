@@ -9,17 +9,19 @@ class MY_Controller extends CI_Controller
 		parent::__construct();
 
 		$this->check_define_config();
-
-		if($this->router->fetch_method() != "login") {
-			if($this->router->fetch_method()=="cron" || $this->router->fetch_method()=="fb_callback"){
-				return;
-			}
-			if(!$this->session->userdata('user')){
-				redirect('homepage/login','refresh');
-			}
-		}else{
-			if($this->session->userdata('user')){
-				redirect('/','refresh');
+		$this->load->library('Session');
+		if($GLOBALS["phpunit"] != true){
+			if($this->router->fetch_method() != "login") {
+				if($this->router->fetch_method()=="cron" || $this->router->fetch_method()=="fb_callback"){
+					return;
+				}
+				if(!$this->session->userdata('user')){
+					redirect('homepage/login','refresh');
+				}
+			}else{
+				if($this->session->userdata('user')){
+					redirect('/','refresh');
+				}
 			}
 		}
 		$this->config_email_custom = Array(
