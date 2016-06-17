@@ -14,7 +14,7 @@ class MY_Controller extends CI_Controller
 		//============ ============  ============  ============ 
 		//  Fake login using api
 		//============ ============  ============  ============ 
-		if(getallheaders()["token"]=="api_run"){
+		if(getallheaders()["token"]==md5("api_run")){
 			$array = array(
 				'user' => "bo",
 				'user_id' => 11,
