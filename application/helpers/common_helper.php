@@ -184,9 +184,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$html = "
 			<div class='text-center'>
 				<h1>Kem được</h1>".
-				'<span>'.$diff_obj->y." Năm</span> ".
+				($diff_obj->y?'<span>'.$diff_obj->y." Năm</span> ":"").
 				'<span>'.$diff_obj->m." Tháng</span> ".
 				'<span>'.$diff_obj->d." Ngày</span> ".
+				'<hr>'.
 				'<div class="hidden"><br>'.$diff_obj->days." Ngày</div>
 			</div>
 			";
