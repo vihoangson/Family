@@ -14,6 +14,15 @@ class Kyniem extends REST_Controller {
 		$this->response($data);
 	}
 
+	public function search_post(){
+		$rs=[];
+		$this->load->model('MY_Kyniem');
+		if($this->input->post()){
+			$rs = $this->MY_Kyniem->search_kyniem($this->input->post("keyword"));
+		}
+		$this->response($rs);
+	}
+
 }
 
 /* End of file controllername.php */
