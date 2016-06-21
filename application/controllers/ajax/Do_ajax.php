@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Do_ajax extends CI_Controller {
+    public function Chat_model() {
+        parent::__construct();
+    }
 
 	public function do_test($page=null){
 
@@ -121,13 +124,15 @@ class Do_ajax extends CI_Controller {
 
 	//============ ============  ============  ============ 
 	// Function mỗi khi close window, lấy tất cả các localStorage lưu vào db với prefix: "cache_tmp_input_".time()
-	// @create in: 2016-05-23
+	// @create in: 2016-06-21
 	// /ajax/do_ajax/ajax_save_cache/delete
 	//============ ============  ============  ============ 
 	public function ajax_save_cache($option=null){
 		if($option=="delete"){
 			$this->db->like('option_key', "cache_tmp_input_");
-			$this->db->delete('options');
+			if($this->db->delete('options')){
+				$this->log->write_log("debug","ajax_save_cache: deleted");
+			}
 			redirect('/admin/admin_page/cache_input_kyniem','refresh');
 			return;
 		}

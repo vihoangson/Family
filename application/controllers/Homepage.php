@@ -384,6 +384,14 @@ class Homepage extends MY_Controller {
 				$this->backup_file_images_family();
 			break;
 			default:
+				//============ ============  ============  ============ 
+				//  Xóa cache_input options trong db
+				//============ ============  ============  ============ 
+				// 20160621132008
+				// 
+				shell_exec("php index.php /ajax/do_ajax/ajax_save_cache/delete");
+				//
+				//  ============ ============  ============  ============ 
 				$html = $this->_get_content_countdown();
 				$this->my_sent_email(["subject"=>"Count down ".date("Y-m-d H:i:s"),"content"=>$html]);
 			break;

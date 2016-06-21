@@ -11,21 +11,6 @@ class MY_Controller extends CI_Controller
 		$this->check_define_config();
 		$this->load->library('Session');
 
-		//============ ============  ============  ============ 
-		//  Fake login using api
-		//============ ============  ============  ============ 
-		if(getallheaders()["token"]==md5("api_run")){
-			$array = array(
-				'user' => "bo",
-				'user_id' => 11,
-				);
-			$this->session->set_userdata( $array );
-		}
-		//============ ============  ============  ============ 
-		//  Fake login using api
-		//============ ============  ============  ============ 
-
-
 		if($GLOBALS["phpunit"] != true){
 			if($this->router->fetch_method() != "login") {
 				if($this->router->fetch_method()=="cron" || $this->router->fetch_method()=="fb_callback"){
