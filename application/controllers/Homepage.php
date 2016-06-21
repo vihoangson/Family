@@ -375,12 +375,20 @@ class Homepage extends MY_Controller {
 		$this->load->view('errors/404');
 	}
 
+	/**
+	 * Cron auto run
+	 * @param  $case
+	 * @return void
+	 * @since 20160621132812
+	 */
 	public function cron($case=null){
 		switch ($case){
 			case "backup_db_family":
+				// Backup database
 				$this->backup_db_family();
 			break;
 			case "backup_file_images_family":
+				// Backup file image
 				$this->backup_file_images_family();
 			break;
 			default:
@@ -391,8 +399,12 @@ class Homepage extends MY_Controller {
 				// 
 				shell_exec("php index.php /ajax/do_ajax/ajax_save_cache/delete");
 				//
-				//  ============ ============  ============  ============ 
+				// ============ ============  ============  ============ 
+
+				// ============ ============  ============  ============ 
+				// Lấy nội dung gửi email
 				$html = $this->_get_content_countdown();
+				// Gủi email 
 				$this->my_sent_email(["subject"=>"Count down ".date("Y-m-d H:i:s"),"content"=>$html]);
 			break;
 		}
