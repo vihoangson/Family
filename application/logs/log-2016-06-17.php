@@ -15,3 +15,5 @@ ERROR - 2016-06-17 11:14:23 --> Unable to save the image. Please make sure the i
 ERROR - 2016-06-17 11:14:23 --> Unable to save the image. Please make sure the image and file directory are writable.
 ERROR - 2016-06-17 11:14:23 --> Unable to save the image. Please make sure the image and file directory are writable.
 ERROR - 2016-06-17 11:14:23 --> Unable to save the image. Please make sure the image and file directory are writable.
+ERROR - 2016-06-17 11:29:42 --> Unable to save the image. Please make sure the image and file directory are writable.
+ERROR - 2016-06-17 11:29:54 --> Unable to save the image. Please make sure the image and file directory are writable.
