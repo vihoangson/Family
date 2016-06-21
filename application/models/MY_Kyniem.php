@@ -11,6 +11,16 @@ class MY_Kyniem extends MY_Model {
 		$this->has_many['comment'] = ['foreign_model'=>'MY_Comment','foreign_table'=>'comment','foreign_key'=>'kyniem_id','local_key'=>'id'];
 		parent::__construct();
 	}
+
+	public function search_kyniem($keyword){
+		if($keyword){
+			$this->db->or_like('kyniem_title', $keyword);
+			$this->db->or_like('kyniem_content', $keyword);
+			$rs = $this->db->get('kyniem')->result();
+			return $rs;
+		}
+		return [];
+	}
 }
 
 /* End of file Kyniem.php */

@@ -41,6 +41,9 @@ class Kyniem extends CI_Model {
 		$tags = array_unique(array_filter($tags));
 		return $tags;
 	}
+
+
+
 }
 
 /* End of file Kyniem.php */
