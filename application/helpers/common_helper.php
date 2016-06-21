@@ -187,10 +187,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				'<span>'.$diff_obj->y." Năm</span> ".
 				'<span>'.$diff_obj->m." Tháng</span> ".
 				'<span>'.$diff_obj->d." Ngày</span> ".
-				'<div class="hidden"><br>$diff_obj->days'.$diff_obj->days."</div>
+				'<div class="hidden"><br>'.$diff_obj->days." Ngày</div>
 			</div>
-			"
-			;
+			";
 		}
 		return $html;
 	}
