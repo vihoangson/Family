@@ -3,6 +3,7 @@ bower_components
 asset/images
 asset/tmp
 vendor/
+logs/*
 composer.lock
 composer.phar
 asset/file_upload
