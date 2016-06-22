@@ -24,6 +24,10 @@ class FamilyTestGeneralCommon_Helper extends CITestCase
 		$this->assertTrue((function_exists("filter_string")), 'message');
 	}
 
+	public function test_foldersize(){
+		// Lấy size của 1 folder
+	}
+
 	public function test_FileSizeConvert(){
 		$this->assertEquals(FileSizeConvert(1), "1 B");
 		$this->assertEquals(FileSizeConvert(1000), "1000 B");

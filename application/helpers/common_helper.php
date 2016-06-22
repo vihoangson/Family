@@ -1,10 +1,45 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+	/**
+	 * Chuẩn bị status page
+	 * @return string
+	 * @since  20160622112201
+	 */
+	function get_status(){
+		$return .= FileSizeConvert(foldersize(FCPATH));
+		return $return;
+	}
+
+	/**
+	 * Foldersize
+	 * Lấy size của 1 folder
+	 * 
+	 * @param  [string] $path [path to directory]
+	 * @return [float]       [size of directory]
+	 */
+	function foldersize($path) {
+	  $total_size = 0;
+	  $files = scandir($path);
+
+	  foreach($files as $t) {
+	    if (is_dir(rtrim($path, '/') . '/' . $t)) {
+	      if ($t<>"." && $t<>"..") {
+	          $size = foldersize(rtrim($path, '/') . '/' . $t);
+
+	          $total_size += $size;
+	      }
+	    } else {
+	      $size = filesize(rtrim($path, '/') . '/' . $t);
+	      $total_size += $size;
+	    }
+	  }
+	  return $total_size;
+	}
+
 	//============ ============  ============  ============ 
 	// Function check_folder()
 	// Check folder có tồn tại hay không, nếu không thì sẽ tạo mới
 	//
-
 	function FileSizeConvert($bytes)
 	{
 	    $bytes = floatval($bytes);
