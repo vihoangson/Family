@@ -6,7 +6,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 * @since  20160622112201
 	 */
 	function get_status(){
-		$return .= FileSizeConvert(foldersize(FCPATH));
+		$size_family = FileSizeConvert(foldersize(FCPATH));
+		$size_git    = FileSizeConvert(foldersize(FCPATH.".git"));
+		$size_assets = FileSizeConvert(foldersize(FCPATH."asset"));
+		$size_db     = FileSizeConvert(foldersize(APPPATH."models/db"));
+		ob_start();
+		?>
+			<h3>SIZE</h3>
+			<p><b>Size of family: </b><?= $size_family; ?></p>
+			<p><b>Size of git: </b><?= $size_git; ?></p>
+			<p><b>Size of assets: </b><?= $size_assets; ?></p>
+			<p><b>Size of db: </b><?= $size_db; ?></p>
+		<?php
+		$return = ob_get_clean();
 		return $return;
 	}
 
