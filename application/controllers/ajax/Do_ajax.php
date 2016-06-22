@@ -10,6 +10,10 @@ class Do_ajax extends CI_Controller {
 
 	}
 
+	public function download_backup(){
+		echo 123;
+	}
+
 	public function save_img_instant(){
 		$id = $this->input->post('id');
 		$src = $this->input->post('src');
