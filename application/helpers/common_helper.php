@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$size_git    = FileSizeConvert(foldersize(FCPATH.".git"));
 		$size_assets = FileSizeConvert(foldersize(FCPATH."asset"));
 		$size_db     = FileSizeConvert(foldersize(APPPATH."models/db"));
+		$access_chart = get_access_chart();
 		ob_start();
 		?>
 			<h3>SIZE</h3>
@@ -17,9 +18,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<p><b>Size of git: </b><?= $size_git; ?></p>
 			<p><b>Size of assets: </b><?= $size_assets; ?></p>
 			<p><b>Size of db: </b><?= $size_db; ?></p>
+			<hr>
+			<div class="connect">
+				<h3>Lượt truy cập</h3>
+				<p><b>Bố: </b>
+					<div class="progress">
+						<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<?= $access_chart[0]; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $access_chart[0]; ?>%">
+							<span class="sr-only"><?= $access_chart[0]; ?>% Complete (success)</span>
+						</div>
+					</div>
+				</p>
+				<p><b>Mẹ: </b>
+					<div class="progress">
+						<div class="progress-bar progress-bar-danger  progress-bar-striped" role="progressbar" aria-valuenow="<?= $access_chart[1]; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $access_chart[1]; ?>%">
+							<span class="sr-only"><?= $access_chart[1]; ?>% Complete (success)</span>
+						</div>
+					</div>
+				</p>
+			</div>
+			<hr>
+			
 		<?php
 		$return = ob_get_clean();
 		return $return;
+	}
+
+	/**
+	 * get_access_chart
+	 * Lấy phần trăm access vào blog
+	 * 
+	 * @return array
+	 * $array[0] : percent access Bố
+	 * $array[1] : percent access Mẹ
+	 */
+	function get_access_chart(){
+		$CI =& get_instance();
+		$rs[0] = $CI->db->where("archive_key like 'login_%' and (archive_content like '%11%' or archive_content like '%vihoangson@gmail.com%') ")->order_by("id","desc")->get('archive')->num_rows();
+		$rs[1] = $CI->db->where("archive_key like 'login_%' and archive_content like '%12%' or archive_content like '%4t.nhauyen@gmail.com%' ")->order_by("id","desc")->get('archive')->num_rows();
+		$total = $rs[0]+$rs[1];
+		$rs[0] = round(($rs[0]/$total)*100);
+		$rs[1] = round(($rs[1]/$total)*100);
+		return $rs;
 	}
 
 	/**
