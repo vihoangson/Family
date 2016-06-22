@@ -27,7 +27,7 @@
  ?>
 <script>
 	$(document).ready(function() {
-		$("img.lazy").lazyload({
+		$("img").lazyload({
 			threshold : 200
 		});
 		//data-original=""
