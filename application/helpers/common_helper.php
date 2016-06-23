@@ -6,11 +6,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 * @since  20160622112201
 	 */
 	function get_status(){
+
 		$size_family = FileSizeConvert(foldersize(FCPATH));
 		$size_git    = FileSizeConvert(foldersize(FCPATH.".git"));
 		$size_assets = FileSizeConvert(foldersize(FCPATH."asset"));
 		$size_db     = FileSizeConvert(foldersize(APPPATH."models/db"));
 		$access_chart = get_access_chart();
+
 		ob_start();
 		?>
 			<h3>SIZE</h3>
@@ -18,11 +20,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<p><b>Size of git: </b><?= $size_git; ?></p>
 			<p><b>Size of assets: </b><?= $size_assets; ?></p>
 			<p><b>Size of db: </b><?= $size_db; ?></p>
+
 			<button class="btn btn-default ajax_button download_backup" data-href="/ajax/do_ajax/download_backup"> Download backup</button>
+
 			<script>
 				$(".ajax_button.download_backup").click(function(){
 					$.post($(this).data("href"),null, function(data, textStatus, xhr) {
-						console.log(data);
+						var return_data = JSON.parse(data);
+						if(return_data.status=="done"){
+							$(".ajax_button.download_backup").after("<p><a href='"+return_data.url+"'>"+return_data.url+"</a></p>");
+						}
 					});
 				});
 			</script>
@@ -45,7 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</p>
 			</div>
 			<hr>
-			
 		<?php
 		$return = ob_get_clean();
 		return $return;

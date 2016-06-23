@@ -14,7 +14,13 @@ class Do_ajax extends CI_Controller {
 		$this->load->library('zip');
 		$path = FCPATH."asset";
 		$this->zip->read_dir($path);
-		$this->zip->archive(FCPATH.time()."_backup.zip");
+
+		$file_name = "backup_file/".date("Y_m_d__H_i_s")."_backup_folder_asset.zip";
+		if($this->zip->archive(FCPATH.$file_name)==true){
+			echo json_encode(["status"=>"done","url"=> "/".$file_name]);
+		}else{
+			echo json_encode(["status"=>"error"]);
+		}
 	}
 
 	public function save_img_instant(){

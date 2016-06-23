@@ -3,11 +3,11 @@
 */
 class MY_Controller extends CI_Controller
 {
-	
+
 	public function __construct(){
 
 		parent::__construct();
-
+		$this->error_status = [];
 		$this->check_define_config();
 		$this->load->library('Session');
 
@@ -52,6 +52,45 @@ class MY_Controller extends CI_Controller
 		//============  ============
 	}
 
+	/**
+	 * 
+	 * [check_status_system]
+	 * Kiểm tra các trường hợp ảnh hưởng tới vận hành bình thường của website
+	 *
+	 * @since  20160623101733 
+	 * @return [array] $this->error_status
+	 * 
+	 */
+	public function check_status_system(){
+		// [START] 20160623102429 Kiểm tra ghi file vào folder root/backup_file
+
+		$links_asset = [
+			FCPATH."backup_file",
+			FCPATH."asset/images",
+			FCPATH."asset/js",
+			FCPATH."asset/template",
+			FCPATH."asset/uploads",
+			FCPATH."asset/file_upload",
+		];
+
+		foreach ($links_asset as $key => $value) {
+			if(!is_writable($value)){
+				throw new Exception("Không ghi được file vào folder ".$value."[Vui lòng tạo mới hoặc chỉnh lại permission cho folder]", 1);
+			}
+		}
+
+		// [END] 20160623102433 Kiểm tra ghi file vào folder root/backup_file
+	}
+
+	/**
+	 * [my_sent_email]
+	 * Function gửi email cho địa chỉ xác định
+	 * 
+	 * @param  [type] $options [description]
+	 *      $options["subject"] // Tiêu đè email
+	 *      $options["content"] // Nội dung email
+	 * @return [type]          [description]
+	 */
 	public function my_sent_email($options){
 		if(ALLOW_SENT_MAIL){
 			$this->load->library('email', $this->config_email_custom);
@@ -64,13 +103,19 @@ class MY_Controller extends CI_Controller
 			if($this->email->send()){
 				//echo "<h1>Send mail [".__FUNCTION__."]</h1>";
 			}else{
-				//d($this->email->print_debugger());
-				//echo "<h1>Can't sent mail [".__FUNCTION__."]</h1>";
+				throw new Exception("Can't sent email", 1);
 			}
 		}
 	}
 
-	public function backup_db_family($options=null){
+	/**
+	 * [backup_db_family]
+	 * Backup database family
+	 * 
+	 * @return void
+	 * @throws Exception
+	 */
+	public function backup_db_family(){
 		if(ALLOW_SENT_MAIL){
 			$this->load->library('email', $this->config_email_custom);
 			$this->email->from(FROM_EMAIL, 'Family');
@@ -82,12 +127,18 @@ class MY_Controller extends CI_Controller
 			if($this->email->send()){
 				echo "<h1>Send mail [".__FUNCTION__."]</h1>";
 			}else{
+				throw new Exception("Can't backup db", 1);
 				echo "<h1>Can't sent mail [".__FUNCTION__."]</h1>";
 			}
 		}
 	}
 
+	/**
+	 * [backup_file_images_family]
+	 * Không dùng hàm này nữa
+	 */
 	public function backup_file_images_family($options=null){
+		return;
 		$this->load->library('HZip');
 		$file_name = "BK_image_".date("Ymd_his").".zip";
 		HZip::zipDir(FCPATH."asset/images",FCPATH."asset/tmp/".$file_name);
@@ -225,5 +276,6 @@ class MY_Controller extends CI_Controller
 		}
 		return $return;
 	}
+
 }
 ?>

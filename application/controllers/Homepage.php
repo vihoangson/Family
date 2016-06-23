@@ -16,6 +16,14 @@ class Homepage extends MY_Controller {
 		}
 		echo $this->session->userdata('userinfo');
 		$this->init();
+		//============ ============  ============  ============ 
+		// 20160623102454
+		// Kiểm tra các trường hợp ảnh hưởng tới vận hành bình thường của website
+		// [START]
+		$this->check_status_system();
+		// [END]
+		//20160623102527
+		//============ ============  ============  ============ 
 	}
 
 
