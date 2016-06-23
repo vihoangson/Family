@@ -126,10 +126,10 @@
 		}
 		// End popup
 		//============ ============  ============  ============ 
+	//<script src="/asset/js/jquery.lazyload.js"></script>
 	?>
-	<script src="/asset/js/jquery.lazyload.js"></script>
 	<script>
-		$("img").lazyload();
+		//$("img").lazyload();
 	</script>
 </body>
 </html>
