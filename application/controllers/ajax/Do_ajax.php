@@ -14,7 +14,7 @@ class Do_ajax extends CI_Controller {
 		ini_set('memory_limit', '228M');
 		$this->load->library('HZip');
 		$file_name = "backup_file/BK_image_".date("Ymd_his").".zip";
-		if(HZip::zipDir(FCPATH."asset/",FCPATH.$file_name){
+		if(HZip::zipDir(FCPATH."asset/",FCPATH.$file_name)){
 			echo json_encode(["status"=>"done","url"=> "/".$file_name]);
 		}else{
 			echo json_encode(["status"=>"error"]);
