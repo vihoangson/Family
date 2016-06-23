@@ -22,7 +22,7 @@ class Homepage extends MY_Controller {
 		// [START]
 		$this->check_status_system();
 		// [END]
-		//20160623102527
+		//20160623132058
 		//============ ============  ============  ============ 
 	}
 
