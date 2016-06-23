@@ -11,6 +11,7 @@ class Do_ajax extends CI_Controller {
 	}
 
 	public function download_backup(){
+		ini_set('memory_limit', '228M');
 		$this->load->library('zip');
 		$path = FCPATH."asset";
 		$this->zip->read_dir($path);
