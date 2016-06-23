@@ -16,6 +16,7 @@ class Do_ajax extends CI_Controller {
 		$path = FCPATH."asset/uploads";
 		$this->zip->read_dir($path);
 
+
 		$file_name = "backup_file/".date("Y_m_d__H_i_s")."_backup_folder_asset.zip";
 		if($this->zip->archive(FCPATH.$file_name)==true){
 			echo json_encode(["status"=>"done","url"=> "/".$file_name]);
