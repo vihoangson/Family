@@ -18,10 +18,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<p><b>Size of git: </b><?= $size_git; ?></p>
 			<p><b>Size of assets: </b><?= $size_assets; ?></p>
 			<p><b>Size of db: </b><?= $size_db; ?></p>
-			<button class="btn btn-default download_backup" href="/ajax/do_ajax/download_backup"> Download backup</button>
+			<button class="btn btn-default ajax_button download_backup" data-href="/ajax/do_ajax/download_backup"> Download backup</button>
 			<script>
-				$(".download_backup").click(function(){
-					$.post($(this).attr("href"),null, function(data, textStatus, xhr) {
+				$(".ajax_button.download_backup").click(function(){
+					$.post($(this).data("href"),null, function(data, textStatus, xhr) {
 						console.log(data);
 					});
 				});

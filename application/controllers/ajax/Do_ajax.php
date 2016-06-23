@@ -11,7 +11,10 @@ class Do_ajax extends CI_Controller {
 	}
 
 	public function download_backup(){
-		echo 123;
+		$this->load->library('zip');
+		$path = FCPATH."asset";
+		$this->zip->read_dir($path);
+		$this->zip->archive(FCPATH.time()."_backup.zip");
 	}
 
 	public function save_img_instant(){
