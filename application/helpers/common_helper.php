@@ -25,7 +25,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			<script>
 				$(".ajax_button.download_backup").click(function(){
+					$(this).after("<div class='loading_m'>Loading ... <i class='fa fa-spin fa-refresh'></i> </div>");
 					$.post($(this).data("href"),null, function(data, textStatus, xhr) {
+						$(".loading_m").remove();
 						var return_data = JSON.parse(data);
 						if(return_data.status=="done"){
 							$(".ajax_button.download_backup").after("<p><a href='"+return_data.url+"'>"+return_data.url+"</a></p>");
