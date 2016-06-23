@@ -75,7 +75,7 @@ class MY_Controller extends CI_Controller
 
 		foreach ($links_asset as $key => $value) {
 			if(!is_writable($value)){
-				throw new Exception("Không ghi được file vào folder ".$value."[Vui lòng tạo mới hoặc chỉnh lại permission cho folder]", 1);
+				throw new Exception("Không ghi được file vào folder ".$value."[Vui lòng tạo mới hoặc chỉnh lại permission cho folder nha]", 1);
 			}
 		}
 
