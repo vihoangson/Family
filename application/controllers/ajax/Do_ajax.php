@@ -12,6 +12,10 @@ class Do_ajax extends CI_Controller {
 
 	public function download_backup(){
 		ini_set('memory_limit', '228M');
+		$this->load->library('HZip');
+		$file_name = "BK_image_".date("Ymd_his").".zip";
+		HZip::zipDir(FCPATH."asset/images",FCPATH."asset/tmp/".$file_name);
+		return;
 		$this->load->library('zip');
 		$path = FCPATH."asset/images";
 		$this->zip->read_dir($path);
