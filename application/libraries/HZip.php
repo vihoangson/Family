@@ -39,11 +39,11 @@ public static function zipDir($sourcePath, $outZipPath)
 	$pathInfo = pathInfo($sourcePath);
 	$parentPath = $pathInfo['dirname'];
 	$dirName = $pathInfo['basename'];
-
 	$z = new ZipArchive();
 	$z->open($outZipPath, ZIPARCHIVE::CREATE);
 	$z->addEmptyDir($dirName);
 	self::folderToZip($sourcePath, $z, strlen("$parentPath/"));
 	$z->close();
+	return true;
 }
 }
