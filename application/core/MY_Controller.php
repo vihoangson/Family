@@ -1,4 +1,6 @@
-<?php /**
+<?php
+
+/**
 * 
 */
 class MY_Controller extends CI_Controller
@@ -7,9 +9,13 @@ class MY_Controller extends CI_Controller
 	public function __construct(){
 
 		parent::__construct();
+
 		$this->error_status = [];
+
+		// Check các trường hợp ảnh hưởng tới hoạt động của site
 		$this->check_define_config();
 
+		// Check validate
 		if($GLOBALS["phpunit"] != true){
 			if($this->router->fetch_method() != "login") {
 				if($this->router->fetch_method()=="cron" || $this->router->fetch_method()=="fb_callback"){
@@ -24,6 +30,8 @@ class MY_Controller extends CI_Controller
 				}
 			}
 		}
+
+		// Set thông số gửi mail của google
 		$this->config_email_custom = Array(
 			'protocol'  => 'sendmail',
 			'smtp_host' => 'smtp.googlemail.com',
@@ -33,6 +41,7 @@ class MY_Controller extends CI_Controller
 			'mailtype'  => 'html',
 			'charset'   => 'utf-8'
 			);
+
 		//============  ============ 
 		// Set navbar custom
 		// 
@@ -260,6 +269,7 @@ class MY_Controller extends CI_Controller
 			$this->log->write_log("ERROR",$html);
 		}
 	}
+
 	//============ ============  ============  ============ 
 	// getDefineInFile()
 	// Lấy tất cả tên các define đổ vào mảng
