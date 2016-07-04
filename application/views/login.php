@@ -45,7 +45,8 @@
                         <?php
                     } ?>
                     <p class="text-center">
-                        <a href='/friends' class="btn btn-primary btn-lgn"><i class="fa fa-smile-o"></i> My Friends</a>
+                        <a href='/friends' class="btn btn-primary btn-lgn"><i class="fa fa-user"></i> My Friends</a>
+                        <a href='/blog' class="btn btn-primary btn-lgn"><i class="fa fa-book"></i> Blog</a>
                         <a href='/friends/faces' class="btn btn-primary btn-lgn"><i class="fa fa-smile-o"></i> Face</a>
                     </p>
                     <?php

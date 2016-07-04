@@ -9,7 +9,6 @@ class MY_Controller extends CI_Controller
 		parent::__construct();
 		$this->error_status = [];
 		$this->check_define_config();
-		$this->load->library('Session');
 
 		if($GLOBALS["phpunit"] != true){
 			if($this->router->fetch_method() != "login") {

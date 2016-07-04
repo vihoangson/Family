@@ -6,8 +6,11 @@ $data_header = [
 	"custom_html"=> '',
 ];
 $this->load->view('_includes/header',$data_header); ?>
-
-<p><a href="/blog/input" class="btn btn-info"><i class="fa fa-plus"></i> Create blog</a></p>
+<?php 
+if($this->session->userdata('user')){
+	?><p><a href="/blog/input" class="btn btn-info"><i class="fa fa-plus"></i> Create blog</a></p><?php
+}
+?>
 <br>
 <?php
 	if($rs){
@@ -15,7 +18,12 @@ $this->load->view('_includes/header',$data_header); ?>
 			?><h4><a href='/blog/detail/<?= $value->id; ?>-<?= createSlug($value->blog_title); ?>'><?= $value->blog_title; ?></a></h4><?php
 			echo substr(filter_string($value->blog_content), 0,200);
 			?><div class="text-right"><a href='/blog/detail/<?= $value->id; ?>-<?= createSlug($value->blog_title); ?>' class="btn btn-info">Read more »</a></div>
-			<p><a href="/blog/input/<?= $value->id; ?>"><i class="fa fa-pencil"></i></a></p>
+			<?php 
+			if($this->session->userdata('user')){
+				?><p><a href="/blog/input/<?= $value->id; ?>"><i class="fa fa-pencil"></i></a></p><?php
+			}
+			?>
+			
 			<hr>
 			<?php
 		}
