@@ -64,6 +64,7 @@ $route['custom/(:any)'] = 'homepage/custom/$1';
 $route['admin'] = 'admin/admin_page';
 $route['admin/(:any)'] = 'admin/admin_page/$1';
 $route['blog'] = 'blog/blog_controller/index';
+$route['blog/create'] = 'blog/blog_controller/input';
 $route['blog/(:any)'] = 'blog/blog_controller/$1';
 $route['blog/(:any)/(:any)'] = 'blog/blog_controller/$1/$2';
 
