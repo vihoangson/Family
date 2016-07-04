@@ -41,12 +41,14 @@ class Blog_controller extends CI_Controller {
 	*/
 	public function input($id = null){
 		if($this->input->post()){
+			// Chuẩn bị dữ liệu
 			$blog_title   = $this->input->post("title");
 			$blog_content = $this->input->post("content");
 			$object = [
 				"blog_title"   => $blog_title,
 				"blog_content" => $blog_content,
 			];
+
 			if($this->input->post('id')){
 				// Update blog
 				if($this->Blog->update($object,$this->input->post('id'))){

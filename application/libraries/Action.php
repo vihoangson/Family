@@ -10,6 +10,17 @@ class Action
         $this->ci =& get_instance();
 	}
 
+	/**
+	 * [archive_log description]
+	 *
+	 * @since 20160704132530
+	 * @param  [type] $key     [description]
+	 * @param  [type] $content [description]
+	 * @return [type]          [description]
+	 * 
+	 *  Using:
+	 * $this->action->archive_log("login_facebook","login ".time());
+	 */
 	public function archive_log($key,$content){
 		$object=[
 			"archive_key" => $key,
@@ -17,6 +28,23 @@ class Action
 			"archive_create" => date("Y-m-d h:i:s"),
 		];
 		$this->ci->db->insert('archive', $object);
+	}
+
+	/**
+	 * [archive_log_read description]
+	 * 
+	 * @since  20160704132512
+	 * @param  [type] $key [description]
+	 * @return [type]      [description]
+	 *
+	 *  Using:
+	 * dd($this->action->archive_log_read("login_facebook"));
+	 * dd($this->action->archive_log_read("login_%"));
+	 * ...
+	 */
+	public function archive_log_read($key){
+		$rs = $this->ci->db->where("archive_key like '$key' ")->order_by("id","desc")->get('archive')->result();
+		return $rs;
 	}
 
 }
