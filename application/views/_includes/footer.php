@@ -1,3 +1,4 @@
+		<!-- Block in footer -->
 		<div class="text-center center-block">
 			<p class="txt-railway">- Sweet house -</p>
 			<img src="/asset/data/Sweet_House.gif">
@@ -7,7 +8,24 @@
 			<a href="https://picasaweb.google.com/106931759947217084754" target="_blank"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
 			<a href="mailto:vihoangson@gmail.com"  target="_blank"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
 		</div>
+		<!-- End block in footer -->
 	</div>
+
+	<?php 
+	//============ ============ ============  ============  ============  ============ 
+	// Blazy - Lazy load image
+	//
+	 ?>
+	<script src="/asset/bower_components/bLazy/blazy.min.js"></script>
+	<script>
+		var blazy = new Blazy({
+			selector: "img"
+		})
+	</script>
+	<?php 
+	//
+	//============ ============ ============  ============  ============  ============ 
+	 ?>
 	<script>
 		//============ ============  ============ ============
 		//  Gắn hình mặt cười trong phần nhập liệu

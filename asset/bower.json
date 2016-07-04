@@ -23,6 +23,7 @@
     "font-awesome": "font-awsome#^4.6.1",
     "jquery-form": "^3.46.0",
     "moment": "^2.13.0",
-    "summernote": "^0.8.1"
+    "summernote": "^0.8.1",
+    "bLazy": "blazy#^1.6.2"
   }
 }
