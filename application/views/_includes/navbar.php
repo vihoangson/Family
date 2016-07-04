@@ -29,6 +29,7 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Người dùng <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="<?= base_url(); ?>admin"><i class="fa fa-user"></i> Admin page</a></li>
+					<li><a href="<?= base_url(); ?>blog"><i class="fa fa-book"></i> Blog</a></li>
 					<li><a href="<?= base_url(); ?>timeline"><i class="fa fa-image"></i> Time line</a></li>
 					<li><a href="<?= base_url(); ?>idear"><i class="fa fa-eye"></i> Idear</a></li>
 					<li><a href="<?= base_url(); ?>homepage/custom/tool"><i class="fa fa-facebook"></i> Các công cụ liên quan</a></li>
