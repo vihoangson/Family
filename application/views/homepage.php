@@ -1,42 +1,5 @@
 <?php $this->load->view('_includes/header',["js"=>["/asset/js/jquery.lazyload.js"]]); ?>
-<?php 
-	if(false){
-		if(!$this->session->userdata('popup')){
-			  ?>
-				<div class="popup_home_mark"></div>
-				<div class="popup_home" style="display:none;"><?= show_img_countdown(); ?></div>
-				<script>
-					$(document).ready(function() {
-						$(".popup_home").css("left",(($(window).height()/2)))
-						$(".popup_home").show();
-					});
-					$(".popup_home_mark").click(function() {
-						$(this).hide();
-						$(".popup_home").hide();
-					});
 
-				</script>
-			 <?php 
-			 $array = array(
-			 	'popup' => 'on'
-			 );
-			 
-			 $this->session->set_userdata( $array );
-		}
-	}
- ?>
-<script>
-	$(document).ready(function() {
-		$("img").lazyload({
-			threshold : 200
-		});
-		//data-original=""
-		//$("img[src*='gif']").lazyload();
-		$(".change-year").change(function(event) {
-			location.href = "/homepage/chang_year/"+$(this).val();
-		});
-	});
-</script>
 	<div class="row">
 		<h2>Time Line</h2>
 	</div>
@@ -117,17 +80,7 @@
 								<ul>
 									<?php
 									foreach ((array)$comment[$value->id] as $key_comment => $value_comment) {
-										  ?> 
-											<li data-id='<?= $value_comment->id; ?>' class='ele_comment' id="">
-												<div class='avatar'><img src='<?= PATH_AVATAR.$value_comment->user_avatar; ?>' class='avatar_comment'> </div>
-												<div class="content">
-													<div class="username"><b><?= $value_comment->username; ?></b></div>
-													<div class="comment_create"><small><?= $value_comment->comment_create; ?></small></div> 
-													<div class="comment_content"><?= $value_comment->comment_content; ?></div>
-												</div>
-											</li>
-										   <?php 
-										//echo "<li data-id='".($value_comment->id)."'>".($value_comment->comment_content)."</li>";
+										$this->load->view('_includes/ele_comment_box',compact("value_comment"));
 									}
 									?>
 								</ul>
@@ -154,45 +107,38 @@
 	</div>
 <!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
 <?php
-if($tags){
-	?>
-	<div id="tags_list">
-		<h3>Tags</h3>
-		<?php 
-		foreach ((array)$tags as $key => $value) {
-			echo "<span><a href='/homepage/tags/$value'> #".$value." </a></span>";
+
+	//============ ============  ============  ============ 
+	//  Show tất cả tác tag trong source
+	//  20160705152744
+		if($tags){
+			?>
+			<div id="tags_list">
+				<h3>Tags</h3>
+				<?php 
+				foreach ((array)$tags as $key => $value) {
+					echo "<span><a href='/homepage/tags/$value'> #".$value." </a></span>";
+				}
+				?>
+			</div>
+			<?php
 		}
-		?>
-	</div>
-	<?php
-}
+	//
+	//============ ============  ============  ============ 
 ?>
 <!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
+
 <script src="/asset/js/comment.js"></script>
-<?php if(false){
-	?>
-
-	<!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
-	<div class="modal fade" id="modal-upload-media">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Modal title</h4>
-				</div>
-				<div class="modal-body">
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="/asset/js/jquery.form.js"></script>
-	<script src="/asset/js/media-box.js"></script>
-	<!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
-	<?php
-	} ?>
-
+<script>
+	$(document).ready(function() {
+		//============ ============  ============  ============ 
+		//  Thay đổi năm trong combo box
+			$(".change-year").change(function(event) {
+				location.href = "/homepage/chang_year/"+$(this).val();
+			});
+		//
+		//============ ============  ============  ============ 
+	});
+</script>
 
 <?php $this->load->view('_includes/footer'); ?>
