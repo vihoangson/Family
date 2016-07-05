@@ -147,6 +147,12 @@
 		//============ ============  ============  ============ 
 	?>
 	<script>
+	// ============ ============  ============  ============ 
+	// [Start]
+	// Swal: Sweet Alert (bootstrap Sweet Alert)
+	// Type: Input
+	// ============ ============  ============  ============ 
+	if(false){
 		swal({
 			title: "An input!",
 			text: "Write something interesting:",
@@ -165,6 +171,12 @@
 			});
 			swal("Nice!", "You wrote: " + inputValue, "success");
 		});
+	}
+	// ============ ============  ============  ============ 
+	// [Stop]
+	// Swal: Sweet Alert (bootstrap Sweet Alert)
+	// Type: Input
+	// ============ ============  ============  ============ 
 	</script>
 </body>
 </html>
