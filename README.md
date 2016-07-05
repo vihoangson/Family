@@ -1,6 +1,8 @@
 # Gia đình là điều không thể thiếu #
 ## Đây là nơi lưu giữ những kỷ niệm ##
 
+![](http://family.vihoangson.com/asset/file_upload/media/2016/06/15/canhathuongnhau.png)
+
 ------------------------
 
 # Run API
