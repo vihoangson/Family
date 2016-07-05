@@ -99,7 +99,7 @@ $config['rest_auth'] = "session";
 */
 
 //change this to '' for wildcard unit test
-$config['auth_source'] = 'auth_source';
+$config['auth_source'] = 'bosonmesuemkem';
 
 /*
 |--------------------------------------------------------------------------
