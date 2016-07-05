@@ -25,6 +25,8 @@
     "moment": "^2.13.0",
     "summernote": "^0.8.1",
     "bLazy": "blazy#^1.6.2",
-    "bootstrap-sweetalert": "^1.0.0"
+    "bootstrap-sweetalert": "^1.0.0",
+    "bootstrap-touchspin": "^3.1.1",
+    "animate.css": "^3.5.2"
   }
 }

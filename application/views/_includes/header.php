@@ -20,6 +20,10 @@ if(!$navigation_bar){
 		<link href="<?= base_url(); ?>asset/css/button_switch.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="<?= base_url(); ?>asset/bower_components/bootstrap-sweetalert/dist/sweetalert.css" rel="stylesheet">
+
+
+
 		<?php
 		if(isset($css)){
 			foreach ((array)$css as $key => $value) {
@@ -43,6 +47,11 @@ if(!$navigation_bar){
 		<script src="<?= base_url(); ?>asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/jquery.magnific-popup.js"></script>
 		<script src="<?= base_url(); ?>asset/bower_components/jquery-form/jquery.form.js"></script>
+		<script src="<?= base_url(); ?>asset/bower_components/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
+		<script>
+
+
+		</script>
 		<?php
 		if(isset($js)){
 			foreach ((array)$js as $key => $value) {

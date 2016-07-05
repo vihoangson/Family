@@ -126,7 +126,8 @@
 				<script>
 					<?php
 					if($this->Options_model->get_option("popup_session")->option_content == 1 && $this->session->userdata('popup')!=1){
-						?>$("#modal-id-popup").modal("show");
+						?>
+						$("#modal-id-popup").modal("show");
 						<?php
 						$this->session->set_userdata( ['popup' => 1] );
 					}else{
@@ -144,10 +145,26 @@
 		}
 		// End popup
 		//============ ============  ============  ============ 
-	//<script src="/asset/js/jquery.lazyload.js"></script>
 	?>
 	<script>
-		//$("img").lazyload();
+		swal({
+			title: "An input!",
+			text: "Write something interesting:",
+			type: "input",
+			showCancelButton: true,
+			closeOnConfirm: false,
+			inputPlaceholder: "Write something"
+		}, function (inputValue) {
+			if (inputValue === false) return false;
+			if (inputValue === "") {
+				swal.showInputError("You need to write something!");
+				return false
+			}
+			$.post('/api/options_control/changeuser', {name: inputValue}, function(data, textStatus, xhr) {
+				
+			});
+			swal("Nice!", "You wrote: " + inputValue, "success");
+		});
 	</script>
 </body>
 </html>

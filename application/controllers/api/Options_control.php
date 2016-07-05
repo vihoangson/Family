@@ -17,6 +17,21 @@ class Options_control extends REST_Controller {
 		$this->response($rs);
 	}
 
+	public function changeuser_post(){
+		if($this->input->post('name')){
+			$array = array(
+				'user' => $this->input->post('name'),
+				'user_id' => 0,
+			);
+			try {
+				$this->session->set_userdata( $array );
+				echo $this->session->userdata( "user" );
+			} catch (Exception $e) {
+				echo "error";
+			}
+			
+		}
+	}
 
 
 }

@@ -136,6 +136,9 @@ class Homepage extends MY_Controller {
 				$array = array(
 					'user' => $username,
 					'user_id' => ($rs_user->id),
+					// [Start] Add since : 20160705151333 Authen API Rest
+					'auth_source' => 'bosonmesuemkem',
+					// [Stop] Add since : 20160705151333 Authen API Rest
 				);
 				$this->action->archive_log("login_comment",json_encode($array));
 				$flag = true;
