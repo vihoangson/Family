@@ -41,16 +41,16 @@ $('.row.autoheight > div').autoheight();
 //============ ============  ============  ============ 
 // Nút thêm smile
 //
-$(".smile-button").click(function(){
-	id = $(this).parents(".row-tail").find("input").data("id");
-	$("#modal-general .modal-body").data("id",id);
-	$("#modal-general .modal-body").load('/ajax/do_ajax/index',function(){
-		$("#home img").each(function(index, el) {
-			var src = $(this).data("original");
-			$(this).attr("src",src);
-		});	
+	$(".smile-button").click(function(){
+		id = $(this).parents(".row-tail").find("input").data("id");
+		$("#modal-general .modal-body").data("id",id);
+		$("#modal-general .modal-body").load('/ajax/do_ajax/index',function(){
+			$("#home img").each(function(index, el) {
+				var src = $(this).data("original");
+				$(this).attr("src",src);
+			});	
+		});
+		$("#modal-general").modal("show");
 	});
-	$("#modal-general").modal("show");
-});
 //
 //============ ============  ============  ============ 

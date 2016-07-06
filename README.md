@@ -28,13 +28,17 @@
 
 ------------------------
 
-# Log change
+# Changelog
 
 ** 7/4/2016 4:12:56 PM **
 
 Thêm phần BLazy giúp cải thiện tốc độ load page
 
 > bower install blazy --save
+
+** 7/6/2016 10:55:48 AM *
+
+Thêm lib Jwt vào source
 
 
 

@@ -26,7 +26,26 @@ class Homepage extends MY_Controller {
 		//============ ============  ============  ============ 
 	}
 
-
+	/**
+	 * [index description]
+	 * @return [type] [description]
+	 */
+	public function index()
+	{
+		if($this->session->userdata('year')){
+			$cond_year = $this->session->userdata('year');
+		}else{
+			$cond_year = date("Y");
+		}
+		$condition["year"] = $cond_year;
+		$kn = $this->kyniem->getAll($condition);
+		foreach ($kn as $key => $value) {
+			$rs = $this->db->where("kyniem_id",$value->id)->select("comment.*,user.username,user.user_avatar")->join("user","user.id=comment_user")->order_by("id","desc")->get('comment')->result();
+			$comment[$value->id] = $rs;
+		}
+		$tags = $this->kyniem->list_tag();
+		$this->load->view('homepage',compact("kn","comment","tags"));
+	}
 
 	public function post_group(){
 		$this->facebook->post_group();
@@ -71,22 +90,6 @@ class Homepage extends MY_Controller {
 		}
 	}
 
-	public function index()
-	{
-		if($this->session->userdata('year')){
-			$cond_year = $this->session->userdata('year');
-		}else{
-			$cond_year = date("Y");
-		}
-		$condition["year"] = $cond_year;
-		$kn = $this->kyniem->getAll($condition);
-		foreach ($kn as $key => $value) {
-			$rs = $this->db->where("kyniem_id",$value->id)->select("comment.*,user.username,user.user_avatar")->join("user","user.id=comment_user")->order_by("id","desc")->get('comment')->result();
-			$comment[$value->id] = $rs;
-		}
-		$tags = $this->kyniem->list_tag();
-		$this->load->view('homepage',compact("kn","comment","tags"));
-	}
 
 	public function chang_year($year){
 		$array = array(
