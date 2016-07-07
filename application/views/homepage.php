@@ -1,5 +1,4 @@
-<?php $this->load->view('_includes/header',["js"=>["/asset/js/jquery.lazyload.js"]]); ?>
-
+<?php $this->load->view('_includes/header',["js"=>[]]); ?>
 	<div class="row">
 		<h2>Time Line</h2>
 	</div>
@@ -19,6 +18,7 @@
 	<hr>
     <div class="qa-message-list" id="wallmessages">
 	<?php
+
 	foreach($kn as $key=>$value){
 		  ?> 
 				<div class="message-item" id="m16">
@@ -50,8 +50,16 @@
 							</div>
 						</div>
 						<div class="qa-message-content">
+							<?php
+							//============ ============  ============  ============ 
+							//Hiển thị nội dung bài viết
+							//============ ============  ============  ============ 
+							?>
 							<div><?= h($value->kyniem_content); ?></div>
 							<?php
+							//============ ============  ============  ============ 
+							// Hiển thị hình kỷ niệm
+							//============ ============  ============  ============ 
 							if($value->kyniem_images){
 								$images = json_decode($value->kyniem_images,true);
 								echo "<div class='image-link'>";
@@ -65,6 +73,10 @@
 								}
 								echo "</div>";
 							}
+
+							//============ ============  ============  ============ 
+							//Block comment
+							//============ ============  ============  ============ 
 							?>
 							<div class="box-comment">
 								<div class="row-tail">
@@ -77,6 +89,11 @@
 									</div>
 									<div class="clearfix"></div>
 								</div>
+								<?php 
+								//============ ============  ============  ============ 
+								//Hiển thị comment
+								//============ ============  ============  ============ 
+								 ?>
 								<ul>
 									<?php
 									foreach ((array)$comment[$value->id] as $key_comment => $value_comment) {
@@ -111,6 +128,7 @@
 	//============ ============  ============  ============ 
 	//  Show tất cả tác tag trong source
 	//  20160705152744
+	//  
 		if($tags){
 			?>
 			<div id="tags_list">
@@ -127,18 +145,4 @@
 	//============ ============  ============  ============ 
 ?>
 <!-- ============ ============ ============ ============  ============  ============  ============  ============  -->
-
-<script src="/asset/js/comment.js"></script>
-<script>
-	$(document).ready(function() {
-		//============ ============  ============  ============ 
-		//  Thay đổi năm trong combo box
-			$(".change-year").change(function(event) {
-				location.href = "/homepage/chang_year/"+$(this).val();
-			});
-		//
-		//============ ============  ============  ============ 
-	});
-</script>
-
 <?php $this->load->view('_includes/footer'); ?>

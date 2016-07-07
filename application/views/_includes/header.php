@@ -22,7 +22,6 @@ if(!$navigation_bar){
 		<link href="<?= base_url(); ?>asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/bootstrap-sweetalert/dist/sweetalert.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/Snarl/dist/snarl.min.css" rel="stylesheet">
-
 		<?php
 		if(isset($css)){
 			foreach ((array)$css as $key => $value) {
@@ -30,7 +29,6 @@ if(!$navigation_bar){
 				<?php
 			}
 		}
-
 		?>
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -80,9 +78,6 @@ if(!$navigation_bar){
 				<?php
 			}
 		}
-?>
-
-		<?php
 		if($breadcrumb){
 			?>
 	<ol class="breadcrumb">
@@ -104,7 +99,6 @@ if(!$navigation_bar){
 		if($custom_html){
 			echo $custom_html;
 		}
-
 		if($this->session->flashdata('alert')){
 			?>
 			<div class="alert alert-info">

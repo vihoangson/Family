@@ -35,6 +35,13 @@ $('.row.autoheight > div').autoheight();
 //
 //============ ============  ============  ============ 
 
+//============ ============  ============  ============ 
+//  Thay đổi năm trong combo box trong trang kỷ niệm
+	$(".change-year").change(function(event) {
+		location.href = "/homepage/chang_year/"+$(this).val();
+	});
+//
+//============ ============  ============  ============ 
 
 //============ ============  ============  ============ 
 // Nút thêm smile
