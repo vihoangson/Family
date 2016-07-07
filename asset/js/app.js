@@ -24,19 +24,22 @@
          * @param {Function} [handler=undefined]
          * @param {Object} [context=undefined]
          */
-        window.confirm = function(message, options, handler, context) {
-            return swal(
-                $.extend({
-                    title: "Are you sure?",
-                    text: "Your will not be able to recover this imaginary file!",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes, delete it!",
-                    closeOnConfirm: false
-                },options),
-            function(isConfirm){
-                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+        window.confirm_new = function(message, options, handler, context) {
+            !!swal($.extend({
+                title: message || "Are you sure?",
+                text: "You won't be able to undo this action, and you may also lose any data entered",
+                type: "warning",
+                showCancelButton: true,
+                showLoaderOnConfirm: true,
+                confirmButtonText: "Yes, do it"
+            }, options),
+            function(isConfirm) {
+                if (isConfirm && "function" === typeof handler) {
+                    handler.call(context);
+                    return true;
+                }else{
+                    return false;
+                }
             });
         };
     }
