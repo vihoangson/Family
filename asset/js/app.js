@@ -10,6 +10,7 @@
     // 
     if (window.swal) {
         /**
+         * 20160707175310
          * @param {String|*} message
          * @param {String} [text=undefined]
          * @param {String} [type=undefined]
@@ -19,6 +20,7 @@
         };
 
         /**
+         * 20160707175314
          * @param {String} message
          * @param {Object} [options=undefined]
          * @param {Function} [handler=undefined]
@@ -48,6 +50,7 @@
     //============ ============  ============  ============ 
     //  Function notify
     // Hiển thị flash popup ra màn hình
+    // 20160707175321
     // 
     // @param message: string
     // @param options: 
@@ -103,6 +106,7 @@
 
     if ("function" !== typeof extend) {
         /**
+         * 20160707175328
          * @param {Object} [Child]
          * @param {Object} [Parent]
          */
