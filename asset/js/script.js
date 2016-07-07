@@ -1,5 +1,3 @@
-
-
 $(document).on("click",".nav-tabs li",function(){
 	var name_tab = $(this).find("a").attr("href");
 	$(name_tab+" img").each(function(index, el) {
