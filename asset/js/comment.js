@@ -33,6 +33,8 @@
 		function send_comment(this_s){
 			id = this_s.data("id");
 			value = this_s.val();
+			if(!value)
+				return;
 			this_c = this_s;
 			$.post('homepage/ajax_post_comment', {id:id,value:value}, function(data, textStatus, xhr) {
 				this_c.val("");
@@ -49,7 +51,7 @@
 					this_ul.prepend(tmp_ele);
 				});
 				$(".del-c").remove();
-				notify("done");
+				notify("Thank you !");
 				$(".box-comment li").append("<span class='del-c'> </span>");
 			});
 		}
