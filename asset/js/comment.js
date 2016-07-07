@@ -21,7 +21,6 @@
 			send_comment($(this));
 		}
 	});
-
 	// Bấm vào nút send để gửi comment
 	$(".send-button").click(function(event) {
 		send_comment($(this).parents(".row-tail").find(".input-comment:first"));
@@ -30,6 +29,7 @@
 	//============ ============  ============  ============ 
 	//  Hàm xử lý send comment tới server
 	// homepage/ajax_post_comment
+	//
 		function send_comment(this_s){
 			id = this_s.data("id");
 			value = this_s.val();
@@ -49,6 +49,7 @@
 					this_ul.prepend(tmp_ele);
 				});
 				$(".del-c").remove();
+				notify("done");
 				$(".box-comment li").append("<span class='del-c'> </span>");
 			});
 		}
