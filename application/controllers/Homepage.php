@@ -123,8 +123,9 @@ class Homepage extends MY_Controller {
 		//============ ============ [START] 20160708112307 Authen by cookie ============  ============ 
 		$this->load->helper('cookie');
 		if(get_cookie('authen')){
-			$array = base64_decode(json_decode(get_cookie('authen'),true));
+			$array = json_decode(base64_decode(get_cookie('authen')),true);
 			$this->session->set_userdata( $array );
+			$this->action->archive_log("login_comment",json_encode($array));
 			redirect(base_url(),'refresh');
 		}
 		//============ ============ [STOP] 20160708112307 Authen by cookie ============  ============ 
@@ -148,6 +149,7 @@ class Homepage extends MY_Controller {
 					'user_id' => ($rs_user->id),
 					// [Start] Add since : 20160705151333 Authen API Rest
 					'auth_source' => 'bosonmesuemkem',
+					'time_now'=>time(),
 					// [Stop] Add since : 20160705151333 Authen API Rest
 				);
 				//============ ============ [START] 20160708112307 Authen by cookie ============  ============ 
