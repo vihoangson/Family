@@ -17,6 +17,11 @@
 		"firebase/php-jwt": "^3.0"
 	},
 	"require-dev": {
-		"mikey179/vfsStream": "1.1.*"
-	}
+		"mikey179/vfsStream": "1.1.*",
+		"helper_common": "dev-master"
+	},
+	"repositories":[{
+		"type": "vcs",
+		"url":"https://github.com/vihoangson/helper_common"
+	}]
 }
