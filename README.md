@@ -3,6 +3,9 @@
 
 ![](http://family.vihoangson.com/asset/file_upload/media/2016/06/15/canhathuongnhau.png)
 
+### Tài liệu ###
+https://github.com/vihoangson/Family/wiki/T%C3%A0i-li%E1%BB%87u-ph%C3%A1t-tri%E1%BB%83n
+
 ------------------------
 
 # Run API
@@ -40,5 +43,8 @@ Thêm phần BLazy giúp cải thiện tốc độ load page
 
 Thêm lib Jwt vào source
 
+** 7/8/2016 11:47:21 AM **
+
+Đăng nhập thông qua cookie
 
 

@@ -120,14 +120,14 @@ class Homepage extends MY_Controller {
 	}
 
 	public function login($case = null){
-		//============ ============ [START] 20160708112307 authen by cookie ============  ============ 
+		//============ ============ [START] 20160708112307 Authen by cookie ============  ============ 
 		$this->load->helper('cookie');
 		if(get_cookie('authen')){
-			$array = json_decode(get_cookie('authen'),true);
+			$array = base64_decode(json_decode(get_cookie('authen'),true));
 			$this->session->set_userdata( $array );
 			redirect(base_url(),'refresh');
 		}
-		//============ ============ [STOP] 20160708112307 authen by cookie ============  ============ 
+		//============ ============ [STOP] 20160708112307 Authen by cookie ============  ============ 
 		$flag = false;
 		if($this->input->post('username') && $this->input->post('password')){
 			$username =  strtolower( $this->input->post('username'));
@@ -150,9 +150,9 @@ class Homepage extends MY_Controller {
 					'auth_source' => 'bosonmesuemkem',
 					// [Stop] Add since : 20160705151333 Authen API Rest
 				);
-				//============ ============ [START] 20160708112307 authen by cookie ============  ============ 
-				set_cookie('authen', json_encode($array), 99999999);
-				//============ ============ [STOP] 20160708112307 authen by cookie ============  ============ 
+				//============ ============ [START] 20160708112307 Authen by cookie ============  ============ 
+				set_cookie('authen', base64_encode(json_encode($array)), 99999999);
+				//============ ============ [STOP] 20160708112307 Authen by cookie ============  ============ 
 				$this->action->archive_log("login_comment",json_encode($array));
 				$flag = true;
 				$this->session->set_userdata( $array );
@@ -167,7 +167,8 @@ class Homepage extends MY_Controller {
 	}
 
 	public function logout(){
-		//  $this->session->unset_userdata();
+		$this->load->helper('cookie');
+		delete_cookie("authen");
 		session_destroy();
 		redirect('/','refresh');
 	}
