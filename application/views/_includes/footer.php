@@ -18,9 +18,11 @@
 	 ?>
 	<script src="/asset/bower_components/bLazy/blazy.min.js"></script>
 	<script>
+	$(document).ready(function() {
 		var blazy = new Blazy({
 			selector: "img"
-		})
+		});
+	});
 	</script>
 	<?php 
 	//

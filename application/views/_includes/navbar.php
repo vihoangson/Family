@@ -7,14 +7,17 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="<?= base_url(); ?>"><img style="margin-top:-6px;display:inline;" src="/favicon.ico"> My Family</a>
+		<a class="navbar-brand" href="<?= base_url(); ?>"><img style="margin-top:-6px;display:inline;" src="/favicon.ico">
+			My Family
+		</a>
 	</div>
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="<?= base_url(); ?>">Trang chủ</a></li>
-			<?= ($this->Options_model->get_option("popup_flag")->option_content==1?'<li><a href="#" id="button_popup">Popup</a></li>':'') ?>
+			<?= ($this->Options_model->get_option("popup_flag")->option_content==1?
+			'<li><a href="#" id="button_popup">Popup</a></li>':'') ?>
 		</ul>
 		<?php
 			if($this->session->userdata('user')){

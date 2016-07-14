@@ -37,14 +37,47 @@ class Homepage extends MY_Controller {
 		}else{
 			$cond_year = date("Y");
 		}
-		$condition["year"] = $cond_year;
+		$condition["year"]  = $cond_year;
+		$condition["limit"] = 5;
+
+		$data = $this->getDataHomepage($condition);
+		extract($data);
+
+		$this->load->view('homepage',compact("kn","comment","tags"));
+	}
+
+	public function ajax_autoload($step){
+		if($this->session->userdata('year')){
+			$cond_year = $this->session->userdata('year');
+		}else{
+			$cond_year = date("Y");
+		}
+		$condition["year"]  = $cond_year;
+		$condition["limit"] = 4;
+		$condition["offset"] = $step;
+
+		$data = $this->getDataHomepage($condition);
+		extract($data);
+		//$value = $kn[0];
+		foreach ($kn as $key2 => $value) {
+			$key = $step++;
+			$this->load->view("_includes/ele_kyniem", compact("value","comment","key"));
+		}
+	}
+
+	private function getDataHomepage($condition = null){
 		$kn = $this->kyniem->getAll($condition);
+		$comment = [];
 		foreach ($kn as $key => $value) {
-			$rs = $this->db->where("kyniem_id",$value->id)->select("comment.*,user.username,user.user_avatar")->join("user","user.id=comment_user")->order_by("id","desc")->get('comment')->result();
+			$rs = $this->db->where("kyniem_id",$value->id)->select("comment.*,user.username,user.user_avatar")
+			->join("user","user.id=comment_user")->order_by("id","desc")->get('comment')->result();
 			$comment[$value->id] = $rs;
 		}
 		$tags = $this->kyniem->list_tag();
-		$this->load->view('homepage',compact("kn","comment","tags"));
+		$return["kn"] = $kn;
+		$return["comment"] = $comment;
+		$return["tags"] = $tags;
+		return $return;
 	}
 
 	public function post_group(){
@@ -339,7 +372,8 @@ class Homepage extends MY_Controller {
 			}
 		}
 		if(FCPATH."asset/images/thumb/".get_thumb_file_name($file_name)){
-			if(!rename(FCPATH."asset/images/thumb/".get_thumb_file_name($file_name),FCPATH."asset/images/trash/".get_thumb_file_name($file_name))){
+			if(!rename(FCPATH."asset/images/thumb/".get_thumb_file_name($file_name),
+				FCPATH."asset/images/trash/".get_thumb_file_name($file_name))){
 				throw new Exception("Không move được file", 1);
 				$flag=false;
 			}
@@ -456,7 +490,8 @@ class Homepage extends MY_Controller {
 			];
 			$this->db->insert('comment', $object);
 		}
-		echo json_encode($this->db->select("comment.*,user.username,user.user_avatar")->join("user","user.id=comment_user")->where("kyniem_id",$id)->get('comment')->result());
+		echo json_encode($this->db->select("comment.*,user.username,user.user_avatar")
+			->join("user","user.id=comment_user")->where("kyniem_id",$id)->get('comment')->result());
 	}
 
 	public function ajax_delete_comment(){
@@ -585,7 +620,8 @@ class Homepage extends MY_Controller {
 					);
 				break;
 			}
-			$this->action->archive_log("login_facebook",json_encode([$userNode["name"],$userNode["email"],$userNode["id"]]));
+			$this->action->archive_log("login_facebook",
+				json_encode([$userNode["name"],$userNode["email"],$userNode["id"]]));
 			$this->session->set_userdata( $array);
 			header('Location: /');
 		}else{

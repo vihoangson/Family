@@ -22,6 +22,8 @@ if(!$navigation_bar){
 		<link href="<?= base_url(); ?>asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/bootstrap-sweetalert/dist/sweetalert.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/Snarl/dist/snarl.min.css" rel="stylesheet">
+		<link href="<?= base_url(); ?>asset/bower_components/animate.css/animate.min.css" rel="stylesheet">
+		
 		<?php
 		if(isset($css)){
 			foreach ((array)$css as $key => $value) {
