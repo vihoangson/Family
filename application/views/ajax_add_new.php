@@ -72,9 +72,16 @@ window.onbeforeunload = function () {
 	?>
 <script>
 	$(".img_ele").click(function(event) {
+		if(!confirm("Sure delete ?")){
+			return false;
+		}
+		var this_e = $(this);
 		$.post('/homepage/ajax_delete_img', {img: $(this).data("img"),id: $(this).data("id")}, function(data, textStatus, xhr) {
-			console.log(data);
-			console.log(textStatus);
+			if(data.status == "success"){
+				this_e.addClass("animated fadeOut").delay(30);
+			}
+			//console.log(data.status);
+			//console.log(textStatus);
 		});
 	});
 

@@ -347,6 +347,7 @@ class Homepage extends MY_Controller {
 	}
 
 	public function ajax_delete_img(){
+		header('Content-Type: application/json');
 		try {
 			$this->db->where('id', $this->input->post("id"));
 			$rs = json_decode($this->db->get('kyniem', 1)->row()->kyniem_images,true);
@@ -360,19 +361,22 @@ class Homepage extends MY_Controller {
 				throw new Exception("Không update được db", 1);
 			}
 		} catch (Exception $e) {
-			echo $e->getMessage();
+			echo json_encode(["status"=>"false","error_code"=>$e->getMessage()]);
 		}
+		echo json_encode(["status"=>"success"]);
+
+
 	}
 
 	private function _move_file_to_trash($file_name){
 		$flag=true;
-		if(FCPATH."asset/images/".$file_name){
+		if(file_exists(FCPATH."asset/images/".$file_name)){
 			if(!rename(FCPATH."asset/images/".$file_name,FCPATH."asset/images/trash/".$file_name)){
 				$flag=false;
 				throw new Exception("Không move được file", 1);
 			}
 		}
-		if(FCPATH."asset/images/thumb/".get_thumb_file_name($file_name)){
+		if(file_exists(FCPATH."asset/images/thumb/".get_thumb_file_name($file_name))){
 			if(!rename(FCPATH."asset/images/thumb/".get_thumb_file_name($file_name),
 				FCPATH."asset/images/trash/".get_thumb_file_name($file_name))){
 				throw new Exception("Không move được file", 1);
