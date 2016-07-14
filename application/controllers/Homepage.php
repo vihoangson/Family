@@ -629,8 +629,6 @@ class Homepage extends MY_Controller {
 			header('Location: /');
 		}
 	}
-
-
 }
 
 /* End of file Index.php */

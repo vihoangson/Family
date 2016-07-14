@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<phpunit bootstrap="application/tests/bootstrap.php"
+<phpunit bootstrap="./application/tests/bootstrap.php"
          backupGlobals="false"
          backupStaticAttributes="false"
+         colors="true"
+         verbose="true"
+		testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader"
+		printerClass="PHPUnit_TextUI_ResultPrinter"
 	>
 	<testsuites>
 		<testsuite name="TestSuite" >
