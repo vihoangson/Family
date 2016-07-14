@@ -47,6 +47,7 @@ class Homepage extends MY_Controller {
 	}
 
 	public function ajax_autoload($step){
+		sleep(1);
 		if($this->session->userdata('year')){
 			$cond_year = $this->session->userdata('year');
 		}else{
