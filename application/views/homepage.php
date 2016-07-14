@@ -69,7 +69,7 @@
 									}else{
 										$value2_c = $value2;
 									}
-									echo '<a href="'.base_url().'asset/images/'.$value2.'"  class=""><img class="lazy"  data-original="'.base_url().'asset/images/'.$value2_c.'"  src=""></a>';
+									echo '<a href="'.base_url().'asset/images/'.$value2.'"  class=""><img class="lazy"  src="'.base_url().'asset/images/'.$value2_c.'"  src=""></a>';
 								}
 								echo "</div>";
 							}
