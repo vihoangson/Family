@@ -11,7 +11,7 @@
 					<a href="#"><img src="<?= PATH_AVATAR.$value->user_avatar; ?>"></a>
 					</div>
 					<div class="user-detail">
-						<h5 class="handle"><?= ($value->kyniem_title?$value->kyniem_title:"Happy Family"); ?> <?= $key; ?></h5>
+						<h5 class="handle"><?= ($value->kyniem_title?$value->kyniem_title:"Happy Family"); ?></h5>
 						<div class="post-meta">
 							<div class="asker-meta">
 								<span class="qa-message-what"></span>
@@ -37,7 +37,7 @@
 					//============ ============  ============  ============ 
 					// Hiển thị hình kỷ niệm
 					//============ ============  ============  ============ 
-					if($value->kyniem_images){
+					if($value->kyniem_images && $value->kyniem_images!="[]"){
 						$images = json_decode($value->kyniem_images,true);
 						echo "<div class='image-link'>";
 						foreach ((array)$images as $key2 => $value2) {
