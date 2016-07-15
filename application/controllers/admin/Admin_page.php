@@ -24,7 +24,8 @@ class Admin_page extends MY_Controller {
 
 	public function index()
 	{
-		$this->load->view('admin/admin_page');
+		$content = "<h1>Family admin page</h1>";
+		$this->load->view('admin/admin_page',compact("content"));
 	}
 
 	public function blank_page(){

@@ -1,15 +1,52 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 class Do_ajax extends CI_Controller {
+
+	//============ ============  ============  ============ 
+	// Url: /ajax/do_ajax/Chat_model
+	// 
+	//
     public function Chat_model() {
         parent::__construct();
     }
 
+	//============ ============  ============  ============ 
+	// Url: /ajax/do_ajax/do_test
+	// 
+	//
 	public function do_test($page=null){
 
 	}
 
+	//============ ============  ============  ============ 
+	// Url: /ajax/do_ajax/error_img
+	// 
+	//
+	public function error_img(){
+		header('Content-Type: application/json');
+		if(!$this->input->post("img_error")) return;
+		$this->log->write_log("error",json_encode($this->input->post()));
+		echo json_encode(["status"=>"done"]);
+	}
+
+	//============ ============  ============  ============ 
+	// Dùng để lấy status admin
+	// 
+	// Method: Get
+	// url: /ajax/do_ajax/get_status
+	// 
+	// @since: 20160715120014
+	//	
+	public function get_status(){
+		echo get_status();
+	}
+
+
+	//============ ============  ============  ============ 
+	// Url: /ajax/do_ajax/download_backup
+	// 
 	public function download_backup(){
 		ini_set('memory_limit', '228M');
 		$this->load->library('HZip');
@@ -36,6 +73,10 @@ class Do_ajax extends CI_Controller {
 		// }
 	}
 
+
+	//============ ============  ============  ============ 
+	// Url: /ajax/do_ajax/save_img_instant
+	// 
 	public function save_img_instant(){
 		$id = $this->input->post('id');
 		$src = $this->input->post('src');
@@ -53,7 +94,11 @@ class Do_ajax extends CI_Controller {
 	//============ ============  ============  ============ 
 	// Page: /ajax/do_ajax/save_img_box
 	// $.post("/ajax/do_ajax/save_img_box",function(data){console.log(data);});
+
 	//============ ============  ============  ============ 
+	//============ ============  ============  ============ 
+	// Url: /ajax/do_ajax/save_img_box
+	// 
 	public function save_img_box(){
 		// ============ ============  ============  ============ 
 		// Upload img
@@ -121,6 +166,10 @@ class Do_ajax extends CI_Controller {
 		}
 	}
 
+
+	//============ ============  ============  ============ 
+	// Url: /ajax/do_ajax/load_img_media
+	// 
 	public function load_img_media(){
 		$rs = $this->db->order_by("id","desc")->get('media')->result();
 		foreach ($rs as $key => &$value) {
@@ -135,7 +184,11 @@ class Do_ajax extends CI_Controller {
 	//============ ============  ============  ============ 
 	// Function load_media: load bảng upload file hình ảnh
 	// @create in: 2016-05-23
+
 	//============ ============  ============  ============ 
+	//============ ============  ============  ============ 
+	// Url: /ajax/do_ajax/load_media
+	// 
 	public function load_media(){
 		echo '<button style="margin-bottom:5px" class="btn btn-default upload-btn"><i class="fa fa-plus"></i> Upload</button>';
 		?>
@@ -152,7 +205,11 @@ class Do_ajax extends CI_Controller {
 	// Function mỗi khi close window, lấy tất cả các localStorage lưu vào db với prefix: "cache_tmp_input_".time()
 	// @create in: 2016-06-21
 	// /ajax/do_ajax/ajax_save_cache/delete
+
 	//============ ============  ============  ============ 
+	//============ ============  ============  ============ 
+	// Url: /ajax/do_ajax/ajax_save_cache
+	// 
 	public function ajax_save_cache($option=null){
 		if($option=="delete"){
 			$this->db->like('option_key', "cache_tmp_input_");
@@ -168,7 +225,11 @@ class Do_ajax extends CI_Controller {
 	//============ ============  ============  ============ 
 	// Function lấy tất cả hình trong folder /asset/data/face
 	// @create in: 2016-05-01
+
 	//============ ============  ============  ============ 
+	//============ ============  ============  ============ 
+	// Url: /ajax/do_ajax/list_face
+	// 
 	public function list_face(){
 		$files = scandir(FCPATH."asset/data/face");
 		foreach ($files as $key => $value) {
@@ -179,6 +240,10 @@ class Do_ajax extends CI_Controller {
 		echo json_encode($json_files);
 	}
 
+
+	//============ ============  ============  ============ 
+	// Url: /ajax/do_ajax/index
+	// 
 	public function index()
 	{
 		?>
