@@ -46,7 +46,8 @@ $('.row.autoheight > div').autoheight();
 //============ ============  ============  ============ 
 // Nút thêm smile
 //
-	$(".smile-button").click(function(){
+
+	$(document).on('click', '.smile-button', function(event) {
 		id = $(this).parents(".row-tail").find("input").data("id");
 		$("#modal-general .modal-body").data("id",id);
 		$("#modal-general .modal-body").load('/ajax/do_ajax/index',function(){
