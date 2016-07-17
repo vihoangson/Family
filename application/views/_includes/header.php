@@ -47,10 +47,6 @@ if(!$navigation_bar){
 		<script src="<?= base_url(); ?>asset/bower_components/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
 		<script src="<?= base_url(); ?>asset/bower_components/Snarl/dist/snarl.min.js"></script>
 		<script src="<?= base_url(); ?>asset/js/app.js"></script>
-		<!-- handlebars -->
-		<script src="<?= base_url(); ?>asset/bower_components/handlebars/handlebars.js"></script>
-		<script src="<?= base_url(); ?>asset/bower_components/handlebars/handlebars.runtime.js"></script>
-		<!-- end handlebars -->
 		<?php
 		if(isset($js)){
 			foreach ((array)$js as $key => $value) {
