@@ -49,4 +49,7 @@ Thêm lib Jwt vào source
 
 Đăng nhập thông qua cookie
 
+## Dùng My_model xem doc tại đây
+
+> https://github.com/avenirer/CodeIgniter-MY_Model
 
