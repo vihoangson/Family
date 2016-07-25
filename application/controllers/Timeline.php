@@ -19,6 +19,14 @@ class Timeline extends MY_Controller {
 		redirect('/timeline','refresh');
 	}
 
+	//============ ============  ============  ============ 
+	//  url: /timeline/mansonry/
+	public function mansonry(){
+		$this->load->model('MY_Kyniem');
+		$data = $this->MY_Kyniem->order_by(["id"=>"desc"])->get_all();
+		$this->load->view('tmp/mansonry',compact("data"));
+	}
+
 	public function logintimeline(){
 		if($this->input->post("pass")){
 			if($this->input->post("pass")== $this->config->item("password_timeline") ){
