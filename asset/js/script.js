@@ -60,3 +60,13 @@ $('.row.autoheight > div').autoheight();
 	});
 //
 //============ ============  ============  ============ 
+
+$(".change_banner").click(function(){
+	$("#modal-general .modal-title").html("Change banner");
+	$("#modal-general .modal-body").html('<form action="/ajax/do_ajax/upload_img" method="post" id="change-banner" enctype="multipart/form-data"><input type="file" name="file_x" class="form-control" id="fileToUpload"> </form>');;
+	$("#modal-general").modal("show");
+});
+
+$(document).on("change","#change-banner",function(){
+	$("#change-banner").submit();
+});

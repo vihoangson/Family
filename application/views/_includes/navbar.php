@@ -59,3 +59,4 @@
 			} ?>
 	</div><!-- /.navbar-collapse -->
 </nav>
+<?php custom_banner(); ?>

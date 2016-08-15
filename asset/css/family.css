@@ -474,3 +474,12 @@ li.ele_comment:after {
 .qa-message-content img[src*='file_upload/media'],.qa-message-content img[src*='asset/uploads/']{
     max-width:100%;
 }
+
+
+.change_banner {
+    position: absolute;
+    display: none; 
+}
+.custom_banner:hover .change_banner{
+    display:block;
+}

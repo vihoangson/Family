@@ -4,6 +4,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Do_ajax extends CI_Controller {
 
+
+	public function upload_img(){
+		$config['upload_path'] = check_folder(FCPATH.'asset/file_upload/custom_banner/');
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']      = '1000000';
+		$config['max_width']     = '10240';
+		$config['max_height']    = '76800';
+		$config['xss_clean']    = true;
+		$this->load->library('upload', $config);
+		$data_result = $this->upload->do_upload("file_x");
+		if ( ! $data_result){
+			$error = array('error' => $this->upload->display_errors());
+			echo json_encode(["status"=> "Error","content"=>$error]);
+		}else{
+			$path = FCPATH.'asset/file_upload/custom_banner/';
+			$files = scandir($path);
+			foreach ($files as $key => $value) {
+				if($value == "." || $value == "..") continue;
+				if(is_file($path.$value) && $value != $this->upload->data()["file_name"]){
+					unlink($path.$value);
+				}
+			}
+			$this->load->model('options_model');
+			$this->options_model->save_option("custom_banner",json_encode($this->upload->data()));
+		}
+		redirect('/','refresh');
+		die;
+	}
 	//============ ============  ============  ============ 
 	// Url: /ajax/do_ajax/Chat_model
 	// 
