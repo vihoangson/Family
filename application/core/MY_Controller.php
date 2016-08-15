@@ -76,6 +76,7 @@ class MY_Controller extends CI_Controller
 			FCPATH."backup_file",
 			FCPATH."asset/images",
 			FCPATH."asset/js",
+			FCPATH."asset/tmp",
 			FCPATH."asset/template",
 			FCPATH."asset/uploads",
 			FCPATH."asset/file_upload",
@@ -83,6 +84,7 @@ class MY_Controller extends CI_Controller
 
 		foreach ($links_asset as $key => $value) {
 			if(!is_writable($value)){
+				mkdir($value);
 				throw new Exception("Không ghi được file vào folder ".$value."[Vui lòng tạo mới hoặc chỉnh lại permission cho folder nha]", 1);
 			}
 		}
@@ -132,6 +134,28 @@ class MY_Controller extends CI_Controller
 			$this->email->subject("Backup db ".date("Y-m-d h:i:s"));
 			$this->email->message(date("Y-m-d h:i:s"));
 			$this->email->attach(DB_FILE_FAMILY);
+			if($this->email->send()){
+				echo "<h1>Send mail [".__FUNCTION__."]</h1>";
+			}else{
+				throw new Exception("Can't backup db", 1);
+				echo "<h1>Can't sent mail [".__FUNCTION__."]</h1>";
+			}
+		}
+	}
+
+	public function sent_log(){
+		if(ALLOW_SENT_MAIL){
+			$this->load->library('HZip');
+			$file_name = "BK_log_".date("Ymd_his").".zip";
+			$config['upload_path'] = check_folder(FCPATH.'asset/file_upload/custom_banner_'.$position.'/');
+			HZip::zipDir(FCPATH."application/logs",FCPATH."asset/tmp/".$file_name);
+			$this->load->library('email', $this->config_email_custom);
+			$this->email->from(FROM_EMAIL, 'Family');
+			$this->email->to('vihoangson@gmail.com');
+			$this->email->cc('4t.nhauyen@gmail.com');
+			$this->email->subject("Backup db ".date("Y-m-d h:i:s"));
+			$this->email->message(date("Y-m-d h:i:s"));
+			$this->email->attach(FCPATH."asset/tmp/".$file_name);
 			if($this->email->send()){
 				echo "<h1>Send mail [".__FUNCTION__."]</h1>";
 			}else{
