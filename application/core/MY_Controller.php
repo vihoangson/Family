@@ -153,7 +153,7 @@ class MY_Controller extends CI_Controller
 			$this->email->from(FROM_EMAIL, 'Family');
 			$this->email->to('vihoangson@gmail.com');
 			$this->email->cc('4t.nhauyen@gmail.com');
-			$this->email->subject("Backup db ".date("Y-m-d h:i:s"));
+			$this->email->subject("Backup log ".date("Y-m-d h:i:s"));
 			$this->email->message(date("Y-m-d h:i:s"));
 			$this->email->attach(FCPATH."asset/tmp/".$file_name);
 			if($this->email->send()){
