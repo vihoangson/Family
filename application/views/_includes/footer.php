@@ -1,3 +1,4 @@
+		<?php custom_banner("bottom"); ?>
 		<!-- Block in footer -->
 		<div class="text-center center-block">
 			<p class="txt-railway">- Sweet house -</p>
