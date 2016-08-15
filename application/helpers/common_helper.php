@@ -1,15 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-	function custom_banner(){
+
+
+	function custom_banner($position = "top"){
 		$CI =& get_instance();
 		$CI->load->model('options_model');
-		if($CI->options_model->get_option("custom_banner")==null){
-			$CI->options_model->save_option("custom_banner","img.jpg");
+		if($CI->options_model->get_option("custom_banner_".$position)==null){
+			$CI->options_model->save_option("custom_banner_".$position,"img.jpg");
 		}else{
-			$file_name = json_decode($CI->options_model->get_option("custom_banner")->option_content,true);
+			$file_name = json_decode($CI->options_model->get_option("custom_banner_".$position)->option_content,true);
 			$file_name = (preg_replace("/(.+)\/asset/","/asset",$file_name["full_path"]));
-			echo "<div class='custom_banner'><button class='btn change_banner'>Change banner</button><img src='$file_name' onError='this.src=\"http://placehold.it/1000x60\"' style='width:100%;'></div>";
 		}
+		echo "
+		<div class='custom_banner $position' >
+			<button class='btn change_banner' data-position='$position'>Change banner</button>
+			<img src='$file_name' onError='this.src=\"http://placehold.it/1000x60\"' style='width:100%;'>
+		</div>";
 	}
 
 	/**
