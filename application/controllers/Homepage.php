@@ -472,6 +472,7 @@ class Homepage extends MY_Controller {
 				$html = $this->_get_content_countdown();
 				// Gủi email 
 				$this->my_sent_email(["subject"=>"Count down ".date("Y-m-d H:i:s"),"content"=>$html]);
+				$this->backup_db_family();
 			break;
 		}
 	}
