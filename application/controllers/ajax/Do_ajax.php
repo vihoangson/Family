@@ -21,14 +21,13 @@ class Do_ajax extends CI_Controller {
 			echo json_encode(["status"=> "Error","content"=>$error]);
 		}else{
 			$path = FCPATH.'asset/file_upload/custom_banner_'.$position.'/';
-
-			// $files = scandir($path);
-			// foreach ($files as $key => $value) {
-			// 	if($value == "." || $value == "..") continue;
-			// 	if(is_file($path.$value) && $value != $this->upload->data()["file_name"]){
-			// 		unlink($path.$value);
-			// 	}
-			// }
+			$files = scandir($path);
+			foreach ($files as $key => $value) {
+				if($value == "." || $value == "..") continue;
+				if(is_file($path.$value) && $value != $this->upload->data()["file_name"]){
+					unlink($path.$value);
+				}
+			}
 			$this->load->model('options_model');
 			$this->options_model->save_option("custom_banner_".$position,json_encode($this->upload->data()));
 			redirect('/','refresh');
