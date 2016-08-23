@@ -11,9 +11,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$file_name = json_decode($CI->options_model->get_option("custom_banner_".$position)->option_content,true);
 			$file_name = preg_replace("/(.+)\/asset/","/asset",$file_name["full_path"]);
 		}
-		$str_html =  "
+		$str_html = "
 		<div class='custom_banner $position' >
-			<button class='btn change_banner' data-position='$position'>Change banner</button>
+			".($CI->session->userdata('user')?"<button class='btn change_banner' data-position='$position'>Change banner</button>":"")."
 			<img src='$file_name' onError='this.src=\"http://placehold.it/1000x60\"' style='width:100%;'>
 		</div>";
 		if($html==true){
