@@ -46,6 +46,10 @@ class Homepage extends MY_Controller {
 		$this->load->view('homepage',compact("kn","comment","tags"));
 	}
 
+	public function slide(){
+	    $this->load->view("slide");
+    }
+
 	public function ajax_autoload($step){
 		sleep(1);
 		if($this->session->userdata('year')){
