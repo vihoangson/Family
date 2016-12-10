@@ -11,3 +11,5 @@ asset/data_note
 application/config/family/config.php
 asset/uploads/
 backup_file/*.zip
+.idea
+asset/img_slide/*
