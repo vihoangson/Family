@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e8da731-b2cc-45e3-b543-a85fbaa01ad7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/php.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/tests/test_lib/JWT_Test.php" afterPath="$PROJECT_DIR$/application/tests/test_lib/JWT_Test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/tests/test_models/My_Model_Test.php" afterPath="$PROJECT_DIR$/application/tests/test_models/My_Model_Test.php" />
     </list>
     <ignored path="family.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -14,7 +16,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -24,23 +25,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
+      <file leaf-file-name="Kyniem.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/api/Kyniem.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FamilyTestGeneralCommon_HelperTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/tests/test_lib/FamilyTestGeneralCommon_HelperTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="slide.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/slide.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="666">
+              <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="phpunit.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phpunit.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="My_Model_Test.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/tests/test_models/My_Model_Test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="61" />
               <folding>
-                <element signature="e#6#1664#0#PHP" expanded="true" />
+                <marker date="1481368456310" expanded="true" signature="280:328" ph="SELECT name sqlite_master" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FamilyTestGeneralCommon_HelperTest.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/tests/test_lib/FamilyTestGeneralCommon_HelperTest.php">
+      <file leaf-file-name="MY_Model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/core/MY_Model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="146">
+              <caret line="896" column="0" selection-start-line="896" selection-start-column="0" selection-end-line="896" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JWT_Test.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/tests/test_lib/JWT_Test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -57,23 +108,26 @@
         <option value="$PROJECT_DIR$/application/models/MY_Kyniem.php" />
         <option value="$PROJECT_DIR$/application/models/MY_Comment.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/application/tests/test_lib/JWT_Test.php" />
+        <option value="$PROJECT_DIR$/application/tests/test_models/My_Model_Test.php" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" />
-  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 5.6" />
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1420" />
-    <option name="y" value="-469" />
-    <option name="width" value="1874" />
-    <option name="height" value="1096" />
+    <option name="x" value="54" />
+    <option name="y" value="-8" />
+    <option name="width" value="1320" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -100,32 +154,33 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
+              <option name="myItemId" value="Family" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
+              <option name="myItemId" value="Family" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
+              <option name="myItemId" value="Family" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
+              <option name="myItemId" value="Family" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
+              <option name="myItemId" value="Family" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -135,11 +190,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
+              <option name="myItemId" value="Family" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
+              <option name="myItemId" value="Family" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -153,11 +208,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
+              <option name="myItemId" value="Family" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
+              <option name="myItemId" value="Family" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -175,39 +230,41 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.phpunit" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/phpunit.xml" />
+    <property name="last_opened_file_path" value="C:/bin/phpunit-4.8.31.phar" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="SearchEverywhereHistoryKey" value="index.php&#9;FILE&#9;file://D:/xampp/htdocs/vhosts/family/application/views/blog/index.php" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
-  <component name="RunManager" selected="PHPUnit.FamilyTestGeneralCommon_Helper">
-    <configuration default="false" name="FamilyTestGeneralCommon_Helper.testGeneralCommon_Helper (4)" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="JWT_Test" directory="$PROJECT_DIR$/application/tests/test_lib" file="$PROJECT_DIR$/application/tests/test_lib/JWT_Test.php" method="testGeneralCommon_Helper" />
-      <method />
-    </configuration>
-    <configuration default="false" name="FamilyTestGeneralCommon_Helper.testGeneralCommon_Helper (5)" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="FamilyTestGeneralCommon_Helper" file="$PROJECT_DIR$/application/tests/test_lib/FamilyTestGeneralCommon_HelperTest.php" method="testGeneralCommon_Helper" scope="Method" />
-      <method />
-    </configuration>
-    <configuration default="false" name="FamilyTestGeneralCommon_Helper.test_FileSizeConvert" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="FamilyTestGeneralCommon_Helper" file="$PROJECT_DIR$/application/tests/test_lib/FamilyTestGeneralCommon_HelperTest.php" method="test_FileSizeConvert" scope="Method" />
-      <method />
-    </configuration>
-    <configuration default="false" name="FamilyTestGeneralCommon_Helper.test_check_folder" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="FamilyTestGeneralCommon_Helper" file="$PROJECT_DIR$/application/tests/test_lib/FamilyTestGeneralCommon_HelperTest.php" method="test_check_folder" scope="Method" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="PHPUnit.My_Model_Test.test_check_ele_model">
     <configuration default="false" name="FamilyTestGeneralCommon_Helper" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="FamilyTestGeneralCommon_Helper" file="$PROJECT_DIR$/application/tests/test_lib/FamilyTestGeneralCommon_HelperTest.php" scope="Class" />
       <method />
     </configuration>
+    <configuration default="false" name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml" scope="XML" use_alternative_configuration_file="true" />
+      <method />
+    </configuration>
+    <configuration default="false" name="JWT_Test.test_JWT" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="JWT_Test" file="$PROJECT_DIR$/application/tests/test_lib/JWT_Test.php" method="test_JWT" scope="Method" />
+      <method />
+    </configuration>
+    <configuration default="false" name="My_Model_Test.test_search_kyniem" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="My_Model_Test" file="$PROJECT_DIR$/application/tests/test_models/My_Model_Test.php" method="test_search_kyniem" scope="Method" />
+      <method />
+    </configuration>
+    <configuration default="false" name="My_Model_Test.test_check_ele_model" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="My_Model_Test" file="$PROJECT_DIR$/application/tests/test_models/My_Model_Test.php" method="test_check_ele_model" scope="Method" />
+      <method />
+    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -237,20 +294,33 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper.testGeneralCommon_Helper (4)" />
-      <item index="1" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper.testGeneralCommon_Helper (5)" />
-      <item index="2" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper.test_FileSizeConvert" />
-      <item index="3" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper.test_check_folder" />
-      <item index="4" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper" />
+      <item index="0" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.phpunit.xml" />
+      <item index="2" class="java.lang.String" itemvalue="PHPUnit.JWT_Test.test_JWT" />
+      <item index="3" class="java.lang.String" itemvalue="PHPUnit.My_Model_Test.test_search_kyniem" />
+      <item index="4" class="java.lang.String" itemvalue="PHPUnit.My_Model_Test.test_check_ele_model" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper" />
-        <item index="1" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper.test_FileSizeConvert" />
-        <item index="2" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper.test_check_folder" />
-        <item index="3" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper.testGeneralCommon_Helper (5)" />
-        <item index="4" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper.testGeneralCommon_Helper (4)" />
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.My_Model_Test.test_check_ele_model" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.phpunit.xml" />
+        <item index="2" class="java.lang.String" itemvalue="PHPUnit.My_Model_Test.test_search_kyniem" />
+        <item index="3" class="java.lang.String" itemvalue="PHPUnit.JWT_Test.test_JWT" />
+        <item index="4" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper" />
       </list>
     </recent_temporary>
   </component>
@@ -273,49 +343,59 @@
       <workItem from="1480063076855" duration="1221000" />
       <workItem from="1480556999286" duration="623000" />
       <workItem from="1481185269777" duration="1347000" />
+      <workItem from="1481367992167" duration="463000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FamilyTestGeneralCommon_Helper - 2016.12.08 at 15h 36m 00s.xml">
-      <configuration name="FamilyTestGeneralCommon_Helper" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="My_Model_Test_test_check_ele_model - 2016.12.10 at 18h 13m 40s.xml">
+      <configuration name="My_Model_Test.test_check_ele_model" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="FamilyTestGeneralCommon_Helper - 2016.12.08 at 15h 37m 46s.xml">
-      <configuration name="FamilyTestGeneralCommon_Helper" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="My_Model_Test_test_check_ele_model - 2016.12.10 at 18h 14m 04s.xml">
+      <configuration name="My_Model_Test.test_check_ele_model" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="FamilyTestGeneralCommon_Helper_testGeneralCommon_Helper_(5) - 2016.12.08 at 15h 35m 32s.xml">
-      <configuration name="FamilyTestGeneralCommon_Helper.testGeneralCommon_Helper (5)" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="My_Model_Test_test_search_kyniem - 2016.12.10 at 18h 10m 28s.xml">
+      <configuration name="My_Model_Test.test_search_kyniem" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="FamilyTestGeneralCommon_Helper_test_FileSizeConvert - 2016.12.08 at 15h 35m 37s.xml">
-      <configuration name="FamilyTestGeneralCommon_Helper.test_FileSizeConvert" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="My_Model_Test_test_search_kyniem - 2016.12.10 at 18h 10m 40s.xml">
+      <configuration name="My_Model_Test.test_search_kyniem" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="FamilyTestGeneralCommon_Helper_test_FileSizeConvert - 2016.12.08 at 15h 35m 58s.xml">
-      <configuration name="FamilyTestGeneralCommon_Helper.test_FileSizeConvert" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="My_Model_Test_test_search_kyniem - 2016.12.10 at 18h 11m 04s.xml">
+      <configuration name="My_Model_Test.test_search_kyniem" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="FamilyTestGeneralCommon_Helper_test_FileSizeConvert - 2016.12.08 at 15h 37m 42s.xml">
-      <configuration name="FamilyTestGeneralCommon_Helper.test_FileSizeConvert" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="My_Model_Test_test_search_kyniem - 2016.12.10 at 18h 12m 06s.xml">
+      <configuration name="My_Model_Test.test_search_kyniem" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="FamilyTestGeneralCommon_Helper_test_check_folder - 2016.12.08 at 15h 35m 41s.xml">
-      <configuration name="FamilyTestGeneralCommon_Helper.test_check_folder" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="My_Model_Test_test_search_kyniem - 2016.12.10 at 18h 12m 23s.xml">
+      <configuration name="My_Model_Test.test_search_kyniem" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="My_Model_Test_test_search_kyniem - 2016.12.10 at 18h 12m 28s.xml">
+      <configuration name="My_Model_Test.test_search_kyniem" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="phpunit_xml - 2016.12.10 at 18h 12m 44s.xml">
+      <configuration name="phpunit.xml" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="phpunit_xml - 2016.12.10 at 18h 13m 33s.xml">
+      <configuration name="phpunit.xml" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5730000" />
+    <option name="totallyTimeSpent" value="6193000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1420" y="-469" width="1874" height="1096" extended-state="6" />
-    <editor active="false" />
+    <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18191841" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18492064" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41017655" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32668713" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.398773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -344,7 +424,7 @@
           <url>file://$PROJECT_DIR$/index.php</url>
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -352,9 +432,27 @@
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding>
+            <element signature="e#6#1664#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/tests/test_lib/FamilyTestGeneralCommon_HelperTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6#1664#0#PHP" expanded="true" />
+            <element signature="e#6#1664#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -433,13 +531,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/tests/test_lib/JWT_Test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -490,16 +581,66 @@
         <state relative-caret-position="0">
           <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding>
-            <element signature="e#6#1664#0#PHP" expanded="true" />
+            <element signature="e#6#1664#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/api/Kyniem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/slide.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/tests/test_lib/FamilyTestGeneralCommon_HelperTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="107">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/tests/test_lib/JWT_Test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpunit.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/core/MY_Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="896" column="0" selection-start-line="896" selection-start-column="0" selection-end-line="896" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/tests/test_models/My_Model_Test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="61" />
+          <folding>
+            <marker date="1481368456310" expanded="true" signature="280:328" ph="SELECT name sqlite_master" />
+          </folding>
         </state>
       </provider>
     </entry>
