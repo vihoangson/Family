@@ -2,6 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 include APPPATH."core/REST_Controller.php";
 class Options_control extends REST_Controller {
+    public function get_img_slide(){
+        $this->load->library('Slide_timeline');
+        $rs = $this->Slide_timeline->get_timeline();
+        $this->response($rs);
+    }
 	/**
 	 * [getAllOption_get description]
 	 * 

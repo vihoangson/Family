@@ -6,6 +6,8 @@ class ControllersTest extends CITestCase
 {
 
 	public function test1(){
+         $this->requireController('Homepage');
+        $this->CI = new Homepage();
 	}	
 
 

@@ -6,7 +6,7 @@ class Homepage extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('kyniem');
+		$this->load->model('Kyniem');
 		$this->load->library('image_lib');
 		$this->load->library('facebook');
 		if($this->session->userdata('fb_access_token')){
@@ -71,14 +71,14 @@ class Homepage extends MY_Controller {
 	}
 
 	private function getDataHomepage($condition = null){
-		$kn = $this->kyniem->getAll($condition);
+		$kn = $this->Kyniem->getAll($condition);
 		$comment = [];
 		foreach ($kn as $key => $value) {
 			$rs = $this->db->where("kyniem_id",$value->id)->select("comment.*,user.username,user.user_avatar")
 			->join("user","user.id=comment_user")->order_by("id","desc")->get('comment')->result();
 			$comment[$value->id] = $rs;
 		}
-		$tags = $this->kyniem->list_tag();
+		$tags = $this->Kyniem->list_tag();
 		$return["kn"] = $kn;
 		$return["comment"] = $comment;
 		$return["tags"] = $tags;

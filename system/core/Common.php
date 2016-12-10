@@ -190,7 +190,14 @@ if ( ! function_exists('load_class'))
 
 		// Keep track of what we just loaded
 		is_loaded($class);
+        if(
+            $class == "Markdown" ||
+            $class == "Facebook" ||
+            $class == "Action"
 
+        ){
+            return;
+        }
 		$_classes[$class] = isset($param)
 			? new $name($param)
 			: new $name();
