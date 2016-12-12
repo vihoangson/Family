@@ -187,13 +187,21 @@ if ( ! function_exists('load_class'))
 			echo 'Unable to locate the specified class: '.$class.'.php';
 			exit(5); // EXIT_UNK_CLASS
 		}
+try{
 
-		// Keep track of what we just loaded
-		is_loaded($class);
+	// Keep track of what we just loaded
+	if(is_loaded($class)){
+		if(!in_array($name , ["CI_Action","CI_Markdown","CI_Facebook"])){
+			$_classes[$class] = isset($param)
+				? new $name($param)
+				: new $name();
+		}
+	}
 
-		$_classes[$class] = isset($param)
-			? new $name($param)
-			: new $name();
+
+}catch (Exception $e){
+
+}
 		return $_classes[$class];
 	}
 }

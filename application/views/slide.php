@@ -5,14 +5,17 @@
     }
 </style>
 <div id="slide">
-    <div id="1" class="hidden"><img src="/asset/img_slide/20161128.jpg"></div>
-    <div id="2" class="hidden"><img src="/asset/img_slide/20161129.jpg"></div>
-    <div id="3" class="hidden"><img src="/asset/img_slide/20161130.jpg"></div>
-    <div id="4" class="hidden"><img src="/asset/img_slide/20161202.jpg"></div>
-    <div id="5" class="hidden"><img src="/asset/img_slide/20161124.jpg"></div>
-    <div id="6" class="hidden"><img src="/asset/img_slide/20161125.jpg"></div>
-    <div id="7" class="hidden"><img src="/asset/img_slide/20161126.jpg"></div>
-    <div id="8" class="hidden"><img src="/asset/img_slide/20161127.jpg"></div>
+    <div id="1" class="hidden"><img src="/asset/img_slide/20161124.jpg"></div>
+    <div id="2" class="hidden"><img src="/asset/img_slide/20161125.jpg"></div>
+    <div id="3" class="hidden"><img src="/asset/img_slide/20161126.jpg"></div>
+    <div id="4" class="hidden"><img src="/asset/img_slide/20161127.jpg"></div>
+    <div id="5" class="hidden"><img src="/asset/img_slide/20161128.jpg"></div>
+    <div id="6" class="hidden"><img src="/asset/img_slide/20161129.jpg"></div>
+    <div id="7" class="hidden"><img src="/asset/img_slide/20161130.jpg"></div>
+    <div id="8" class="hidden"><img src="/asset/img_slide/20161202.jpg"></div>
+    <div id="9" class="hidden"><img src="/asset/img_slide/20161207.jpg"></div>
+    <div id="10" class="hidden"><img src="/asset/img_slide/20161208.jpg"></div>
+    <div id="11" class="hidden"><img src="/asset/img_slide/20161209.jpg"></div>
 </div>
 <input id="speed" value="500">
 <button id="run_script">click</button>
@@ -37,7 +40,7 @@ $(window).load(function(){
             myVar = setInterval(function () {
                 $("#slide div").hide();
                 $("#"+(i++)).show();
-                if(i>=4){
+                if(i>=11){
                     i=1;
                 }
             }, speed);
