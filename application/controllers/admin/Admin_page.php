@@ -38,6 +38,11 @@ class Admin_page extends MY_Controller {
 		$this->load->view('admin/file_list',compact("rs"));
 	}
 
+	/**
+	 * Controller session login
+	 *
+	 * @return view
+	 */
 	public function session_login(){
 		$rs = $this->db->where("archive_key like 'login_%' ")->order_by("id","desc")->get('archive')->result();
 		$this->load->view('admin/session_login' , compact("rs"));
