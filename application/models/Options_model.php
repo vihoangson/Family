@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+/**
+ 	*
+	* @property Options_model           $options_model                 Loads framework components.
+ */
 class Options_model extends CI_Model {
 
 	public function __construct(){

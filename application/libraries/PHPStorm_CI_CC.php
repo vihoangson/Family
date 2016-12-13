@@ -36,6 +36,7 @@
 	 * @property CI_Lang             $lang                 Language Class
 	 * @property CI_Loader           $load                 Loads framework components.
 	 * @property Action           $action                 Loads framework components.
+	 * @property Options_model           $options_model                 Loads framework components.
 	 * @property CI_Log              $log                  Logging Class
 	 * @property CI_Model            $model                Model Class
 	 * @property CI_Output           $output               Responsible for sending final output to the browser.
@@ -82,6 +83,7 @@
 	 * @property data_model          $data_model
 	 * @property products_model      $products_model
 	 * @property movie_model         $movie_model
+	 * @property Kyniem              $kyniem               kyniem Class
 	 */
 	class CI_Controller {
 		public function __construct() {
@@ -139,6 +141,7 @@
 	 * @property CI_Javascript       $javascript           Javascript Class
 	 ***************** YOUR LIBRARIES *****************
 	 * @property Layout              $layout               Layout Class
+	 *
 	 */
 	class CI_Model {
 		public function __construct() {

@@ -70,6 +70,12 @@ class Homepage extends MY_Controller {
 		}
 	}
 
+	/**
+	 * Lấy dữ liệu ban đầu của trang homepage
+	 *
+	 * @param array $condition Điều kiện hiển thị
+	 * @return array data
+	 */
 	private function getDataHomepage($condition = null){
 		$kn = $this->kyniem->getAll($condition);
 		$comment = [];

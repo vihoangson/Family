@@ -66,24 +66,24 @@ class Admin_page extends MY_Controller {
 	public function control_popup(){
 		if($this->input->post('content')){
 			if($this->input->post('flag_toggle') == 1){
-				$this->Options_model->save_option("popup_flag",1);
+				$this->options_model->save_option("popup_flag",1);
 			}else{
-				$this->Options_model->save_option("popup_flag",0);
+				$this->options_model->save_option("popup_flag",0);
 			}
 
 			if($this->input->post('popup_session') == 1){
-				$this->Options_model->save_option("popup_session",1);
+				$this->options_model->save_option("popup_session",1);
 			}else{
-				$this->Options_model->save_option("popup_session",0);
+				$this->options_model->save_option("popup_session",0);
 			}
 
-			if($this->Options_model->save_option("popup",$this->input->post('content'))){
+			if($this->options_model->save_option("popup",$this->input->post('content'))){
 				$this->session->set_flashdata('item', ["success"=>"Đã save thành công"]);
 			}
 		}
-		$rs            = $this->Options_model->get_option("popup");
-		$flag          = $this->Options_model->get_option("popup_flag");
-		$popup_session = $this->Options_model->get_option("popup_session");
+		$rs            = $this->options_model->get_option("popup");
+		$flag          = $this->options_model->get_option("popup_flag");
+		$popup_session = $this->options_model->get_option("popup_session");
 
 		$this->load->view('admin/control_popup' , compact("rs","flag","popup_session"));
 	}

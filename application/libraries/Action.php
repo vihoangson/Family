@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Class Action
+ * @property Action           $action                 Loads framework components.
+ */
 class Action
 {
 	protected $ci;

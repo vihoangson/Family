@@ -2,7 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kyniem extends CI_Model {
-
+	/**
+	 * 	Lấy dữ liệu kỷ niệm
+	 *
+	 * 	@param int $condition["year"] Param lọc theo năm
+	 * 	@param string $condition["keyword"] Param search theo keyword
+	 * 	@param int $condition["limit"] Giới hạn
+	 * 	@param int $condition["offset"] Bắt đầu từ vị trí nào
+	 * @return mixed
+	 */
 	public function getAll($condition=null){
 		if($condition["year"]){
 			$this->db->like('(kyniem_create)', $condition["year"]);
@@ -19,20 +27,38 @@ class Kyniem extends CI_Model {
 		return $this->db->get('kyniem')->result();
 	}
 
+	/**
+	 * @param int $id id của row
+	 * @return boolean
+	 */
 	public function delete_kyniem($id){
 		$this->db->where('id', $id);
 		$object= [
 		"delete_flg" => 1,
 		];
-		$this->db->update('kyniem', $object);
+		if($this->db->update('kyniem', $object)){
+			return true;
+		}
+		return false;
 	}
 
+	/**
+	 * Lấy thông tin theo id
+	 *
+	 * @param $id
+	 * @return array
+	 */
 	public function getById($id){
 		$this->db->where('delete_flg', 0);
 		$this->db->where('id', $id);
 		return $this->db->get('kyniem',1)->row();
 	}
 
+	/**
+	 * Lấy thông tin tất cả các tag
+	 *
+	 * @return array
+	 */
 	public function list_tag(){
 		$rs = $this->db->query('select kyniem_content from kyniem where kyniem_content like "%(#%)%"')->result();
 		foreach ($rs as $key => $value) {
@@ -44,9 +70,6 @@ class Kyniem extends CI_Model {
 		$tags = array_unique(array_filter($tags));
 		return $tags;
 	}
-
-
-
 }
 
 /* End of file Kyniem.php */
