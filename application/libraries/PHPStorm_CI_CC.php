@@ -35,6 +35,7 @@
 	 * @property CI_Input            $input                Pre-processes global input data for security
 	 * @property CI_Lang             $lang                 Language Class
 	 * @property CI_Loader           $load                 Loads framework components.
+	 * @property Action           $action                 Loads framework components.
 	 * @property CI_Log              $log                  Logging Class
 	 * @property CI_Model            $model                Model Class
 	 * @property CI_Output           $output               Responsible for sending final output to the browser.
