@@ -15,7 +15,7 @@ class Options_control extends REST_Controller {
 		$this->_create_thumbnail(FCPATH."asset/img_slide");
 		foreach ($img_slides as $key => $value) {
 			if (preg_match("/_thumb/", $value)) {
-				unlink($img_slides[$key]);
+				unset($img_slides[$key]);
 			}
 		}
 		$this->response($img_slides);
