@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e8da731-b2cc-45e3-b543-a85fbaa01ad7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/family.iml" afterPath="$PROJECT_DIR$/.idea/family.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/api/Options_control.php" afterPath="$PROJECT_DIR$/application/controllers/api/Options_control.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/libraries/PHPStorm_CI_CC.php" afterPath="$PROJECT_DIR$/application/libraries/PHPStorm_CI_CC.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/rest.php" afterPath="$PROJECT_DIR$/application/config/rest.php" />
     </list>
     <ignored path="family.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,83 +36,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Admin_page.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/admin/Admin_page.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1998">
-              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="My_Model_Test.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/tests/test_models/My_Model_Test.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1215">
-              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
-              <folding>
-                <marker date="1481191298137" expanded="true" signature="280:328" placeholder="SELECT name sqlite_master" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Options_control.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/api/Options_control.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="28" column="41" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="41" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Template_view_controller.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/controllers/Template_view_controller.php">
+      <file leaf-file-name="rest.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/config/rest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="5" column="25" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MY_Kyniem.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/MY_Kyniem.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="directory_helper.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/system/helpers/directory_helper.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1782">
-              <caret line="66" column="26" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PHPStorm_CI_CC.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/libraries/PHPStorm_CI_CC.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2322">
-              <caret line="86" column="47" selection-start-line="86" selection-start-column="47" selection-end-line="86" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Assert.php" pinned="false" current-in-tab="false">
-        <entry file="phar://$PROJECT_DIR$/_phpunit.phar/phpunit/Framework/Assert.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25434">
-              <caret line="949" column="27" selection-start-line="949" selection-start-column="27" selection-end-line="949" selection-end-column="27" />
+            <state relative-caret-position="349">
+              <caret line="158" column="63" selection-start-line="158" selection-start-column="49" selection-end-line="158" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -143,6 +81,7 @@
         <option value="$PROJECT_DIR$/application/models/Kyniem.php" />
         <option value="$PROJECT_DIR$/application/libraries/PHPStorm_CI_CC.php" />
         <option value="$PROJECT_DIR$/application/controllers/api/Options_control.php" />
+        <option value="$PROJECT_DIR$/application/config/rest.php" />
       </list>
     </option>
   </component>
@@ -172,7 +111,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -218,68 +157,144 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Changed Files">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+          </PATH>
+        </subPane>
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hooks" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            <PATH_ELEMENT USER_OBJECT="family">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            <PATH_ELEMENT USER_OBJECT="family">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="family" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            <PATH_ELEMENT USER_OBJECT="family">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            <PATH_ELEMENT USER_OBJECT="controllers">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="family">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="controllers">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="api">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Default">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="family">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT=".idea">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Tests">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="family">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tests">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="family">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tests">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test_lib">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -295,15 +310,7 @@
       <recent name="D:\xampp\htdocs\vhosts\family\application\libraries" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.TestCommon.test_check_table_exists">
-    <configuration default="false" name="ControllersTest.testLoadController" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="ControllersTest" file="$PROJECT_DIR$/application/tests/core/ControllersTest.php" method="testLoadController" scope="Method" />
-      <method />
-    </configuration>
-    <configuration default="false" name="ControllersTest.testLoadInexistentController" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="ControllersTest" file="$PROJECT_DIR$/application/tests/core/ControllersTest.php" method="testLoadInexistentController" scope="Method" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="PHPUnit.tests">
     <configuration default="false" name="ControllersTest.testLoadController_2" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="ControllersTest" file="$PROJECT_DIR$/application/tests/core/ControllersTest.php" method="testLoadController_2" scope="Method" />
       <method />
@@ -314,6 +321,13 @@
     </configuration>
     <configuration default="false" name="TestCommon.test_check_table_exists" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="TestCommon" file="$PROJECT_DIR$/application/tests/test_slide/TestCommon.php" method="test_check_table_exists" scope="Method" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Idear.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:52573/family/application/controllers/Idear.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="FamilyTestGeneralCommon_Helper.testGeneralCommon_Helper" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="FamilyTestGeneralCommon_Helper" file="$PROJECT_DIR$/application/tests/test_lib/FamilyTestGeneralCommon_HelperTest.php" method="testGeneralCommon_Helper" scope="Method" />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -347,19 +361,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="PHPUnit.ControllersTest.testLoadController" />
-      <item index="1" class="java.lang.String" itemvalue="PHPUnit.ControllersTest.testLoadInexistentController" />
-      <item index="2" class="java.lang.String" itemvalue="PHPUnit.ControllersTest.testLoadController_2" />
-      <item index="3" class="java.lang.String" itemvalue="PHPUnit.tests" />
-      <item index="4" class="java.lang.String" itemvalue="PHPUnit.TestCommon.test_check_table_exists" />
+      <item index="0" class="java.lang.String" itemvalue="PHPUnit.ControllersTest.testLoadController_2" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.tests" />
+      <item index="2" class="java.lang.String" itemvalue="PHPUnit.TestCommon.test_check_table_exists" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.Idear.php" />
+      <item index="4" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper.testGeneralCommon_Helper" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="PHPUnit.TestCommon.test_check_table_exists" />
-        <item index="1" class="java.lang.String" itemvalue="PHPUnit.tests" />
-        <item index="2" class="java.lang.String" itemvalue="PHPUnit.ControllersTest.testLoadController_2" />
-        <item index="3" class="java.lang.String" itemvalue="PHPUnit.ControllersTest.testLoadController" />
-        <item index="4" class="java.lang.String" itemvalue="PHPUnit.ControllersTest.testLoadInexistentController" />
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.tests" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.FamilyTestGeneralCommon_Helper.testGeneralCommon_Helper" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.Idear.php" />
+        <item index="3" class="java.lang.String" itemvalue="PHPUnit.TestCommon.test_check_table_exists" />
+        <item index="4" class="java.lang.String" itemvalue="PHPUnit.ControllersTest.testLoadController_2" />
       </list>
     </recent_temporary>
   </component>
@@ -387,7 +401,7 @@
       <workItem from="1481681469036" duration="669000" />
       <workItem from="1481776066123" duration="1817000" />
       <workItem from="1481871601721" duration="2530000" />
-      <workItem from="1482113035192" duration="1450000" />
+      <workItem from="1482113035192" duration="2131000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1481595639518</created>
@@ -396,15 +410,19 @@
       <option name="project" value="LOCAL" />
       <updated>1481595639518</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit">
+      <created>1482116951875</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1482116951875</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ControllersTest_testLoadController_2 - 2016.12.12 at 15h 36m 32s.xml">
-      <configuration name="ControllersTest.testLoadController_2" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="ControllersTest_testLoadController_2 - 2016.12.12 at 15h 36m 42s.xml">
-      <configuration name="ControllersTest.testLoadController_2" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="FamilyTestGeneralCommon_Helper_testGeneralCommon_Helper - 2016.12.19 at 10h 17m 53s.xml">
+      <configuration name="FamilyTestGeneralCommon_Helper.testGeneralCommon_Helper" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="TestCommon_test_check_table_exists - 2016.12.12 at 15h 49m 19s.xml">
       <configuration name="TestCommon.test_check_table_exists" configurationId="PHPUnitRunConfigurationType" />
@@ -430,9 +448,12 @@
     <history-entry file="tests - 2016.12.12 at 15h 43m 09s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
+    <history-entry file="tests - 2016.12.19 at 10h 18m 01s.xml">
+      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27988000" />
+    <option name="totallyTimeSpent" value="28669000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -445,28 +466,28 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1420" y="-469" width="1874" height="1096" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1631753" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4091381" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4091381" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33179724" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33125648" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997923" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="1520" y="-369" width="1674" height="896" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32878152" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997923" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -530,31 +551,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/tests/test_models/My_Model_Test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1481191298137" expanded="true" signature="280:328" placeholder="SELECT name sqlite_master" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="phar://$PROJECT_DIR$/_phpunit.phar/phpunit/Framework/Assert.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25434">
-          <caret line="949" column="27" selection-start-line="949" selection-start-column="27" selection-end-line="949" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/tests/test_lib/JWT_Test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/tests/test_models/My_Model_Test.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -666,13 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/blog/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/BlogComment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -729,13 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="498">
           <caret line="1164" column="7" selection-start-line="1164" selection-start-column="7" selection-end-line="1164" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/tests/test_lib/FamilyTestGeneralCommon_HelperTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -807,13 +789,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="79" column="33" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/tests/test_lib/JWT_Test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -895,18 +870,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/api/Options_control.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/Template_view_controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="28" column="41" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="41" />
+        <state relative-caret-position="162">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Template_view_controller.php">
+    <entry file="file://$PROJECT_DIR$/application/views/blog/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="25" />
+        <state relative-caret-position="415">
+          <caret line="17" column="63" selection-start-line="17" selection-start-column="63" selection-end-line="17" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/helpers/common_helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="431" column="19" selection-start-line="431" selection-start-column="9" selection-end-line="431" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/tests/test_lib/FamilyTestGeneralCommon_HelperTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="84" column="35" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/tests/test_lib/JWT_Test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Idear.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/api/Options_control.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/rest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="158" column="63" selection-start-line="158" selection-start-column="49" selection-end-line="158" selection-end-column="63" />
           <folding />
         </state>
       </provider>
