@@ -58,8 +58,8 @@
       <file leaf-file-name="Options_control.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/api/Options_control.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="44" column="25" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
+            <state relative-caret-position="346">
+              <caret line="17" column="34" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -422,7 +422,7 @@
       <workItem from="1481681469036" duration="669000" />
       <workItem from="1481776066123" duration="1817000" />
       <workItem from="1481871601721" duration="2530000" />
-      <workItem from="1482113035192" duration="6278000" />
+      <workItem from="1482113035192" duration="6865000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1481595639518</created>
@@ -474,7 +474,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32816000" />
+    <option name="totallyTimeSpent" value="33403000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -928,8 +928,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/api/Options_control.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="44" column="25" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
+        <state relative-caret-position="346">
+          <caret line="17" column="34" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="34" />
           <folding />
         </state>
       </provider>

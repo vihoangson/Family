@@ -13,6 +13,11 @@ class Options_control extends REST_Controller {
 		$img_slides = directory_map(FCPATH."asset/img_slide");
 		if(!$img_slides){}
 		$this->_create_thumbnail(FCPATH."asset/img_slide");
+		foreach ($img_slides as $key => $value) {
+			if (preg_match("/_thumb/", $value)) {
+				unlink($img_slides[$key]);
+			}
+		}
 		$this->response($img_slides);
 	}
 
