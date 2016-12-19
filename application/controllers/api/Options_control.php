@@ -3,6 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 include APPPATH."core/REST_Controller.php";
 class Options_control extends REST_Controller {
 	/**
+	 * Lấy tất cả các file hình trong slide của con
+	 *
+	 * @return array
+	 * @url    /api/options_control/get_all_picture_slide_post
+	 */
+	public function get_all_picture_slide_post(){
+		$this->load->helper("directory");
+		$img_slides = directory_map(FCPATH."asset/slide_img");
+		if(!$img_slides){
+			throwException();
+		}
+		$this->response($img_slides);
+	}
+	/**
 	 * [getAllOption_get description]
 	 * 
 	 * [GET]

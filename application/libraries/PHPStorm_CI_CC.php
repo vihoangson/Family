@@ -84,6 +84,7 @@
 	 * @property products_model      $products_model
 	 * @property movie_model         $movie_model
 	 * @property Kyniem              $kyniem               kyniem Class
+	 * @property MY_Kyniem           $my_kyniem
 	 */
 	class CI_Controller {
 		public function __construct() {
