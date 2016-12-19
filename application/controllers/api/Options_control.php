@@ -23,6 +23,7 @@ class Options_control extends REST_Controller {
 	 * @url /api/options_control/delete_thumbnail_slide
 	 */
 	public function delete_thumbnail_slide_get(){
+		$this->load->helper("directory");
 		$options["delete_all_thumbnail"] = true;
 		$this->_create_thumbnail(FCPATH."asset/img_slide",$options);
 	}
@@ -40,9 +41,8 @@ class Options_control extends REST_Controller {
 			if(preg_match("/_thumb/",$value)) {
 				if($options["delete_all_thumbnail"]){
 					unlink($path."/".$value);
-				}else{
-					continue;
 				}
+				continue;
 			}
 			if(!file_exists($path."/".$this->image_lib->thumb_marker.$value)){
 				$config['image_library'] = 'gd2';
