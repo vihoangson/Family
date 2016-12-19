@@ -6,22 +6,20 @@ class Options_control extends REST_Controller {
 	 * Lấy tất cả các file hình trong slide của con
 	 *
 	 * @return array
-	 * @url    /api/options_control/get_all_picture_slide_post
+	 * @url    /api/options_control/get_all_picture_slide
 	 */
-	public function get_all_picture_slide_post(){
+	public function get_all_picture_slide_get(){
 		$this->load->helper("directory");
 		$img_slides = directory_map(FCPATH."asset/slide_img");
-		if(!$img_slides){
-			throwException();
-		}
+		if(!$img_slides){}
 		$this->response($img_slides);
 	}
 	/**
 	 * [getAllOption_get description]
-	 * 
+	 *
 	 * [GET]
 	 * /api/options_control/getalloption
-	 * 
+	 *
 	 * @return json
 	 */
 	public function getAllOption_get()
