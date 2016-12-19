@@ -18,7 +18,7 @@
     $.get("/api/options_control/get_all_picture_slide",function(value){
 
         $.each(value,function(k,v){
-            $("#slide").append('<div id="'+k+'" class="hidden"><img src="/asset/img_slide/'+v+'"><p>'+v+'</p></div>');
+            $("#slide").append('<div id="'+k+'" class="hidden"><img src="/asset/img_slide/_thumb'+v+'"><p>'+v+'</p></div>');
         });
 
         $("button#run_script").click(function(){
