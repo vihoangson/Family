@@ -35,7 +35,7 @@
             myVar = setInterval(function () {
                 $("#slide div").hide();
                 $("#"+(i++)).show();
-                if(i>=11){
+                if(i>=value.length){
                     i=1;
                 }
             }, speed);

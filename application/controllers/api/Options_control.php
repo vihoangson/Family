@@ -18,7 +18,7 @@ class Options_control extends REST_Controller {
 				unset($img_slides[$key]);
 			}
 		}
-		$this->response($img_slides);
+		$this->response(array_values($img_slides));
 	}
 
 	/**

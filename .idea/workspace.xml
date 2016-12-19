@@ -7,6 +7,7 @@
     <list default="true" id="2e8da731-b2cc-45e3-b543-a85fbaa01ad7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/api/Options_control.php" afterPath="$PROJECT_DIR$/application/controllers/api/Options_control.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/slide.php" afterPath="$PROJECT_DIR$/application/views/slide.php" />
     </list>
     <ignored path="family.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,21 +46,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="slide.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="slide.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/slide.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="20" column="96" selection-start-line="20" selection-start-column="96" selection-end-line="20" selection-end-column="96" />
+            <state relative-caret-position="508">
+              <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Options_control.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Options_control.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/api/Options_control.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            <state relative-caret-position="108">
+              <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -101,8 +102,8 @@
         <option value="$PROJECT_DIR$/application/libraries/PHPStorm_CI_CC.php" />
         <option value="$PROJECT_DIR$/application/config/rest.php" />
         <option value="$PROJECT_DIR$/system/libraries/Image_lib.php" />
-        <option value="$PROJECT_DIR$/application/views/slide.php" />
         <option value="$PROJECT_DIR$/application/controllers/api/Options_control.php" />
+        <option value="$PROJECT_DIR$/application/views/slide.php" />
       </list>
     </option>
   </component>
@@ -422,7 +423,7 @@
       <workItem from="1481681469036" duration="669000" />
       <workItem from="1481776066123" duration="1817000" />
       <workItem from="1481871601721" duration="2530000" />
-      <workItem from="1482113035192" duration="7025000" />
+      <workItem from="1482113035192" duration="7258000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1481595639518</created>
@@ -474,7 +475,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33563000" />
+    <option name="totallyTimeSpent" value="33796000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -902,14 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/config/rest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="158" column="63" selection-start-line="158" selection-start-column="49" selection-end-line="158" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/system/libraries/Image_lib.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -918,18 +911,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/slide.php">
+    <entry file="file://$PROJECT_DIR$/application/config/rest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="20" column="96" selection-start-line="20" selection-start-column="96" selection-end-line="20" selection-end-column="96" />
+        <state relative-caret-position="349">
+          <caret line="158" column="63" selection-start-line="158" selection-start-column="49" selection-end-line="158" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/api/Options_control.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        <state relative-caret-position="108">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/slide.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
           <folding />
         </state>
       </provider>
