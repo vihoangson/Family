@@ -10,8 +10,11 @@ class Options_control extends REST_Controller {
 	 */
 	public function get_all_picture_slide_get(){
 		$this->load->helper("directory");
+		if(!is_dir(FCPATH."asset/img_slide")){
+			mkdir(FCPATH."asset/img_slide");
+		}
 		$img_slides = directory_map(FCPATH."asset/img_slide");
-		if(!$img_slides){}
+		if(!$img_slides){return;}
 		$this->_create_thumbnail(FCPATH."asset/img_slide");
 		foreach ($img_slides as $key => $value) {
 			if (preg_match("/_thumb/", $value)) {
