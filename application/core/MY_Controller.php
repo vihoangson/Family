@@ -26,7 +26,7 @@ class MY_Controller extends CI_Controller
 				}
 			}else{
 				if($this->session->userdata('user')){
-					redirect('/','refresh');
+					redirect('/',' ');
 				}
 			}
 		}
