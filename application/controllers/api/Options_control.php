@@ -10,7 +10,7 @@ class Options_control extends REST_Controller {
 	 */
 	public function get_all_picture_slide_get(){
 		$this->load->helper("directory");
-		$img_slides = directory_map(FCPATH."asset/slide_img");
+		$img_slides = directory_map(FCPATH."asset/img_slide");
 		if(!$img_slides){}
 		$this->response($img_slides);
 	}
