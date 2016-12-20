@@ -53,3 +53,6 @@ Thêm lib Jwt vào source
 
 > https://github.com/avenirer/CodeIgniter-MY_Model
 
+## Lấy phần phiên âm của 2200 từ cơ bản
+
+/api/options_control/put_toarray
