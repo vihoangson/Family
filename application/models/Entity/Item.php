@@ -4,7 +4,7 @@ namespace Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Entity
+ * @Entity(repositoryClass="Repositories\ItemRepository")
  * @Table(name="item")
  */
 class Item
@@ -55,5 +55,5 @@ class Item
     {
         $this->Detail = $Detail;
     }
-    
+
 }

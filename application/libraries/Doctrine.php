@@ -44,6 +44,7 @@ class Doctrine
 
 		$loader = new ClassLoader($models_namespace, $models_path);
 		$loader->register();
+		(new ClassLoader('Repositories', APPPATH.'models'))->register();
 	}
 
 }

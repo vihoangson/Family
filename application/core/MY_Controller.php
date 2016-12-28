@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller
 	public function __construct(){
 
 		parent::__construct();
-
+		$this->test_doctrine();
 		$this->error_status = [];
 
 		// Check các trường hợp ảnh hưởng tới hoạt động của site
@@ -70,11 +70,14 @@ class MY_Controller extends CI_Controller
 	public function test_doctrine(){
 
 			$item= new Entity\Item;
+			//$item->getAllItemArrays();
 			$item->setName("son123");
 			$item->setDetail("NoiDung");
 			$this->em->persist($item);
 			$this->em->flush();
 
+			$this->em->getRepository("Entity\Item")->getAllItemArrays();
+		
 			$entity = $this->em->find("Entity\Item",1);
 			$entity->setName("sondeptrai");
 			$this->em->persist($entity);
@@ -82,7 +85,7 @@ class MY_Controller extends CI_Controller
 
 			$this->em->remove($entity);
 			//$this->em->flush();
-		
+
 	}
 
 	/**
