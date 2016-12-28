@@ -17,9 +17,15 @@ class Item
     protected $id;
 
     /**
-     * @Column(type="string", length=32, unique=true, nullable=false)
+     * @Column(type="string", length=32, unique=false, nullable=true)
      */
     protected $Name;
+
+    /**
+     * @Column(type="string", length=32, unique=false, nullable=true)
+     */
+    protected $Detail;
+
     public function setID($id)
     {
         $this->id = $id;
@@ -33,4 +39,21 @@ class Item
     {
         return $this->name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDetail()
+    {
+        return $this->Detail;
+    }
+
+    /**
+     * @param mixed $Detail
+     */
+    public function setDetail($Detail)
+    {
+        $this->Detail = $Detail;
+    }
+    
 }

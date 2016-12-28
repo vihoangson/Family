@@ -17,8 +17,10 @@ class MY_Controller extends CI_Controller
 
 
 		$item= new Entity\Item;
-		$item->setID(1);
+		$item->setID(6);
 		$item->setName("son123");
+		$item->setDetail("NoiDung");
+		$this->doctrine->em->getRepository();
 		$this->doctrine->em->persist($item);
 		$this->doctrine->em->flush();
 
