@@ -15,6 +15,8 @@ class MY_Controller extends CI_Controller
 		// Check các trường hợp ảnh hưởng tới hoạt động của site
 		$this->check_define_config();
 
+		$this->doctrine->em->getRepository("Item");
+
 		// Check validate
 		if($GLOBALS["phpunit"] != true){
 			if($this->router->fetch_method() != "login") {
