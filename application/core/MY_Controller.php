@@ -15,15 +15,6 @@ class MY_Controller extends CI_Controller
 		// Check các trường hợp ảnh hưởng tới hoạt động của site
 		$this->check_define_config();
 
-
-		$item= new Entity\Item;
-		$item->setID(6);
-		$item->setName("son123");
-		$item->setDetail("NoiDung");
-		$this->doctrine->em->getRepository();
-		$this->doctrine->em->persist($item);
-		$this->doctrine->em->flush();
-
 		// Check validate
 		if($GLOBALS["phpunit"] != true){
 			if($this->router->fetch_method() != "login") {
@@ -67,6 +58,31 @@ class MY_Controller extends CI_Controller
 		$this->load->vars($navbars);
 		//
 		//============  ============
+	}
+
+	/**
+	 * Test chức năng doctrine trong source
+	 *
+	 * @throws \Doctrine\ORM\ORMException
+	 * @throws \Doctrine\ORM\OptimisticLockException
+	 * @throws \Doctrine\ORM\TransactionRequiredException
+     */
+	public function test_doctrine(){
+
+			$item= new Entity\Item;
+			$item->setName("son123");
+			$item->setDetail("NoiDung");
+			$this->em->persist($item);
+			$this->em->flush();
+
+			$entity = $this->em->find("Entity\Item",1);
+			$entity->setName("sondeptrai");
+			$this->em->persist($entity);
+			$this->em->flush();
+
+			$this->em->remove($entity);
+			//$this->em->flush();
+		
 	}
 
 	/**
