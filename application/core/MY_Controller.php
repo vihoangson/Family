@@ -15,7 +15,12 @@ class MY_Controller extends CI_Controller
 		// Check các trường hợp ảnh hưởng tới hoạt động của site
 		$this->check_define_config();
 
-		$this->doctrine->em->getRepository("Item");
+
+		$item= new Entity\Item;
+		$item->setID(1);
+		$item->setName("son123");
+		$this->doctrine->em->persist($item);
+		$this->doctrine->em->flush();
 
 		// Check validate
 		if($GLOBALS["phpunit"] != true){

@@ -23,17 +23,17 @@ class Doctrine
 		require APPPATH . 'config/database.php';
 
 		$connection_options = array(
-			'driver'		=> 'pdo_sqlite',
-			'user'			=> $db['default']['username'],
-			'password'		=> $db['default']['password'],
-			'host'			=> $db['default']['hostname'],
-			'dbname'		=> $db['default']['database'],
+			'driver'		=> 'pdo_mysql',
+			'user'			=> 'root',
+			'password'		=> '',
+			'host'			=> 'localhost',
+			'dbname'		=> 'ci3ng',
 			'charset'		=> $db['default']['char_set'],
 			'driverOptions'	=> array(
 				'charset'	=> $db['default']['char_set'],
-			),
+			)
 		);
-
+		print_r($connection_options);
 		// With this configuration, your model files need to be in application/models/Entity
 		// e.g. Creating a new Entity\User loads the class from application/models/Entity/User.php
 		$models_namespace = 'Entity';
@@ -42,7 +42,7 @@ class Doctrine
 		$metadata_paths = array(APPPATH . 'models/Entity');
 
 		// Set $dev_mode to TRUE to disable caching while you develop
-		$dev_mode = true;
+		$dev_mode = false;
 
 		// If you want to use a different metadata driver, change createAnnotationMetadataConfiguration
 		// to createXMLMetadataConfiguration or createYAMLMetadataConfiguration.
