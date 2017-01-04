@@ -5,7 +5,7 @@
 	mkdir asset/images/trash
 	mkdir asset/file_upload/
 	mkdir asset/img_slide/
-	chmod -R 777 assert/tmp
+	chmod 777 assert/tmp
 	
 # ============ ============  ============  ============ 
 # Run Composer
