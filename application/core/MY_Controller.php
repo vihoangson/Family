@@ -7,21 +7,22 @@ class MY_Controller extends CI_Controller
 {
 
 	public function __construct(){
-
 		parent::__construct();
-		$this->test_doctrine();
+
+		// Rửa tổng cho error status
 		$this->error_status = [];
 
 		// Check các trường hợp ảnh hưởng tới hoạt động của site
+		// So sánh file config đã được tạo chưa
 		$this->check_define_config();
 
-		// Check validate
-		if($GLOBALS["phpunit"] != true){
+		// Check có cần phải login không
+		if($this->is_check_login()){
+			// Vào 1 trang khác đăng nhập
 			if($this->router->fetch_method() != "login") {
-				if($this->router->fetch_method()=="cron" || $this->router->fetch_method()=="fb_callback"){
-					return;
-				}
+				// Nếu chưa đăng nhập sẽ chuyển đến trang đăng nhập
 				if(!$this->session->userdata('user')){
+					// Chuyển đến trang login
 					redirect('homepage/login','refresh');
 				}
 			}else{
@@ -42,11 +43,9 @@ class MY_Controller extends CI_Controller
 			'charset'   => 'utf-8'
 			);
 
-		//============  ============ 
-		// Set navbar custom
-		// 
+		// Set dữ liệu cho navbar
 		$navbars =[
-			"navbar_custom"=> [ 
+			"navbar_custom"=> [
 				["link"=>"/admin/admin_page/session_login" , "text"=> "Session login"],
 				["link"=>"/admin/admin_page/controll_list_login_facebook" , "text"=> "List login Facebook"],
 				["link"=>"/admin/blank_page" , "text"=> "Blank"],
@@ -56,8 +55,7 @@ class MY_Controller extends CI_Controller
 			]
 		];
 		$this->load->vars($navbars);
-		//
-		//============  ============
+
 	}
 
 	/**
@@ -307,6 +305,9 @@ class MY_Controller extends CI_Controller
 		$this->image_lib->resize();	
 	}
 
+	/**
+	 * So sánh file config đã được tạo chưa
+     */
 	private function check_define_config(){
 		$path_file_config = file_get_contents(FCPATH."application/config/family/config.php");
 		$a1= $this->getDefineInFile($path_file_config);
@@ -337,6 +338,29 @@ class MY_Controller extends CI_Controller
 			}
 		}
 		return $return;
+	}
+
+
+	/**
+	 * Check trường hợp bắt buộc phải đăng nhập
+	 *
+	 * @return bool
+	 * True: Phải đăng nhập
+	 * Fasle: Không phải đăng nhập
+     */
+	private function is_check_login()
+	{
+
+		// Nếu là testing không cần đăng nhập
+		if($GLOBALS["phpunit"] == true){
+			return false;
+		}
+
+		// Nếu là cron hoặc xử lý facebook không cần đăng nhập
+		if($this->router->fetch_method()=="cron" || $this->router->fetch_method()=="fb_callback"){
+			return false;
+		}
+
 	}
 
 }
