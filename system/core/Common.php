@@ -191,7 +191,7 @@ try{
 
 	// Keep track of what we just loaded
 	if(is_loaded($class)){
-		if(!in_array($name , ["CI_Action","CI_Markdown","CI_Facebook"])){
+		if(!in_array($name , ["CI_Action","CI_Markdown","CI_Facebook","CI_Doctrine"])){
 			$_classes[$class] = isset($param)
 				? new $name($param)
 				: new $name();

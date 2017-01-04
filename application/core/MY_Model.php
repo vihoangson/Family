@@ -1,5 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 /*
+ * Github: https://github.com/avenirer/CodeIgniter-MY_Model
 * Copyright (C) 2014 @avenirer [avenir.ro@gmail.com]
 * Everyone is permitted to copy and distribute verbatim or modified copies of this license document,
 * and changing it is allowed as long as the name is changed.

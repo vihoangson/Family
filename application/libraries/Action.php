@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Class Action
  * @property Action           $action                 Loads framework components.
+ * @property CI_Controller           $ci
+ *
  */
 class Action
 {
@@ -49,6 +51,40 @@ class Action
 	public function archive_log_read($key){
 		$rs = $this->ci->db->where("archive_key like '$key' ")->order_by("id","desc")->get('archive')->result();
 		return $rs;
+	}
+
+	public function check_valid_add_new()
+	{
+
+		if($this->ci->input->post("content")){
+			return true;
+		}
+		throw new Exception("Khong duoc");
+
+	}
+
+
+	/**
+	 * Set quyền đăng nhập
+	 *
+	 * @param My_User $default_user
+	 * @return void
+     */
+	public function set_authentication(My_User $user)
+	{
+		if($info_user = $user->get()){
+			$username = $info_user->username;
+			$user_id = $info_user->id;
+			$array = array(
+				'user' => $username,
+				'user_id' => $user_id,
+				'auth_source' => 'bosonmesuemkem',
+				'time_now'=>time(),
+			);
+			$this->ci->session->set_userdata($array);
+		}else{
+			throw new Exception("Can't get info user");
+		}
 	}
 
 }

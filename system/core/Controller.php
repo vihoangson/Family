@@ -105,6 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property MY_Kyniem           $my_kyniem
  * @property Facebook           $facebook
  * @property Doctrine           $doctrine
+ * @property My_User       $my_user           my_user
  */
 class CI_Controller {
 

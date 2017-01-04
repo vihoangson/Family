@@ -273,6 +273,11 @@ class Homepage extends MY_Controller {
 	}
 
 	public function add_new(){
+
+		// Check validate
+		$this->action->check_valid_add_new();
+
+		// Chuẩn bị dữ liệu
 		$data = [
 			"kyniem_title" => $this->input->post("title"),
 			"kyniem_content" => $this->input->post("content"),
@@ -281,19 +286,13 @@ class Homepage extends MY_Controller {
 			"kyniem_modifie" => date("Y-m-d h:i:s",time()),
 		];
 
+		// Xử lý upload hình
+		$data["kyniem_images"] = $this->upload_img();
+
+		// Insert archive
 		$this->action->archive_log("insert_kyniem",json_encode($data));
 
-		$ul = $this->do_upload();
-		if($ul["error"]){
-			$this->session->set_flashdata('error_upload', $error);
-		}
-		foreach ($ul["success"] as $key => $value) {
-			$file[] = $value["file_name"];
-		}
-
-		if($file){
-			$data["kyniem_images"] = json_encode($file);
-		}
+		// Xử lý lưu vào db
 		if($this->db->insert('kyniem', $data)){
 			redirect('/','refresh');
 		}else{
@@ -644,6 +643,22 @@ class Homepage extends MY_Controller {
 		}else{
 			header('Location: /');
 		}
+	}
+
+	private function upload_img()
+	{
+		// Upload file hình
+		$ul = $this->do_upload();
+		if($ul["error"]){
+			$this->session->set_flashdata('error_upload', $error);
+		}
+		foreach ($ul["success"] as $key => $value) {
+			$file[] = $value["file_name"];
+		}
+		if($file){
+			$data["kyniem_images"] = json_encode($file);
+		}
+		return $data["kyniem_images"];
 	}
 }
 

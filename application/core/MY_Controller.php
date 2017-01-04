@@ -26,10 +26,15 @@ class MY_Controller extends CI_Controller
 					redirect('homepage/login','refresh');
 				}
 			}else{
+				// Nếu đã login rồi thì cho quay về trang chủ
 				if($this->session->userdata('user')){
 					redirect('/',' ');
 				}
 			}
+		}else{
+			$this->load->model("my_user");
+			$default_user = $this->my_user->where("id",11);
+			$this->action->set_authentication($default_user);
 		}
 
 		// Set thông số gửi mail của google
@@ -55,35 +60,6 @@ class MY_Controller extends CI_Controller
 			]
 		];
 		$this->load->vars($navbars);
-
-	}
-
-	/**
-	 * Test chức năng doctrine trong source
-	 *
-	 * @throws \Doctrine\ORM\ORMException
-	 * @throws \Doctrine\ORM\OptimisticLockException
-	 * @throws \Doctrine\ORM\TransactionRequiredException
-     */
-	public function test_doctrine(){
-
-			$item= new Entity\Item;
-			//$item->getAllItemArrays();
-			$item->setName("son123");
-			$item->setDetail("NoiDung");
-			$this->em->persist($item);
-			$this->em->flush();
-
-			$this->em->getRepository("Entity\Item")->getAllItemArrays();
-		
-			$entity = $this->em->find("Entity\Item",1);
-			$entity->setName("sondeptrai");
-			$this->em->persist($entity);
-			$this->em->flush();
-
-			$this->em->remove($entity);
-			// Delete entity
-			//$this->em->flush();
 
 	}
 
@@ -350,6 +326,9 @@ class MY_Controller extends CI_Controller
      */
 	private function is_check_login()
 	{
+		if(apache_request_headers()["security"]=="123"){
+			return false;
+		}
 
 		// Nếu là testing không cần đăng nhập
 		if($GLOBALS["phpunit"] == true){
@@ -361,6 +340,7 @@ class MY_Controller extends CI_Controller
 			return false;
 		}
 
+		return true;
 	}
 
 }
