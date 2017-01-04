@@ -84,6 +84,7 @@ class MY_Controller extends CI_Controller
 			$this->em->flush();
 
 			$this->em->remove($entity);
+			// Delete entity
 			//$this->em->flush();
 
 	}
