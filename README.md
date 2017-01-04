@@ -6,12 +6,18 @@
 ### Tài liệu ###
 https://github.com/vihoangson/Family/wiki/T%C3%A0i-li%E1%BB%87u-ph%C3%A1t-tri%E1%BB%83n
 
+------------------------
+
+### Install ###
+Bước 1: Chạy command
 > sh install.sh
 
+Bước 2: Set biến môi trường của apache
+SetEnv CI_ENV production
+
 ------------------------
 
-# Run API
-------------------------
+### Run API ###
 
 > Authen
 > 
