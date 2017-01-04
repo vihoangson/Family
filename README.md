@@ -10,9 +10,11 @@ https://github.com/vihoangson/Family/wiki/T%C3%A0i-li%E1%BB%87u-ph%C3%A1t-tri%E1
 
 ### Install ###
 Bước 1: Chạy command
-> sh install.sh
+
+[code]sh install.sh[/code]
 
 Bước 2: Set biến môi trường của apache
+
 SetEnv CI_ENV production
 
 ------------------------
