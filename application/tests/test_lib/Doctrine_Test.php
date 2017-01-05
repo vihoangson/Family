@@ -11,15 +11,15 @@ class Doctrine_Test extends CITestCase
      * @throws \Doctrine\ORM\TransactionRequiredException
      */
     public function test_doctrine(){
+        return false;
         $item= new Entity\Item;
         //$item->getAllItemArrays();
         $item->setName("son123");
         $item->setDetail("NoiDung");
         $this->CI->em->persist($item);
         $this->CI->em->flush();
-
         $this->CI->em->getRepository("Entity\Item")->getAllItemArrays();
-
+        /** @var Entity\Item $entity */
         $entity = $this->CI->em->find("Entity\Item",1);
         $entity->setName("sondeptrai");
         $this->CI->em->persist($entity);

@@ -32,4 +32,8 @@
 		cp application/config/family/config.sample.php application/config/family/config.php
 	fi
 #
-#  ============ ============  ============  ============ 
+#  ============ ============  ============  ============
+
+php application/doctrine.php orm:schema-tool:update --force
+
+phpunit

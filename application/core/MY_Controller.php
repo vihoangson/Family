@@ -326,8 +326,10 @@ class MY_Controller extends CI_Controller
      */
 	private function is_check_login()
 	{
-		if(apache_request_headers()["security"]=="123"){
-			return false;
+		if (function_exists('getallheaders')) {
+			if(getallheaders()["security"]=="123"){
+				return false;
+			}
 		}
 
 		// Nếu là testing không cần đăng nhập
