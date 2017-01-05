@@ -18,6 +18,7 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 		<div style="padding:4px 0;">
 		<button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();"><img src="/asset/data/img_emotion/1.gif"></button>
 		<button type="button" class="btn btn-default insert-img" onclick="">Insert img</button>
+		<button type="button" class="btn btn-default helping" onclick="">Hướng dẫn</button>
 		</div>
 		<div class="icon_box" style="display:none; padding:10px;"><?= $emotion; ?></div>
 		<textarea data-time="<?= time(); ?>" name="content" id="content" class="form-control" style="height:250px;" required><?= ($data->kyniem_content?$data->kyniem_content:""); ?></textarea>
@@ -54,23 +55,37 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 </form>
 <script>
 
+	// Khi bấm nút sẽ tự động lưu vào localStorage
     $('textarea,input').keyup(function () {
         localStorage.setItem(this.name+"_"+$(this).data("id")+"_"+$("textarea").first().data("time"), this.value);
     });
 	
-
-window.onbeforeunload = function () {
-	if(localStorage.length>0){
-		$.post('/ajax/do_ajax/ajax_save_cache', {localStorage: localStorage}, function(data, textStatus, xhr) {
-			localStorage.clear();
-		});
-	}
-};
-
+	// Khi tắt trang sẽ đẩy lên server
+	window.onbeforeunload = function () {
+		if(localStorage.length>0){
+			$.post('/ajax/do_ajax/ajax_save_cache', {localStorage: localStorage}, function(data, textStatus, xhr) {
+				localStorage.clear();
+			});
+		}
+	};
 </script>
+<div id="dialog">123</div>
 <?php if($mode=="edit"){
 	?>
 <script>
+
+	/**
+	 * Nút help phần thêm kỷ niệm
+	 */
+	$(".helping").click(function(){
+		$.get("/ajax/do_ajax/helping",function(e){
+			$( "#dialog" ).html(e).dialog({});
+		})
+	});
+
+	/**
+	 * Nút thêm img
+	 */
 	$(".img_ele").click(function(event) {
 		if(!confirm("Sure delete ?")){
 			return false;
@@ -84,7 +99,6 @@ window.onbeforeunload = function () {
 			//console.log(textStatus);
 		});
 	});
-
 
 </script>
 	<?php 

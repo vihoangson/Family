@@ -20,3 +20,8 @@ $this->session->set_flashdata('item', ["success"=>"Đã save thành công"]);
 >> Cách đăng Video vào bài viết
 [video](https://www.youtube.com/embed/05NOYXoe3QM)
 
+------------------
+
+Gắn hình banner default
+Bỏ Timeline
+Cách viết bài

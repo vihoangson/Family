@@ -5,6 +5,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Do_ajax extends CI_Controller {
 
 
+	/**
+	 * Hiển thị helping button
+	 *
+	 * @url: /ajax/do_ajax/helping
+     */
+	public function helping(){
+		$this->load->view("helping");
+	}
 	public function upload_img(){
 		
 		$position = $this->input->post('position');

@@ -23,6 +23,7 @@ if(!$navigation_bar){
 		<link href="<?= base_url(); ?>asset/bower_components/bootstrap-sweetalert/dist/sweetalert.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/Snarl/dist/snarl.min.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/animate.css/animate.min.css" rel="stylesheet">
+		<link href="<?= base_url(); ?>asset/bower_components/jquery-ui/themes/base/jquery-ui.min.css" rel="stylesheet">
 		
 		<?php
 		if(isset($css)){
@@ -46,7 +47,10 @@ if(!$navigation_bar){
 		<script src="<?= base_url(); ?>asset/bower_components/jquery-form/jquery.form.js"></script>
 		<script src="<?= base_url(); ?>asset/bower_components/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
 		<script src="<?= base_url(); ?>asset/bower_components/Snarl/dist/snarl.min.js"></script>
+		<script src="<?= base_url(); ?>asset/bower_components/jquery-ui/jquery-ui.min.js"></script>
 		<script src="<?= base_url(); ?>asset/js/app.js"></script>
+
+
 		<?php
 		if(isset($js)){
 			foreach ((array)$js as $key => $value) {
