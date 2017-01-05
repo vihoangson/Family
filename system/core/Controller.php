@@ -138,6 +138,7 @@ class CI_Controller {
 		$this->load->initialize();
 		log_message('info', 'Controller Class Initialized');
 		$this->em = $this->doctrine->em;
+		$this->son123 = 123456;
 	}
 
 	// --------------------------------------------------------------------

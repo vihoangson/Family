@@ -29,5 +29,9 @@ class Doctrine_Test extends CITestCase
         // Delete entity
         //$this->em->flush();
     }
+
+    public function test_son123(){
+        $this->assertTrue(true);
+    }
 }
 

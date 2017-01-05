@@ -6,17 +6,18 @@
 	mkdir asset/file_upload/
 	mkdir asset/img_slide/
 	chmod 777 asset/tmp
-	
+
 # ============ ============  ============  ============ 
 # Run Composer
 	composer install
 
 # ============ ============  ============  ============ 
-# go to asset folder
+# Go to asset folder
 	cd asset/
 	bower install
+
 # ============ ============  ============  ============ 
-# 	Create db
+# Create db
 	cd ..
 	cd application/models
 	mkdir db
@@ -24,6 +25,7 @@
 	if [ ! -f db/family ]; then
 		cp db.sample/family db/
 	fi
+
 # ============ ============  ============  ============ 
 # Create config file
 	cd ../..
@@ -34,6 +36,10 @@
 #
 #  ============ ============  ============  ============
 
+#  ============ ============  ============  ============
+# Update Doctrine
 php application/doctrine.php orm:schema-tool:update --force
 
+#  ============ ============  ============  ============
+# Testing
 phpunit
