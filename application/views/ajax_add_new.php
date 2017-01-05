@@ -16,9 +16,8 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 	<div class="form-group">
 		<label for="">Nội dung (<span style="color:red;">*</span>)</label>
 		<div style="padding:4px 0;">
-		<button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();"><img src="/asset/data/img_emotion/1.gif"></button>
-		<button type="button" class="btn btn-default insert-img" onclick="">Insert img</button>
-		<button type="button" class="btn btn-default helping" onclick="">Hướng dẫn</button>
+			<button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();"><img src="/asset/data/img_emotion/1.gif"></button>
+			<button type="button" class="btn btn-default insert-img" onclick="">Insert img</button>
 		</div>
 		<div class="icon_box" style="display:none; padding:10px;"><?= $emotion; ?></div>
 		<textarea data-time="<?= time(); ?>" name="content" id="content" class="form-control" style="height:250px;" required><?= ($data->kyniem_content?$data->kyniem_content:""); ?></textarea>
@@ -68,39 +67,32 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 			});
 		}
 	};
+
 </script>
-<div id="dialog">123</div>
-<?php if($mode=="edit"){
+<div id="dialog"></div>
+<?php
+// Dùng cho phần edit
+if($mode=="edit"){
 	?>
-<script>
-
-	/**
-	 * Nút help phần thêm kỷ niệm
-	 */
-	$(".helping").click(function(){
-		$.get("/ajax/do_ajax/helping",function(e){
-			$( "#dialog" ).html(e).dialog({});
-		})
-	});
-
-	/**
-	 * Nút thêm img
-	 */
-	$(".img_ele").click(function(event) {
-		if(!confirm("Sure delete ?")){
-			return false;
-		}
-		var this_e = $(this);
-		$.post('/homepage/ajax_delete_img', {img: $(this).data("img"),id: $(this).data("id")}, function(data, textStatus, xhr) {
-			if(data.status == "success"){
-				this_e.addClass("animated fadeOut").delay(30);
+	<script>
+		/**
+		 * Nút thêm img
+		 */
+		$(".img_ele").click(function(event) {
+			if(!confirm("Sure delete ?")){
+				return false;
 			}
-			//console.log(data.status);
-			//console.log(textStatus);
+			var this_e = $(this);
+			$.post('/homepage/ajax_delete_img', {img: $(this).data("img"),id: $(this).data("id")}, function(data, textStatus, xhr) {
+				if(data.status == "success"){
+					this_e.addClass("animated fadeOut").delay(30);
+				}
+				//console.log(data.status);
+				//console.log(textStatus);
+			});
 		});
-	});
 
-</script>
+	</script>
 	<?php 
 }
 

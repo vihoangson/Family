@@ -326,7 +326,7 @@ class MY_Controller extends CI_Controller
 	private function is_check_login()
 	{
 		if (function_exists('getallheaders')) {
-			if(getallheaders()["security"]=="123"){
+			if(getallheaders()["security"] == VAR_SECURITY){
 				return false;
 			}
 		}
