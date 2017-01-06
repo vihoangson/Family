@@ -483,3 +483,9 @@ li.ele_comment:after {
 .custom_banner:hover .change_banner{
     display:block;
 }
+.list-media .thumbnail {
+    width: 117px;
+    height: 117px;
+    padding: 3px !important;
+    display: block !important;
+}

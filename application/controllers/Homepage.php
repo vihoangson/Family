@@ -455,6 +455,7 @@ class Homepage extends MY_Controller {
 	 * @param  $case
 	 * @return void
 	 * @since 20160621132812
+	 * @url: /homepage/cron
 	 */
 	public function cron($case=null){
 		switch ($case){
@@ -464,6 +465,7 @@ class Homepage extends MY_Controller {
 			break;
 			case "backup_file_images_family":
 				// Backup file image
+				// Function này đã bị disable
 				$this->backup_file_images_family();
 			break;
 			default:
