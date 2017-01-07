@@ -129,6 +129,16 @@ $.fn.extend({
     }
 });
 $(window).load(function() {
+
+    /**
+     * Fix size of video youtube
+     * @fix_date: 20170107
+     * @author: Bố Sơn
+     */
+    if($(window).width()<=420){
+        $("iframe[src*='youtube']").width($(".content_main_block").width());
+    }
+
   $('img').each(function() {
     if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
       // image was broken, replace with your new image
@@ -137,3 +147,5 @@ $(window).load(function() {
     }
   });
 });
+
+
