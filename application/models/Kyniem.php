@@ -70,6 +70,10 @@ class Kyniem extends CI_Model {
 		$tags = array_unique(array_filter($tags));
 		return $tags;
 	}
+
+	public function get_date(){
+        $sql = 'select count(*),date(kyniem_create) from kyniem GROUP BY date(kyniem_create)';
+    }
 }
 
 /* End of file Kyniem.php */
