@@ -12,7 +12,7 @@ class MY_Kyniem extends MY_Model {
 		parent::__construct();
 	}
 
-	public function search_kyniem($keyword){
+	public function  search_kyniem($keyword){
 		if($keyword){
 			$this->db->or_like('kyniem_title', $keyword);
 			$this->db->or_like('kyniem_content', $keyword);
@@ -21,6 +21,11 @@ class MY_Kyniem extends MY_Model {
 		}
 		return [];
 	}
+
+    public function get_data_in_date(){
+        dd($this->group_by("date(kyniem_create)"));
+        return $this->group_by("date(kyniem_create)")->get();
+    }
 }
 
 /* End of file Kyniem.php */

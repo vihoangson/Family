@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kyniem extends CI_Model {
+class Kyniem extends \CI_Model {
 
     /**
      * Property để lấy lịch sử blog của auth
@@ -174,7 +174,7 @@ class Kyniem extends CI_Model {
             }else{
                 $name_class = "no_has";
             }
-            $html .= "<div class='date ".$name_class ."' title='".$key."'></div>";
+            $html .= "<div data-date='".$item."' class='date ".$name_class ."' title='".$key."'></div>";
             $i++;
         }
         $html .= '</div>
@@ -195,6 +195,7 @@ class Kyniem extends CI_Model {
         $html_grid = $this->draw_grid($date);
         return $html_grid;
     }
+
 }
 
 /* End of file Kyniem.php */

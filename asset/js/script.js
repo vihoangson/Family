@@ -6,6 +6,20 @@ $(document).on("click",".nav-tabs li",function(){
 	});
 });
 
+$('.has').click(function(){
+	$.get("/api/kyniem/get_in_date",{d:$(this).attr("title")},function(e){
+		var v2 = "";
+		$("#modal-general .modal-body").html("");
+		$.each(e,function(k,v){
+			if(v.kyniem_title){
+				$("#modal-general .modal-body").append("<h3>" + v.kyniem_title + "</h3><br>");
+			}
+			$("#modal-general .modal-body").append("" + v.kyniem_content + "<hr>");
+		});
+		$("#modal-general").modal("show");
+	})
+});
+
 $(document).on("click",".avatar_element",function(){
 	id = ($("#modal-general .modal-body").data("id"));
 	$(".row-tail input[data-id='"+id+"']").val("![]("+$(this).attr("src")+")");
