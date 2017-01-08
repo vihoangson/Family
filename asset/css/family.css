@@ -489,3 +489,22 @@ li.ele_comment:after {
     padding: 3px !important;
     display: block !important;
 }
+
+#gird_date .week {
+    float: left;
+    margin: 15px 0;
+    width: 11px;
+}
+#gird_date .date {
+    float: left;
+    width: 8px;
+    height: 8px;
+    background: #beeaff;
+    MARGIN: 1PX;
+}
+#gird_date .date.has {
+    background: #95aae6;
+}
+#gird_date .no_show {
+    background: none !important;
+}

@@ -71,8 +71,88 @@ class Kyniem extends CI_Model {
 		return $tags;
 	}
 
-	public function get_date(){
-        $sql = 'select count(*),date(kyniem_create) from kyniem GROUP BY date(kyniem_create)';
+    /**
+     * Lấy dữ liệu số lần viết blog trong ngày
+     *
+     * @param string $user_id
+     * @return array
+     * $data["Y-m-d"] = count;
+     */
+    public function get_date_write_blog($user_id){
+        $sql = 'select count(*) as `count`,date(kyniem_create) `date` from kyniem GROUP BY date(kyniem_create)';
+        $data = $this->db->query($sql)->result();
+        foreach ($data as $key => $item) {
+            $return[$item->date] = $item->count;
+        }
+        return $return;
+    }
+
+    /**
+     *
+     * @param string $option NOW
+     * @param string $option IN_YEAR
+     * @param int $year
+     * @return array
+     */
+    public function get_all_date_in_year_has_wrote($option = "NOW", $year = 2016)
+    {
+        switch($option){
+            case "IN_YEAR":
+                $date_in_year = $this->action->get_date_in_year($year);
+                break;
+            default:
+                $date_in_year = $this->action->get_date_from_now();
+                break;
+        }
+        $dates = $this->kyniem->get_date_write_blog(1);
+        $return = [];
+        foreach ($date_in_year as $date_e){
+            $return[$date_e] = $dates[$date_e];
+        }
+        return $return;
+    }
+
+    /**
+     * Lấy dữ liệu vẽ ra grid
+     *
+     * @param $data
+     * @return html_string
+     */
+    public function draw_grid($data){
+        $m = new DateTime(end(array_keys($data)));
+        $date_left = ($m->format("N") % 7)+6;
+        for($i=0;$i<$date_left ;$i++){
+            $data[] = -1;
+        }
+        $data = array_reverse($data);
+        $html="";
+        $i = 0;
+        $html .= '
+            <div id="gird_date">
+            <div class="week">';
+        foreach ($data as $key => $item){
+            if($i % 7 ==0){
+                $html .= '</div><div class="week">';
+            }
+            if($item > 0 ){
+                $name_class = "has";
+            }elseif($item == -1){
+                $name_class = "no_show";
+            }else{
+                $name_class = "no_has";
+            }
+            $html .= "<div class='date ".$name_class ."' title='".$key."'></div>";
+            $i++;
+        }
+        $html .= '</div>
+        </div>';
+        return $html;
+    }
+
+    public function draw_often_wrote_blog(){
+        $date = $this->get_all_date_in_year_has_wrote(NOW);
+        $html_grid = $this->draw_grid($date);
+        return $html_grid;
     }
 }
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
-* 
+* @property Kyniem       $kyniem           Kyniem
 */
 class MY_Controller extends CI_Controller
 {

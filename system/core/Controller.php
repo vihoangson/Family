@@ -101,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_Javascript       $javascript           Javascript Class
  ***************** YOUR LIBRARIES *****************
  ***************** YOUR MODELS *****************
- * @property Kyniem              $kyniem               kyniem Class
+ * @property Kyniem              $kyniem
  * @property MY_Kyniem           $my_kyniem
  * @property Facebook           $facebook
  * @property Doctrine           $doctrine

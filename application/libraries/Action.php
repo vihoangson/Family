@@ -87,6 +87,38 @@ class Action
 		}
 	}
 
+    /**
+     * @param $year int
+     * @return array
+     */
+    public function get_date_in_year($year)
+    {
+        $date_flow = new DateTime($year."-01-01");
+        $date_in_year = [];
+        while($date_flow->format("Y") == $year){
+            $date_in_year[] = $date_flow->format("Y-m-d");
+            $date_flow->modify("+1 day");
+        }
+        return array_reverse($date_in_year);
+    }
+
+    /**
+     * @param $year int
+     * @return array
+     */
+    public function get_date_from_now()
+    {
+        $date_flow = new DateTime();
+        $date_in_year = [];
+        $step = 365;
+        while($step > 0){
+            $date_in_year[] = $date_flow->format("Y-m-d");
+            $date_flow->modify("-1 day");
+            $step-- ;
+        }
+        return $date_in_year;
+    }
+
 }
 
 /* End of file Action.php */

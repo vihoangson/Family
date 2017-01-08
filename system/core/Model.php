@@ -94,6 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_Encrypt          $encrypt              Provides two-way keyed encoding using Mcrypt
  * @property CI_Javascript       $javascript           Javascript Class
  * @property My_User       $my_user           my_user
+ * @property My_User       $kyniem           Kyniem
  ***************** YOUR LIBRARIES *****************
  *
  */
