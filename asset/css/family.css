@@ -508,3 +508,18 @@ li.ele_comment:after {
 #gird_date .no_show {
     background: none !important;
 }
+#gird_date .date.has_1 {
+    background: #789ce6;
+}
+#gird_date .date.has_2 {
+    background: #496ee6;
+}
+#gird_date .date.has_3 {
+    background: #2b61e6;
+}
+#gird_date .date.has_4 {
+    background: #003fe6;
+}
+#gird_date .date:hover{
+    opacity: 0.8;
+}

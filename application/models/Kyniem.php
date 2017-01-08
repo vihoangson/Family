@@ -2,7 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kyniem extends CI_Model {
-	/**
+
+    /**
+     * Property để lấy lịch sử blog của auth
+     */
+    public $history_auth;
+
+    /**
 	 * 	Lấy dữ liệu kỷ niệm
 	 *
 	 * 	@param int $condition["year"] Param lọc theo năm
@@ -78,8 +84,15 @@ class Kyniem extends CI_Model {
      * @return array
      * $data["Y-m-d"] = count;
      */
-    public function get_date_write_blog($user_id){
-        $sql = 'select count(*) as `count`,date(kyniem_create) `date` from kyniem GROUP BY date(kyniem_create)';
+    public function get_date_write_blog($user_id = null){
+        if($user_id){
+            $sql = 'select count(*) as `count`,date(kyniem_create) `date` from kyniem 
+                    where kyniem_auth = '.$user_id.' 
+                    GROUP BY date(kyniem_create)';
+        }else{
+
+            $sql = 'select count(*) as `count`,date(kyniem_create) `date` from kyniem GROUP BY date(kyniem_create)';
+        }
         $data = $this->db->query($sql)->result();
         foreach ($data as $key => $item) {
             $return[$item->date] = $item->count;
@@ -104,7 +117,8 @@ class Kyniem extends CI_Model {
                 $date_in_year = $this->action->get_date_from_now();
                 break;
         }
-        $dates = $this->kyniem->get_date_write_blog(1);
+        $auth = $this->history_auth;
+        $dates = $this->kyniem->get_date_write_blog($auth);
         $return = [];
         foreach ($date_in_year as $date_e){
             $return[$date_e] = $dates[$date_e];
@@ -119,6 +133,7 @@ class Kyniem extends CI_Model {
      * @return html_string
      */
     public function draw_grid($data){
+        $max_value = max($data);
         $m = new DateTime(end(array_keys($data)));
         $date_left = ($m->format("N") % 7)+6;
         for($i=0;$i<$date_left ;$i++){
@@ -127,7 +142,13 @@ class Kyniem extends CI_Model {
         $data = array_reverse($data);
         $html="";
         $i = 0;
+        if($this->kyniem->history_auth == null){
+            $html .= '<h2>All page history wrote blog</h2>';
+        }else{
+            $html .= '<h2>Your history wrote blog</h2>';
+        }
         $html .= '
+            
             <div id="gird_date">
             <div class="week">';
         foreach ($data as $key => $item){
@@ -136,6 +157,18 @@ class Kyniem extends CI_Model {
             }
             if($item > 0 ){
                 $name_class = "has";
+
+                $arrange = round(($item / $max_value)*100);
+                if($arrange<25){
+                    $name_class .= " has_1";
+                }elseif($arrange<=25 && $arrange<50){
+                    $name_class .= " has_2";
+                }elseif($arrange<=50 && $arrange<75){
+                    $name_class .= " has_3";
+                }elseif($arrange > 75){
+                    $name_class .= " has_4";
+                }
+
             }elseif($item == -1){
                 $name_class = "no_show";
             }else{
@@ -145,10 +178,18 @@ class Kyniem extends CI_Model {
             $i++;
         }
         $html .= '</div>
-        </div>';
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+        ';
         return $html;
     }
 
+    /**
+     * Vẽ history viết blog của gia đình
+     *
+     * @return html_string
+     */
     public function draw_often_wrote_blog(){
         $date = $this->get_all_date_in_year_has_wrote(NOW);
         $html_grid = $this->draw_grid($date);

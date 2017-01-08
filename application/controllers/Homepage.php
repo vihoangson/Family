@@ -26,16 +26,6 @@ class Homepage extends MY_Controller {
 		//============ ============  ============  ============ 
 	}
 
-    /**
-     *
-     */
-    public function count_date()
-    {
-        $html_grid = $this->kyniem->draw_often_wrote_blog();
-        echo $this->load->view("_includes/header",null,true);
-        echo $html_grid;
-        echo $this->load->view("_includes/footer",null,true);
-    }
 	/**
 	 * [index description]
 	 * @return [type] [description]

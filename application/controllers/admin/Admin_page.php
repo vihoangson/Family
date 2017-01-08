@@ -22,9 +22,14 @@ class Admin_page extends MY_Controller {
 		$this->path_file_upload = FCPATH."asset/file_upload/";
 	}
 
-	public function index()
-	{
-		$content = "<h1>Family admin page</h1>";
+	public function index(){
+        $this->load->model("kyniem");
+        $this->kyniem->history_auth = $this->session->userdata("user_id");// Bo Son
+        $html_grid = $this->kyniem->draw_often_wrote_blog();
+        $this->kyniem->history_auth = null;// Bo Son
+        $html_grid2 = $this->kyniem->draw_often_wrote_blog();
+        $content = "<h1>Family admin page</h1>";
+        $content .= $html_grid.$html_grid2;
 		$this->load->view('admin/admin_page',compact("content"));
 	}
 
