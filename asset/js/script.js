@@ -7,8 +7,11 @@ $(document).on("click",".nav-tabs li",function(){
 });
 
 $('.has').click(function(){
+	var date_search = $(this).attr("title");
 	$.get("/api/kyniem/get_in_date",{d:$(this).attr("title")},function(e){
 		var v2 = "";
+
+		$("#modal-general .modal-title").html("Nhật ký gia đình ngày: "+date_search);
 		$("#modal-general .modal-body").html("");
 		$.each(e,function(k,v){
 			if(v.kyniem_title){

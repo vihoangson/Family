@@ -499,7 +499,7 @@ li.ele_comment:after {
     float: left;
     width: 8px;
     height: 8px;
-    background: #beeaff;
+    background: #e0f1ff;
     MARGIN: 1PX;
 }
 #gird_date .date.has {
@@ -509,16 +509,16 @@ li.ele_comment:after {
     background: none !important;
 }
 #gird_date .date.has_1 {
-    background: #789ce6;
+    background: #abcbe6;
 }
 #gird_date .date.has_2 {
-    background: #496ee6;
+    background: #7aa0e6;
 }
 #gird_date .date.has_3 {
-    background: #2b61e6;
+    background: #0090fb;
 }
 #gird_date .date.has_4 {
-    background: #003fe6;
+    background: #0004e6;
 }
 #gird_date .date:hover{
     opacity: 0.8;
