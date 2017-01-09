@@ -523,3 +523,6 @@ li.ele_comment:after {
 #gird_date .date:hover{
     opacity: 0.8;
 }
+.modal-body img {
+    max-width: 100%;
+}
