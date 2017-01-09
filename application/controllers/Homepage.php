@@ -62,7 +62,7 @@ class Homepage extends MY_Controller {
 		$data = $this->getDataHomepage($condition);
 		extract($data);
 
-		if($step){
+		if($status == "ajax"){
 			foreach ($kn as $key2 => $value) {
 				$key = $step++;
 				$this->load->view("_includes/ele_kyniem", compact("value","comment","key"));

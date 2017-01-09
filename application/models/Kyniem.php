@@ -83,7 +83,7 @@ class Kyniem extends \CI_Model {
      * @param string $user_id
      * @return array
      * $data["Y-m-d"] = count;
-     * EX:
+     * @Sample
      * $return["2016-06-21] = 1;
      * $return["2016-06-22] = 3;
      * $return["2016-06-23] = 3;
