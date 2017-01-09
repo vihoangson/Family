@@ -199,25 +199,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 
 	/**
-	 * [h description]
-	 * @param  [type] $string [description]
-	 * @return [type]         [description]
+	 * [h Bộ lọc markdown sang html]
+	 * - Replace emotion icon
+	 * - Recover video youtube
+	 * - Convert sang markdown
+	 * - Gắn link vào hashtag
 	 *
+	 * @param  mardown $string
+	 * @return html convert từ markdown sang html
+	 *
+	 * @Ex:
 	 * [video]j61nv9faa4c[/video]
 	 * 
 	 */
 	function h($string){
 		$CI =& get_instance();
+
+		// Replace emotion icon
 		$key = array_keys($CI->config->item("emotion_yahoo"));
 		$value = array_values($CI->config->item("emotion_yahoo"));
 		$string = str_replace($key, $value, $string);
+
+		// Recover video youtube
 		$replace = '<p class="text-center"><iframe width="420" height="315" src="https://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></p>';
 		$string = preg_replace("/\[video\](.+)\[\/video\]/", $replace, $string);
+
+		// Convert sang markdown
 		$string = Markdown::defaultTransform($string);
+
+		// Gắn link vào hashtag
 		$string = preg_replace("/\(\#(\w+)\)/i", "<a href='/homepage/tags/$1'>#$1</a>", $string);
+
 		return $string;
 	}
 
+	/**
+	 *Hiển thị blog html mạng xã hội
+	 *
+	 * @return html
+	 */
 	function show_social(){
 		?>
 		<div class="" style="margin:20px auto; width:325px;">
@@ -232,7 +252,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<?php
 	}
 
-	function show_img_countdown(){
+/**
+ * Hiển thị html count down tới ngày sinh
+ *
+ * @return html
+ */
+function show_img_countdown(){
 		$date1=date_create(date("Y-m-d h:i:s",time()));
 		$date2=date_create("2016-05-20");
 		$diff=date_diff($date1,$date2);
@@ -242,6 +267,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		return $html;
 	}
 
+	/**
+	 * Đếm tuổi Kem
+	 *
+	 * @return html
+	 */
+	function dem_tuoi_kem(){
+		return get_var_countdown();
+	}
+
+	/**
+	 * Lấy ra string đếm tuổi của Kem
+	 * @param string $ngaydusinh
+	 * @return html string
+	 */
 	function get_var_countdown($ngaydusinh="2016-05-09"){
 		$date1=date_create(date("Y-m-d h:i:s",time()));
 		$date2=date_create($ngaydusinh);
@@ -265,7 +304,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$day = $d." Ngày ";
 
 		if($m > 0){
-			$month .= $m. " Tháng ";
+			$month = $m. " Tháng ";
 		}
 
 		if($y > 0){
@@ -276,7 +315,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	}
 
-	function get_content_countdown($ngaydusinh="2016-05-20"){
+/**
+ * Nhận ngày dự sinh vào xuất ra hiển thi html
+ *
+ * @param string $ngaydusinh
+ * @return html string
+ */
+function get_content_countdown($ngaydusinh="2016-05-09"){
 		if(NGAYDUSINH){
 			$ngaydusinh = NGAYDUSINH;
 		}
