@@ -27,29 +27,57 @@ class Homepage extends MY_Controller {
 	}
 
 	/**
-	 * [index description]
-	 * @return [type] [description]
+	 * [index Trang chủ của page]
+	 *
+	 * @return void
 	 */
-	public function index()
+	public function index($step = null)
 	{
+		/**
+		 * @var string $status Trạng thái của page chủ
+		 */
+		if($step==null){
+			$status = "page";
+		}else{
+			$status = "ajax";
+		}
+
 		if($this->session->userdata('year')){
 			$cond_year = $this->session->userdata('year');
 		}else{
 			$cond_year = date("Y");
 		}
+
+		/**
+		 * Set điều kiện lọc
+		 */
 		$condition["year"]  = $cond_year;
-		$condition["limit"] = 5;
+		$condition["limit"] = NUM_BLOG_HOMEPAGE;
+
+		// Nếu là ajax autoload
+		if($status == "ajax"){
+			$condition["offset"] = $step;
+		}
 
 		$data = $this->getDataHomepage($condition);
 		extract($data);
 
-		$this->load->view('homepage',compact("kn","comment","tags"));
+		if($step){
+			foreach ($kn as $key2 => $value) {
+				$key = $step++;
+				$this->load->view("_includes/ele_kyniem", compact("value","comment","key"));
+			}
+		}else{
+			$this->load->view('homepage',compact("kn","comment","tags"));
+		}
 	}
 
-	public function slide(){
-	    $this->load->view("slide");
-    }
-
+	/**
+	 * Controller phục vụ cho autoload page khi scroll xuống dưới cùng của trang
+	 *
+	 * @param integer $step
+	 *
+     */
 	public function ajax_autoload($step){
 		sleep(1);
 		if($this->session->userdata('year')){
@@ -58,16 +86,21 @@ class Homepage extends MY_Controller {
 			$cond_year = date("Y");
 		}
 		$condition["year"]  = $cond_year;
-		$condition["limit"] = 4;
+		$condition["limit"] = NUM_BLOG_HOMEPAGE;
 		$condition["offset"] = $step;
 
 		$data = $this->getDataHomepage($condition);
 		extract($data);
-		//$value = $kn[0];
+
 		foreach ($kn as $key2 => $value) {
 			$key = $step++;
 			$this->load->view("_includes/ele_kyniem", compact("value","comment","key"));
 		}
+
+	}
+
+	public function slide(){
+		$this->load->view("slide");
 	}
 
 	/**
@@ -75,6 +108,9 @@ class Homepage extends MY_Controller {
 	 *
 	 * @param array $condition Điều kiện hiển thị
 	 * @return array data
+	 * - $return["kn"] data
+	 * - $return["comment"] comment
+	 * - $return["tags"]  tags
 	 */
 	private function getDataHomepage($condition = null){
 		$kn = $this->kyniem->getAll($condition);

@@ -5,6 +5,7 @@ $("#sync_db").click(function(){
 	$.post("/api/ajax_action/sync_db",function(e){
 		if(e.status == "success"){
 			alert("Sync done");
+			window.reload();
 		}else{
 			alert("Sync have trouble");
 		}

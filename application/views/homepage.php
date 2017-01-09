@@ -78,9 +78,13 @@
 		var step = $(".message-item").last().data("step")+1;
 		if($(".fa-spin").length == 0){
 			$("#wallmessages").append('<div class="text-center"><i style="color:#828282;" class="fa fa-refresh fa-spin fa-3x"></i></div>');
-			$.get('/homepage/ajax_autoload/'+step, function(data) {
+			$.get('/homepage/index/'+step, function(data) {
 				$(".fa-spin").remove();
-				$("#wallmessages").append(data);
+				if(data){
+					$("#wallmessages").append(data);
+				}else{
+					alert("Hết rồi!");
+				}
 			});
 		}
 	}
