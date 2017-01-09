@@ -52,7 +52,7 @@ class MY_Controller extends CI_Controller
 			);
 
 		// Nếu trong 3 ngày không viết blog thì ô history sẽ bật lên
-		$date_dont_write = $this->kyniem->get_count_dont_write()
+		$date_dont_write = $this->kyniem->get_count_dont_write();
 		if( $date_dont_write > DATE_DONT_WROTE_BLOG){
 			$history_wrote_blog = $this->action->draw_often_wrote_blog();
 			$history_wrote_blog .="<h1>".$date_dont_write." ngày không viết</h1>";
