@@ -8,6 +8,10 @@ class MY_Controller extends CI_Controller
 
 	public function __construct(){
 		parent::__construct();
+
+		$this->load->library("action");
+		$this->load->model("kyniem");
+
 		// Rửa tổng cho error status
 		$this->error_status = [];
 
@@ -47,6 +51,13 @@ class MY_Controller extends CI_Controller
 			'charset'   => 'utf-8'
 			);
 
+		// Nếu trong 3 ngày không viết blog thì ô history sẽ bật lên
+		if( $this->kyniem->get_count_dont_write() > DATE_DONT_WROTE_BLOG){
+			$history_wrote_blog = $this->action->draw_often_wrote_blog();
+		}else{
+			$history_wrote_blog = "";
+		}
+
 		// Set dữ liệu cho navbar
 		$navbars =[
 			"navbar_custom"=> [
@@ -56,10 +67,10 @@ class MY_Controller extends CI_Controller
 				["link"=>"/admin/files_controller/show" , "text"=> "Manager Images"],
 				["link"=>"/admin/control_popup" , "text"=> "Control popup"],
 				["link"=>"/phpliteadmin.php" , "text"=> "PHP Sqlite"],
-			]
+			],
+			"history_wrote_blog" => $history_wrote_blog
 		];
 		$this->load->vars($navbars);
-
 	}
 
 	/**

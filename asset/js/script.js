@@ -1,3 +1,5 @@
+$('[data-toggle="tooltip"]').tooltip();
+
 // Action cho nút backup db tại navbar
 $("#sync_db").click(function(){
 	$.post("/api/ajax_action/sync_db",function(e){

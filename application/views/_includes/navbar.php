@@ -32,11 +32,11 @@
 					<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="javascript:void(0)" id="sync_db"><div class="glyphicon glyphicon-refresh"></div></a></li>
-					<li><a href="<?= base_url(); ?>calendar" id="button_calendar">Lịch gia đình</a></li>
-					<li><a href="#">Bé Kem ( <?= get_var_countdown(); ?> )</a></li>
+					<li><a href="javascript:void(0)" data-toggle="tooltip" id="sync_db" title="Sync db from server"><div class="glyphicon glyphicon-refresh"></div></a></li>
+					<li><a href="<?= base_url(); ?>calendar" id="button_calendar" data-toggle="tooltip" title="Xem lịch của gia đình nha">Lịch gia đình</a></li>
+					<li><a href="#" data-toggle="tooltip" title="Đếm tuổi của Kem">Bé Kem ( <?= get_var_countdown(); ?> )</a></li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Người dùng <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Options <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="<?= base_url(); ?>admin"><i class="fa fa-user"></i> Admin page</a></li>
 							<li><a href="<?= base_url(); ?>blog"><i class="fa fa-book"></i> Blog</a></li>
@@ -61,4 +61,6 @@
 			} ?>
 	</div><!-- /.navbar-collapse -->
 </nav>
-<?php custom_banner("top"); ?>
+<?php custom_banner("top");?>
+
+<?php echo $history_wrote_blog;?>

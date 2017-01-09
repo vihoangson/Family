@@ -138,7 +138,77 @@ class Action
 		}
 	}
 
+	/**
+	 * Vẽ history viết blog của gia đình
+	 *
+	 * @return html_string
+	 */
+	public function draw_often_wrote_blog(){
+		$this->ci->load->model("kyniem");
+		$date = $this->ci->kyniem->get_all_date_in_year_has_wrote(NOW);
+		$html_grid = $this->draw_grid($date);
+		return $html_grid;
+	}
 
+
+	/**
+	 * Lấy dữ liệu vẽ ra grid
+	 *
+	 * @param $data
+	 * @return html_string
+	 */
+	public function draw_grid($data){
+		$max_value = max($data);
+		$m = new DateTime(end(array_keys($data)));
+		$date_left = ($m->format("N") % 7)+6;
+		for($i=0;$i<$date_left ;$i++){
+			$data[] = -1;
+		}
+		$data = array_reverse($data);
+		$html="";
+		$i = 0;
+		if($this->kyniem->history_auth == null){
+			$html .= '<h2>All page history wrote blog</h2>';
+		}else{
+			$html .= '<h2>Your history wrote blog</h2>';
+		}
+		$html .= '
+            
+            <div id="gird_date">
+            <div class="week">';
+		foreach ($data as $key => $item){
+			if($i % 7 ==0){
+				$html .= '</div><div class="week">';
+			}
+			if($item > 0 ){
+				$name_class = "has";
+
+				$arrange = round(($item / $max_value)*100);
+				if($arrange<25){
+					$name_class .= " has_1";
+				}elseif($arrange<=25 && $arrange<50){
+					$name_class .= " has_2";
+				}elseif($arrange<=50 && $arrange<75){
+					$name_class .= " has_3";
+				}elseif($arrange > 75){
+					$name_class .= " has_4";
+				}
+
+			}elseif($item == -1){
+				$name_class = "no_show";
+			}else{
+				$name_class = "no_has";
+			}
+			$html .= "<div data-date='".$item."' class='date ".$name_class ."' title='".$key."'></div>";
+			$i++;
+		}
+		$html .= '</div>
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+        ';
+		return $html;
+	}
 }
 
 /* End of file Action.php */
