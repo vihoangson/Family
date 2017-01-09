@@ -42,8 +42,10 @@ class My_Model_Test extends CITestCase {
 		$this->assertFalse(!($this->CI->blog->delete($id)));
 	}
 
+	/**
+	 * Test function search_kyniem()
+     */
 	public function test_search_kyniem(){
-		$this->markTestSkipped();
 		$this->CI->load->model('MY_Kyniem');
 		$rs = $this->CI->MY_Kyniem->search_kyniem("Su");
 		$this->assertNotNull($rs);

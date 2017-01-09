@@ -18,6 +18,7 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 		<div style="padding:4px 0;">
 			<button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();"><img src="/asset/data/img_emotion/1.gif"></button>
 			<button type="button" class="btn btn-default insert-img" onclick="">Insert img</button>
+			<button type="button" class="btn btn-default add-tag-video" onclick="">Add tag video</button>
 		</div>
 		<div class="icon_box" style="display:none; padding:10px;"><?= $emotion; ?></div>
 		<textarea data-time="<?= time(); ?>" name="content" id="content" class="form-control" style="height:250px;" required><?= ($data->kyniem_content?$data->kyniem_content:""); ?></textarea>
@@ -53,6 +54,11 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 	<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>	
 </form>
 <script>
+	
+	// Nút add video vào textarea
+	$('.add-tag-video').click(function(){
+		$("#content").val($("#content").val() + "[video][/video]");
+	});
 
 	// Khi bấm nút sẽ tự động lưu vào localStorage
     $('textarea,input').keyup(function () {
@@ -71,6 +77,7 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 </script>
 <div id="dialog"></div>
 <?php
+
 // Dùng cho phần edit
 if($mode=="edit"){
 	?>
@@ -78,7 +85,7 @@ if($mode=="edit"){
 		/**
 		 * Nút thêm img
 		 */
-		$(".img_ele").click(function(event) {
+		$('.img_ele').click(function(event) {
 			if(!confirm("Sure delete ?")){
 				return false;
 			}

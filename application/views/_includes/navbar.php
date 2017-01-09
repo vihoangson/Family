@@ -32,6 +32,7 @@
 					<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
+					<li><a href="javascript:void(0)" id="sync_db"><div class="glyphicon glyphicon-refresh"></div></a></li>
 					<li><a href="<?= base_url(); ?>calendar" id="button_calendar">Lịch gia đình</a></li>
 					<li><a href="#">Bé Kem ( <?= get_var_countdown(); ?> )</a></li>
 					<li class="dropdown">

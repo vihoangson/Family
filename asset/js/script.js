@@ -1,3 +1,14 @@
+// Action cho nút backup db tại navbar
+$("#sync_db").click(function(){
+	$.post("/api/ajax_action/sync_db",function(e){
+		if(e.status == "success"){
+			alert("Sync done");
+		}else{
+			alert("Sync have trouble");
+		}
+	});
+});
+
 $(document).on("click",".nav-tabs li",function(){
 	var name_tab = $(this).find("a").attr("href");
 	$(name_tab+" img").each(function(index, el) {
@@ -6,6 +17,7 @@ $(document).on("click",".nav-tabs li",function(){
 	});
 });
 
+// Action cho ô date trong history wrote blog
 $('.has').click(function(){
 	var date_search = $(this).attr("title");
 	$.get("/api/kyniem/get_in_date",{d:$(this).attr("title")},function(e){

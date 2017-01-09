@@ -119,6 +119,26 @@ class Action
         return $date_in_year;
     }
 
+	/**
+	 * Lấy dữ liệu từ server về
+	 * @return boolean
+	 * @throws Exception
+     */
+	public function sync_db_server()
+	{
+		if($_SERVER["SERVER_NAME"]!="family.vihoangson.com"){
+			$m = file_get_contents("http://family.vihoangson.com/application/models/db/family");
+			if($m){
+				copy(APPPATH."models/db/family",FCPATH."backup_file/family_backup_".date("Y_m_d__h_i_s"));
+				file_put_contents(APPPATH."models/db/family",$m);
+			}else{
+				return false;
+			}
+			return true;
+		}
+	}
+
+
 }
 
 /* End of file Action.php */
