@@ -53,7 +53,7 @@ class Homepage extends MY_Controller {
 		 * Set điều kiện lọc
 		 */
 		$condition["year"]  = $cond_year;
-		$condition["limit"] = NUM_BLOG_HOMEPAGE;
+		$condition["limit"] = 5;
 
 		// Nếu là ajax autoload
 		if($status == "ajax"){
@@ -87,7 +87,7 @@ class Homepage extends MY_Controller {
 			$cond_year = date("Y");
 		}
 		$condition["year"]  = $cond_year;
-		$condition["limit"] = NUM_BLOG_HOMEPAGE;
+		$condition["limit"] = 5;
 		$condition["offset"] = $step;
 
 		$data = $this->getDataHomepage($condition);
