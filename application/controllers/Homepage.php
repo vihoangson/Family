@@ -6,6 +6,7 @@ class Homepage extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->config('family/config');
 		$this->load->model('kyniem');
 		$this->load->library('image_lib');
 		$this->load->library('facebook');
