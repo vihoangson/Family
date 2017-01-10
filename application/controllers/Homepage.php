@@ -6,7 +6,6 @@ class Homepage extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->config('family/config');
 		$this->load->model('kyniem');
 		$this->load->library('image_lib');
 		$this->load->library('facebook');
@@ -53,7 +52,8 @@ class Homepage extends MY_Controller {
 		 * Set điều kiện lọc
 		 */
 		$condition["year"]  = $cond_year;
-		$condition["limit"] = 5;
+
+		$condition["limit"] = (int)NUM_BLOG_HOMEPAGE;
 
 		// Nếu là ajax autoload
 		if($status == "ajax"){
@@ -87,7 +87,7 @@ class Homepage extends MY_Controller {
 			$cond_year = date("Y");
 		}
 		$condition["year"]  = $cond_year;
-		$condition["limit"] = 5;
+		$condition["limit"] = (int)NUM_BLOG_HOMEPAGE;
 		$condition["offset"] = $step;
 
 		$data = $this->getDataHomepage($condition);
