@@ -261,6 +261,14 @@ class Homepage extends MY_Controller {
 	}
 
 
+	/**
+	 * Function upload hình ảnh
+	 *
+	 * @param File $_FILE["userfile"]
+	 *
+	 * @return array
+	 *
+     */
 	private function do_upload()
 	{       
 		$this->load->library('upload');
