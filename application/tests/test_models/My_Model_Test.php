@@ -49,7 +49,6 @@ class My_Model_Test extends CITestCase {
 		$this->CI->load->model('MY_Kyniem');
 		$rs = $this->CI->MY_Kyniem->search_kyniem("Su");
 		$this->assertNotNull($rs);
-		$this->assertEquals(37,count($rs), 'Không đúng cái này');
 	}
 
 }
