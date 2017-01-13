@@ -106,6 +106,18 @@ class Kyniem extends \CI_Model {
         return $return;
     }
 
+	/**
+	 *
+	 * @param date $date
+     */
+	public function check_status($date)
+	{
+		$sql = 'select count(*) from kyniem where status >0 and  date(kyniem_create) = "'.$date.'" GROUP BY date(kyniem_create)';
+		$data = $this->db->query($sql)->num_rows();
+		return $data;
+
+	}
+
     /**
      *
      * @param string $option NOW

@@ -499,7 +499,7 @@ li.ele_comment:after {
     float: left;
     width: 8px;
     height: 8px;
-    background: #e0f1ff;
+    background: #f5f5f5;
     MARGIN: 1PX;
 }
 #gird_date .date.has {
@@ -525,4 +525,7 @@ li.ele_comment:after {
 }
 .modal-body img {
     max-width: 100%;
+}
+.status_important {
+    background: #ff7b7b !important;
 }

@@ -167,7 +167,7 @@ class Action
 		$data = array_reverse($data);
 		$html="";
 		$i = 0;
-		if($this->kyniem->history_auth == null){
+		if($this->ci->kyniem->history_auth == null){
 			$html .= '<h2>All page history wrote blog</h2>';
 		}else{
 			$html .= '<h2>Your history wrote blog</h2>';
@@ -177,6 +177,8 @@ class Action
             <div id="gird_date">
             <div class="week">';
 		foreach ($data as $key => $item){
+
+			$status = $this->ci->kyniem->check_status($key);
 			if($i % 7 ==0){
 				$html .= '</div><div class="week">';
 			}
@@ -192,6 +194,10 @@ class Action
 					$name_class .= " has_3";
 				}elseif($arrange > 75){
 					$name_class .= " has_4";
+				}
+				
+				if( $status > 0){
+					$name_class .= " status_important";
 				}
 
 			}elseif($item == -1){
@@ -209,6 +215,7 @@ class Action
         ';
 		return $html;
 	}
+
 }
 
 /* End of file Action.php */
