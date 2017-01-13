@@ -1,4 +1,4 @@
-		<div class="message-item" id="m<?= $key; ?>" data-step="<?= $key; ?>">
+		<div class="message-item <?= ($value->status ==1?"kyniem_important":""); ?>" id="m<?= $key; ?>" data-step="<?= $key; ?>">
 			<div class="options_icon"><span></span>
 			<ul>
 			<li><a href="<?= base_url(); ?>homepage/edit_new/<?= md5($this->config->config["encryption_key"]."__".$value->id) ; ?>/<?= $value->id; ?>">Edit</a></li>

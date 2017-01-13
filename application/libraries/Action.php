@@ -88,8 +88,18 @@ class Action
 	}
 
     /**
+	 * Lấy tất cả các ngày thuộc 1 năm xác định
+	 *
      * @param $year int
      * @return array
+	 * $return = [
+	 * "2016-01-01",
+	 * "2016-01-02",
+	 * "2016-01-03",
+	 * "2016-01-04",
+	 * "2016-01-05",
+	 * ...
+	 * ];
      */
     public function get_date_in_year($year)
     {
@@ -103,8 +113,17 @@ class Action
     }
 
     /**
-     * @param $year int
+	 * Lấy tất cả các ngày thuộc 1 năm bắt đầu từ ngày hôm nay
+	 *
      * @return array
+	 * $return = [
+	 * "2016-01-01",
+	 * "2016-01-02",
+	 * "2016-01-03",
+	 * "2016-01-04",
+	 * "2016-01-05",
+	 * ...
+	 * ];
      */
     public function get_date_from_now()
     {
@@ -178,13 +197,17 @@ class Action
             <div class="week">';
 		foreach ($data as $key => $item){
 
-			$status = $this->ci->kyniem->check_status($key);
 			if($i % 7 ==0){
 				$html .= '</div><div class="week">';
 			}
+
+			// Nếu có bài viết
 			if($item > 0 ){
+
+				// Khởi tạo $name_class
 				$name_class = "has";
 
+				// Tính phần trăm của từng ngày
 				$arrange = round(($item / $max_value)*100);
 				if($arrange<25){
 					$name_class .= " has_1";
@@ -195,14 +218,20 @@ class Action
 				}elseif($arrange > 75){
 					$name_class .= " has_4";
 				}
-				
+
+				// Nếu có tình trạng đặc biết thì thêm class màu đỏ vào
+				$status = $this->ci->kyniem->check_status($key);
 				if( $status > 0){
 					$name_class .= " status_important";
 				}
 
-			}elseif($item == -1){
+			}
+			// Phần này để không hiện ở những ngày đầu tiên
+			elseif($item == -1){
 				$name_class = "no_show";
-			}else{
+			}
+			// Những ngày không có bài viết
+			else{
 				$name_class = "no_has";
 			}
 			$html .= "<div data-date='".$item."' class='date ".$name_class ."' title='".$key."'></div>";

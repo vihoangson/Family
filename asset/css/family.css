@@ -529,3 +529,6 @@ li.ele_comment:after {
 .status_important {
     background: #ff7b7b !important;
 }
+.kyniem_important div {
+    background: #ffe6ed !important;
+}
