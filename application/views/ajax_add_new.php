@@ -50,6 +50,14 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
 		<?php
 	}
 	?>
+
+	<select name="status_kyniem">
+		<option value="0" <?php echo ($data->status==0?"selected":"")  ?>>Bình thường</option>
+		<option value="1" <?php echo ($data->status==1?"selected":"")  ?>>Đặc biệt</option>
+	</select>
+
+	<div class="clearfix"></div>
+
 	<button type="submit" class="btn btn-primary">Lưu</button>
 	<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>	
 </form>

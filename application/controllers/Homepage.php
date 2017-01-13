@@ -326,6 +326,7 @@ class Homepage extends MY_Controller {
 		$data = [
 			"kyniem_title" => $this->input->post("title"),
 			"kyniem_content" => $this->input->post("content"),
+			"status" => $this->input->post("status_kyniem"),
 			"kyniem_auth" => $this->session->userdata('user_id'),
 			"kyniem_create" => date("Y-m-d h:i:s",time()),
 			"kyniem_modifie" => date("Y-m-d h:i:s",time()),
@@ -352,6 +353,7 @@ class Homepage extends MY_Controller {
 			$data = [
 				"kyniem_title" => $this->input->post("title"),
 				"kyniem_content" => $this->input->post("content"),
+				"status" => $this->input->post("status_kyniem"),
 				"kyniem_auth" => $this->session->userdata('user_id'),
 				"kyniem_modifie" => date("Y-m-d h:i:s",time()),
 			];
