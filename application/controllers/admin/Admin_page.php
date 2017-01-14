@@ -26,11 +26,22 @@ class Admin_page extends MY_Controller {
         $this->load->model("kyniem");
 		$this->load->library("action");
         $this->kyniem->history_auth = $this->session->userdata("user_id");// Bo Son
-        $html_grid = $this->action->draw_often_wrote_blog();
+        $html_grid = $this->action->draw_often_wrote_blog_from_now();
+
         $this->kyniem->history_auth = null;// Bo Son
-        $html_grid2 = $this->action->draw_often_wrote_blog();
+        $html_grid2 = $this->action->draw_often_wrote_blog_from_now();
         $content = "<h1>Family admin page</h1>";
-        $content .= $html_grid.$html_grid2;
+        $content .= "<h3>History your wrote</h3>";
+        $content .= $html_grid;
+        $content .= "<h3>History All of member wrote</h3>";
+        $content .= $html_grid2;
+
+        for($i = 2015; $i <= date("Y");$i++){
+            $html_grid2 = $this->action->draw_often_wrote_blog_by_year($i);
+            $content .= "<h3>Family admin page $i</h3>";
+            $content .= $html_grid2;
+        }
+
 		$this->load->view('admin/admin_page',compact("content"));
 	}
 

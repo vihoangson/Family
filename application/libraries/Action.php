@@ -158,17 +158,28 @@ class Action
 	}
 
 	/**
-	 * Vẽ history viết blog của gia đình
+	 * Vẽ history viết blog của gia đình 1 nam tinh tu nam hiện tại
 	 *
 	 * @return html_string
 	 */
-	public function draw_often_wrote_blog(){
+	public function draw_often_wrote_blog_from_now(){
 		$this->ci->load->model("kyniem");
 		$date = $this->ci->kyniem->get_all_date_in_year_has_wrote(NOW);
 		$html_grid = $this->draw_grid($date);
 		return $html_grid;
 	}
 
+    /**
+     * Vẽ history viết blog của gia đình theo năm
+     *
+     * @return html_string
+     */
+    public function draw_often_wrote_blog_by_year($year){
+        $this->ci->load->model("kyniem");
+        $date = $this->ci->kyniem->get_all_date_in_year_has_wrote("IN_YEAR",$year);
+        $html_grid = $this->draw_grid($date);
+        return $html_grid;
+    }
 
 	/**
 	 * Lấy dữ liệu vẽ ra grid
@@ -187,9 +198,9 @@ class Action
 		$html="";
 		$i = 0;
 		if($this->ci->kyniem->history_auth == null){
-			$html .= '<h2>All page history wrote blog</h2>';
+			//$html .= '<h2>All page history wrote blog</h2>';
 		}else{
-			$html .= '<h2>Your history wrote blog</h2>';
+			//$html .= '<h2>Your history wrote blog</h2>';
 		}
 		$html .= '
             
@@ -244,6 +255,19 @@ class Action
         ';
 		return $html;
 	}
+
+    /**
+     *
+     */
+    public function backup_all_project(){
+	    $this->ci->load->library("zip");
+        $this->ci->zip->read_dir(FCPATH."asset/img_slide");
+        $this->ci->zip->read_dir(FCPATH."asset/file_upload");
+        $this->ci->zip->read_dir(FCPATH."asset/images");
+        $this->ci->zip->read_dir(FCPATH."backup_file");
+        $this->ci->zip->read_dir(APPPATH."models/db");
+        $this->ci->zip->download("backup_".time().".zip");
+    }
 
 }
 

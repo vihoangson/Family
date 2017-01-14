@@ -17,6 +17,10 @@ class Ajax_action extends REST_Controller {
         $this->response($return);
     }
 
+    public function backup_all_get(){
+        $this->action->backup_all_project();
+    }
+
 }
 
 /* End of file controllername.php */
