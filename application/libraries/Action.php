@@ -261,7 +261,6 @@ class Action
      */
     public function backup_all_project(){
 	    $this->ci->load->library("zip");
-        $this->ci->zip->read_dir(FCPATH."asset/img_slide");
         $this->ci->zip->read_dir(FCPATH."asset/file_upload");
         $this->ci->zip->read_dir(FCPATH."asset/images");
         $this->ci->zip->read_dir(FCPATH."backup_file");
