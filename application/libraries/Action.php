@@ -257,15 +257,25 @@ class Action
 	}
 
     /**
-     *
+     * Tạo file backup file hình ảnh
      */
-    public function backup_all_project(){
+    public function backup_all_project($case = "db"){
+        $this->ci->load->helper("url");
 	    $this->ci->load->library("zip");
-        $this->ci->zip->read_dir(FCPATH."asset/file_upload");
-        $this->ci->zip->read_dir(FCPATH."asset/images");
-        $this->ci->zip->read_dir(FCPATH."backup_file");
-        $this->ci->zip->read_dir(APPPATH."models/db");
-        $this->ci->zip->download("backup_".time().".zip");
+        switch ($case){
+            case "file_upload":
+                $this->ci->zip->read_dir(FCPATH."asset/file_upload");
+                break;
+            case "images":
+                $this->ci->zip->read_dir(FCPATH."asset/images");
+                break;
+            default:
+                $case = "db";
+                $this->ci->zip->read_dir(APPPATH."models/db");
+                break;
+        }
+        $this->ci->zip->download("backup_".$case."_".time().".zip");
+        $this->ci->zip->clear_data();
     }
 
 }

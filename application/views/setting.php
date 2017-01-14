@@ -38,6 +38,11 @@
 		</a>
 	</div>
 
+<h1> Backup </h1>
+	<h4><a href="/api/ajax_action/backup_all/file_upload">Folder: file_upload</a></h4>
+	<h4><a href="/api/ajax_action/backup_all/images">Folder: images</a></h4>
+	<h4><a href="/api/ajax_action/backup_all/db">Backup db</a></h4>
+
 	<?php show_social(); ?>
 
 <?php $this->load->view('_includes/footer_admin'); ?>

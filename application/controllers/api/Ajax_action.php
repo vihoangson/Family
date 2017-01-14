@@ -17,8 +17,18 @@ class Ajax_action extends REST_Controller {
         $this->response($return);
     }
 
-    public function backup_all_get(){
-        $this->action->backup_all_project();
+    /**
+     * @param string $case
+     * $case = "file_upload"
+     * $case = "images"
+     * $case = "db"
+     *
+     * @url /api/ajax_action/backup_all/file_upload
+     * @url /api/ajax_action/backup_all/images
+     * @url /api/ajax_action/backup_all/db
+     */
+    public function backup_all_get($case = null){
+        $this->action->backup_all_project($case);
     }
 
 }
