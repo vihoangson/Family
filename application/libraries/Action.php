@@ -274,7 +274,7 @@ class Action
                 $this->ci->zip->read_dir(APPPATH."models/db");
                 break;
         }
-        $this->ci->zip->download("backup_".$case."_".time().".zip");
+        $this->ci->zip->download("backup_".$case."_".date("Ymd_His").".zip");
         $this->ci->zip->clear_data();
     }
 
