@@ -22,6 +22,13 @@
 	</div>
 	  </div>
 </div>
+	<hr>
+
+	<div id="MAX_SIZE_IMG">
+		<h3>Để chỉnh kích thước ảnh tối đa hãy vào code chỉnh define "MAX_SIZE_IMG" lại</h3>
+		<p>Giá trị hiện tại: <b id="show_max_size_img"></b> <input name="" id="change_max_size_img"> </p>
+	</div>
+
 
 	<hr>
 

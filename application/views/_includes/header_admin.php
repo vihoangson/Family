@@ -20,6 +20,7 @@
 		<link href="<?= base_url(); ?>asset/css/button_switch.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="<?= base_url(); ?>asset/bower_components/Snarl/dist/snarl.min.css" rel="stylesheet">
 		<?php
 		if(isset($css)){
 			foreach ((array)$css as $key => $value) {
@@ -38,11 +39,12 @@
 		<!-- jQuery -->
 		<script src="<?= base_url(); ?>asset/bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="http://momentjs.com/downloads/moment.js"></script>
-
+		<script src="<?= base_url(); ?>asset/bower_components/Snarl/dist/snarl.min.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="<?= base_url(); ?>asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="<?= base_url(); ?>asset/js/Magnific-Popup-master/dist/jquery.magnific-popup.js"></script>
 		<script src="<?= base_url(); ?>asset/js/jquery.form.js"></script>
+		<script src="<?= base_url(); ?>asset/js/app.js"></script>
 		
 		<?php
 		if(isset($js)){

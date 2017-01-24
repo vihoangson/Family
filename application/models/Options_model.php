@@ -39,7 +39,12 @@ class Options_model extends CI_Model {
 //============ ============  ============ ============
 //
 //============ ============  ============ ============
-	public function save_option($key,$value){
+	/**
+	 * @param $key
+	 * @param $value
+	 * @return bool
+     */
+	public function save_option($key, $value){
 		if(!$key) return false;
 		if($this->db->where("option_key",$key)->count_all_results('options') == 0){
 			if($this->db->insert("options", ["option_key"=>$key,"option_content"=>$value,"option_create"=> date("Y-m-d h:i:s")])){

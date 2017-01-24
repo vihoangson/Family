@@ -1,3 +1,43 @@
+/**
+ *
+ * @url: /setting
+ *
+ */
+if($("#change_max_size_img").length){
+
+	$.get("/api/ajax_action/get_value_option",{key:"max_size_img"},function(e){
+		var value_max_size_img = e.option_content;
+		$("#show_max_size_img").html(value_max_size_img+"px");
+	})
+
+
+	$("#change_max_size_img").hide();
+	$("#change_max_size_img").after("<button id='show_input'>Change</button>");
+	$("#show_input").click(function(){
+		$("#change_max_size_img").show();
+		$("#show_input").hide();
+	});
+	$("#change_max_size_img").keyup(function(e){
+		/**
+		 * Bấm enter
+		 */
+		if(e.which==13){
+			$.post("/api/ajax_action/change_max_size_img",{value:$("#change_max_size_img").val()},function(result){
+				if(result.status=="error"){
+					alert(result.status);
+				}else{
+					notify("Đã thay đổi !");
+					$("#show_input").show();
+					$("#change_max_size_img").hide();
+					$("#change_max_size_img").val(result.value);
+					$("#show_max_size_img").html(result.value+"px");
+				}
+			})
+		}
+	});
+}
+
+
 $('[data-toggle="tooltip"]').tooltip();
 
 // Action cho nút backup db tại navbar

@@ -73,6 +73,18 @@ class MY_Controller extends CI_Controller
 			"history_wrote_blog" => $history_wrote_blog
 		];
 		$this->load->vars($navbars);
+
+		$this->load->model("options_model");
+		/**
+		 * Size lớn nhất cho hình ảnh
+		 */
+		$option_max_size_img = $this->options_model->get_option("max_size_img");
+		if($option_max_size_img->option_content){
+			$max_size_img = $option_max_size_img->option_content;
+		}else{
+			$max_size_img = 800;
+		}
+		define("MAX_SIZE_IMG",$max_size_img);
 	}
 
 	/**
