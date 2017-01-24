@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Do_ajax extends CI_Controller {
+class Do_ajax extends MY_Controller {
 
 
 	/**
