@@ -1,12 +1,12 @@
-$(".option-value").each(function(index){
-	var key_data = $(this).attr("name");
-	var selector_this = $(this);
-	$.get("/api/ajax_action/get_value_option",{key:key_data},function(e){
-		var value_max_size_img = e.option_content;
-		console.log(key_data);
-		$("input[name='"+key_data+"']").val(value_max_size_img);
-	});
-});
+// $(".option-value").each(function(index){
+// 	var key_data = $(this).attr("name");
+// 	var selector_this = $(this);
+// 	$.get("/api/ajax_action/get_value_option",{key:key_data},function(e){
+// 		var value_max_size_img = e.option_content;
+// 		console.log(key_data);
+// 		$("input[name='"+key_data+"']").val(value_max_size_img);
+// 	});
+// });
 
 $(".save-button").click(function(){
 	var input_data = $(this).parent().parent().find("input");

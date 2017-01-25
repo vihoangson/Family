@@ -22,22 +22,30 @@
 	</div>
 	  </div>
 </div>
-	<hr>
 
-	<div id="MAX_SIZE_IMG">
-		<h3>Để chỉnh kích thước ảnh tối đa hãy vào code chỉnh define "MAX_SIZE_IMG" lại</h3>
-		<p>Giá trị hiện tại: <b id="show_max_size_img"></b> <input name="" id="change_max_size_img"> </p>
-	</div>
+	<h1>Params</h1>
 
 	<hr>
+
 
 	<h2>Size video</h2>
 	<div class="input-group">
-		<input type="text" class="form-control option-value" name="size-video" aria-label="...">
+		<input type="text" class="form-control option-value" name="size-video" aria-label="..." value="<?= $options["size-video"]->option_content ?>">
 		<div class="input-group-btn">
 			<button class="btn btn-default save-button">Save</button>
 		</div>
 	</div>
+
+	<hr>
+
+	<h2>Max size img</h2>
+	<div class="input-group">
+		<input type="text" class="form-control option-value" name="max_size_img" aria-label="..." value="<?= $options["max_size_img"]->option_content ?>">
+		<div class="input-group-btn">
+			<button class="btn btn-default save-button">Save</button>
+		</div>
+	</div>
+
 
 	<hr>
 
