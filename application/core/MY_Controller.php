@@ -75,6 +75,10 @@ class MY_Controller extends CI_Controller
 		$this->load->vars($navbars);
 
 		$this->load->model("options_model");
+
+		$options = $this->options_model->get_all_option_by_object();
+		$this->load->vars(["options" => $options]);
+		
 		/**
 		 * Size lớn nhất cho hình ảnh
 		 */

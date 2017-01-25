@@ -29,6 +29,15 @@
 		<p>Giá trị hiện tại: <b id="show_max_size_img"></b> <input name="" id="change_max_size_img"> </p>
 	</div>
 
+	<hr>
+
+	<h2>Size video</h2>
+	<div class="input-group">
+		<input type="text" class="form-control option-value" name="size-video" aria-label="...">
+		<div class="input-group-btn">
+			<button class="btn btn-default save-button">Save</button>
+		</div>
+	</div>
 
 	<hr>
 

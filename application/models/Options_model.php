@@ -27,6 +27,15 @@ class Options_model extends CI_Model {
 		return $this->db->get('Options')->result();
 	}
 
+	public function get_all_option_by_object(){
+		$return = [];
+		$data = $this->get_all_option();
+		foreach ($data as $value){
+			$return[$value->option_key] = $value;
+		}
+		return $return;
+	}
+
 //============ ============  ============ ============
 //
 //============ ============  ============ ============

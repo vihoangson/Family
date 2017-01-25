@@ -56,6 +56,29 @@ class Ajax_action extends REST_Controller {
     }
 
     /**
+     *
+     * @param int $value
+     * @param int $key
+     * @url /api/ajax_action/change_value_options
+     */
+    public function change_value_options_post(){
+        $this->load->model("options_model");
+        $value = $this->input->post("value");
+        $key = $this->input->post("key");
+
+        if($value && $key){
+            if($this->options_model->save_option($key,$value)){
+                $return["status"] = "success";
+                $return["value"] = $value;
+                $return["key"] = $key;
+                $this->response($return);
+            }
+        }
+        $return["status"] = "error";
+        $this->response($return);
+    }
+
+    /**
      * @param $key
      * @url /api/ajax_action/get_value_option
      */
