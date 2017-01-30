@@ -56,7 +56,6 @@
 		?>
 			<?= (isset($custom_js)?$custom_js:""); ?>
 		<script>
-
 			$(document).ready(function() {
 				setInterval(function(){
 					var then  = "05/05/2016 14:20:30";

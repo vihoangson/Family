@@ -170,6 +170,22 @@ class Admin_page extends MY_Controller {
 			echo "</pre>";
 		echo $this->load->view('_includes/footer_admin', null, true);
 	}
+
+    /**
+     * @url /admin/admin_page/custom_css
+     */
+    public function custom_css(){
+        if($this->input->post("content_css")){
+            $this->options_model->save_option("custom_css",$this->input->post("content_css"));
+            die;
+        }
+
+        $custom_css = $this->options_model->get_option("custom_css");
+
+        $this->load->vars(["custom_css"=>$custom_css->option_content]);
+
+        $this->load->view("admin/custom_css");
+    }
 }
 
 /* End of file admin_page.php */

@@ -245,7 +245,7 @@ class Action
 			else{
 				$name_class = "no_has";
 			}
-			$html .= "<div data-date='".$item."' class='date ".$name_class ."' title='".$key."'></div>";
+			$html .= "<div data-date='".$item."' id='date-$key' class='date ".$name_class ."' title='".$key."'></div>";
 			$i++;
 		}
 		$html .= '</div>

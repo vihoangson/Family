@@ -1,3 +1,4 @@
+<style>	<?= $custom_css ?></style>
 <nav class="navbar navbar-default" role="navigation">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
@@ -44,6 +45,7 @@
 							<li><a href="<?= base_url(); ?>homepage/slide"><i class="fa fa-image"></i> Ageing picture</a></li>
 							<li><a href="<?= base_url(); ?>idear"><i class="fa fa-eye"></i> Idear</a></li>
 							<li><a href="<?= base_url(); ?>homepage/custom/tool"><i class="fa fa-facebook"></i> Các công cụ liên quan</a></li>
+							<li><a href="<?= base_url(); ?>admin/admin_page/custom_css"><i class="fa fa-gear"></i> Custom Css</a></li>
 							<li><a href="<?= base_url(); ?>logout"><i class="fa fa-power-off"></i> Logout</a></li>
 						</ul>
 					</li>

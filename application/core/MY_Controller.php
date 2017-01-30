@@ -88,6 +88,10 @@ class MY_Controller extends CI_Controller
 		}else{
 			$max_size_img = 800;
 		}
+
+		$custom_css = $this->options_model->get_option("custom_css");
+		$this->load->vars(["custom_css"=>$custom_css->option_content]);
+
 		define("MAX_SIZE_IMG",$max_size_img);
 	}
 
