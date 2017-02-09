@@ -231,6 +231,9 @@ class Do_ajax extends MY_Controller {
 		echo '<button style="margin-bottom:5px" class="btn btn-default upload-btn"><i class="fa fa-plus"></i> Upload</button>';
 		?>
 		<progress value="0" max="100" class="hidden"></progress>
+
+		<button class='button_load_more_img btn btn-default'>Show images</button>
+
 		<form id='upload_form' method="post" enctype="multipart/form-data">
 			<input type="file" style="display:none;" name='file_x'>
 		</form>

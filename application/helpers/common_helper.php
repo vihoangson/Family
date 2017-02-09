@@ -403,10 +403,16 @@ function show_modal_media($method=null){
 		case "add_img_homepage":
 			?>
 			<script>
+				/**
+				 * Box hình ảnh
+				 */
 				$(".insert-img").open_media({
 					callbackevent_before:function(){
 						$(document).on("click","#modal-upload-media .modal-body img",function(){
-							src = "![]("+$(this).attr("src")+")";
+							// SmartDown add img
+							src = "![]("+$(this).attr("data-src")+")";
+
+							// Đóng modal
 							$("#modal-upload-media").modal("hide");
 							val_text = $("#content").val();
 							$("#content").val(val_text+src);

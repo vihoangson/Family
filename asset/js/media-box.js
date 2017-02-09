@@ -1,3 +1,8 @@
+	/**
+	 * Modal upload model
+	 *
+	 * @param opt
+	 */
 	$.fn.open_media = function(opt){
 		opt.callbackevent_before(this);
 		this.click(function(event) {
@@ -6,13 +11,21 @@
 		});
 	}
 
+	/**
+	 * Action open modal-upload-model
+	 */
 	$.boximg= function(){
-		$("#modal-upload-media .modal-body").load("/ajax/do_ajax/load_media");
+		$("#modal-upload-media .modal-body").load("/ajax/do_ajax/load_media",null,function(){
+			$.reload_media();
+		});
+		
 		$("#modal-upload-media").modal("show");
-		$.reload_media();
 	}
 
 
+	/**
+	 * Event click upload button
+	 */
 	$(document).on("click",".upload-btn",function(){
 		$("#upload_form input[type='file']").trigger("click");
 	});
@@ -47,16 +60,25 @@
 			}
 			$(".list-media").html('');
 			$(".list-media").addClass('autoheight');
+			console.log("load_img");
 			$.each(dataxx, function(index, val) {
+
 				var ele_img = $("\
-					<div class='col-sm-3 thumbnail text-center'>\
-						<img src='"+val.files_path+val.files_name+"'>\
+					<div class='col-sm-3 thumbnail text-center list-media-ele'>\
+						<img data-src='"+val.files_path+val.files_name+"' src='/asset/data/icon/happy/851581_150916191762636_963523626_n.png'>\
 					</div>\
 				")
 				ele_img.appendTo(".list-media");
 			});
+			console.log("end_load_img");
 			$('.list-media > div').autoheight();
 		});
 
 	}
+
+	$(document).on("click",".button_load_more_img",function(){
+		$(".list-media-ele img").map(function(){
+			$(this).attr("src",$(this).data("src"))
+		});
+	})
 
