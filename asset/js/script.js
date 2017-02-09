@@ -1,12 +1,26 @@
-// $(".option-value").each(function(index){
-// 	var key_data = $(this).attr("name");
-// 	var selector_this = $(this);
-// 	$.get("/api/ajax_action/get_value_option",{key:key_data},function(e){
-// 		var value_max_size_img = e.option_content;
-// 		console.log(key_data);
-// 		$("input[name='"+key_data+"']").val(value_max_size_img);
-// 	});
-// });
+
+/**
+ * Load animate date wrote blog
+ *
+ * # https://github.com/vihoangson/Family/issues/19
+ */
+if($(".date.has").length){
+	$(".date.has").addClass("cover_date");
+	var m = $(".date.has");
+	var max_box = m.length
+	i=0;
+	kk = window.setInterval(function(){
+		if(i < max_box){
+			m.eq(i).removeClass("cover_date");
+			i++;
+		}else{
+			clearInterval(kk);
+			return;
+		}
+	},10);
+}
+
+
 
 $(".save-button").click(function(){
 	var input_data = $(this).parent().parent().find("input");

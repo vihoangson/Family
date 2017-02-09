@@ -532,3 +532,12 @@ li.ele_comment:after {
 .kyniem_important div {
     background: #ffe6ed !important;
 }
+
+/**
+ * Load animate date wrote blog
+ *
+ * # https://github.com/vihoangson/Family/issues/19
+ */
+.cover_date{
+    background:gray !important;
+}
