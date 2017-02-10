@@ -5,6 +5,7 @@ class Homepage extends MY_Controller {
 //10153523162001902 Bố Sơn
 
 	public function __construct(){
+		// Fixbug
 		parent::__construct();
 		$this->load->model('kyniem');
 		$this->load->library('image_lib');
