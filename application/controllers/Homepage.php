@@ -14,7 +14,6 @@ class Homepage extends MY_Controller {
 			$response = $this->facebook->get('/me?locale=en_US&fields=name,email');
 			$userNode = $response->getGraphUser();
 		}
-		echo $this->session->userdata('userinfo');
 		$this->init();
 		//============ ============  ============  ============ 
 		// 20160623102454
