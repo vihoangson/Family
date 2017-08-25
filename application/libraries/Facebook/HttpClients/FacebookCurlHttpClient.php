@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\HttpClients;
 
 use Facebook\Http\GraphRawResponse;
@@ -31,8 +32,8 @@ use Facebook\Exceptions\FacebookSDKException;
  *
  * @package Facebook
  */
-class FacebookCurlHttpClient implements FacebookHttpClientInterface
-{
+class FacebookCurlHttpClient implements FacebookHttpClientInterface {
+
     /**
      * @var string The client error message
      */
@@ -66,16 +67,14 @@ class FacebookCurlHttpClient implements FacebookHttpClientInterface
     /**
      * @param FacebookCurl|null Procedural curl as object
      */
-    public function __construct(FacebookCurl $facebookCurl = null)
-    {
-        $this->facebookCurl = $facebookCurl ?: new FacebookCurl();
+    public function __construct(FacebookCurl $facebookCurl = null) {
+        $this->facebookCurl = $facebookCurl ? : new FacebookCurl();
     }
 
     /**
      * @inheritdoc
      */
-    public function send($url, $method, $body, array $headers, $timeOut)
-    {
+    public function send($url, $method, $body, array $headers, $timeOut) {
         $this->openConnection($url, $method, $body, $headers, $timeOut);
         $this->sendRequest();
 
@@ -100,19 +99,18 @@ class FacebookCurlHttpClient implements FacebookHttpClientInterface
      * @param array  $headers The request headers.
      * @param int    $timeOut The timeout in seconds for the request.
      */
-    public function openConnection($url, $method, $body, array $headers, $timeOut)
-    {
+    public function openConnection($url, $method, $body, array $headers, $timeOut) {
         $options = [
-            CURLOPT_CUSTOMREQUEST => $method,
-            CURLOPT_HTTPHEADER => $this->compileRequestHeaders($headers),
-            CURLOPT_URL => $url,
+            CURLOPT_CUSTOMREQUEST  => $method,
+            CURLOPT_HTTPHEADER     => $this->compileRequestHeaders($headers),
+            CURLOPT_URL            => $url,
             CURLOPT_CONNECTTIMEOUT => 10,
-            CURLOPT_TIMEOUT => $timeOut,
+            CURLOPT_TIMEOUT        => $timeOut,
             CURLOPT_RETURNTRANSFER => true, // Follow 301 redirects
-            CURLOPT_HEADER => true, // Enable header processing
+            CURLOPT_HEADER         => true, // Enable header processing
             CURLOPT_SSL_VERIFYHOST => 2,
             CURLOPT_SSL_VERIFYPEER => true,
-            CURLOPT_CAINFO => __DIR__ . '/certs/DigiCertHighAssuranceEVRootCA.pem',
+            CURLOPT_CAINFO         => __DIR__ . '/certs/DigiCertHighAssuranceEVRootCA.pem',
         ];
 
         if ($method !== "GET") {
@@ -126,16 +124,14 @@ class FacebookCurlHttpClient implements FacebookHttpClientInterface
     /**
      * Closes an existing curl connection
      */
-    public function closeConnection()
-    {
+    public function closeConnection() {
         $this->facebookCurl->close();
     }
 
     /**
      * Send the request and get the raw response from curl
      */
-    public function sendRequest()
-    {
+    public function sendRequest() {
         $this->rawResponse = $this->facebookCurl->exec();
     }
 
@@ -146,8 +142,7 @@ class FacebookCurlHttpClient implements FacebookHttpClientInterface
      *
      * @return array
      */
-    public function compileRequestHeaders(array $headers)
-    {
+    public function compileRequestHeaders(array $headers) {
         $return = [];
 
         foreach ($headers as $key => $value) {
@@ -162,12 +157,11 @@ class FacebookCurlHttpClient implements FacebookHttpClientInterface
      *
      * @return array
      */
-    public function extractResponseHeadersAndBody()
-    {
+    public function extractResponseHeadersAndBody() {
         $headerSize = $this->getHeaderSize();
 
         $rawHeaders = mb_substr($this->rawResponse, 0, $headerSize);
-        $rawBody = mb_substr($this->rawResponse, $headerSize);
+        $rawBody    = mb_substr($this->rawResponse, $headerSize);
 
         return [trim($rawHeaders), trim($rawBody)];
     }
@@ -177,8 +171,7 @@ class FacebookCurlHttpClient implements FacebookHttpClientInterface
      *
      * @return integer
      */
-    private function getHeaderSize()
-    {
+    private function getHeaderSize() {
         $headerSize = $this->facebookCurl->getinfo(CURLINFO_HEADER_SIZE);
         // This corrects a Curl bug where header size does not account
         // for additional Proxy headers.
@@ -200,9 +193,8 @@ class FacebookCurlHttpClient implements FacebookHttpClientInterface
      *
      * @return boolean
      */
-    private function needsCurlProxyFix()
-    {
-        $ver = $this->facebookCurl->version();
+    private function needsCurlProxyFix() {
+        $ver     = $this->facebookCurl->version();
         $version = $ver['version_number'];
 
         return $version < self::CURL_PROXY_QUIRK_VER;

@@ -21,12 +21,13 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\PseudoRandomString;
 
 use Facebook\Exceptions\FacebookSDKException;
 
-class OpenSslPseudoRandomStringGenerator implements PseudoRandomStringGeneratorInterface
-{
+class OpenSslPseudoRandomStringGenerator implements PseudoRandomStringGeneratorInterface {
+
     use PseudoRandomStringGeneratorTrait;
 
     /**
@@ -37,8 +38,7 @@ class OpenSslPseudoRandomStringGenerator implements PseudoRandomStringGeneratorI
     /**
      * @throws FacebookSDKException
      */
-    public function __construct()
-    {
+    public function __construct() {
         if (!function_exists('openssl_random_pseudo_bytes')) {
             throw new FacebookSDKException(static::ERROR_MESSAGE . 'The function openssl_random_pseudo_bytes() does not exist.');
         }
@@ -47,12 +47,11 @@ class OpenSslPseudoRandomStringGenerator implements PseudoRandomStringGeneratorI
     /**
      * @inheritdoc
      */
-    public function getPseudoRandomString($length)
-    {
+    public function getPseudoRandomString($length) {
         $this->validateLength($length);
 
         $wasCryptographicallyStrong = false;
-        $binaryString = openssl_random_pseudo_bytes($length, $wasCryptographicallyStrong);
+        $binaryString               = openssl_random_pseudo_bytes($length, $wasCryptographicallyStrong);
 
         if ($binaryString === false) {
             throw new FacebookSDKException(static::ERROR_MESSAGE . 'openssl_random_pseudo_bytes() returned an unknown error.');

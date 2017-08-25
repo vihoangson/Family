@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__.'/../CITestCase.php');
-class Doctrine_Test extends CITestCase
-{
+require_once(__DIR__ . '/../CITestCase.php');
+
+class Doctrine_Test extends CITestCase {
 
     /**
      * Test chức năng doctrine trong source
@@ -10,17 +10,18 @@ class Doctrine_Test extends CITestCase
      * @throws \Doctrine\ORM\OptimisticLockException
      * @throws \Doctrine\ORM\TransactionRequiredException
      */
-    public function test_doctrine(){
+    public function test_doctrine() {
         return false;
-        $item= new Entity\Item;
+        $item = new Entity\Item;
         //$item->getAllItemArrays();
         $item->setName("son123");
         $item->setDetail("NoiDung");
         $this->CI->em->persist($item);
         $this->CI->em->flush();
-        $this->CI->em->getRepository("Entity\Item")->getAllItemArrays();
+        $this->CI->em->getRepository("Entity\Item")
+                     ->getAllItemArrays();
         /** @var Entity\Item $entity */
-        $entity = $this->CI->em->find("Entity\Item",1);
+        $entity = $this->CI->em->find("Entity\Item", 1);
         $entity->setName("sondeptrai");
         $this->CI->em->persist($entity);
         $this->CI->em->flush();
@@ -30,7 +31,7 @@ class Doctrine_Test extends CITestCase
         //$this->em->flush();
     }
 
-    public function test_son123(){
+    public function test_son123() {
         $this->assertTrue(true);
     }
 }

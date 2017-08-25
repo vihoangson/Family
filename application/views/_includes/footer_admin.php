@@ -1,5 +1,5 @@
-		</div>
-	</div>
+</div>
+</div>
 <?php
-	$this->load->view('_includes/footer');
+$this->load->view('_includes/footer');
 ?>

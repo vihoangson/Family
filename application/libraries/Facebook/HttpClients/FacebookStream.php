@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\HttpClients;
 
 /**
@@ -31,8 +32,8 @@ namespace Facebook\HttpClients;
  *
  * @package Facebook
  */
-class FacebookStream
-{
+class FacebookStream {
+
     /**
      * @var resource Context stream resource instance
      */
@@ -48,8 +49,7 @@ class FacebookStream
      *
      * @param array $options
      */
-    public function streamContextCreate(array $options)
-    {
+    public function streamContextCreate(array $options) {
         $this->stream = stream_context_create($options);
     }
 
@@ -58,8 +58,7 @@ class FacebookStream
      *
      * @return array
      */
-    public function getResponseHeaders()
-    {
+    public function getResponseHeaders() {
         return $this->responseHeaders;
     }
 
@@ -70,10 +69,9 @@ class FacebookStream
      *
      * @return mixed
      */
-    public function fileGetContents($url)
-    {
-        $rawResponse = file_get_contents($url, false, $this->stream);
-        $this->responseHeaders = $http_response_header ?: [];
+    public function fileGetContents($url) {
+        $rawResponse           = file_get_contents($url, false, $this->stream);
+        $this->responseHeaders = $http_response_header ? : [];
 
         return $rawResponse;
     }

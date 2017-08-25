@@ -21,12 +21,12 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\PseudoRandomString;
 
 use Facebook\Exceptions\FacebookSDKException;
 
-class UrandomPseudoRandomStringGenerator implements PseudoRandomStringGeneratorInterface
-{
+class UrandomPseudoRandomStringGenerator implements PseudoRandomStringGeneratorInterface {
 
     use PseudoRandomStringGeneratorTrait;
 
@@ -38,36 +38,25 @@ class UrandomPseudoRandomStringGenerator implements PseudoRandomStringGeneratorI
     /**
      * @throws FacebookSDKException
      */
-    public function __construct()
-    {
+    public function __construct() {
         if (ini_get('open_basedir')) {
-            throw new FacebookSDKException(
-                static::ERROR_MESSAGE .
-                'There is an open_basedir constraint that prevents access to /dev/urandom.'
-            );
+            throw new FacebookSDKException(static::ERROR_MESSAGE . 'There is an open_basedir constraint that prevents access to /dev/urandom.');
         }
 
         if (!is_readable('/dev/urandom')) {
-            throw new FacebookSDKException(
-                static::ERROR_MESSAGE .
-                'Unable to read from /dev/urandom.'
-            );
+            throw new FacebookSDKException(static::ERROR_MESSAGE . 'Unable to read from /dev/urandom.');
         }
     }
 
     /**
      * @inheritdoc
      */
-    public function getPseudoRandomString($length)
-    {
+    public function getPseudoRandomString($length) {
         $this->validateLength($length);
 
         $stream = fopen('/dev/urandom', 'rb');
         if (!is_resource($stream)) {
-            throw new FacebookSDKException(
-                static::ERROR_MESSAGE .
-                'Unable to open stream to /dev/urandom.'
-            );
+            throw new FacebookSDKException(static::ERROR_MESSAGE . 'Unable to open stream to /dev/urandom.');
         }
 
         if (!defined('HHVM_VERSION')) {
@@ -78,10 +67,7 @@ class UrandomPseudoRandomStringGenerator implements PseudoRandomStringGeneratorI
         fclose($stream);
 
         if (!$binaryString) {
-            throw new FacebookSDKException(
-                static::ERROR_MESSAGE .
-                'Stream to /dev/urandom returned no data.'
-            );
+            throw new FacebookSDKException(static::ERROR_MESSAGE . 'Stream to /dev/urandom returned no data.');
         }
 
         return $this->binToHex($binaryString, $length);

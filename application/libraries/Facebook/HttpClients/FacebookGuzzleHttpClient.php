@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\HttpClients;
 
 use Facebook\Http\GraphRawResponse;
@@ -31,8 +32,8 @@ use GuzzleHttp\Message\ResponseInterface;
 use GuzzleHttp\Ring\Exception\RingException;
 use GuzzleHttp\Exception\RequestException;
 
-class FacebookGuzzleHttpClient implements FacebookHttpClientInterface
-{
+class FacebookGuzzleHttpClient implements FacebookHttpClientInterface {
+
     /**
      * @var \GuzzleHttp\Client The Guzzle client.
      */
@@ -41,22 +42,20 @@ class FacebookGuzzleHttpClient implements FacebookHttpClientInterface
     /**
      * @param \GuzzleHttp\Client|null The Guzzle client.
      */
-    public function __construct(Client $guzzleClient = null)
-    {
-        $this->guzzleClient = $guzzleClient ?: new Client();
+    public function __construct(Client $guzzleClient = null) {
+        $this->guzzleClient = $guzzleClient ? : new Client();
     }
 
     /**
      * @inheritdoc
      */
-    public function send($url, $method, $body, array $headers, $timeOut)
-    {
+    public function send($url, $method, $body, array $headers, $timeOut) {
         $options = [
-            'headers' => $headers,
-            'body' => $body,
-            'timeout' => $timeOut,
+            'headers'         => $headers,
+            'body'            => $body,
+            'timeout'         => $timeOut,
             'connect_timeout' => 10,
-            'verify' => __DIR__ . '/certs/DigiCertHighAssuranceEVRootCA.pem',
+            'verify'          => __DIR__ . '/certs/DigiCertHighAssuranceEVRootCA.pem',
         ];
         $request = $this->guzzleClient->createRequest($method, $url, $options);
 
@@ -70,8 +69,8 @@ class FacebookGuzzleHttpClient implements FacebookHttpClientInterface
             }
         }
 
-        $rawHeaders = $this->getHeadersAsString($rawResponse);
-        $rawBody = $rawResponse->getBody();
+        $rawHeaders     = $this->getHeadersAsString($rawResponse);
+        $rawBody        = $rawResponse->getBody();
         $httpStatusCode = $rawResponse->getStatusCode();
 
         return new GraphRawResponse($rawHeaders, $rawBody, $httpStatusCode);
@@ -84,9 +83,8 @@ class FacebookGuzzleHttpClient implements FacebookHttpClientInterface
      *
      * @return string
      */
-    public function getHeadersAsString(ResponseInterface $response)
-    {
-        $headers = $response->getHeaders();
+    public function getHeadersAsString(ResponseInterface $response) {
+        $headers    = $response->getHeaders();
         $rawHeaders = [];
         foreach ($headers as $name => $values) {
             $rawHeaders[] = $name . ": " . implode(", ", $values);

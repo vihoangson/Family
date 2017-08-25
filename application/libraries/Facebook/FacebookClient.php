@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook;
 
 use Facebook\HttpClients\FacebookHttpClientInterface;
@@ -33,8 +34,8 @@ use Facebook\Exceptions\FacebookSDKException;
  *
  * @package Facebook
  */
-class FacebookClient
-{
+class FacebookClient {
+
     /**
      * @const string Production Graph API URL.
      */
@@ -91,10 +92,9 @@ class FacebookClient
      * @param FacebookHttpClientInterface|null $httpClientHandler
      * @param boolean                          $enableBeta
      */
-    public function __construct(FacebookHttpClientInterface $httpClientHandler = null, $enableBeta = false)
-    {
-        $this->httpClientHandler = $httpClientHandler ?: $this->detectHttpClientHandler();
-        $this->enableBetaMode = $enableBeta;
+    public function __construct(FacebookHttpClientInterface $httpClientHandler = null, $enableBeta = false) {
+        $this->httpClientHandler = $httpClientHandler ? : $this->detectHttpClientHandler();
+        $this->enableBetaMode    = $enableBeta;
     }
 
     /**
@@ -102,8 +102,7 @@ class FacebookClient
      *
      * @param FacebookHttpClientInterface $httpClientHandler
      */
-    public function setHttpClientHandler(FacebookHttpClientInterface $httpClientHandler)
-    {
+    public function setHttpClientHandler(FacebookHttpClientInterface $httpClientHandler) {
         $this->httpClientHandler = $httpClientHandler;
     }
 
@@ -112,8 +111,7 @@ class FacebookClient
      *
      * @return FacebookHttpClientInterface
      */
-    public function getHttpClientHandler()
-    {
+    public function getHttpClientHandler() {
         return $this->httpClientHandler;
     }
 
@@ -122,8 +120,7 @@ class FacebookClient
      *
      * @return FacebookHttpClientInterface
      */
-    public function detectHttpClientHandler()
-    {
+    public function detectHttpClientHandler() {
         return extension_loaded('curl') ? new FacebookCurlHttpClient() : new FacebookStreamHttpClient();
     }
 
@@ -132,8 +129,7 @@ class FacebookClient
      *
      * @param boolean $betaMode
      */
-    public function enableBetaMode($betaMode = true)
-    {
+    public function enableBetaMode($betaMode = true) {
         $this->enableBetaMode = $betaMode;
     }
 
@@ -144,8 +140,7 @@ class FacebookClient
      *
      * @return string
      */
-    public function getBaseGraphUrl($postToVideoUrl = false)
-    {
+    public function getBaseGraphUrl($postToVideoUrl = false) {
         if ($postToVideoUrl) {
             return $this->enableBetaMode ? static::BASE_GRAPH_VIDEO_URL_BETA : static::BASE_GRAPH_VIDEO_URL;
         }
@@ -160,10 +155,9 @@ class FacebookClient
      *
      * @return array
      */
-    public function prepareRequestMessage(FacebookRequest $request)
-    {
+    public function prepareRequestMessage(FacebookRequest $request) {
         $postToVideoUrl = $request->containsVideoUploads();
-        $url = $this->getBaseGraphUrl($postToVideoUrl) . $request->getUrl();
+        $url            = $this->getBaseGraphUrl($postToVideoUrl) . $request->getUrl();
 
         // If we're sending files they should be sent as multipart/form-data
         if ($request->containsFileUploads()) {
@@ -195,8 +189,7 @@ class FacebookClient
      *
      * @throws FacebookSDKException
      */
-    public function sendRequest(FacebookRequest $request)
-    {
+    public function sendRequest(FacebookRequest $request) {
         if (get_class($request) === 'Facebook\FacebookRequest') {
             $request->validateAccessToken();
         }
@@ -217,12 +210,7 @@ class FacebookClient
 
         static::$requestCount++;
 
-        $returnResponse = new FacebookResponse(
-            $request,
-            $rawResponse->getBody(),
-            $rawResponse->getHttpResponseCode(),
-            $rawResponse->getHeaders()
-        );
+        $returnResponse = new FacebookResponse($request, $rawResponse->getBody(), $rawResponse->getHttpResponseCode(), $rawResponse->getHeaders());
 
         if ($returnResponse->isError()) {
             throw $returnResponse->getThrownException();
@@ -240,8 +228,7 @@ class FacebookClient
      *
      * @throws FacebookSDKException
      */
-    public function sendBatchRequest(FacebookBatchRequest $request)
-    {
+    public function sendBatchRequest(FacebookBatchRequest $request) {
         $request->prepareRequestsForBatch();
         $facebookResponse = $this->sendRequest($request);
 

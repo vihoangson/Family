@@ -1,6 +1,6 @@
 <?php
-    // /homepage/custom/sample_markdown
-    $string = "
+// /homepage/custom/sample_markdown
+$string = "
     Sample Markdown Cheat Sheet
     =========================== 
 
@@ -300,7 +300,7 @@
 
 
     ";
-    $this->load->view('_includes/header'); 
-        echo nl2br($string);
-    $this->load->view('_includes/footer'); 
- ?>
+$this->load->view('_includes/header');
+echo nl2br($string);
+$this->load->view('_includes/footer');
+?>

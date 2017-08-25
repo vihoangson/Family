@@ -21,14 +21,14 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\PersistentData;
 
 use InvalidArgumentException;
 
-class PersistentDataFactory
-{
-    private function __construct()
-    {
+class PersistentDataFactory {
+
+    private function __construct() {
         // a factory constructor should never be invoked
     }
 
@@ -37,16 +37,15 @@ class PersistentDataFactory
      *
      * @param PersistentDataInterface|string|null $handler
      *
-     * @throws InvalidArgumentException If the persistent data handler isn't "session", "memory", or an instance of Facebook\PersistentData\PersistentDataInterface.
+     * @throws InvalidArgumentException If the persistent data handler isn't "session", "memory", or an instance of
+     *                                  Facebook\PersistentData\PersistentDataInterface.
      *
      * @return PersistentDataInterface
      */
-    public static function createPersistentDataHandler($handler)
-    {
+    public static function createPersistentDataHandler($handler) {
         if (!$handler) {
-            return session_status() === PHP_SESSION_ACTIVE
-                ? new FacebookSessionPersistentDataHandler()
-                : new FacebookMemoryPersistentDataHandler();
+            return session_status() === PHP_SESSION_ACTIVE ? new FacebookSessionPersistentDataHandler() :
+                new FacebookMemoryPersistentDataHandler();
         }
 
         if ($handler instanceof PersistentDataInterface) {

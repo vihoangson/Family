@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook;
 
 use ArrayIterator;
@@ -34,8 +35,8 @@ use Facebook\Exceptions\FacebookSDKException;
  *
  * @package Facebook
  */
-class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate, ArrayAccess
-{
+class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate, ArrayAccess {
+
     /**
      * @var array An array of FacebookRequest entities to send.
      */
@@ -54,8 +55,7 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      * @param AccessToken|string|null $accessToken
      * @param string|null             $graphVersion
      */
-    public function __construct(FacebookApp $app = null, array $requests = [], $accessToken = null, $graphVersion = null)
-    {
+    public function __construct(FacebookApp $app = null, array $requests = [], $accessToken = null, $graphVersion = null) {
         parent::__construct($app, $accessToken, 'POST', '', [], null, $graphVersion);
 
         $this->add($requests);
@@ -71,8 +71,7 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      *
      * @throws \InvalidArgumentException
      */
-    public function add($request, $name = null)
-    {
+    public function add($request, $name = null) {
         if (is_array($request)) {
             foreach ($request as $key => $req) {
                 $this->add($req, $key);
@@ -87,7 +86,7 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
 
         $this->addFallbackDefaults($request);
         $requestToAdd = [
-            'name' => $name,
+            'name'    => $name,
             'request' => $request,
         ];
 
@@ -108,8 +107,7 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      *
      * @throws FacebookSDKException
      */
-    public function addFallbackDefaults(FacebookRequest $request)
-    {
+    public function addFallbackDefaults(FacebookRequest $request) {
         if (!$request->getApp()) {
             $app = $this->getApp();
             if (!$app) {
@@ -136,13 +134,12 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      *
      * @throws FacebookSDKException
      */
-    public function extractFileAttachments(FacebookRequest $request)
-    {
+    public function extractFileAttachments(FacebookRequest $request) {
         if (!$request->containsFileUploads()) {
             return null;
         }
 
-        $files = $request->getFiles();
+        $files     = $request->getFiles();
         $fileNames = [];
         foreach ($files as $file) {
             $fileName = uniqid();
@@ -161,8 +158,7 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      *
      * @return array
      */
-    public function getRequests()
-    {
+    public function getRequests() {
         return $this->requests;
     }
 
@@ -171,12 +167,11 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      *
      * @return string
      */
-    public function prepareRequestsForBatch()
-    {
+    public function prepareRequestsForBatch() {
         $this->validateBatchRequestCount();
 
         $params = [
-            'batch' => $this->convertRequestsToJson(),
+            'batch'           => $this->convertRequestsToJson(),
             'include_headers' => true,
         ];
         $this->setParams($params);
@@ -187,12 +182,11 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      *
      * @return string
      */
-    public function convertRequestsToJson()
-    {
+    public function convertRequestsToJson() {
         $requests = [];
         foreach ($this->requests as $request) {
             $attachedFiles = isset($request['attached_files']) ? $request['attached_files'] : null;
-            $requests[] = $this->requestEntityToBatchArray($request['request'], $request['name'], $attachedFiles);
+            $requests[]    = $this->requestEntityToBatchArray($request['request'], $request['name'], $attachedFiles);
         }
 
         return json_encode($requests);
@@ -203,8 +197,7 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      *
      * @throws FacebookSDKException
      */
-    public function validateBatchRequestCount()
-    {
+    public function validateBatchRequestCount() {
         $batchCount = count($this->requests);
         if ($batchCount === 0) {
             throw new FacebookSDKException('There are no batch requests to send.');
@@ -223,23 +216,23 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      *
      * @return array
      */
-    public function requestEntityToBatchArray(FacebookRequest $request, $requestName = null, $attachedFiles = null)
-    {
+    public function requestEntityToBatchArray(FacebookRequest $request, $requestName = null, $attachedFiles = null) {
         $compiledHeaders = [];
-        $headers = $request->getHeaders();
+        $headers         = $request->getHeaders();
         foreach ($headers as $name => $value) {
             $compiledHeaders[] = $name . ': ' . $value;
         }
 
         $batch = [
-            'headers' => $compiledHeaders,
-            'method' => $request->getMethod(),
+            'headers'      => $compiledHeaders,
+            'method'       => $request->getMethod(),
             'relative_url' => $request->getUrl(),
         ];
 
         // Since file uploads are moved to the root request of a batch request,
         // the child requests will always be URL-encoded.
-        $body = $request->getUrlEncodedBody()->getBody();
+        $body = $request->getUrlEncodedBody()
+                        ->getBody();
         if ($body) {
             $batch['body'] = $body;
         }
@@ -264,40 +257,35 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
      *
      * @return ArrayIterator
      */
-    public function getIterator()
-    {
+    public function getIterator() {
         return new ArrayIterator($this->requests);
     }
 
     /**
      * @inheritdoc
      */
-    public function offsetSet($offset, $value)
-    {
+    public function offsetSet($offset, $value) {
         $this->add($value, $offset);
     }
 
     /**
      * @inheritdoc
      */
-    public function offsetExists($offset)
-    {
+    public function offsetExists($offset) {
         return isset($this->requests[$offset]);
     }
 
     /**
      * @inheritdoc
      */
-    public function offsetUnset($offset)
-    {
+    public function offsetUnset($offset) {
         unset($this->requests[$offset]);
     }
 
     /**
      * @inheritdoc
      */
-    public function offsetGet($offset)
-    {
+    public function offsetGet($offset) {
         return isset($this->requests[$offset]) ? $this->requests[$offset] : null;
     }
 }

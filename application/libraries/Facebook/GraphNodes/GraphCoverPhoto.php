@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\GraphNodes;
 
 /**
@@ -28,25 +29,23 @@ namespace Facebook\GraphNodes;
  *
  * @package Facebook
  */
-class GraphCoverPhoto extends GraphNode
-{
+class GraphCoverPhoto extends GraphNode {
+
     /**
      * Returns the id of cover if it exists
      *
      * @return int|null
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->getField('id');
     }
-    
+
     /**
      * Returns the source of cover if it exists
      *
      * @return string|null
      */
-    public function getSource()
-    {
+    public function getSource() {
         return $this->getField('source');
     }
 
@@ -55,8 +54,7 @@ class GraphCoverPhoto extends GraphNode
      *
      * @return int|null
      */
-    public function getOffsetX()
-    {
+    public function getOffsetX() {
         return $this->getField('offset_x');
     }
 
@@ -65,8 +63,7 @@ class GraphCoverPhoto extends GraphNode
      *
      * @return int|null
      */
-    public function getOffsetY()
-    {
+    public function getOffsetY() {
         return $this->getField('offset_y');
     }
 }

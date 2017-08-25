@@ -1,5 +1,6 @@
 <?php
-require_once(__DIR__.'/../CITestCase.php');
+require_once(__DIR__ . '/../CITestCase.php');
+
 class TestCommon extends CITestCase {
 
     /**
@@ -9,8 +10,8 @@ class TestCommon extends CITestCase {
      * @author Hoang Son
      * @create 20160610155500
      **/
-    public function test_check_table_exists(){
-        $this->assertTrue(is_dir(FCPATH), "Không có folder:".FCPATH);
+    public function test_check_table_exists() {
+        $this->assertTrue(is_dir(FCPATH), "Không có folder:" . FCPATH);
     }
 
 

@@ -21,16 +21,17 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\GraphNodes;
 
 /**
  * Class GraphList
  *
- * @package Facebook
+ * @package    Facebook
  *
  * @deprecated 5.0.0 GraphList has been renamed to GraphEdge
- * @todo v6: Remove this class
+ * @todo       v6: Remove this class
  */
-class GraphList extends GraphEdge
-{
+class GraphList extends GraphEdge {
+
 }

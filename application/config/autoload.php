@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require FCPATH."vendor/autoload.php";
+require FCPATH . "vendor/autoload.php";
 /*
 | -------------------------------------------------------------------
 | AUTO-LOADER
@@ -39,7 +39,7 @@ require FCPATH."vendor/autoload.php";
 |  $autoload['packages'] = array(APPPATH.'third_party', '/usr/local/shared');
 |
 */
-$autoload['packages'] = array();
+$autoload['packages'] = [];
 
 /*
 | -------------------------------------------------------------------
@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array("database","Session","Markdown","Action","doctrine");
+$autoload['libraries'] = ["database", "Session", "Markdown", "Action", "doctrine"];
 
 /*
 | -------------------------------------------------------------------
@@ -73,7 +73,7 @@ $autoload['libraries'] = array("database","Session","Markdown","Action","doctrin
 |
 |	$autoload['drivers'] = array('cache');
 */
-$autoload['drivers'] = array();
+$autoload['drivers'] = [];
 
 /*
 | -------------------------------------------------------------------
@@ -83,7 +83,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array("url","le","debug","common","form");
+$autoload['helper'] = ["url", "le", "debug", "common", "form"];
 
 /*
 | -------------------------------------------------------------------
@@ -97,7 +97,7 @@ $autoload['helper'] = array("url","le","debug","common","form");
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array("family/config","family/emotion_yahoo","facebook");
+$autoload['config'] = ["family/config", "family/emotion_yahoo", "facebook"];
 
 /*
 | -------------------------------------------------------------------
@@ -111,7 +111,7 @@ $autoload['config'] = array("family/config","family/emotion_yahoo","facebook");
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
 |
 */
-$autoload['language'] = array();
+$autoload['language'] = [];
 
 /*
 | -------------------------------------------------------------------
@@ -126,4 +126,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array("Options_model");
+$autoload['model'] = ["Options_model"];

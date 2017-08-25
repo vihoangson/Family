@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\PersistentData;
 
 /**
@@ -28,8 +29,8 @@ namespace Facebook\PersistentData;
  *
  * @package Facebook
  */
-class FacebookMemoryPersistentDataHandler implements PersistentDataInterface
-{
+class FacebookMemoryPersistentDataHandler implements PersistentDataInterface {
+
     /**
      * @var array The session data to keep in memory.
      */
@@ -38,16 +39,14 @@ class FacebookMemoryPersistentDataHandler implements PersistentDataInterface
     /**
      * @inheritdoc
      */
-    public function get($key)
-    {
+    public function get($key) {
         return isset($this->sessionData[$key]) ? $this->sessionData[$key] : null;
     }
 
     /**
      * @inheritdoc
      */
-    public function set($key, $value)
-    {
+    public function set($key, $value) {
         $this->sessionData[$key] = $value;
     }
 }

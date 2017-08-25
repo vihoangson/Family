@@ -50,23 +50,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'homepage';
-$route['login'] = 'homepage/login';
-$route['logout'] = 'homepage/logout';
-$route['setting'] = 'homepage/setting';
-$route['count_down'] = 'homepage/count_down';
-$route['calendar'] = 'homepage/calendar';
-$route['no-allow'] = 'error_page/no_allow';
+$route['login']              = 'homepage/login';
+$route['logout']             = 'homepage/logout';
+$route['setting']            = 'homepage/setting';
+$route['count_down']         = 'homepage/count_down';
+$route['calendar']           = 'homepage/calendar';
+$route['no-allow']           = 'error_page/no_allow';
 
 $route['custom/(:any)'] = 'homepage/custom/$1';
 
 //$route['admin'] = 'admin/users/index';
 
-$route['admin'] = 'admin/admin_page';
-$route['admin/(:any)'] = 'admin/admin_page/$1';
-$route['blog'] = 'blog/blog_controller/index';
-$route['blog/create'] = 'blog/blog_controller/input';
-$route['blog/(:any)'] = 'blog/blog_controller/$1';
+$route['admin']              = 'admin/admin_page';
+$route['admin/(:any)']       = 'admin/admin_page/$1';
+$route['blog']               = 'blog/blog_controller/index';
+$route['blog/create']        = 'blog/blog_controller/input';
+$route['blog/(:any)']        = 'blog/blog_controller/$1';
 $route['blog/(:any)/(:any)'] = 'blog/blog_controller/$1/$2';
 
-$route['404_override'] = 'homepage/error404';
-$route['translate_uri_dashes'] = FALSE;
+$route['404_override']         = 'homepage/error404';
+$route['translate_uri_dashes'] = false;

@@ -21,15 +21,15 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\PseudoRandomString;
 
 use Facebook\Exceptions\FacebookSDKException;
 use InvalidArgumentException;
 
-class PseudoRandomStringGeneratorFactory
-{
-    private function __construct()
-    {
+class PseudoRandomStringGeneratorFactory {
+
+    private function __construct() {
         // a factory constructor should never be invoked
     }
 
@@ -38,12 +38,13 @@ class PseudoRandomStringGeneratorFactory
      *
      * @param PseudoRandomStringGeneratorInterface|string|null $generator
      *
-     * @throws InvalidArgumentException If the pseudo random string generator must be set to "mcrypt", "openssl", or "urandom", or be an instance of Facebook\PseudoRandomString\PseudoRandomStringGeneratorInterface.
+     * @throws InvalidArgumentException If the pseudo random string generator must be set to "mcrypt", "openssl", or
+     *                                  "urandom", or be an instance of
+     *                                  Facebook\PseudoRandomString\PseudoRandomStringGeneratorInterface.
      *
      * @return PseudoRandomStringGeneratorInterface
      */
-    public static function createPseudoRandomStringGenerator($generator)
-    {
+    public static function createPseudoRandomStringGenerator($generator) {
         if (!$generator) {
             return self::detectDefaultPseudoRandomStringGenerator();
         }
@@ -72,8 +73,7 @@ class PseudoRandomStringGeneratorFactory
      *
      * @return PseudoRandomStringGeneratorInterface
      */
-    private static function detectDefaultPseudoRandomStringGenerator()
-    {
+    private static function detectDefaultPseudoRandomStringGenerator() {
         // Since openssl_random_pseudo_bytes() can sometimes return non-cryptographically
         // secure pseudo-random strings (in rare cases), we check for mcrypt_create_iv() first.
         if (function_exists('mcrypt_create_iv')) {

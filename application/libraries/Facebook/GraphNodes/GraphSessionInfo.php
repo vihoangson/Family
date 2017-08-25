@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\GraphNodes;
 
 /**
@@ -28,15 +29,14 @@ namespace Facebook\GraphNodes;
  *
  * @package Facebook
  */
-class GraphSessionInfo extends GraphNode
-{
+class GraphSessionInfo extends GraphNode {
+
     /**
      * Returns the application id the token was issued for.
      *
      * @return string|null
      */
-    public function getAppId()
-    {
+    public function getAppId() {
         return $this->getField('app_id');
     }
 
@@ -45,8 +45,7 @@ class GraphSessionInfo extends GraphNode
      *
      * @return string|null
      */
-    public function getApplication()
-    {
+    public function getApplication() {
         return $this->getField('application');
     }
 
@@ -55,8 +54,7 @@ class GraphSessionInfo extends GraphNode
      *
      * @return \DateTime|null
      */
-    public function getExpiresAt()
-    {
+    public function getExpiresAt() {
         return $this->getField('expires_at');
     }
 
@@ -65,8 +63,7 @@ class GraphSessionInfo extends GraphNode
      *
      * @return boolean
      */
-    public function getIsValid()
-    {
+    public function getIsValid() {
         return $this->getField('is_valid');
     }
 
@@ -75,8 +72,7 @@ class GraphSessionInfo extends GraphNode
      *
      * @return \DateTime|null
      */
-    public function getIssuedAt()
-    {
+    public function getIssuedAt() {
         return $this->getField('issued_at');
     }
 
@@ -85,8 +81,7 @@ class GraphSessionInfo extends GraphNode
      *
      * @return array
      */
-    public function getScopes()
-    {
+    public function getScopes() {
         return $this->getField('scopes');
     }
 
@@ -95,8 +90,7 @@ class GraphSessionInfo extends GraphNode
      *
      * @return string|null
      */
-    public function getUserId()
-    {
+    public function getUserId() {
         return $this->getField('user_id');
     }
 }

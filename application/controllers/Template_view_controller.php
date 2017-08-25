@@ -3,10 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Template_view_controller extends MY_Controller {
 
-	public function index()
-	{
-		$this->load->view('template_view');
-	}
+    public function index() {
+        $this->load->view('template_view');
+    }
 
 }
 

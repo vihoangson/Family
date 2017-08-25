@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\FileUpload;
 
 use Facebook\Authentication\AccessToken;
@@ -36,8 +37,8 @@ use Facebook\FacebookRequest;
  *
  * @package Facebook
  */
-class FacebookResumableUploader
-{
+class FacebookResumableUploader {
+
     /**
      * @var FacebookApp
      */
@@ -64,29 +65,27 @@ class FacebookResumableUploader
      * @param AccessToken|string|null $accessToken
      * @param string                  $graphVersion
      */
-    public function __construct(FacebookApp $app, FacebookClient $client, $accessToken, $graphVersion)
-    {
-        $this->app = $app;
-        $this->client = $client;
-        $this->accessToken = $accessToken;
+    public function __construct(FacebookApp $app, FacebookClient $client, $accessToken, $graphVersion) {
+        $this->app          = $app;
+        $this->client       = $client;
+        $this->accessToken  = $accessToken;
         $this->graphVersion = $graphVersion;
     }
 
     /**
      * Upload by chunks - start phase
      *
-     * @param string $endpoint
+     * @param string       $endpoint
      * @param FacebookFile $file
      *
      * @return FacebookTransferChunk
      *
      * @throws FacebookSDKException
      */
-    public function start($endpoint, FacebookFile $file)
-    {
-        $params = [
+    public function start($endpoint, FacebookFile $file) {
+        $params   = [
             'upload_phase' => 'start',
-            'file_size' => $file->getSize(),
+            'file_size'    => $file->getSize(),
         ];
         $response = $this->sendUploadRequest($endpoint, $params);
 
@@ -96,21 +95,20 @@ class FacebookResumableUploader
     /**
      * Upload by chunks - transfer phase
      *
-     * @param string $endpoint
+     * @param string                $endpoint
      * @param FacebookTransferChunk $chunk
-     * @param boolean $allowToThrow
+     * @param boolean               $allowToThrow
      *
      * @return FacebookTransferChunk
      *
      * @throws FacebookResponseException
      */
-    public function transfer($endpoint, FacebookTransferChunk $chunk, $allowToThrow = false)
-    {
+    public function transfer($endpoint, FacebookTransferChunk $chunk, $allowToThrow = false) {
         $params = [
-            'upload_phase' => 'transfer',
+            'upload_phase'      => 'transfer',
             'upload_session_id' => $chunk->getUploadSessionId(),
-            'start_offset' => $chunk->getStartOffset(),
-            'video_file_chunk' => $chunk->getPartialFile(),
+            'start_offset'      => $chunk->getStartOffset(),
+            'video_file_chunk'  => $chunk->getPartialFile(),
         ];
 
         try {
@@ -133,16 +131,15 @@ class FacebookResumableUploader
      *
      * @param string $endpoint
      * @param string $uploadSessionId
-     * @param array $metadata The metadata associated with the file.
+     * @param array  $metadata The metadata associated with the file.
      *
      * @return boolean
      *
      * @throws FacebookSDKException
      */
-    public function finish($endpoint, $uploadSessionId, $metadata = [])
-    {
-        $params = array_merge($metadata, [
-            'upload_phase' => 'finish',
+    public function finish($endpoint, $uploadSessionId, $metadata = []) {
+        $params   = array_merge($metadata, [
+            'upload_phase'      => 'finish',
             'upload_session_id' => $uploadSessionId,
         ]);
         $response = $this->sendUploadRequest($endpoint, $params);
@@ -154,14 +151,14 @@ class FacebookResumableUploader
      * Helper to make a FacebookRequest and send it.
      *
      * @param string $endpoint The endpoint to POST to.
-     * @param array $params The params to send with the request.
+     * @param array  $params   The params to send with the request.
      *
      * @return array
      */
-    private function sendUploadRequest($endpoint, $params = [])
-    {
+    private function sendUploadRequest($endpoint, $params = []) {
         $request = new FacebookRequest($this->app, $this->accessToken, 'POST', $endpoint, $params, null, $this->graphVersion);
 
-        return $this->client->sendRequest($request)->getDecodedBody();
+        return $this->client->sendRequest($request)
+                            ->getDecodedBody();
     }
 }

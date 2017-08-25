@@ -21,12 +21,13 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook;
 
 use Facebook\Authentication\AccessToken;
 
-class FacebookApp implements \Serializable
-{
+class FacebookApp implements \Serializable {
+
     /**
      * @var string The app ID.
      */
@@ -41,9 +42,8 @@ class FacebookApp implements \Serializable
      * @param string $id
      * @param string $secret
      */
-    public function __construct($id, $secret)
-    {
-        $this->id = $id;
+    public function __construct($id, $secret) {
+        $this->id     = $id;
         $this->secret = $secret;
     }
 
@@ -52,8 +52,7 @@ class FacebookApp implements \Serializable
      *
      * @return string
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -62,8 +61,7 @@ class FacebookApp implements \Serializable
      *
      * @return string
      */
-    public function getSecret()
-    {
+    public function getSecret() {
         return $this->secret;
     }
 
@@ -72,8 +70,7 @@ class FacebookApp implements \Serializable
      *
      * @return AccessToken
      */
-    public function getAccessToken()
-    {
+    public function getAccessToken() {
         return new AccessToken($this->id . '|' . $this->secret);
     }
 
@@ -82,8 +79,7 @@ class FacebookApp implements \Serializable
      *
      * @return string
      */
-    public function serialize()
-    {
+    public function serialize() {
         return serialize([$this->id, $this->secret]);
     }
 
@@ -92,8 +88,7 @@ class FacebookApp implements \Serializable
      *
      * @param string $serialized
      */
-    public function unserialize($serialized)
-    {
+    public function unserialize($serialized) {
         list($id, $secret) = unserialize($serialized);
 
         $this->__construct($id, $secret);

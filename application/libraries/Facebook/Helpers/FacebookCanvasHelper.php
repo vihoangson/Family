@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\Helpers;
 
 /**
@@ -28,15 +29,14 @@ namespace Facebook\Helpers;
  *
  * @package Facebook
  */
-class FacebookCanvasHelper extends FacebookSignedRequestFromInputHelper
-{
+class FacebookCanvasHelper extends FacebookSignedRequestFromInputHelper {
+
     /**
      * Returns the app data value.
      *
      * @return mixed|null
      */
-    public function getAppData()
-    {
+    public function getAppData() {
         return $this->signedRequest ? $this->signedRequest->get('app_data') : null;
     }
 
@@ -45,8 +45,7 @@ class FacebookCanvasHelper extends FacebookSignedRequestFromInputHelper
      *
      * @return string|null
      */
-    public function getRawSignedRequest()
-    {
-        return $this->getRawSignedRequestFromPost() ?: null;
+    public function getRawSignedRequest() {
+        return $this->getRawSignedRequestFromPost() ? : null;
     }
 }

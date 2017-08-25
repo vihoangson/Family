@@ -1,4 +1,5 @@
 <?php
+
 namespace Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -7,8 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @Entity(repositoryClass="Repositories\ItemRepository")
  * @Table(name="item")
  */
-class Item
-{
+class Item {
+
     /**
      * @Id
      * @Column(type="integer", nullable=false)
@@ -26,33 +27,29 @@ class Item
      */
     protected $Detail;
 
-    public function setID($id)
-    {
+    public function setID($id) {
         $this->id = $id;
     }
-    public function setName($name)
-    {
+
+    public function setName($name) {
         $this->Name = $name;
     }
 
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
     /**
      * @return mixed
      */
-    public function getDetail()
-    {
+    public function getDetail() {
         return $this->Detail;
     }
 
     /**
      * @param mixed $Detail
      */
-    public function setDetail($Detail)
-    {
+    public function setDetail($Detail) {
         $this->Detail = $Detail;
     }
 

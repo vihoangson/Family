@@ -10,7 +10,7 @@
 |	Default: FALSE
 |
 */
-$config['force_https'] = FALSE;
+$config['force_https'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,8 +58,7 @@ $config['rest_message_field_name'] = 'error';
 |	Default: TRUE
 |
 */
-$config['enable_emulate_request'] = TRUE;
-
+$config['enable_emulate_request'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,7 +114,7 @@ $config['auth_source'] = 'bosonmesuemkem';
 |	E.g: md5('admin:REST API:1234') = '1e957ebc35631ab22d5bd6526bd14ea2'
 |
 */
-$config['auth_library_class'] = '';
+$config['auth_library_class']    = '';
 $config['auth_library_function'] = '';
 
 /*
@@ -143,7 +142,6 @@ $config['auth_library_function'] = '';
 // $config['auth_override_class_method']['accounts']['user'] = 'basic';
 // $config['auth_override_class_method']['dashboard']['*'] = 'basic';
 
-
 //---Uncomment list line for the wildard unit test
 //$config['auth_override_class_method']['wildcard_test_cases']['*'] = 'basic';
 /*
@@ -156,7 +154,7 @@ $config['auth_library_function'] = '';
 |	array('admin' => '1234')
 |
 */
-$config['rest_valid_logins'] = array('admin' => '1234');
+$config['rest_valid_logins'] = ['admin' => '1234'];
 
 /*
 |--------------------------------------------------------------------------
@@ -263,7 +261,7 @@ $config['rest_keys_table'] = 'keys';
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-$config['rest_enable_keys'] = FALSE;
+$config['rest_enable_keys'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -339,8 +337,7 @@ $config['rest_logs_table'] = 'logs';
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-$config['rest_enable_logging'] = FALSE;
-
+$config['rest_enable_logging'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -375,8 +372,7 @@ CREATE TABLE `access` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-$config['rest_enable_access'] = FALSE;
-
+$config['rest_enable_access'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -387,7 +383,7 @@ $config['rest_enable_access'] = FALSE;
 | when false they will be php serialized.
 |
 */
-$config['rest_logs_json_params'] = FALSE;
+$config['rest_logs_json_params'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -428,7 +424,7 @@ $config['rest_limits_table'] = 'limits';
  
 | See application/controllers/api/example.php for examples. 
 */
-$config['rest_enable_limits'] = FALSE;
+$config['rest_enable_limits'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -441,7 +437,7 @@ $config['rest_enable_limits'] = FALSE;
 |	FALSE
 |
 */
-$config['rest_ignore_http_accept'] = FALSE;
+$config['rest_ignore_http_accept'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -456,7 +452,7 @@ $config['rest_ignore_http_accept'] = FALSE;
 |	FALSE
 |
 */
-$config['rest_ajax_only'] = FALSE;
+$config['rest_ajax_only'] = false;
 
 /* End of file config.php */
 /* Location: ./system/application/config/rest.php */

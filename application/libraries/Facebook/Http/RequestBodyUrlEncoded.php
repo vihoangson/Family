@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\Http;
 
 /**
@@ -28,8 +29,8 @@ namespace Facebook\Http;
  *
  * @package Facebook
  */
-class RequestBodyUrlEncoded implements RequestBodyInterface
-{
+class RequestBodyUrlEncoded implements RequestBodyInterface {
+
     /**
      * @var array The parameters to send with this request.
      */
@@ -40,16 +41,14 @@ class RequestBodyUrlEncoded implements RequestBodyInterface
      *
      * @param array $params
      */
-    public function __construct(array $params)
-    {
+    public function __construct(array $params) {
         $this->params = $params;
     }
 
     /**
      * @inheritdoc
      */
-    public function getBody()
-    {
+    public function getBody() {
         return http_build_query($this->params, null, '&');
     }
 }

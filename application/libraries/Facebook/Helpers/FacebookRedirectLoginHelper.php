@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\Helpers;
 
 use Facebook\Authentication\AccessToken;
@@ -39,8 +40,8 @@ use Facebook\Url\UrlDetectionInterface;
  *
  * @package Facebook
  */
-class FacebookRedirectLoginHelper
-{
+class FacebookRedirectLoginHelper {
+
     /**
      * @const int The length of CSRF string to validate the login link.
      */
@@ -70,13 +71,13 @@ class FacebookRedirectLoginHelper
      * @param OAuth2Client                              $oAuth2Client          The OAuth 2.0 client service.
      * @param PersistentDataInterface|null              $persistentDataHandler The persistent data handler.
      * @param UrlDetectionInterface|null                $urlHandler            The URL detection handler.
-     * @param PseudoRandomStringGeneratorInterface|null $prsg                  The cryptographically secure pseudo-random string generator.
+     * @param PseudoRandomStringGeneratorInterface|null $prsg                  The cryptographically secure
+     *                                                                         pseudo-random string generator.
      */
-    public function __construct(OAuth2Client $oAuth2Client, PersistentDataInterface $persistentDataHandler = null, UrlDetectionInterface $urlHandler = null, PseudoRandomStringGeneratorInterface $prsg = null)
-    {
-        $this->oAuth2Client = $oAuth2Client;
-        $this->persistentDataHandler = $persistentDataHandler ?: new FacebookSessionPersistentDataHandler();
-        $this->urlDetectionHandler = $urlHandler ?: new FacebookUrlDetectionHandler();
+    public function __construct(OAuth2Client $oAuth2Client, PersistentDataInterface $persistentDataHandler = null, UrlDetectionInterface $urlHandler = null, PseudoRandomStringGeneratorInterface $prsg = null) {
+        $this->oAuth2Client                = $oAuth2Client;
+        $this->persistentDataHandler       = $persistentDataHandler ? : new FacebookSessionPersistentDataHandler();
+        $this->urlDetectionHandler         = $urlHandler ? : new FacebookUrlDetectionHandler();
         $this->pseudoRandomStringGenerator = PseudoRandomStringGeneratorFactory::createPseudoRandomStringGenerator($prsg);
     }
 
@@ -85,8 +86,7 @@ class FacebookRedirectLoginHelper
      *
      * @return PersistentDataInterface
      */
-    public function getPersistentDataHandler()
-    {
+    public function getPersistentDataHandler() {
         return $this->persistentDataHandler;
     }
 
@@ -95,8 +95,7 @@ class FacebookRedirectLoginHelper
      *
      * @return UrlDetectionInterface
      */
-    public function getUrlDetectionHandler()
-    {
+    public function getUrlDetectionHandler() {
         return $this->urlDetectionHandler;
     }
 
@@ -105,13 +104,13 @@ class FacebookRedirectLoginHelper
      *
      * @return PseudoRandomStringGeneratorInterface
      */
-    public function getPseudoRandomStringGenerator()
-    {
+    public function getPseudoRandomStringGenerator() {
         return $this->pseudoRandomStringGenerator;
     }
 
     /**
-     * Stores CSRF state and returns a URL to which the user should be sent to in order to continue the login process with Facebook.
+     * Stores CSRF state and returns a URL to which the user should be sent to in order to continue the login process
+     * with Facebook.
      *
      * @param string $redirectUrl The URL Facebook should redirect users to after login.
      * @param array  $scope       List of permissions to request during login.
@@ -120,8 +119,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string
      */
-    private function makeUrl($redirectUrl, array $scope, array $params = [], $separator = '&')
-    {
+    private function makeUrl($redirectUrl, array $scope, array $params = [], $separator = '&') {
         $state = $this->pseudoRandomStringGenerator->getPseudoRandomString(static::CSRF_LENGTH);
         $this->persistentDataHandler->set('state', $state);
 
@@ -137,8 +135,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string
      */
-    public function getLoginUrl($redirectUrl, array $scope = [], $separator = '&')
-    {
+    public function getLoginUrl($redirectUrl, array $scope = [], $separator = '&') {
         return $this->makeUrl($redirectUrl, $scope, [], $separator);
     }
 
@@ -153,8 +150,7 @@ class FacebookRedirectLoginHelper
      *
      * @throws FacebookSDKException
      */
-    public function getLogoutUrl($accessToken, $next, $separator = '&')
-    {
+    public function getLogoutUrl($accessToken, $next, $separator = '&') {
         if (!$accessToken instanceof AccessToken) {
             $accessToken = new AccessToken($accessToken);
         }
@@ -164,7 +160,7 @@ class FacebookRedirectLoginHelper
         }
 
         $params = [
-            'next' => $next,
+            'next'         => $next,
             'access_token' => $accessToken->getValue(),
         ];
 
@@ -180,8 +176,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string
      */
-    public function getReRequestUrl($redirectUrl, array $scope = [], $separator = '&')
-    {
+    public function getReRequestUrl($redirectUrl, array $scope = [], $separator = '&') {
         $params = ['auth_type' => 'rerequest'];
 
         return $this->makeUrl($redirectUrl, $scope, $params, $separator);
@@ -196,8 +191,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string
      */
-    public function getReAuthenticationUrl($redirectUrl, array $scope = [], $separator = '&')
-    {
+    public function getReAuthenticationUrl($redirectUrl, array $scope = [], $separator = '&') {
         $params = ['auth_type' => 'reauthenticate'];
 
         return $this->makeUrl($redirectUrl, $scope, $params, $separator);
@@ -212,15 +206,14 @@ class FacebookRedirectLoginHelper
      *
      * @throws FacebookSDKException
      */
-    public function getAccessToken($redirectUrl = null)
-    {
+    public function getAccessToken($redirectUrl = null) {
         if (!$code = $this->getCode()) {
             return null;
         }
 
         $this->validateCsrf();
 
-        $redirectUrl = $redirectUrl ?: $this->urlDetectionHandler->getCurrentUrl();
+        $redirectUrl = $redirectUrl ? : $this->urlDetectionHandler->getCurrentUrl();
         // At minimum we need to remove the state param
         $redirectUrl = FacebookUrlManipulator::removeParamsFromUrl($redirectUrl, ['state']);
 
@@ -232,9 +225,8 @@ class FacebookRedirectLoginHelper
      *
      * @throws FacebookSDKException
      */
-    protected function validateCsrf()
-    {
-        $state = $this->getState();
+    protected function validateCsrf() {
+        $state      = $this->getState();
         $savedState = $this->persistentDataHandler->get('state');
 
         if (!$state || !$savedState) {
@@ -263,8 +255,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string|null
      */
-    protected function getCode()
-    {
+    protected function getCode() {
         return $this->getInput('code');
     }
 
@@ -273,8 +264,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string|null
      */
-    protected function getState()
-    {
+    protected function getState() {
         return $this->getInput('state');
     }
 
@@ -283,8 +273,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string|null
      */
-    public function getErrorCode()
-    {
+    public function getErrorCode() {
         return $this->getInput('error_code');
     }
 
@@ -293,8 +282,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string|null
      */
-    public function getError()
-    {
+    public function getError() {
         return $this->getInput('error');
     }
 
@@ -303,8 +291,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string|null
      */
-    public function getErrorReason()
-    {
+    public function getErrorReason() {
         return $this->getInput('error_reason');
     }
 
@@ -313,8 +300,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string|null
      */
-    public function getErrorDescription()
-    {
+    public function getErrorDescription() {
         return $this->getInput('error_description');
     }
 
@@ -325,8 +311,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string|null
      */
-    private function getInput($key)
-    {
+    private function getInput($key) {
         return isset($_GET[$key]) ? $_GET[$key] : null;
     }
 }

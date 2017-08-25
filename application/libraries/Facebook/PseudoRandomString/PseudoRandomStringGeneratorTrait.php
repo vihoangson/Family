@@ -21,10 +21,11 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\PseudoRandomString;
 
-trait PseudoRandomStringGeneratorTrait
-{
+trait PseudoRandomStringGeneratorTrait {
+
     /**
      * Validates the length argument of a random string.
      *
@@ -32,8 +33,7 @@ trait PseudoRandomStringGeneratorTrait
      *
      * @throws \InvalidArgumentException
      */
-    public function validateLength($length)
-    {
+    public function validateLength($length) {
         if (!is_int($length)) {
             throw new \InvalidArgumentException('getPseudoRandomString() expects an integer for the string length');
         }
@@ -48,15 +48,16 @@ trait PseudoRandomStringGeneratorTrait
      *
      * @param string $binaryData The binary data to convert to hex.
      * @param int    $length     The length of the string to return.
+     *
      * @throws \RuntimeException Throws an exception when multibyte support is not enabled
      *
      * @return string
      */
-    public function binToHex($binaryData, $length)
-    {
+    public function binToHex($binaryData, $length) {
         if (true !== extension_loaded('mbstring')) {
             throw new \RuntimeException('Multibyte support required');
         }
+
         return \mb_substr(\bin2hex($binaryData), 0, $length);
     }
 }

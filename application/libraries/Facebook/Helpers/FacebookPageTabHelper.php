@@ -21,6 +21,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
+
 namespace Facebook\Helpers;
 
 use Facebook\FacebookApp;
@@ -31,8 +32,8 @@ use Facebook\FacebookClient;
  *
  * @package Facebook
  */
-class FacebookPageTabHelper extends FacebookCanvasHelper
-{
+class FacebookPageTabHelper extends FacebookCanvasHelper {
+
     /**
      * @var array|null
      */
@@ -45,8 +46,7 @@ class FacebookPageTabHelper extends FacebookCanvasHelper
      * @param FacebookClient $client       The client to make HTTP requests.
      * @param string|null    $graphVersion The version of Graph to use.
      */
-    public function __construct(FacebookApp $app, FacebookClient $client, $graphVersion = null)
-    {
+    public function __construct(FacebookApp $app, FacebookClient $client, $graphVersion = null) {
         parent::__construct($app, $client, $graphVersion);
 
         if (!$this->signedRequest) {
@@ -64,8 +64,7 @@ class FacebookPageTabHelper extends FacebookCanvasHelper
      *
      * @return mixed|null
      */
-    public function getPageData($key, $default = null)
-    {
+    public function getPageData($key, $default = null) {
         if (isset($this->pageData[$key])) {
             return $this->pageData[$key];
         }
@@ -78,8 +77,7 @@ class FacebookPageTabHelper extends FacebookCanvasHelper
      *
      * @return boolean
      */
-    public function isAdmin()
-    {
+    public function isAdmin() {
         return $this->getPageData('admin') === true;
     }
 
@@ -88,8 +86,7 @@ class FacebookPageTabHelper extends FacebookCanvasHelper
      *
      * @return string|null
      */
-    public function getPageId()
-    {
+    public function getPageId() {
         return $this->getPageData('id');
     }
 }
