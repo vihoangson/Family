@@ -31,6 +31,9 @@ class Files_controller extends MY_Controller {
         return $this->image_lib->resize();
     }
 
+    /**
+     * Function controller
+     */
     public function show() {
         $rs = $this->files_model->find()
                                 ->result();
