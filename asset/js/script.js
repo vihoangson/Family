@@ -179,3 +179,7 @@ $(".change_banner").click(function(){
 $(document).on("change","#change-banner",function(){
 	$("#change-banner").submit();
 });
+
+$(".media-box a.thumbnail").hover(function(){
+    $(this).children("img").attr('src',$(this).attr('href'));
+});
