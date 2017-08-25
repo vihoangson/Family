@@ -13,6 +13,13 @@ class Files_controller extends MY_Controller {
         dd($this->dirToArray($this->path_file_upload));
     }
 
+    /**
+     * @param $path
+     * @param $width
+     * @param $height
+     *
+     * @return bool
+     */
     private function resize_img($path, $width, $height) {
         $this->load->library('image_lib');
         $config['image_library'] = 'gd2';
@@ -20,12 +27,15 @@ class Files_controller extends MY_Controller {
         $config['width']         = $width;
         $config['height']        = $height;
         $this->image_lib->initialize($config);
-        $this->image_lib->resize();
+        return $this->image_lib->resize();
     }
 
     public function show() {
         $rs = $this->files_model->find()
                                 ->result();
+        foreach ($rs as &$item) {
+            $this->_prepare_thumbnail_to_show($item);
+        }
         $this->load->view('admin/file_list', compact("rs"));
     }
 
@@ -45,11 +55,16 @@ class Files_controller extends MY_Controller {
                 $error = ['error' => $this->upload->display_errors()];
                 $this->session->set_flashdata('item', ["danger" => "Upload có lỗi [" . $this->upload->display_errors() . "]"]);
             } else {
-                $this->max_size_upload_timeline = 800;
+                $this->max_size_upload_timeline = $this->config->item('var_max_size_img');
                 $data                           = ['upload_data' => $this->upload->data()];
+
+                // Kiểm tra có vượt quá khung giới hạn không
                 if ($data["upload_data"]["image_height"] > $this->max_size_upload_timeline || $data["upload_data"]["image_width"] > $this->max_size_upload_timeline) {
+                    // Nếu vượt qua thì resize lại
                     $this->resize_img($data["upload_data"]["full_path"], $this->max_size_upload_timeline, $this->max_size_upload_timeline);
                 }
+
+                // Chuẩn bị object để lưu vào db
                 $object = [
                     "files_title" => $this->input->post('file_title'),
                     "files_name"  => $data["upload_data"]['file_name'],
@@ -62,8 +77,10 @@ class Files_controller extends MY_Controller {
                 } catch (Exception $e) {
                     dd($e);
                 }
+
                 $this->session->set_flashdata('item', ["success" => "Upload thành công"]);
             }
+
             redirect('admin/files_controller/show', 'refresh');
         }
 
@@ -150,6 +167,37 @@ class Files_controller extends MY_Controller {
         return $result;
     }
 
+    /**
+     * @param $item
+     */
+    private function _prepare_thumbnail_to_show(&$item) {
+        preg_match("/(asset.+)$/", $item->files_path, $match);
+
+        $path_file     = (FCPATH . $match[1] . $item->files_name);
+        $path_file_new = (FCPATH . $match[1] . "thumb_" . $item->files_name);
+
+        $thumb_img = "/".$match[1] . "thumb_" . $item->files_name;
+        $full_img = "/".$match[1] .  $item->files_name;
+
+        if(!file_exists($path_file_new)){
+            if (file_exists($path_file)) {
+                if ($item->files_type == 'image/gif') {
+                    copy($path_file, $path_file_new);
+                    if($this->resize_img($path_file_new, 100, 100)){
+                        $thumb_img = "/".$match[1] . "thumb_" . $item->files_name;
+                    }else{
+
+                        unlink($path_file_new);
+                    }
+                }
+            }else{
+                $thumb_img = "http://placehold.it/200x200";
+            }
+        }
+        $item->full_img = $full_img;
+        $item->thumb_img = $thumb_img;
+
+    }
 }
 
 /* End of file Files_controller.php */

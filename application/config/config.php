@@ -500,6 +500,8 @@ $config['time_reference'] = 'local';
 */
 $config['rewrite_short_tags'] = false;
 
+$config['var_max_size_img'] = 800;
+
 /*
 |--------------------------------------------------------------------------
 | Reverse Proxy IPs
@@ -520,3 +522,5 @@ $config['proxy_ips'] = '';
 define("DATE_DONT_WROTE_BLOG", 3);
 
 define("NUM_BLOG_HOMEPAGE", 4);
+
+
