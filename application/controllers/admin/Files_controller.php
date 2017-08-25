@@ -27,6 +27,7 @@ class Files_controller extends MY_Controller {
         $config['width']         = $width;
         $config['height']        = $height;
         $this->image_lib->initialize($config);
+
         return $this->image_lib->resize();
     }
 
@@ -176,25 +177,25 @@ class Files_controller extends MY_Controller {
         $path_file     = (FCPATH . $match[1] . $item->files_name);
         $path_file_new = (FCPATH . $match[1] . "thumb_" . $item->files_name);
 
-        $thumb_img = "/".$match[1] . "thumb_" . $item->files_name;
-        $full_img = "/".$match[1] .  $item->files_name;
+        $thumb_img = "/" . $match[1] . "thumb_" . $item->files_name;
+        $full_img  = "/" . $match[1] . $item->files_name;
 
-        if(!file_exists($path_file_new)){
+        if (!file_exists($path_file_new)) {
             if (file_exists($path_file)) {
-                if ($item->files_type == 'image/gif') {
+                if (in_array($item->files_type, ['image/gif', 'image/png', 'image/jpg', 'image/jpeg'])) {
                     copy($path_file, $path_file_new);
-                    if($this->resize_img($path_file_new, 100, 100)){
-                        $thumb_img = "/".$match[1] . "thumb_" . $item->files_name;
-                    }else{
+                    if ($this->resize_img($path_file_new, 100, 100)) {
+                        $thumb_img = "/" . $match[1] . "thumb_" . $item->files_name;
+                    } else {
 
                         unlink($path_file_new);
                     }
                 }
-            }else{
+            } else {
                 $thumb_img = "http://placehold.it/200x200";
             }
         }
-        $item->full_img = $full_img;
+        $item->full_img  = $full_img;
         $item->thumb_img = $thumb_img;
 
     }
