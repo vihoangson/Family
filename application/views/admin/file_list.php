@@ -18,7 +18,7 @@ $this->load->view('_includes/header_admin', $data_header); ?>
         if (true) {
             $value->files_path_url = str_replace(FCPATH, "/", $value->files_path);
             ?>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="col-md-2">
                 <?php echo "
                 <div>
                     <div class='image-link' >
