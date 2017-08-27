@@ -22,7 +22,7 @@
             <div class="message-inner">
 
                 <div class="">
-                    <form action="http://family.vn/homepage/add_new" id="add_new" method="POST" role="form" enctype="multipart/form-data">
+                    <form action="/homepage/add_new" id="add_new" method="POST" role="form" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="">Hôm nay gia đình mình có gì ? (<span style="color:red;">*</span>)</label>
                             <textarea data-time="1503797571" name="content" id="content" class="form-control" style="height:50px;" required=""></textarea>
