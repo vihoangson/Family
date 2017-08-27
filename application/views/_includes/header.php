@@ -48,7 +48,9 @@ if(!$navigation_bar){
 		<script src="<?= base_url(); ?>asset/bower_components/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
 		<script src="<?= base_url(); ?>asset/bower_components/Snarl/dist/snarl.min.js"></script>
 		<script src="<?= base_url(); ?>asset/bower_components/jquery-ui/jquery-ui.min.js"></script>
+		<script src="<?= base_url(); ?>asset/bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
 		<script src="<?= base_url(); ?>asset/js/app.js"></script>
+
 
 
 		<?php

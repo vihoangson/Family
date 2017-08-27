@@ -148,5 +148,21 @@ $(window).load(function() {
     }
   });
 });
+$(document).ready(function(){
 
-
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        add: function (e, data) {
+            console.log('data 1');
+            console.log(data);
+            data.context = $('<p/>').text('Uploading...').appendTo(document.body);
+            data.submit();
+        },
+        done: function (e, data) {
+            console.log('data 2');
+            console.log(data.result);
+            data.context.text('Upload finished.');
+            $("#content").val($("#content").val() + data.result.markdown);
+        }
+    });
+})

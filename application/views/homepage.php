@@ -18,6 +18,41 @@
     </div>
     <hr>
     <div class="qa-message-list" id="wallmessages">
+        <div class="message-item " id="m" data-step="">
+            <div class="message-inner">
+
+                <div class="">
+                    <form action="http://family.vn/homepage/add_new" id="add_new" method="POST" role="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="">Hôm nay gia đình mình có gì ? (<span style="color:red;">*</span>)</label>
+                            <textarea data-time="1503797571" name="content" id="content" class="form-control" style="height:50px;" required=""></textarea>
+
+                        </div>
+                        <div class="clearfix"></div>
+                        <?php
+                        // Show icon box
+                        $this->load->view('_includes/icon_box');
+                        ?>
+                        <div class="row">
+                            <div class="col-xs-9 text-left">
+                                <div style="padding:4px 0;">
+                                    <button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();">
+                                        <img src="/asset/data/img_emotion/1.gif">
+                                    </button>
+                                    <label for="fileupload" class="btn btn-default">Choose a file</label>
+                                    <input class="hidden" id="fileupload" type="file" name="userfile" multiple="" data-url="ajax_up_files" accept="image/x-png,image/gif,image/jpeg" >
+                                    <button type="button" class="btn btn-default add-tag-video" onclick="">Add tag video</button>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 text-right">
+                                <button type="submit" class="btn btn-primary ">Post</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
         <?php
 
         foreach ($kn as $key => $value) {

@@ -33,6 +33,9 @@ class Files_controller extends MY_Controller {
 
     /**
      * Function controller
+     *
+     * @author hoang_son
+     * @since 20170827
      */
     public function show() {
         $rs = $this->files_model->find()
@@ -43,10 +46,50 @@ class Files_controller extends MY_Controller {
         $this->load->view('admin/file_list', compact("rs"));
     }
 
+    /**
+     * Upload tập trung tại function
+     *
+     * @author hoang_son
+     * @since 20170827
+     */
     public function do_upload() {
+
+        if ($_FILES["userfile"]) {
+            if ($this->up_files()) {
+                $this->session->set_flashdata('item', ["success" => "Upload thành công"]);
+            } else {
+                $error = ['error' => $this->upload->display_errors()];
+                $this->session->set_flashdata('item', ["danger" => "Upload có lỗi [" . $this->upload->display_errors() . "]" . $error]);
+            }
+            redirect('admin/files_controller/show', 'refresh');
+        }
+
+        $rs = $this->files_model->find()
+                                ->result();
+        $this->load->view('admin/form_upload', compact("rs"));
+    }
+
+    public function ajax_up_files() {
+        if ($object = $this->up_files()) {
+            $file_name = $object['files_path'] . $object['files_name'];
+            $return    = [
+                'status'   => 'done',
+                'url'      => $file_name,
+                'markdown' => '![](' . $file_name . ')'
+            ];
+            header("application/json");
+            echo json_encode($return);
+        }
+
+    }
+
+    /**
+     *
+     */
+    public function up_files() {
         if ($_FILES["userfile"]) {
             $config = [
-                'upload_path'   => FCPATH . "asset/uploads/",
+                'upload_path'   => check_folder(FCPATH . 'asset/file_upload/media/' . date("Y") . "/" . date("m") . "/" . date("d")),
                 'allowed_types' => 'gif|jpg|png',
                 'max_size'      => '10000',
                 'max_width'     => '20000',
@@ -72,25 +115,19 @@ class Files_controller extends MY_Controller {
                 $object = [
                     "files_title" => $this->input->post('file_title'),
                     "files_name"  => $data["upload_data"]['file_name'],
-                    "files_path"  => "/asset/uploads/",
+                    "files_path"  => preg_replace('/(.+)asset/', '/asset', $data["upload_data"]['file_path']),
                     "files_size"  => @$data["upload_data"]['image_size_str'],
                     "files_type"  => $data["upload_data"]['file_type'],
                 ];
                 try {
                     $this->files_model->create($object);
                 } catch (Exception $e) {
-                    dd($e);
+                    return false;
                 }
 
-                $this->session->set_flashdata('item', ["success" => "Upload thành công"]);
+                return $object;
             }
-
-            redirect('admin/files_controller/show', 'refresh');
         }
-
-        $rs = $this->files_model->find()
-                                ->result();
-        $this->load->view('admin/form_upload', compact("rs"));
     }
 
 

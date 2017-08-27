@@ -183,3 +183,7 @@ $(document).on("change","#change-banner",function(){
 $(".media-box a.thumbnail").hover(function(){
     $(this).children("img").attr('src',$(this).attr('href'));
 });
+
+$('.add-media-button').click(function(){
+	alert(123123);
+});
