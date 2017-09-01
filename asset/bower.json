@@ -30,6 +30,7 @@
     "animate.css": "^3.5.2",
     "Snarl": "^0.3.2",
     "masonry": "^4.1.0",
-    "jquery-ui": "^1.12.1"
+    "jquery-ui": "^1.12.1",
+    "blueimp-file-upload": "^9.19.0"
   }
 }
