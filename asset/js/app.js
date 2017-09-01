@@ -129,7 +129,8 @@ $.fn.extend({
         });
     }
 });
-$(window).load(function() {
+
+$(window).on('load', function () {
 
     /**
      * Fix size of video youtube
@@ -148,6 +149,7 @@ $(window).load(function() {
     }
   });
 });
+
 $(document).ready(function(){
 
     $('#fileupload').fileupload({
@@ -165,4 +167,13 @@ $(document).ready(function(){
             $("#content").val($("#content").val() + data.result.markdown);
         }
     });
+
+  $(document).on("keydown", "#content", function(e)
+  {
+      if ((e.keyCode == 10 || e.keyCode == 13) && e.ctrlKey)
+      {      
+          $("#content").closest('form').submit();
+      }
+  });
+
 })
