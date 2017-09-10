@@ -5,6 +5,9 @@
                 <a href="<?=base_url();?>homepage/edit_new/<?=md5($this->config->config["encryption_key"] . "__" . $value->id);?>/<?=$value->id;?>">Edit</a>
             </li>
             <li>
+                <a href="<?=base_url();?>homepage/dont_show_on_timeline/<?=md5($this->config->config["encryption_key"] . "__" . $value->id);?>/<?=$value->id;?>">Down show on time line</a>
+            </li>
+            <li>
                 <a class="delete_b" href="<?=base_url();?>homepage/delete_kyniem/<?=md5($this->config->config["encryption_key"] . "__" . $value->id);?>/<?=$value->id;?>">Delete</a>
             </li>
         </ul>
