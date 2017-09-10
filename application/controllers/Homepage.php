@@ -114,8 +114,9 @@ class Homepage extends MY_Controller {
      * - $return["tags"]  tags
      */
     private function getDataHomepage($condition = null) {
-        $kn      = $this->kyniem->getAll($condition);
-        $comment = [];
+        $condition['show_flg'] = 1;
+        $kn                    = $this->kyniem->getAll($condition);
+        $comment               = [];
         foreach ($kn as $key => $value) {
             $rs                  = $this->db->where("kyniem_id", $value->id)
                                             ->select("comment.*,user.username,user.user_avatar")
@@ -332,9 +333,9 @@ class Homepage extends MY_Controller {
 
         // Chuẩn bị dữ liệu
         $data = [
-            "kyniem_title"   => $this->input->post("title")?$this->input->post("title"):"",
+            "kyniem_title"   => $this->input->post("title") ? $this->input->post("title") : "",
             "kyniem_content" => $this->input->post("content"),
-            "status"         => $this->input->post("status_kyniem")?$this->input->post("status_kyniem"):'',
+            "status"         => $this->input->post("status_kyniem") ? $this->input->post("status_kyniem") : '',
             "kyniem_auth"    => $this->session->userdata('user_id'),
             "kyniem_create"  => date("Y-m-d h:i:s", time()),
             "kyniem_modifie" => date("Y-m-d h:i:s", time()),
@@ -351,6 +352,16 @@ class Homepage extends MY_Controller {
             redirect('/', 'refresh');
         } else {
             echo 0;
+        }
+    }
+
+    public function dont_show_on_timeline($token = null, $id = null) {
+
+        if (!md5($this->config->config["encryption_key"] . "__" . $id) == $token) {
+            redirect('/404', 'refresh');
+        } else {
+            $this->kyniem->dont_show_on_timeline($id);
+            redirect('/', 'refresh');
         }
     }
 
@@ -708,10 +719,10 @@ class Homepage extends MY_Controller {
                 break;
             }
             $this->action->archive_log("login_facebook", json_encode([
-                    $userNode["name"],
-                    $userNode["email"],
-                    $userNode["id"]
-                ]));
+                $userNode["name"],
+                $userNode["email"],
+                $userNode["id"]
+            ]));
             $this->session->set_userdata($array);
             header('Location: /');
         } else {

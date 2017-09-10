@@ -28,6 +28,9 @@ class Kyniem extends \CI_Model {
         if ($condition["limit"]) {
             $this->db->limit($condition["limit"], $condition["offset"]);
         }
+        if ($condition["show_flg"]) {
+            $this->db->where("show_flg", $condition["show_flg"]);
+        }
         $this->db->select('kyniem.*, user.user_avatar, user.username');
         $this->db->join("user", "user.id=kyniem_auth")
                  ->where('delete_flg', 0);
@@ -35,6 +38,23 @@ class Kyniem extends \CI_Model {
 
         return $this->db->get('kyniem')
                         ->result();
+    }
+
+    /**
+     * @param int $id id của row
+     *
+     * @return boolean
+     */
+    public function dont_show_on_timeline($id) {
+        $this->db->where('id', $id);
+        $object = [
+            "show_flg" => "0",
+        ];
+        if ($this->db->update('kyniem', $object)) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
