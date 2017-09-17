@@ -1,24 +1,23 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ *
+ */
 class Admin_page extends MY_Controller {
 
+    /**
+     * Admin_page constructor.
+     */
     public function __construct() {
         parent::__construct();
-        $this->load->vars([
-                "navbar_custom" => [
-                    ["link" => "/admin/admin_page/session_login", "text" => "Session login"],
-                    ["link" => "/admin/admin_page/controll_list_login_facebook", "text" => "List login Facebook"],
-                    ["link" => "/admin/blank_page", "text" => "Blank"],
-                    ["link" => "/admin/files_controller/show", "text" => "Manager Images"],
-                    ["link" => "/admin/control_popup", "text" => "Control popup"],
-                    ["link" => "/admin/admin_page/manager_media", "text" => "Quản lý media"],
-                    ["link" => "/phpliteadmin.php", "text" => "PHP Sqlite"],
-                ]
-            ]);
+        $this->set_variable_view_for_menu_left_admin();
         $this->load->model('files_model');
         $this->path_file_upload = FCPATH . "asset/file_upload/";
+
     }
+
+
 
     public function index() {
         $this->load->model("kyniem");
@@ -199,6 +198,7 @@ class Admin_page extends MY_Controller {
 
         $this->load->view("admin/custom_css");
     }
+
 }
 
 /* End of file admin_page.php */

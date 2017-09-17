@@ -1,7 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property null|string max_size_upload_timeline
+ * @property Files_model files_model
+ */
 class Files_controller extends MY_Controller {
+
+    // Set default 1 is general
+    public $files_position_id = 1;
 
     public function __construct() {
         parent::__construct();
@@ -10,7 +17,6 @@ class Files_controller extends MY_Controller {
     }
 
     public function index() {
-        dd($this->dirToArray($this->path_file_upload));
     }
 
     /**
@@ -35,7 +41,7 @@ class Files_controller extends MY_Controller {
      * Function controller
      *
      * @author hoang_son
-     * @since 20170827
+     * @since  20170827
      */
     public function show() {
         $rs = $this->files_model->find()
@@ -50,7 +56,7 @@ class Files_controller extends MY_Controller {
      * Upload tập trung tại function
      *
      * @author hoang_son
-     * @since 20170827
+     * @since  20170827
      */
     public function do_upload() {
 
@@ -69,7 +75,20 @@ class Files_controller extends MY_Controller {
         $this->load->view('admin/form_upload', compact("rs"));
     }
 
-    public function ajax_up_files() {
+    /**
+     * @param string $options
+     */
+    public function ajax_up_files($options = '') {
+
+        // Set files_position_id
+        $id = $this->files_model->get_by_name($options)->id;
+        if(!is_null($id)){
+            $this->files_position_id = $id;
+        }else{
+            $this->files_position_id = 1;
+        }
+
+        // Gọi phương thức up_files
         if ($object = $this->up_files()) {
             $file_name = $object['files_path'] . $object['files_name'];
             $return    = [
@@ -84,26 +103,37 @@ class Files_controller extends MY_Controller {
     }
 
     /**
+     * Upload file và lưu vào db
+     *
+     * @params $_FILES["userfile"]
      *
      */
     public function up_files() {
         if ($_FILES["userfile"]) {
-            $config = [
-                'upload_path'   => check_folder(FCPATH . 'asset/file_upload/media/' . date("Y") . "/" . date("m") . "/" . date("d")),
-                'allowed_types' => 'gif|jpg|png',
-                'max_size'      => '10000',
-                'max_width'     => '20000',
-                'max_height'    => '20000'
-            ];
 
-            $this->load->library('upload', $config);
+            // Khai báo cấu hình và khởi tạo thư viện upload
+            if (true) {
+                $config = [
+                    'upload_path'   => check_folder(FCPATH . 'asset/file_upload/media/' . date("Y") . "/" . date("m") . "/" . date("d")),
+                    'allowed_types' => 'gif|jpg|png',
+                    'max_size'      => '10000',
+                    'max_width'     => '20000',
+                    'max_height'    => '20000'
+                ];
+                $this->load->library('upload', $config);
+            }
 
+            // Gọi phương thức do upload
             if (!$this->upload->do_upload()) {
                 $error = ['error' => $this->upload->display_errors()];
                 $this->session->set_flashdata('item', ["danger" => "Upload có lỗi [" . $this->upload->display_errors() . "]"]);
             } else {
+
+                // Khởi tạo biến data của file vừa được upload
+                $data = ['upload_data' => $this->upload->data()];
+
+                // Set thuộc tính max_size_upload_timeline được lấy thông số từ config
                 $this->max_size_upload_timeline = $this->config->item('var_max_size_img');
-                $data                           = ['upload_data' => $this->upload->data()];
 
                 // Kiểm tra có vượt quá khung giới hạn không
                 if ($data["upload_data"]["image_height"] > $this->max_size_upload_timeline || $data["upload_data"]["image_width"] > $this->max_size_upload_timeline) {
@@ -113,18 +143,21 @@ class Files_controller extends MY_Controller {
 
                 // Chuẩn bị object để lưu vào db
                 $object = [
-                    "files_title" => $this->input->post('file_title'),
-                    "files_name"  => $data["upload_data"]['file_name'],
-                    "files_path"  => preg_replace('/(.+)asset/', '/asset', $data["upload_data"]['file_path']),
-                    "files_size"  => @$data["upload_data"]['image_size_str'],
-                    "files_type"  => $data["upload_data"]['file_type'],
+                    "files_title"       => $this->input->post('file_title'),
+                    "files_name"        => $data["upload_data"]['file_name'],
+                    "files_path"        => preg_replace('/(.+)asset/', '/asset', $data["upload_data"]['file_path']),
+                    "files_size"        => @$data["upload_data"]['image_size_str'],
+                    "files_type"        => $data["upload_data"]['file_type'],
+                    "files_position_id" => $this->files_position_id,
                 ];
                 try {
+                    // Lưu vào db thông qua method
                     $this->files_model->create($object);
                 } catch (Exception $e) {
                     return false;
                 }
 
+                // Trả ra kết quả
                 return $object;
             }
         }

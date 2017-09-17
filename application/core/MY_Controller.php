@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
 
         $this->load->library("action");
-        $this->load->model("kyniem");
+        $this->load->model(["kyniem", "my_user", "options_model"]);
 
         // Rửa tổng cho error status
         $this->error_status = [];
@@ -34,7 +34,6 @@ class MY_Controller extends CI_Controller {
                 }
             }
         } else {
-            $this->load->model("my_user");
             $default_user = $this->my_user->where("id", 11);
             $this->action->set_authentication($default_user);
         }
@@ -73,8 +72,6 @@ class MY_Controller extends CI_Controller {
         ];
         $this->load->vars($navbars);
 
-        $this->load->model("options_model");
-
         $options = $this->options_model->get_all_option_by_object();
         $this->load->vars(["options" => $options]);
 
@@ -93,6 +90,7 @@ class MY_Controller extends CI_Controller {
 
         define("MAX_SIZE_IMG", $max_size_img);
     }
+
 
     /**
      *
@@ -374,6 +372,25 @@ class MY_Controller extends CI_Controller {
         }
 
         return true;
+    }
+
+    /**
+     * Use $this->load->vars set navbar_custom for menu
+     */
+    protected function set_variable_view_for_menu_left_admin() {
+        $this->load->vars([
+            "navbar_custom" => [
+                ["link" => "/admin/admin_page/session_login", "text" => "Session login"],
+                ["link" => "/admin/admin_page/controll_list_login_facebook", "text" => "List login Facebook"],
+                ["link" => "/admin/blank_page", "text" => "Blank"],
+                ["link" => "/admin/files_controller/show", "text" => "Manager Images"],
+                ["link" => "/admin/control_popup", "text" => "Control popup"],
+                ["link" => "/admin/admin_page/manager_media", "text" => "Quản lý media"],
+                ["link" => "/phpliteadmin.php", "text" => "PHP Sqlite"],
+                ["link" => "/admin/manage_background/index", "text" => "Manager background"],
+
+            ]
+        ]);
     }
 
 }

@@ -72,3 +72,5 @@ $route['404_override']         = 'homepage/error404';
 $route['translate_uri_dashes'] = false;
 
 $route['ajax_up_files']         = 'admin/files_controller/ajax_up_files';
+$route['ajax_up_files/background']         = 'admin/files_controller/ajax_up_files/background';
+

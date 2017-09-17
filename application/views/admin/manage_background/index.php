@@ -15,8 +15,8 @@ $this->load->view('_includes/header_admin', $data_header);
 echo "<h3>$title_page </h3>";
 
     ?>
-        <label for="input_upload" class="btn btn-primary">Upload file</label>
-        <input id="input_upload" class="hidden" type="file">
+        <label for="fileupload" class="btn btn-primary">Upload file</label>
+    <input class="hidden" id="fileupload" type="file" name="userfile" multiple="" data-url="/ajax_up_files/background" accept="image/x-png,image/gif,image/jpeg">
     <?php
 
 $this->load->view('_includes/footer_admin');

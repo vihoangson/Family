@@ -5,6 +5,9 @@ class Manage_background extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
+
+        // Set menu left admin
+        $this->set_variable_view_for_menu_left_admin();
     }
 
     /**

@@ -124,13 +124,10 @@ $(".delete_b").click(function () {
 //
 //============ ============  ============  ============ 
 
-//============ ============  ============  ============ 
-//  Thay đổi năm trong combo box trong trang kỷ niệm
 $(".change-year").change(function (event) {
     location.href = "/homepage/chang_year/" + $(this).val();
 });
-//
-//============ ============  ============  ============ 
+
 
 //============ ============  ============  ============ 
 // Nút thêm smile
@@ -167,4 +164,83 @@ $(".media-box a.thumbnail").hover(function () {
 
 $('.add-media-button').click(function () {
     alert(123123);
+});
+
+$('.image-link').magnificPopup({
+    gallery: {enabled: true},
+    type: 'image',
+    delegate: 'a'
+});
+
+$(".tag_ele").click(function () {
+    rg = $("#content").val().match(/(\([a-z]*\)|\:\))/g);
+    $("#content").insertAtCaret(" " + $(this).attr("alt") + " ");
+});
+
+jQuery.fn.extend({
+    insertAtCaret: function (myValue) {
+        return this.each(function (i) {
+            if (document.selection) {
+                //For browsers like Internet Explorer
+                this.focus();
+                sel = document.selection.createRange();
+                sel.text = myValue;
+                this.focus();
+            }
+            else if (this.selectionStart || this.selectionStart == '0') {
+                //For browsers like Firefox and Webkit based
+                var startPos = this.selectionStart;
+                var endPos = this.selectionEnd;
+                var scrollTop = this.scrollTop;
+                this.value = this.value.substring(0, startPos) + myValue + this.value.substring(endPos, this.value.length);
+                this.focus();
+                this.selectionStart = startPos + myValue.length;
+                this.selectionEnd = startPos + myValue.length;
+                this.scrollTop = scrollTop;
+            } else {
+                this.value += myValue;
+                this.focus();
+            }
+        })
+    }
+});
+
+$(".emotion_icon").click(function () {
+    rg = $("#content").val().match(/(\([a-z]*\)|\:\))/g);
+    $("#content").insertAtCaret(" " + $(this).attr("alt") + " ");
+    $(".icon_box").hide();
+});
+
+var blazy = new Blazy({
+    selector: "img"
+});
+
+// Upload ảnh ở trang chủ
+if($('#fileupload').length){
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        add: function (e, data) {
+            data.context = $('<p/>').text('Uploading...').appendTo(document.body);
+            data.submit();
+        },
+        done: function (e, data) {
+            data.context.text('Upload finished.');
+            $("#content").val($("#content").val() + data.result.markdown);
+        }
+    });
+}
+
+// Xử lý bấm ctrl+enter sẽ submit bài viết
+$(document).on("keydown", "#content", function (e) {
+    if ((e.keyCode == 10 || e.keyCode == 13) && e.ctrlKey) {
+        $("#content").closest('form').submit();
+    }
+});
+
+// Click button hiển thị lịch
+$("#button_calendar").click(function (event) {
+    $("#modal-id-popup .modal-title").html("Lịch gia đình");
+    $("#modal-id-popup .modal-body").html($(".box_calendar").html());
+    $("#modal-id-popup").modal();
+    return false;
 });

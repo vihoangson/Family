@@ -4,7 +4,7 @@
 // @since: 20160707162122
 //============ ============  ============  ============ 
 
-(function(){
+(function () {
 
     // ============ ============  ============  ============ 
     // Override function alert default of browser
@@ -16,7 +16,7 @@
          * @param {String} [text=undefined]
          * @param {String} [type=undefined]
          */
-        window.alert = function(message, text, type) {
+        window.alert = function (message, text, type) {
             swal(String(message), text, type);
         };
 
@@ -27,23 +27,23 @@
          * @param {Function} [handler=undefined]
          * @param {Object} [context=undefined]
          */
-        window.confirm_new = function(message, options, handler, context) {
+        window.confirm_new = function (message, options, handler, context) {
             !!swal($.extend({
-                title: message || "Are you sure?",
-                text: "You won't be able to undo this action, and you may also lose any data entered",
-                type: "warning",
-                showCancelButton: true,
-                showLoaderOnConfirm: true,
-                confirmButtonText: "Yes, do it"
-            }, options),
-            function(isConfirm) {
-                if (isConfirm && "function" === typeof handler) {
-                    handler.call(context);
-                    return true;
-                }else{
-                    return false;
-                }
-            });
+                    title: message || "Are you sure?",
+                    text: "You won't be able to undo this action, and you may also lose any data entered",
+                    type: "warning",
+                    showCancelButton: true,
+                    showLoaderOnConfirm: true,
+                    confirmButtonText: "Yes, do it"
+                }, options),
+                function (isConfirm) {
+                    if (isConfirm && "function" === typeof handler) {
+                        handler.call(context);
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
         };
     }
 
@@ -75,7 +75,7 @@
          * @param {String|*} message
          * @param {Object} [options=undefined]
          */
-        window.notify = function(message, options) {
+        window.notify = function (message, options) {
             if (window.Snarl) {
                 Snarl.addNotification($.extend({
                     text: message,
@@ -93,43 +93,46 @@
 // Hàm extend OOP của javascript
 // @since: 20160707162122
 // 
-    if ("function" !== typeof inherit) {
-        /**
-         * @param {Object} [proto]
-         * @returns {Object}
-         */
-        function inherit(proto) {
-            function F() {}
-            F.prototype = proto;
-            return new F();
+if ("function" !== typeof inherit) {
+    /**
+     * @param {Object} [proto]
+     * @returns {Object}
+     */
+    function inherit(proto) {
+        function F() {
         }
-    }
 
-    if ("function" !== typeof extend) {
-        /**
-         * 20160707175328
-         * @param {Object} [Child]
-         * @param {Object} [Parent]
-         */
-        function extend(Child, Parent) {
-            Parent.prototype.constructor = Parent; // @link http://goo.gl/PxO37U
-            Child.prototype = inherit(Parent.prototype);
-            Child.prototype.constructor = Child;
-            Child.parent = Parent.prototype;
-        }
+        F.prototype = proto;
+        return new F();
     }
+}
+
+if ("function" !== typeof extend) {
+    /**
+     * 20160707175328
+     * @param {Object} [Child]
+     * @param {Object} [Parent]
+     */
+    function extend(Child, Parent) {
+        Parent.prototype.constructor = Parent; // @link http://goo.gl/PxO37U
+        Child.prototype = inherit(Parent.prototype);
+        Child.prototype.constructor = Child;
+        Child.parent = Parent.prototype;
+    }
+}
 //
 //============ ============  ============  ============ 
 
 $.fn.extend({
     animateCss: function (animationName) {
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-        $(this).addClass('animated ' + animationName).one(animationEnd, function() {
+        $(this).addClass('animated ' + animationName).one(animationEnd, function () {
             $(this).removeClass('animated ' + animationName);
         });
     }
 });
 
+// Khi window được load xong
 $(window).on('load', function () {
 
     /**
@@ -137,59 +140,16 @@ $(window).on('load', function () {
      * @fix_date: 20170107
      * @author: Bố Sơn
      */
-    if($(window).width()<=420){
+    if ($(window).width() <= 420) {
         $("iframe[src*='youtube']").width($(".content_main_block").width());
     }
 
-  $('img').each(function() {
-    if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
-      // image was broken, replace with your new image
-      //$.post('/ajax/do_ajax/error_img', {img_error: this.src}, function(data, textStatus, xhr) {});
-      this.src = '/asset/css/img/white.png';
-    }
-  });
+    // Kiểm tra từng hình trong trình duyệt ko có sẽ cho 1 hình thay thế
+    $('img').each(function () {
+        if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+            // image was broken, replace with your new image
+            //$.post('/ajax/do_ajax/error_img', {img_error: this.src}, function(data, textStatus, xhr) {});
+            this.src = '/asset/css/img/white.png';
+        }
+    });
 });
-
-$(document).ready(function(){
-
-    $('#fileupload').fileupload({
-        dataType: 'json',
-        add: function (e, data) {
-            console.log('data 1');
-            console.log(data);
-            data.context = $('<p/>').text('Uploading...').appendTo(document.body);
-            data.submit();
-        },
-        done: function (e, data) {
-            console.log('data 2');
-            console.log(data.result);
-            // data.context.text('Upload finished.');
-            // $("#content").val($("#content").val() + data.result.markdown);
-        }
-    });
-
-    $('#fileupload').fileupload({
-        dataType: 'json',
-        add: function (e, data) {
-            console.log('data 1');
-            console.log(data);
-            data.context = $('<p/>').text('Uploading...').appendTo(document.body);
-            data.submit();
-        },
-        done: function (e, data) {
-            console.log('data 2');
-            console.log(data.result);
-            data.context.text('Upload finished.');
-            $("#content").val($("#content").val() + data.result.markdown);
-        }
-    });
-
-  $(document).on("keydown", "#content", function(e)
-  {
-      if ((e.keyCode == 10 || e.keyCode == 13) && e.ctrlKey)
-      {      
-          $("#content").closest('form').submit();
-      }
-  });
-
-})

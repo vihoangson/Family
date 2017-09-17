@@ -64,6 +64,15 @@ class Files_model extends CI_Model {
         }
     }
 
+    /**
+     * @param $options
+     *
+     * @return mixed
+     */
+    public function get_by_name($options) {
+        return $this->db->where('name',$options)->get('files_position')->row();
+    }
+
 }
 
 /* End of file Timeline_model.php */

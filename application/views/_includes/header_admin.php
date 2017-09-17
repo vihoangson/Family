@@ -22,6 +22,7 @@ if (!$navigation_bar) {
     <link href="<?=base_url();?>asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?=base_url();?>asset/bower_components/Snarl/dist/snarl.min.css" rel="stylesheet">
     <?php
+    // Load css custom
     if (isset($css)) {
         foreach ((array) $css as $key => $value) {
             ?>
@@ -29,22 +30,23 @@ if (!$navigation_bar) {
             <?php
         }
     }
-
     ?>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
     <![endif]-->
     <!-- jQuery -->
     <script src="<?=base_url();?>asset/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="http://momentjs.com/downloads/moment.js"></script>
+    <script src="<?=base_url();?>asset/bower_components/moment/min/moment.min.js"></script>
     <script src="<?=base_url();?>asset/bower_components/Snarl/dist/snarl.min.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="<?=base_url();?>asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?=base_url();?>asset/js/Magnific-Popup-master/dist/jquery.magnific-popup.js"></script>
     <script src="<?=base_url();?>asset/js/jquery.form.js"></script>
+    <script src="<?= base_url(); ?>asset/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/asset/bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
     <script src="<?=base_url();?>asset/js/app.js"></script>
 
     <?php
@@ -57,60 +59,6 @@ if (!$navigation_bar) {
     }
     ?>
     <?=(isset($custom_js) ? $custom_js : "");?>
-    <script>
-        $(document).ready(function () {
-            setInterval(function () {
-                var then = "05/05/2016 14:20:30";
-                diff = moment.utc(moment(then, "DD/MM/YYYY HH:mm:ss").diff(moment()));
-                string = MM + diff.month() + " Tháng " + diff.day() + " Ngày " + diff.hour() + " Giờ " + diff.minute() + " Phút " + diff.second() + " Giây " + diff.millisecond();
-                console.log(string);
-                $("#count_down").text(string);
-            }, 100000);
-
-            $('.image-link').magnificPopup({
-                gallery: {enabled: true},
-                type: 'image',
-                delegate: 'a'
-            });
-        });
-
-
-    </script>
-    <style>
-        .countdown_box {
-            position: fixed;
-            bottom: -300px;
-            right: 0;
-            z-index: 4;
-            background: white;
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 433px;
-            height: 328px;
-        }
-
-        .countdown_box:hover {
-            bottom: 0px;
-        }
-
-        @media screen and (max-width: 1000px) {
-            .countdown_box {
-                /*display:none;*/
-                bottom: -300px;
-                width: 100%;
-            }
-        }
-
-        .countdown_box > header {
-            background: red;
-            height: 17px;
-        }
-
-        .countdown_box:hover > header {
-            background: white;
-            height: 0px;
-        }
-    </style>
 </head>
 <body>
 <div class="container">
@@ -172,4 +120,3 @@ if (!$navigation_bar) {
             <?php $this->load->view('_includes/navbar_left_admin'); ?>
         </div>
         <div class="col-sm-9">
-
