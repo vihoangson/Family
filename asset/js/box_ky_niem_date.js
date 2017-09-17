@@ -80,11 +80,11 @@ $(document).on('keydown',function(e){
         switch(event.which){
             // Bên phải
             case 39:
-                action_change_post('prev');
+                action_change_post('next');
                 break;
             // Bên trái
             case 37:
-                action_change_post('next');
+                action_change_post('prev');
                 break;
         }
     }
