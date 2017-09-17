@@ -5,19 +5,60 @@ include APPPATH . "core/REST_Controller.php";
 class Kyniem extends REST_Controller {
 
     /**
+     * Kyniem constructor.
+     *
+     * @param string $config
+     */
+    function __construct($config = 'rest') {
+        parent::__construct($config);
+        $this->load->helper("common");
+
+    }
+
+    /**
      * Lấy các ky niem theo ngày
      *
      */
     public function get_in_date_get() {
-        $this->load->helper("common");
-        $d      = $this->input->get("d");
-        $sql    = "select * from kyniem where date(kyniem_create) = '" . $d . "' and delete_flg = 0  ";
-        $result = $this->db->query($sql)
-                           ->result();
-        foreach ($result as &$item) {
-            $item->kyniem_content = h($item->kyniem_content);
-        }
+
+        $d = $this->get("d");
+
+        $result = $this->_get_kyniem_by_date($d);
+
         $this->response($result);
+    }
+
+
+    /**
+     *
+     *
+     * @url /api/kyniem/handle_change_date
+     */
+    public function handle_change_date_post() {
+
+        // Chuyển date thành object date
+        $obj_date = date_create_from_format('Y-m-d', $this->post('date_current'));
+
+        // Xử lý option ngày lui hoặc tới
+        switch ($this->post('option')) {
+            case 'prev':
+                $modify = '+1 day';
+            break;
+            case 'next':
+                $modify = '-1 day';
+            break;
+        }
+        // Modify ngày
+        date_modify($obj_date, $modify);
+
+        //Chuyển object date thành string
+        $str_date = $obj_date->format('Y-m-d');
+
+        // Lấy dữ liệu
+        $return = $this->_get_kyniem_by_date($str_date);
+
+        // Xuất ra
+        $this->response($return);
     }
 
     /**
@@ -60,7 +101,20 @@ class Kyniem extends REST_Controller {
         }
         $this->response($rs);
     }
-
+    /**
+     * @param $d
+     *
+     * @return mixed
+     */
+    private function _get_kyniem_by_date($d) {
+        $sql    = "select * from kyniem where date(kyniem_create) = '" . $d . "' and delete_flg = 0  ";
+        $result = $this->db->query($sql)
+                           ->result();
+        foreach ($result as &$item) {
+            $item->kyniem_content = h($item->kyniem_content);
+        }
+        return $result;
+    }
 }
 
 /* End of file controllername.php */

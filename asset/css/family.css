@@ -555,3 +555,17 @@ li.ele_comment:after {
     /*background-color: #DDD;*/
     /*cursor:pointer;*/
 }
+
+.left_narrow,.right_narrow {
+    background: red;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 20px;
+}
+.left_narrow {
+    left: 10px;
+}
+.right_narrow {
+    right: 10px;
+}

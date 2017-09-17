@@ -81,17 +81,7 @@ class Ajax_action extends REST_Controller {
         $this->response($return);
     }
 
-    /**
-     * @param $key
-     *
-     * @url /api/ajax_action/get_value_option
-     */
-    public function get_value_option_get() {
-        $key = $this->input->get("key");
-        $this->load->model("options_model");
-        $data = $this->options_model->get_option($key);
-        $this->response($data);
-    }
+
 }
 
 /* End of file controllername.php */
