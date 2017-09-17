@@ -42,20 +42,23 @@ class Kyniem extends REST_Controller {
         // Xử lý option ngày lui hoặc tới
         switch ($this->post('option')) {
             case 'prev':
-                $modify = '+1 day';
+                $obj_date = $this->MY_Kyniem->get_date_closest('left',$this->post('date_current'));
+
             break;
             case 'next':
-                $modify = '-1 day';
+                $obj_date = $this->MY_Kyniem->get_date_closest('right',$this->post('date_current'));
             break;
         }
-        // Modify ngày
-        date_modify($obj_date, $modify);
 
         //Chuyển object date thành string
         $str_date = $obj_date->format('Y-m-d');
 
         // Lấy dữ liệu
         $return = $this->_get_kyniem_by_date($str_date);
+
+        // Chuẩn bị biến trả ra
+        $return['data'] = $return;
+        $return['date_current'] = $str_date;
 
         // Xuất ra
         $this->response($return);
@@ -95,7 +98,6 @@ class Kyniem extends REST_Controller {
      */
     public function search_post() {
         $rs = [];
-        $this->load->model('MY_Kyniem');
         if ($this->input->post()) {
             $rs = $this->MY_Kyniem->search_kyniem($this->input->post("keyword"));
         }

@@ -126,4 +126,4 @@ $autoload['language'] = [];
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = ["Options_model"];
+$autoload['model'] = ["Options_model",'MY_Kyniem'];

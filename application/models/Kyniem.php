@@ -1,5 +1,4 @@
 <?php
-namespace models;
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kyniem extends \CI_Model {

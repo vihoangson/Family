@@ -20,16 +20,19 @@ function load_data_ajax(date_search) {
  * @param e
  */
 function handle_put_data_to_modal_box(date_search, e) {
-    if(!$("div.content_kyniem").length){
+    if (!$("div.content_kyniem").length) {
         $("<div class='content_kyniem'></div>").appendTo($('#modal-general .modal-body'));
         $("<div class='left_narrow'></div>").appendTo($('#modal-general .modal-body'));
         $("<div class='right_narrow'></div>").appendTo($('#modal-general .modal-body'));
-    }else{
+    } else {
         $(box_kyniem).html("");
     }
-    box_kyniem = "#modal-general .modal-body .content_kyniem";
+
+    // Gán tên selector của nội dung modal
+    var box_kyniem = "#modal-general .modal-body .content_kyniem";
+
     // Set title mặc định cho modal
-    $("#modal-general .modal-title").html("Nhật ký gia đình ngày: " + date_search).attr('data-date',date_search);
+    $("#modal-general .modal-title").html("Nhật ký gia đình ngày: " + date_search).attr('nth-date', date_search);
 
     // Rửa html cho body modal
     $(box_kyniem).html("");
@@ -53,18 +56,36 @@ $('.has').click(function () {
     load_data_ajax($(this).attr("title"));
 });
 
-$(document).on('click','.left_narrow',function(){
-    console.log($("#modal-general .modal-title").data('date'));
-    var date_current = $("#modal-general .modal-title").data('date');
-    handle_change_date('prev',date_current);
-})
-
 function handle_change_date(option, date_current) {
-    $.post('/api/kyniem/handle_change_date',{option:option,date_current:date_current},function(e){
-        console.log(e);
+    $.post('/api/kyniem/handle_change_date', {option: option, date_current: date_current}, function (e) {
+        handle_put_data_to_modal_box(e.date_current, e.data);
     })
 }
-$(document).on('click','.right_narrow',function(){
-    console.log($("#modal-general .modal-title").data('date'));
-    handle_change_date('next',date_current);
-})
+
+function action_change_post(case_change) {
+    var date_current = $("#modal-general .modal-title").attr('nth-date');
+    handle_change_date(case_change, date_current);
+}
+
+$(document).on('click', '.left_narrow', function () {
+    action_change_post('prev');
+});
+
+$(document).on('click', '.right_narrow', function () {
+    action_change_post('next');
+});
+
+$(document).on('keydown',function(e){
+    if($('#modal-general').is(":visible")){
+        switch(event.which){
+            // Bên phải
+            case 39:
+                action_change_post('prev');
+                break;
+            // Bên trái
+            case 37:
+                action_change_post('next');
+                break;
+        }
+    }
+});
