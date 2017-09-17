@@ -97,6 +97,8 @@
 
 <script src="<?=base_url();?>asset/js/comment.js"></script>
 <script src="<?=base_url();?>asset/js/script.js"></script>
+<script src="<?=base_url();?>asset/js/box_ky_niem_date.js"></script>
+
 <?php
 //============ ============  ============  ============ 
 //  Phần popup đầu tiên
