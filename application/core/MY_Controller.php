@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
 
         $this->load->library("action");
-        $this->load->model(["kyniem", "my_user", "options_model"]);
+        $this->load->model(["kyniem", "My_User", "options_model"]);
 
         // Rửa tổng cho error status
         $this->error_status = [];
@@ -34,7 +34,7 @@ class MY_Controller extends CI_Controller {
                 }
             }
         } else {
-            $default_user = $this->my_user->where("id", 11);
+            $default_user = $this->My_User->where("id", 11);
             $this->action->set_authentication($default_user);
         }
 
