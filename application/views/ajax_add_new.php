@@ -8,6 +8,8 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
     $emotion .= "<span class='emotion_icon' alt='" . $key . "'>" . $value . "</span> ";
 }
 ?>
+
+
 <form action="<?=base_url();?>homepage/<?=($data->id ?
     "edit_new/" . md5($this->config->config["encryption_key"] . "__" . $data->id) . "/" . $data->id :
     "add_new");?>" id="add_new" method="POST" role="form" enctype="multipart/form-data">
@@ -18,6 +20,7 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
     </div>
     <div class="form-group">
         <label for="">Nội dung (<span style="color:red;">*</span>)</label>
+        <input class="datepicker" value = '16/02/2018'>
         <div style="padding:4px 0;">
             <button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();">
                 <img src="/asset/data/img_emotion/1.gif"></button>
