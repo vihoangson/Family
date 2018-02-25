@@ -20,7 +20,7 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
     </div>
     <div class="form-group">
         <label for="">Nội dung (<span style="color:red;">*</span>)</label>
-        <input class="datepicker" value = '16/02/2018'>
+
         <div style="padding:4px 0;">
             <button type="button" class="btn btn-default" onclick="$('.icon_box').toggle();">
                 <img src="/asset/data/img_emotion/1.gif"></button>
@@ -34,6 +34,9 @@ foreach ($this->config->item("emotion_yahoo") as $key => $value) {
     <div class="form-group">
         <label for="">File</label>
         <input name="userfile[]" type="file" class="form-control" id="" placeholder="Input field" multiple>
+        <div> Date:
+            <input class="datepicker" value='<?=date('d/m/Y', strtotime($data->kyniem_create))?>' name="date-kyniem">
+        </div>
         <?php
         if ($data->kyniem_images) {
             $imgs = json_decode($data->kyniem_images);
