@@ -81,6 +81,7 @@ class Options_control extends REST_Controller {
      */
     public function getAllOption_get() {
         $this->load->model('options_model');
+        $this->options_model->disable_option_cache();
         $rs = $this->options_model->get_all_option();
         $this->response($rs);
     }
