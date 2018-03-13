@@ -153,3 +153,13 @@ $(window).on('load', function () {
         }
     });
 });
+$(document).ready(function () {
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        endDate: 'd',
+        todayBtn: true,
+        todayHighlight: true,
+        defaultDate: new Date(),
+        defaultViewDate: 'today'
+    });
+})

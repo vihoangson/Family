@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
 
         $this->load->library("action");
-        $this->load->model(["kyniem", "My_User", "options_model"]);
+        $this->load->model(["kyniem", "My_User", "options_model",'my_kyniem']);
 
         // Rửa tổng cho error status
         $this->error_status = [];

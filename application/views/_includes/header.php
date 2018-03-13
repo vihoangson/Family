@@ -24,7 +24,9 @@ if(!$navigation_bar){
 		<link href="<?= base_url(); ?>asset/bower_components/Snarl/dist/snarl.min.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/animate.css/animate.min.css" rel="stylesheet">
 		<link href="<?= base_url(); ?>asset/bower_components/jquery-ui/themes/base/jquery-ui.min.css" rel="stylesheet">
-		
+		<link href="<?= base_url(); ?>asset\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker3.min.css" rel="stylesheet">
+
+
 		<?php
 		if(isset($css)){
 			foreach ((array)$css as $key => $value) {
@@ -49,6 +51,7 @@ if(!$navigation_bar){
 		<script src="<?= base_url(); ?>asset/bower_components/Snarl/dist/snarl.min.js"></script>
 		<script src="<?= base_url(); ?>asset/bower_components/jquery-ui/jquery-ui.min.js"></script>
 		<script src="<?= base_url(); ?>asset/bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
+		<script src="<?= base_url(); ?>asset\bower_components\bootstrap-datepicker\dist\js\bootstrap-datepicker.min.js"></script>
 		<script src="<?= base_url(); ?>asset/js/app.js"></script>
 
 

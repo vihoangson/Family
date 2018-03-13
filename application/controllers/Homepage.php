@@ -366,9 +366,8 @@ class Homepage extends MY_Controller {
     }
 
     public function edit_new($token = null, $id = null) {
-
         if ($this->input->post()) {
-
+            //<editor-fold desc="prepare data">
             $data = [
                 "kyniem_title"   => $this->input->post("title"),
                 "kyniem_content" => $this->input->post("content"),
@@ -376,7 +375,25 @@ class Homepage extends MY_Controller {
                 "kyniem_auth"    => $this->session->userdata('user_id'),
                 "kyniem_modifie" => date("Y-m-d h:i:s", time()),
             ];
+            //</editor-fold>
 
+            //<editor-fold desc="change date">
+                // todo: Kiểm tra nếu ngày nhập vào khác thì sẽ update lại kyniem_create
+                $date_kyniem = $this->input->post("date-kyniem");
+                $tmp = $this->my_kyniem->get($id);
+                $m = date("d/m/Y",strtotime($tmp->kyniem_create));
+
+                // todo: Kiểm tra nếu ngày nhập vào khác thì sẽ update lại kyniem_create
+                if($date_kyniem != $m){
+                    $tmp2 = new DateTime();
+                    $date_input = explode('/',$date_kyniem);
+                    $tmp2->setDate($date_input[2],$date_input[1],$date_input[0]);
+                    $tmp2->setTime(0,0,0);
+                    $data['kyniem_create']=$tmp2->format('Y-m-d h:i:s');
+                }
+            //</editor-fold>
+
+            //<editor-fold desc="Upload file">
             if ($_FILES) {
                 $ul = $this->do_upload();
                 if ($ul["error"]) {
@@ -394,7 +411,12 @@ class Homepage extends MY_Controller {
                     $data["kyniem_images"] = json_encode($array_imgs);
                 }
             }
+            //</editor-fold>
+
+            // Set where
             $this->db->where('id', $id);
+
+            // Process update kyniem
             if ($this->db->update('kyniem', $data)) {
                 redirect('/', 'refresh');
             } else {
