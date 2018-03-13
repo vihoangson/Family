@@ -569,3 +569,7 @@ li.ele_comment:after {
 .right_narrow {
     right: 10px;
 }
+
+.message-item .message-inner.chuc-mung{
+    background: #ffeffa;
+}

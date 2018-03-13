@@ -523,4 +523,15 @@ define("DATE_DONT_WROTE_BLOG", 3);
 
 define("NUM_BLOG_HOMEPAGE", 4);
 
-
+// Use in /application/helpers/common_helper.php
+// In function h_class()
+$config['array_render'] = [
+    [
+        'pattern' =>'/(.*chúc.mừng.*)|(.*chuc.mung.*)|(.*Chúc.mừng.*)|(.*CHÚC.MỪNG.*)/',
+        'class' => 'chuc-mung'
+    ],
+    [
+        'pattern' =>'/(.*sinh.nhật.*)/',
+        'class' => 'sinh-nhat'
+    ]
+];

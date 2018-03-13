@@ -12,7 +12,7 @@
             </li>
         </ul>
     </div>
-    <div class="message-inner">
+    <div class="message-inner <?=h_class($value->kyniem_content);?>">
         <div class="message-head clearfix">
             <div class="avatar pull-left">
                 <a href="#"><img src="<?=PATH_AVATAR . $value->user_avatar;?>"></a>
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="qa-message-content">
+        <div class="qa-message-content ">
             <?php
             //============ ============  ============  ============ 
             //Hiển thị nội dung bài viết

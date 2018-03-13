@@ -208,7 +208,23 @@ function get_thumb_file_name($file_name) {
 
     return $file_name_new;
 }
+function h_class($string){
+    $ci = get_instance();
+    $array_render = $ci->config->config['array_render'];
 
+    $array_class = [];
+    foreach ($array_render as $value){
+        if( preg_match($value['pattern'],$string)){
+            $array_class[] =  $value['class'];
+        }
+    }
+
+    if($array_class != []){
+        return implode(' ',$array_class);
+    }
+    return '';
+
+}
 /**
  * [h Bộ lọc markdown sang html]
  * - Replace emotion icon
