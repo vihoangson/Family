@@ -28,7 +28,6 @@ class Kyniem extends REST_Controller {
         $this->response($result);
     }
 
-
     /**
      *
      *

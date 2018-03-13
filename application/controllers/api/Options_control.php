@@ -80,8 +80,8 @@ class Options_control extends REST_Controller {
      * @return json
      */
     public function getAllOption_get() {
-        $this->load->model('Options_model');
-        $rs = $this->Options_model->get_all_option();
+        $this->load->model('options_model');
+        $rs = $this->options_model->get_all_option();
         $this->response($rs);
     }
 

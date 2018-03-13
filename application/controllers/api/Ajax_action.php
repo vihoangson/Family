@@ -40,7 +40,9 @@ class Ajax_action extends REST_Controller {
      */
     public function change_max_size_img_post() {
         $this->load->model("options_model");
+
         $size = (int) $this->input->post("value");
+
         if ($size > 800) {
             $size = 800;
         }
@@ -80,6 +82,20 @@ class Ajax_action extends REST_Controller {
         $return["status"] = "error";
         $this->response($return);
     }
+
+    /**
+     *
+     * @param int $value
+     * @param int $key
+     *
+     * @url /api/ajax_action/get_all_options
+     */
+    public function get_all_options_get(){
+        $this->load->model('Options_model');
+        $this->options_model->disable_option_cache();
+        $this->response($this->options_model->get_all_option());
+    }
+
 
 
 }

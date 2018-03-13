@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
             <li class="active"><a href="<?=base_url();?>">Trang chủ</a></li>
-            <?=($this->Options_model->get_option("popup_flag")->option_content == 1 ?
+            <?=($this->options_model->get_option("popup_flag")->option_content == 1 ?
                 '<li><a href="#" id="button_popup">Popup</a></li>' : '')?>
         </ul>
         <?php

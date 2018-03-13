@@ -138,6 +138,11 @@ class Options_model extends CI_Model {
 
         return $flag;
     }
+
+
+    public function disable_option_cache() {
+        $this->db->not_like('option_key','cache_tmp_input');
+    }
 }
 
 /* End of file Options.php */

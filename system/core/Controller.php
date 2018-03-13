@@ -121,6 +121,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Facebook            $facebook
  * @property Doctrine            $doctrine
  * @property My_User             $my_user                       my_user
+ * @property Options_model             $Options_model
+ *
  */
 class CI_Controller {
 

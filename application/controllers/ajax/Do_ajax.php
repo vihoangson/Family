@@ -267,7 +267,7 @@ class Do_ajax extends MY_Controller {
 
             return;
         }
-        $this->Options_model->save_option("cache_tmp_input_" . time(), json_encode($this->input->post()));
+        $this->options_model->save_option("cache_tmp_input_" . time(), json_encode($this->input->post()));
     }
 
     //============ ============  ============  ============
