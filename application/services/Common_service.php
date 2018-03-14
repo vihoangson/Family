@@ -61,4 +61,39 @@ class Common_service {
         return static::$all_kyniem;
 
     }
+
+    /**
+     * Lấy tổng số ngày từ lúc sinh tới hiện tại của Kem
+     *
+     * @return int
+     * @example Common_service::getThemes();
+     */
+    public static function getThemes() {
+
+        /** @var MY_Controller $ci */
+        $ci = &get_instance();
+
+        $option_theme_name = $ci->options_model->get_option('theme_name');
+
+        // Check is exits
+        if(!$option_theme_name){
+            // Set default option theme_name
+            $ci->options_model->save_option('theme_name','default');
+            $option_theme_name = $ci->options_model->get_option('theme_name');
+        }
+
+        $theme_name = $option_theme_name->option_content;
+
+        // Check file exists
+        if(!file_exists(BASEPATH . '../asset/themes/'.$theme_name.'/style.css')){
+            return;
+        }
+
+        //Set var to render
+        $ci->load->vars('load_theme', '<link href="\asset\themes\\' . $theme_name . '\style.css" rel="stylesheet">');
+
+        return;
+
+    }
+
 }

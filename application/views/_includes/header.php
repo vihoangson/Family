@@ -65,6 +65,10 @@ if(!$navigation_bar){
 		}
 		?>
 		<?= (isset($custom_js)?$custom_js:""); ?>
+
+    <!--themes-->
+    <?= $load_theme ?>
+
 	</head>
 	<body>
 		<div class="container">

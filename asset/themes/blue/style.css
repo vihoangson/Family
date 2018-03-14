@@ -1,0 +1,50 @@
+
+/** Start theme pink  ====================== */
+body * {
+    color: #415f6e;
+}
+
+body {
+    background: url('./images/galaxy.jpg') black no-repeat center center fixed;
+}
+
+.message-inner {
+    background: #c2ebff;
+}
+
+
+
+.message-item .message-inner {
+    background: #bae8ff;
+}
+.message-item .message-inner:after {
+    border-right: 10px solid #bae8ff;
+}
+.message-item:before {
+    background: #bae8ff;
+    border-radius: 2px;
+    bottom: -30px;
+    box-shadow: 0 0 3px rgb(161, 195, 212);
+    content: "";
+    height: 100%;
+    left: -30px;
+    position: absolute;
+    width: 3px;
+}
+
+button#button_add , button.btn.btn-primary {
+
+    background-color: #c2ebff;
+    border-color: #adcad9;
+}
+.collapse.navbar-collapse.navbar-ex1-collapse {
+    background: #c2ebff;
+    border-color: #adcfe0;
+}
+
+
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    background-color: #b3d5e6;
+}
+/** End  ====================== */

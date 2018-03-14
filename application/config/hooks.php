@@ -12,9 +12,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$hook['post_controller_constructor'] = [
+$hook['post_controller_constructor'][] = [
     'class'    => 'Common_service',
     'function' => 'GetDayKem',
+    'filename' => 'Common_service.php',
+    'filepath' => 'services',
+    'params'   => []
+];
+$hook['post_controller_constructor'][] = [
+    'class'    => 'Common_service',
+    'function' => 'getThemes',
     'filename' => 'Common_service.php',
     'filepath' => 'services',
     'params'   => []
