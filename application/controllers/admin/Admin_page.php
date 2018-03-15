@@ -119,8 +119,7 @@ class Admin_page extends MY_Controller {
                                               ->row();
                     $full_path_img = FCPATH . ltrim($rs->files_path . $rs->files_name, "/");
                     if ($this->db->where("id", $value)
-                                 ->delete('media')
-                    ) {
+                                 ->delete('media')) {
                         @unlink($full_path_img);
                         $this->load->vars('success', 'Đã lưu thành công');
                     } else {
@@ -186,17 +185,47 @@ class Admin_page extends MY_Controller {
     /**
      * @url /admin/admin_page/custom_css
      */
-    public function custom_css() {
+    public function custom_css($option = null) {
+        if($option == 'clear_archive'){
+            $this->options_model->save_option("custom_css_archive", '');
+            $this->session->set_flashdata('item', ["success" => "Đã xóa archive"]);
+            redirect('/admin/admin_page/custom_css');
+        }
         if ($this->input->post("content_css")) {
+
+            $this->store_custom_css_current_to_archive();
+
             $this->options_model->save_option("custom_css", $this->input->post("content_css"));
-            die;
+
+            $this->session->set_flashdata('item', ["success" => "Đã save thành công content_css"]);
         }
 
         $custom_css = $this->options_model->get_option("custom_css");
 
-        $this->load->vars(["custom_css" => $custom_css->option_content]);
+        $custom_css_archive = $this->options_model->get_option("custom_css_archive") ;
+        $custom_css_archive = json_decode($custom_css_archive->option_content,true);
+
+        $this->load->vars([
+            "custom_css" => $custom_css->option_content,
+            'custom_css_archive' => $custom_css_archive
+        ]);
 
         $this->load->view("admin/custom_css");
+    }
+
+    /**
+     * store_custom_css_current_to_archive
+     */
+    private function store_custom_css_current_to_archive() {
+        //todo store old version custom css
+
+        $custom_css         = $this->options_model->get_option("custom_css");
+        $custom_css_archive = $this->options_model->get_option("custom_css_archive");
+
+        $custom_css_archive         = json_decode($custom_css_archive->option_content, true);
+        $custom_css_archive[time()] = $custom_css->option_content;
+        $custom_css_archive         = json_encode($custom_css_archive);
+        $this->options_model->save_option("custom_css_archive", $custom_css_archive);
     }
 
 }

@@ -66,6 +66,9 @@
 <h4><a href="/api/ajax_action/backup_all/images">Folder: images</a></h4>
 <h4><a href="/api/ajax_action/backup_all/db">Backup db</a></h4>
 
+<h1>Option custom css</h1>
+<a class="btn btn-default" href="/admin/admin_page/custom_css/clear_archive">Clear archive custom css</a>
+
 <?php show_social(); ?>
 
 <?php $this->load->view('_includes/footer_admin'); ?>
