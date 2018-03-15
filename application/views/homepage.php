@@ -3,10 +3,6 @@
         <h2>Time Line</h2>
     </div>
 
-    <a href="" class="typewrite" data-period="5000" data-type='[ "Xin chào, Bố Sơn đây", "Kem phải ăn ngoan ngủ ngoan nhé","","","","" ]'>
-        <span class="wrap"></span>
-    </a>
-
     <!-- #List Year -->
     <select class="form-control change-year" style="width:100px;">
         <?php
@@ -29,7 +25,13 @@
                 <div class="">
                     <form action="/homepage/add_new" id="add_new" method="POST" role="form" enctype="multipart/form-data">
                         <div class="form-group">
+
                             <label for="">Hôm nay gia đình mình có gì ? (<span style="color:red;">*</span>)</label>
+                            <br>
+                                <a href="" class="typewrite" data-period="5000" data-type='[ <?= $typing_homepage ?> ]'>
+                                    <span class="wrap"></span>
+                                </a>
+                            <br>
                             <textarea data-time="1503797571" name="content" id="content" class="form-control" style="height:50px;" required=""></textarea>
 
                         </div>

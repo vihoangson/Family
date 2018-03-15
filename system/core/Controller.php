@@ -122,6 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Doctrine            $doctrine
  * @property My_User             $my_user                       my_user
  * @property Options_model             $Options_model
+ * @property MY_Quote quote
  *
  */
 class CI_Controller {

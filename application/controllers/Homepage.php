@@ -59,6 +59,14 @@ class Homepage extends MY_Controller {
             $condition["offset"] = $step;
         }
 
+        //<editor-fold desc="Typing homepage">
+        $typing_homepage = $this->options_model->get_option('typing_homepage')->option_content;
+        if (!$typing_homepage) {
+            $this->options_model->save_option('typing_homepage', '"Xin chào, Bố Sơn đây", "Kem phải ăn ngoan ngủ ngoan nhé","","","",""');
+        }
+        $this->load->vars('typing_homepage', $typing_homepage);
+        //</editor-fold>
+
         $data = $this->getDataHomepage($condition);
         extract($data);
 
