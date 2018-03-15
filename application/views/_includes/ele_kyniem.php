@@ -1,4 +1,4 @@
-<div class=" year-<?= date('Y',strtotime($value->kyniem_create)) ?> month-<?= date('m',strtotime($value->kyniem_create)) ?> day-<?= date('d',strtotime($value->kyniem_create)) ?>  message-item <?=($value->status == 1 ? "kyniem_important" : "");?>" id="m<?=$key;?>" data-step="<?=$key;?>">
+<div class=" year-<?= date('Y',strtotime($value->kyniem_create)) ?> month-<?= date('m',strtotime($value->kyniem_create)) ?> day-<?= date('d',strtotime($value->kyniem_create)) ?> id-<?= $value->id ?> message-item <?=($value->status == 1 ? "kyniem_important" : "");?>" id="m<?=$key;?>" data-step="<?=$key;?>">
     <div class="options_icon"><span></span>
         <ul>
             <li>
