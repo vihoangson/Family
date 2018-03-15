@@ -2,6 +2,11 @@
     <div class="row">
         <h2>Time Line</h2>
     </div>
+
+    <a href="" class="typewrite" data-period="5000" data-type='[ "Xin chào, Bố Sơn đây", "Kem phải ăn ngoan ngủ ngoan nhé","","","","" ]'>
+        <span class="wrap"></span>
+    </a>
+
     <!-- #List Year -->
     <select class="form-control change-year" style="width:100px;">
         <?php
