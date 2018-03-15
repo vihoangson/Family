@@ -245,7 +245,7 @@ class Action {
                 // Nếu có tình trạng đặc biết thì thêm class màu đỏ vào
                 $status = $this->ci->kyniem->check_status($key);
                 if ($status > 0) {
-                    $name_class .= " status_important";
+                    $name_class .= " ";
                 }
 
             } // Phần này để không hiện ở những ngày đầu tiên

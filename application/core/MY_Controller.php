@@ -60,16 +60,11 @@ class MY_Controller extends CI_Controller {
 
         // Set dữ liệu cho navbar
         $navbars = [
-            "navbar_custom"      => [
-                ["link" => "/admin/admin_page/session_login", "text" => "Session login"],
-                ["link" => "/admin/admin_page/controll_list_login_facebook", "text" => "List login Facebook"],
-                ["link" => "/admin/blank_page", "text" => "Blank"],
-                ["link" => "/admin/files_controller/show", "text" => "Manager Images"],
-                ["link" => "/admin/control_popup", "text" => "Control popup"],
-                ["link" => "/phpliteadmin.php", "text" => "PHP Sqlite"],
-            ],
             "history_wrote_blog" => $history_wrote_blog
         ];
+
+        $this->set_variable_view_for_menu_left_admin();
+
         $this->load->vars($navbars);
 
         $options = $this->options_model->get_all_option_by_object();
@@ -388,7 +383,7 @@ class MY_Controller extends CI_Controller {
                 ["link" => "/admin/admin_page/manager_media", "text" => "Quản lý media"],
                 ["link" => "/phpliteadmin.php", "text" => "PHP Sqlite"],
                 ["link" => "/admin/manage_background/index", "text" => "Manager background"],
-
+                ["link" => "/admin/quote_page/index", "text" => "Lời vàng ý ngọc"],
             ]
         ]);
     }
