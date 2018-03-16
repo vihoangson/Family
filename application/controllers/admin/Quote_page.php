@@ -22,9 +22,10 @@ class Quote_page extends MY_Controller {
 
 
         $this->quote->get();
-        $quotes = $this->quote->order_by(' RANDOM() ')->get_all();
+        $quotes = $this->quote->order_by(' RANDOM() ')
+                              ->get_all();
 
-        $this->load->view('admin/quote_page', ['quotes'=>$quotes]);
+        $this->load->view('admin/quote_page', ['quotes' => $quotes]);
     }
 
 

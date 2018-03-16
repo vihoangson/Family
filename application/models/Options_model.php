@@ -66,22 +66,20 @@ class Options_model extends CI_Model {
             return false;
         }
         if ($this->db->where("option_key", $key)
-                     ->count_all_results('options') == 0
-        ) {
-            if ($this->db->insert("options", ["option_key"     => $key,
-                                              "option_content" => $value,
-                                              "option_create"  => date("Y-m-d h:i:s")
-            ])
-            ) {
+                     ->count_all_results('options') == 0) {
+            if ($this->db->insert("options", [
+                "option_key"     => $key,
+                "option_content" => $value,
+                "option_create"  => date("Y-m-d h:i:s")
+            ])) {
                 return true;
             }
         } else {
             if ($this->db->where("option_key", $key)
                          ->update("options", [
-                                 "option_create"  => date("Y-m-d h:i:s"),
-                                 "option_content" => $value
-                             ])
-            ) {
+                             "option_create"  => date("Y-m-d h:i:s"),
+                             "option_content" => $value
+                         ])) {
                 return true;
             }
         }
@@ -141,7 +139,7 @@ class Options_model extends CI_Model {
 
 
     public function disable_option_cache() {
-        $this->db->not_like('option_key','cache_tmp_input');
+        $this->db->not_like('option_key', 'cache_tmp_input');
     }
 }
 

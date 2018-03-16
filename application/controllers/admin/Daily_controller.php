@@ -42,9 +42,10 @@ class Daily_controller extends CI_Controller {
 
     public function show_markdown() {
         $this->init_mardown();
-        $this->load->view('admin/daily', ["file"      => $this->file_name,
-                                          "path_text" => $this->path_file,
-                                          "markdown"  => true
+        $this->load->view('admin/daily', [
+            "file"      => $this->file_name,
+            "path_text" => $this->path_file,
+            "markdown"  => true
         ]);
     }
 
@@ -57,9 +58,10 @@ class Daily_controller extends CI_Controller {
                 redirect('/admin/daily_controller/show_markdown', 'refresh');
             }
         }
-        $this->load->view('admin/daily_edit', ["file"      => $this->file_name,
-                                               "path_text" => $this->path_file,
-                                               "markdown"  => true
+        $this->load->view('admin/daily_edit', [
+            "file"      => $this->file_name,
+            "path_text" => $this->path_file,
+            "markdown"  => true
         ]);
     }
 }

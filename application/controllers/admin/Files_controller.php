@@ -82,9 +82,9 @@ class Files_controller extends MY_Controller {
 
         // Set files_position_id
         $id = $this->files_model->get_by_name($options)->id;
-        if(!is_null($id)){
+        if (!is_null($id)) {
             $this->files_position_id = $id;
-        }else{
+        } else {
             $this->files_position_id = 1;
         }
 

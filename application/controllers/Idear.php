@@ -76,8 +76,7 @@ class Idear extends MY_Controller {
                 }
             } else {
                 if ($this->db->where("id", $id)
-                             ->update('idear', $object)
-                ) {
+                             ->update('idear', $object)) {
                     $this->session->set_flashdata('alert', 'Đã lưu idear');
                     redirect('/idear/detail/' . $id, 'refresh');
                 }
@@ -104,8 +103,7 @@ class Idear extends MY_Controller {
         $imgs      = array_values($imgs);
         $idear_img = json_encode($imgs);
         if ($this->db->where("id", $rs->id)
-                     ->update('idear', compact("idear_img"))
-        ) {
+                     ->update('idear', compact("idear_img"))) {
             echo 1;
         } else {
             echo 0;
@@ -170,8 +168,7 @@ class Idear extends MY_Controller {
                                         ->row());
         $this->action->archive_log("delete_idear", $content);
         if ($this->db->where("id", $id)
-                     ->delete('idear')
-        ) {
+                     ->delete('idear')) {
             redirect('/idear/', 'refresh');
         }
     }

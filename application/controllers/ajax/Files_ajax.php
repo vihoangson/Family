@@ -22,21 +22,20 @@ class Files_ajax extends CI_Controller {
      *
      */
     public function upload_file() {
-        if(!preg_match('/\.(png|jpg|gif)$/',$_FILES['userfile']['name'][0])){
+        if (!preg_match('/\.(png|jpg|gif)$/', $_FILES['userfile']['name'][0])) {
             return;
         }
-        $_FILES['userfile']['name'][0] = preg_replace('/(\!|\s)/','',$_FILES['userfile']['name'][0] );
+        $_FILES['userfile']['name'][0] = preg_replace('/(\!|\s)/', '', $_FILES['userfile']['name'][0]);
 
-        if(move_uploaded_file($_FILES['userfile']['tmp_name'][0], FCPATH . 'asset/uploads/' . $_FILES['userfile']['name'][0]))
-        {
+        if (move_uploaded_file($_FILES['userfile']['tmp_name'][0], FCPATH . 'asset/uploads/' . $_FILES['userfile']['name'][0])) {
             $return = [
-                    'status' => 'done',
-                       'url' => '/asset/uploads/' . $_FILES['userfile']['name'][0].'',
-                       'markdown' => '![](/asset/uploads/' . $_FILES['userfile']['name'][0].')'
+                'status'   => 'done',
+                'url'      => '/asset/uploads/' . $_FILES['userfile']['name'][0] . '',
+                'markdown' => '![](/asset/uploads/' . $_FILES['userfile']['name'][0] . ')'
             ];
             header("application/json");
             echo json_encode($return);
-        }else{
+        } else {
             header("application/json");
             echo json_encode(['status' => 'error']);
         }

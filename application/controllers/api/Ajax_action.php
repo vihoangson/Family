@@ -90,12 +90,11 @@ class Ajax_action extends REST_Controller {
      *
      * @url /api/ajax_action/get_all_options
      */
-    public function get_all_options_get(){
+    public function get_all_options_get() {
         $this->load->model('Options_model');
         $this->options_model->disable_option_cache();
         $this->response($this->options_model->get_all_option());
     }
-
 
 
 }

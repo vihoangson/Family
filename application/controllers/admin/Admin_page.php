@@ -18,7 +18,6 @@ class Admin_page extends MY_Controller {
     }
 
 
-
     public function index() {
         $this->load->model("kyniem");
         $this->load->library("action");
@@ -186,7 +185,7 @@ class Admin_page extends MY_Controller {
      * @url /admin/admin_page/custom_css
      */
     public function custom_css($option = null) {
-        if($option == 'clear_archive'){
+        if ($option == 'clear_archive') {
             $this->options_model->save_option("custom_css_archive", '');
             $this->session->set_flashdata('item', ["success" => "Đã xóa archive"]);
             redirect('/admin/admin_page/custom_css');
@@ -202,11 +201,11 @@ class Admin_page extends MY_Controller {
 
         $custom_css = $this->options_model->get_option("custom_css");
 
-        $custom_css_archive = $this->options_model->get_option("custom_css_archive") ;
-        $custom_css_archive = json_decode($custom_css_archive->option_content,true);
+        $custom_css_archive = $this->options_model->get_option("custom_css_archive");
+        $custom_css_archive = json_decode($custom_css_archive->option_content, true);
 
         $this->load->vars([
-            "custom_css" => $custom_css->option_content,
+            "custom_css"         => $custom_css->option_content,
             'custom_css_archive' => $custom_css_archive
         ]);
 

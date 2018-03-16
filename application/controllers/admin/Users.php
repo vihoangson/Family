@@ -15,8 +15,7 @@ class Users extends MY_Controller {
             ];
             $this->db->where('username', $username);
             if ($this->db->get('user')
-                         ->num_rows() > 0
-            ) {
+                         ->num_rows() > 0) {
                 $this->session->set_flashdata('item', ["danger" => 'Bị trùng username']);
             } else {
                 if ($this->db->insert('user', $object)) {

@@ -386,19 +386,19 @@ class Homepage extends MY_Controller {
             //</editor-fold>
 
             //<editor-fold desc="change date">
-                // todo: Kiểm tra nếu ngày nhập vào khác thì sẽ update lại kyniem_create
-                $date_kyniem = $this->input->post("date-kyniem");
-                $tmp = $this->my_kyniem->get($id);
-                $m = date("d/m/Y",strtotime($tmp->kyniem_create));
+            // todo: Kiểm tra nếu ngày nhập vào khác thì sẽ update lại kyniem_create
+            $date_kyniem = $this->input->post("date-kyniem");
+            $tmp         = $this->my_kyniem->get($id);
+            $m           = date("d/m/Y", strtotime($tmp->kyniem_create));
 
-                // todo: Kiểm tra nếu ngày nhập vào khác thì sẽ update lại kyniem_create
-                if($date_kyniem != $m){
-                    $tmp2 = new DateTime();
-                    $date_input = explode('/',$date_kyniem);
-                    $tmp2->setDate($date_input[2],$date_input[1],$date_input[0]);
-                    $tmp2->setTime(0,0,0);
-                    $data['kyniem_create']=$tmp2->format('Y-m-d h:i:s');
-                }
+            // todo: Kiểm tra nếu ngày nhập vào khác thì sẽ update lại kyniem_create
+            if ($date_kyniem != $m) {
+                $tmp2       = new DateTime();
+                $date_input = explode('/', $date_kyniem);
+                $tmp2->setDate($date_input[2], $date_input[1], $date_input[0]);
+                $tmp2->setTime(0, 0, 0);
+                $data['kyniem_create'] = $tmp2->format('Y-m-d h:i:s');
+            }
             //</editor-fold>
 
             //<editor-fold desc="Upload file">
@@ -623,8 +623,7 @@ class Homepage extends MY_Controller {
                                        ->result());
         $this->action->archive_log("delete_comment", $string);
         if ($this->db->where("id", $id)
-                     ->delete('comment')
-        ) {
+                     ->delete('comment')) {
             echo 1;
         } else {
             echo 0;
