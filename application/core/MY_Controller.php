@@ -18,26 +18,12 @@ class MY_Controller extends CI_Controller {
         // So sánh file config đã được tạo chưa
         $this->check_define_config();
 
-        // Check có cần phải login không
-        if ($this->is_check_login()) {
-            // Vào 1 trang khác đăng nhập
-            if ($this->router->fetch_method() != "login") {
-                // Nếu chưa đăng nhập sẽ chuyển đến trang đăng nhập
-                if (!$this->session->userdata('user')) {
-                    // Chuyển đến trang login
-                    redirect('homepage/login', 'refresh');
-                }
-            } else {
-                // Nếu đã login rồi thì cho quay về trang chủ
-                if ($this->session->userdata('user')) {
-                    redirect('/', ' ');
-                }
-            }
-        } else {
-            $default_user = $this->My_User->where("id", 11);
-            $this->action->set_authentication($default_user);
-        }
+        //<editor-fold desc="Check author">
+        // Check author
+        $this->check_author();
+        //</editor-fold>
 
+        //<editor-fold desc="Set thông số gửi mail của google">
         // Set thông số gửi mail của google
         $this->config_email_custom = [
             'protocol'  => 'sendmail',
@@ -48,7 +34,9 @@ class MY_Controller extends CI_Controller {
             'mailtype'  => 'html',
             'charset'   => 'utf-8'
         ];
+        //</editor-fold>
 
+        //<editor-fold desc="Nếu trong 3 ngày không viết blog thì ô history sẽ bật lên">
         // Nếu trong 3 ngày không viết blog thì ô history sẽ bật lên
         $date_dont_write = $this->kyniem->get_count_dont_write();
         if ($date_dont_write > (int) DATE_DONT_WROTE_BLOG) {
@@ -57,19 +45,23 @@ class MY_Controller extends CI_Controller {
         } else {
             $history_wrote_blog = "";
         }
+        //</editor-fold>
 
+        //<editor-fold desc="Set variable for navbar">
         // Set dữ liệu cho navbar
         $navbars = [
             "history_wrote_blog" => $history_wrote_blog
         ];
-
         $this->set_variable_view_for_menu_left_admin();
-
         $this->load->vars($navbars);
+        //</editor-fold>
 
+        //<editor-fold desc="Set var options">
         $options = $this->options_model->get_all_option_by_object();
         $this->load->vars(["options" => $options]);
+        //</editor-fold>
 
+        //<editor-fold desc="Size lớn nhất cho ảnh">
         /**
          * Size lớn nhất cho hình ảnh
          */
@@ -79,11 +71,14 @@ class MY_Controller extends CI_Controller {
         } else {
             $max_size_img = 800;
         }
+        define("MAX_SIZE_IMG", $max_size_img);
+        //</editor-fold>
 
+        //<editor-fold desc="Set custom_css">
         $custom_css = $this->options_model->get_option("custom_css");
         $this->load->vars(["custom_css" => $custom_css->option_content]);
+        //</editor-fold>
 
-        define("MAX_SIZE_IMG", $max_size_img);
     }
 
 
@@ -175,6 +170,7 @@ class MY_Controller extends CI_Controller {
         if (ALLOW_SENT_MAIL) {
             $this->load->library('HZip');
             $file_name             = "BK_log_" . date("Ymd_his") . ".zip";
+            $position = '';
             $config['upload_path'] = check_folder(FCPATH . 'asset/file_upload/custom_banner_' . $position . '/');
             HZip::zipDir(FCPATH . "application/logs", FCPATH . "asset/tmp/" . $file_name);
             $this->load->library('email', $this->config_email_custom);
@@ -386,6 +382,31 @@ class MY_Controller extends CI_Controller {
                 ["link" => "/admin/quote_page/index", "text" => "Lời vàng ý ngọc"],
             ]
         ]);
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function check_author() {
+        // Check có cần phải login không
+        if ($this->is_check_login()) {
+            // Vào 1 trang khác đăng nhập
+            if ($this->router->fetch_method() != "login") {
+                // Nếu chưa đăng nhập sẽ chuyển đến trang đăng nhập
+                if (!$this->session->userdata('user')) {
+                    // Chuyển đến trang login
+                    redirect('homepage/login', 'refresh');
+                }
+            } else {
+                // Nếu đã login rồi thì cho quay về trang chủ
+                if ($this->session->userdata('user')) {
+                    redirect('/', ' ');
+                }
+            }
+        } else {
+            $default_user = $this->My_User->where("id", 11);
+            $this->action->set_authentication($default_user);
+        }
     }
 
 }
